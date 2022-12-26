@@ -1,0 +1,13 @@
+# Dependency directories
+node_modules/
+resources
+
+# dotenv environment variables file
+.env
+
+# Electron-Forge
+out/
+
+# Others
+.DS_Store
+.vscode
