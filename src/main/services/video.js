@@ -3,11 +3,11 @@ const path = require("path");
 const ytdl = require('ytdl-core');
 const { AUDIO_CHUNK_QUEUE_HIGH } = require('../const');
 const { VideoStatus } = require('../enum');
-const { pushToQueue } = require("../redis");
 const FFmpeg = require("../lib/ffmpeg");
 const VideoModel = require("../model/video");
 const VideoRepository = require("../repository/video");
 const ChunkRequestDTO = require('../../dto/chunk-request');
+const { push } = require('../queue');
 
 // TODO: inherit from AbstractInstanceService
 // TODO: add child YtVideoService for logic specific to Yt (to facilitate the futur implementation of FileVideoService)
@@ -93,7 +93,7 @@ class VideoService {
                 output_path: path.join(this.video.chunksDoneDir, path.basename(audio.path)),
                 remove_original: true
             })
-            pushToQueue(AUDIO_CHUNK_QUEUE_HIGH, chunkRequestDTO)
+            push(AUDIO_CHUNK_QUEUE_HIGH, chunkRequestDTO);
         })
     }
 

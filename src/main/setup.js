@@ -1,7 +1,6 @@
 const { spawn } = require("child_process");
 
 const initIpcHandlers = require('./ipc-handlers');
-const { startServer: startRedisServer, stopServer: stopRedisServer, redisEventEmitter } = require("./redis");
 const { BACKEND_BIN_DIR } = require("./const");
 const LibraryService = require("./services/library");
 
@@ -28,16 +27,12 @@ function startMusicRemoverProcess() {
 
 async function setUp() {
     initIpcHandlers();
-    startRedisServer();
-    redisEventEmitter.on("redis_ready", _ => {
-        LibraryService.initQueue();
-        LibraryService.initSub();
-        // startMusicRemoverProcess();
-    })
+    LibraryService.initQueue();
+    // TODO: handle this on gRPC response
+    LibraryService.initSub();
 }
 
 function tearDown() {
-    stopRedisServer();
 }
 
 module.exports = {

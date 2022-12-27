@@ -1,5 +1,4 @@
 const path = require("path");
-const { pushToQueue, subscribeChannel } = require("../redis");
 
 const { AUDIO_CHUNK_QUEUE_LOW, AUDIO_CHUNK_DONE_CHANNEL } = require("../const");
 const AudioModel = require("../model/audio");
@@ -7,6 +6,7 @@ const VideoRepository = require("../repository/video");
 const VideoService = require("./video");
 const ChunkRequestDTO = require("../../dto/chunk-request");
 const { getMainWindow } = require("../../main-window");
+const { push } = require("../queue");
 
 
 class LibraryService {
@@ -20,13 +20,14 @@ class LibraryService {
                     output_path: path.join(video.chunksDoneDir, path.basename(audio.path)),
                     remove_original: true
                 });
-                pushToQueue(AUDIO_CHUNK_QUEUE_LOW, chunkRequestDTO);
+                push(AUDIO_CHUNK_QUEUE_LOW, chunkRequestDTO);
             })
         });
     }
 
     static initSub() {
-        subscribeChannel(AUDIO_CHUNK_DONE_CHANNEL, LibraryService.updateVideoInfo);
+        // TODO: handle this on gRPC response
+        // subscribeChannel(AUDIO_CHUNK_DONE_CHANNEL, LibraryService.updateVideoInfo);
     }
 
     static async updateVideoInfo(audioChunkDonePath, tmp) {
