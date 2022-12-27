@@ -52,6 +52,8 @@
   "dependencies": {
     "detect-port": "^1.5.1",
     "electron-squirrel-startup": "^1.0.0",
+    "ffmpeg-static": "^5.1.0",
+    "ffprobe-static": "^3.1.0",
     "fs-jetpack": "^5.1.0",
     "image-downloader": "^4.3.0",
     "ioredis": "^5.2.4",
