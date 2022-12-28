@@ -28,7 +28,6 @@ This App use [music-remover](https://github.com/karim-bouchez/music-remover).
 
 ```bash
 npm install
-npm run download-third-party-apps
 ```
 
 ### Run
