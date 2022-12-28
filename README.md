@@ -1,4 +1,10 @@
-# Moubah
+<h1 align="center">
+    Moubah</br>
+    🚧 (WIP) 🚧 </br>
+</h1>
+</br>
+
+## Description
 
 Desktop application built with Electron to play YouTube videos without background music
 
