@@ -22,6 +22,14 @@ This App use [music-remover](https://github.com/karim-bouchez/music-remover).
 > ✅ Supported | 📆 Not tested yet | ❌ Not support plannned yet
 
 
+### Download the source code
+
+Use the `--recursive` option because of the git submodule:
+
+```bash
+git clone git@github.com:karim-bouchez/moubah.git --recursive
+```
+
 ### Install dependencies
 
 > **_For Windows users:_** use [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
@@ -41,6 +49,11 @@ npm run prod
 ```bash
 npm run make
 ```
+
+
+##  Troubleshooting
+
+`no such file or directory ... protobuf/main.proto` on `npm run dev/prod` -> run: `git submodule update --init`
 
 ## 🎯 To-do list
 
