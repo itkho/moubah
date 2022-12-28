@@ -1,6 +1,6 @@
 {
-  "name": "moubah-ui",
-  "productName": "moubah-ui",
+  "name": "moubah",
+  "productName": "Moubah",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": "src/main.js",
@@ -19,16 +19,11 @@
   "license": "MIT",
   "config": {
     "forge": {
-      "packagerConfig": {
-        "extraResource": [
-          "./resources/mac"
-        ]
-      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "moubah_ui"
+            "name": "moubah"
           }
         },
         {
@@ -52,6 +47,7 @@
     "@grpc/grpc-js": "^1.8.0",
     "detect-port": "^1.5.1",
     "electron-squirrel-startup": "^1.0.0",
+    "fastq": "^1.14.0",
     "ffmpeg-static": "^5.1.0",
     "ffprobe-static": "^3.1.0",
     "fs-jetpack": "^5.1.0",
