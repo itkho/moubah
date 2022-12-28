@@ -49,6 +49,7 @@
     }
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.8.0",
     "detect-port": "^1.5.1",
     "electron-squirrel-startup": "^1.0.0",
     "ffmpeg-static": "^5.1.0",

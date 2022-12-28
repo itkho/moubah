@@ -28,8 +28,6 @@ function startMusicRemoverProcess() {
 async function setUp() {
     initIpcHandlers();
     LibraryService.initQueue();
-    // TODO: handle this on gRPC response
-    LibraryService.initSub();
 }
 
 function tearDown() {

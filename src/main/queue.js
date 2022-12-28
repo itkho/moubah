@@ -1,23 +1,21 @@
-const ChunkRequestDTO = require("../dto/chunk-request");
-const { removeMusic } = require("./lib/music-remover");
+const fastq = require("fastq");
+let queue;
 
-const queue = require("fastq").promise(worker, 1);
-
-
-async function worker(chunkRequestDTO) {
-    console.log("before");
-    await removeMusic(chunkRequestDTO);
-    console.log("after");
+function addWorkerToQueue(queueName, worker) {
+    if (queue) {
+        console.error("A worker is already associated with this queue");
+        return;
+    }
+    queue = fastq.promise(worker, 1);
 }
 
-function push(queueName, chunkRequestDTO) {
-    // const chunkRequestDTO = new ChunkRequestDTO({
-    //     input_path: "aaa",
-    //     output_path: "bbb",
-    //     remove_original: false
-    // })
-    queue.push(chunkRequestDTO)
-    queue.push(chunkRequestDTO)
+function pushToQueue(queueName, chunkRequestDTO) {
+    // TODO: manage 2 queue (one for LOW and another for HIGH priority)
+    if (!queue) {
+        console.error("No worker associated with the queue yet");
+        return;
+    }
+    queue.push(chunkRequestDTO);
 }
 
-module.exports = { push }
+module.exports = { addWorkerToQueue, pushToQueue }

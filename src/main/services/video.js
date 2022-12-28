@@ -7,7 +7,7 @@ const FFmpeg = require("../lib/ffmpeg");
 const VideoModel = require("../model/video");
 const VideoRepository = require("../repository/video");
 const ChunkRequestDTO = require('../../dto/chunk-request');
-const { push } = require('../queue');
+const { pushToQueue } = require('../queue');
 
 // TODO: inherit from AbstractInstanceService
 // TODO: add child YtVideoService for logic specific to Yt (to facilitate the futur implementation of FileVideoService)
@@ -93,7 +93,7 @@ class VideoService {
                 output_path: path.join(this.video.chunksDoneDir, path.basename(audio.path)),
                 remove_original: true
             })
-            push(AUDIO_CHUNK_QUEUE_HIGH, chunkRequestDTO);
+            pushToQueue(AUDIO_CHUNK_QUEUE_HIGH, chunkRequestDTO);
         })
     }
 
@@ -102,6 +102,7 @@ class VideoService {
         fs.writeFileSync(
             audioListFile,
             fs.readdirSync(this.video.chunksDoneDir)
+                .filter(file => file.match(/^chunk_(\d){3}.wav$/g))
                 .map(file => `file '${path.join(this.video.chunksDoneDir, file)}'`)
                 .join("\n")
         );

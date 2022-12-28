@@ -7,7 +7,6 @@ const IS_DEV = process.env.NODE_ENV === "development";
 
 const AUDIO_CHUNK_QUEUE_HIGH = "audio-chunk:todo:priority-high";
 const AUDIO_CHUNK_QUEUE_LOW = "audio-chunk:todo:priority-low";
-const AUDIO_CHUNK_DONE_CHANNEL = "audio-chunk:done";
 
 const BACKEND_BIN_DIR = "TODO";
 const FFMPEG_BIN_DIR = path.dirname(require('ffmpeg-static'));
@@ -33,5 +32,4 @@ module.exports = {
     FFPROBE_BIN_DIR,
     AUDIO_CHUNK_QUEUE_HIGH,
     AUDIO_CHUNK_QUEUE_LOW,
-    AUDIO_CHUNK_DONE_CHANNEL,
 }

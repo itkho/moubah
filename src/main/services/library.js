@@ -1,17 +1,19 @@
 const path = require("path");
 
-const { AUDIO_CHUNK_QUEUE_LOW, AUDIO_CHUNK_DONE_CHANNEL } = require("../const");
+const { AUDIO_CHUNK_QUEUE_LOW } = require("../const");
 const AudioModel = require("../model/audio");
 const VideoRepository = require("../repository/video");
 const VideoService = require("./video");
 const ChunkRequestDTO = require("../../dto/chunk-request");
 const { getMainWindow } = require("../../main-window");
-const { push } = require("../queue");
+const { pushToQueue, addWorkerToQueue } = require("../queue");
+const { removeMusic } = require("../lib/music-remover");
 
 
 class LibraryService {
 
     static async initQueue() {
+        addWorkerToQueue(AUDIO_CHUNK_QUEUE_LOW, LibraryService.removeMusic);
         const videos = await VideoRepository.getVideosTodo();
         videos.forEach(video => {
             video.audioChunksTodo.forEach(audio => {
@@ -20,17 +22,24 @@ class LibraryService {
                     output_path: path.join(video.chunksDoneDir, path.basename(audio.path)),
                     remove_original: true
                 });
-                push(AUDIO_CHUNK_QUEUE_LOW, chunkRequestDTO);
+                pushToQueue(AUDIO_CHUNK_QUEUE_LOW, chunkRequestDTO);
             })
         });
     }
 
-    static initSub() {
-        // TODO: handle this on gRPC response
-        // subscribeChannel(AUDIO_CHUNK_DONE_CHANNEL, LibraryService.updateVideoInfo);
+    static async removeMusic(chunkRequestDTO) {
+        try {
+            const response = await removeMusic(chunkRequestDTO);
+            if (!response.succeeded) {
+                console.error(`Error on ${chunkRequestDTO.input_path}:\n${response.error}`);
+            }
+            LibraryService.updateVideoInfo(chunkRequestDTO.output_path)
+        } catch (error) {
+            console.error(error);
+        }
     }
 
-    static async updateVideoInfo(audioChunkDonePath, tmp) {
+    static async updateVideoInfo(audioChunkDonePath) {
         const audio = new AudioModel(audioChunkDonePath);
         const video = await VideoRepository.getVideoById(audio.videoId);
         const videoService = new VideoService(video);

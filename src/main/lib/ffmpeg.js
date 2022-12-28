@@ -10,6 +10,7 @@ class FFmpeg {
     }
 
     static split(filePath, outputPath, outputFormat = "chunk_%03d.wav") {
+        // TODO: raise an error if there is more than 999 chunks
         const result = spawnSync(
             "ffmpeg",
             [
