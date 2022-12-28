@@ -19,6 +19,9 @@ export async function displayLibrary() {
 export async function updateVideoInfo(videoDTO) {
     // TODO: handle the case where the video item isn't created yet
     const videoItem = document.getElementById(`video-id:${videoDTO.id}`);
+    if (!videoItem) {
+        return;
+    }
 
     let progress = "";
     if (videoDTO.status === "done") {

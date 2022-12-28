@@ -2,7 +2,7 @@ const grpc = require("@grpc/grpc-js");
 const protoLoader = require("@grpc/proto-loader");
 const path = require('path');
 
-const PROTO_FILE = "src/main/protobuf/moubah.proto";
+const PROTO_FILE = path.join(__dirname, "../protobuf/moubah.proto");
 const options = {
     keepCase: true,
     longs: String,
