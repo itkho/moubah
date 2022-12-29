@@ -1,6 +1,6 @@
 const { spawnSync } = require("child_process");
 const path = require("path");
-const { FFMPEG_BIN_DIR, FFPROBE_BIN_DIR, TEMP_PATH, IS_DEV } = require("../const");
+const { FFMPEG_BIN_DIR, FFPROBE_BIN_DIR, TEMP_PATH, IS_DEV, PATH_SEPARATOR } = require("../const");
 var fs = require('fs');
 
 
@@ -23,7 +23,7 @@ class FFmpeg {
                 `${outputPath}/${outputFormat}`
             ],
             // TODO: remove all "cwd" (should not be useful)
-            { env: { PATH: `${FFMPEG_BIN_DIR}:${FFPROBE_BIN_DIR}` } }
+            { env: { PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}` } }
         )
         if (IS_DEV) {
             console.log(`split stdout: ${result.stdout}`);
@@ -40,12 +40,16 @@ class FFmpeg {
                 "-ac", "1",
                 tmpAudioPath, "-y"
             ],
-            { env: { PATH: `${FFMPEG_BIN_DIR}:${FFPROBE_BIN_DIR}` } }
+            { env: { PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}` } }
         )
         if (IS_DEV) {
             console.log(`convertAudioToMono stdout: ${result.stdout}`);
             console.error(`convertAudioToMono stderr: ${result.stderr}`);
         }
+        console.log(1);
+        // fs.rmSync(audioPath, { force: true });
+        fs.renameSync(audioPath, `${audioPath}.old`)
+        console.log(2);
         fs.renameSync(tmpAudioPath, audioPath)
     }
 
@@ -58,7 +62,7 @@ class FFmpeg {
                 "-map", "a",
                 audioPath, "-y"
             ],
-            { env: { PATH: `${FFMPEG_BIN_DIR}:${FFPROBE_BIN_DIR}` } }
+            { env: { PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}` } }
         )
 
         if (IS_DEV) {
@@ -77,7 +81,7 @@ class FFmpeg {
                 "-c", "copy",
                 outputPath, "-y"
             ],
-            { env: { PATH: `${FFMPEG_BIN_DIR}:${FFPROBE_BIN_DIR}` } }
+            { env: { PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}` } }
         )
         if (IS_DEV) {
             console.log(`merge stdout: ${result.stdout}`);
@@ -97,7 +101,7 @@ class FFmpeg {
                 "-c:v", "copy",
                 tmpVideoPath, "-y"
             ],
-            { env: { PATH: `${FFMPEG_BIN_DIR}:${FFPROBE_BIN_DIR}` } }
+            { env: { PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}` } }
         )
         if (IS_DEV) {
             console.log(`addAudioToVideo stdout: ${result.stdout}`);

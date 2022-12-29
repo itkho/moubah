@@ -3,7 +3,10 @@ const { app } = require('electron');
 const fs = require("fs");
 
 // Warning: IS_DEV works, but not IS_PROD (maybe because there is no process.env in production 🤷)
-const IS_DEV = process.env.NODE_ENV === "development";
+// const IS_DEV = process.env.NODE_ENV === "development";
+const IS_DEV = true;
+const OS = "win";
+const PATH_SEPARATOR = OS == "win" ? ";" : ":";
 
 const AUDIO_CHUNK_QUEUE_HIGH = "audio-chunk:todo:priority-high";
 const AUDIO_CHUNK_QUEUE_LOW = "audio-chunk:todo:priority-low";
@@ -17,7 +20,8 @@ if (!fs.existsSync(STORAGE_DIR_PATH)) {
     fs.mkdirSync(STORAGE_DIR_PATH);
 }
 
-const TEMP_PATH = path.join(app.getPath("temp"), "Moubah")
+// const TEMP_PATH = path.join(app.getPath("temp"), "Moubah")
+const TEMP_PATH = path.join(app.getPath("videos"), "Moubah-tmp")
 if (!fs.existsSync(TEMP_PATH)) {
     fs.mkdirSync(TEMP_PATH);
 }
@@ -25,6 +29,8 @@ if (!fs.existsSync(TEMP_PATH)) {
 
 module.exports = {
     IS_DEV,
+    OS,
+    PATH_SEPARATOR,
     STORAGE_DIR_PATH,
     TEMP_PATH,
     BACKEND_BIN_DIR,

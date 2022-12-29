@@ -2,6 +2,7 @@ const { app, BrowserWindow } = require('electron');
 
 const { setUp, tearDown } = require('./main/setup');
 const { createMainWindow } = require('./main-window');
+const { IS_DEV, FFMPEG_BIN_DIR, FFPROBE_BIN_DIR } = require('./main/const');
 
 
 // This method will be called when Electron has finished
@@ -38,3 +39,9 @@ app.on('quit', _ => tearDown());
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 setUp();
+console.log(app.getPath("logs"));
+console.log({ FFMPEG_BIN_DIR });
+console.log({ FFPROBE_BIN_DIR });
+console.log({ IS_DEV });
+console.log(process.env.NODE_ENV);
+// console.log(process.env);

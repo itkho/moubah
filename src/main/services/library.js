@@ -29,9 +29,11 @@ class LibraryService {
 
     static async removeMusic(chunkRequestDTO) {
         try {
+            console.log(`Call gRPC ${chunkRequestDTO.input_path}`);
             const response = await removeMusic(chunkRequestDTO);
             if (!response.succeeded) {
                 console.error(`Error on ${chunkRequestDTO.input_path}:\n${response.error}`);
+                return;
             }
             LibraryService.updateVideoInfo(chunkRequestDTO.output_path)
         } catch (error) {
