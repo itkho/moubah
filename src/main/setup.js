@@ -1,17 +1,18 @@
 const { spawn } = require("child_process");
 
 const initIpcHandlers = require('./ipc-handlers');
-const { EXEC_EXTENSION, IS_APPLE_SILICON } = require("./const");
+const { EXEC_EXTENSION, IS_APPLE_SILICON, MUSIC_REMOVER_DIR, RESOURCE_DIR } = require("./const");
 const LibraryService = require("./services/library");
 
 
 function startMusicRemoverProcess() {
     // TODO: finish the implementation
+    let backendProcess;
     if (IS_APPLE_SILICON) {
-        const backendProcess = spawn("python", ["app.py"], { cwd: BACKEND_DIR });
+        backendProcess = spawn("python", ["app.py"], { cwd: MUSIC_REMOVER_DIR, env: { PATH: `${PYTHON_DIR}` } });
     } else {
         const exec_name = "./app" + EXEC_EXTENSION;
-        const backendProcess = spawn(exec_name, { cwd: BACKEND_BIN_DIR });
+        backendProcess = spawn(exec_name, { cwd: RESOURCE_DIR });
     }
 
     backendProcess.stdout.on('data', (data) => {

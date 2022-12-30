@@ -28,7 +28,9 @@ const EXEC_EXTENSION = OS == "win" ? ".exe" : "/";
 const AUDIO_CHUNK_QUEUE_HIGH = "audio-chunk:todo:priority-high";
 const AUDIO_CHUNK_QUEUE_LOW = "audio-chunk:todo:priority-low";
 
-const MUSIC_REMOVER_DIR = path.join(app.getPath("videos"), "Moubah");
+console.log(app.getAppPath());
+const MUSIC_REMOVER_DIR = path.join(app.getAppPath(), "music-remover");
+const PYTHON_DIR = path.join(MUSIC_REMOVER_DIR, ".venv", "bin", "python");
 const RESOURCE_DIR = "TODO";
 const FFMPEG_BIN_DIR = path.dirname(require('ffmpeg-static'));
 const FFPROBE_BIN_DIR = path.dirname(require('ffprobe-static').path);
@@ -54,6 +56,8 @@ module.exports = {
     IS_APPLE_SILICON,
     STORAGE_DIR_PATH,
     TEMP_PATH,
+    MUSIC_REMOVER_DIR,
+    PYTHON_DIR,
     RESOURCE_DIR,
     FFMPEG_BIN_DIR,
     FFPROBE_BIN_DIR,
