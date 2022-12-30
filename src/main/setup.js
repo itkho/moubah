@@ -1,15 +1,18 @@
 const { spawn } = require("child_process");
 
 const initIpcHandlers = require('./ipc-handlers');
-const { BACKEND_BIN_DIR } = require("./const");
+const { EXEC_EXTENSION, IS_APPLE_SILICON } = require("./const");
 const LibraryService = require("./services/library");
 
 
 function startMusicRemoverProcess() {
-    // const pythonPrefix = isMacM1 ? "arch -x86_64 " : "";
-    // const backendProcess = spawn(pythonPrefix + "python", ["app.py"], { cwd: BACKEND_DIR });
-    const exec_name = isWindows ? "./app.exe" : "./app";
-    const backendProcess = spawn(exec_name, { cwd: BACKEND_BIN_DIR });
+    // TODO: finish the implementation
+    if (IS_APPLE_SILICON) {
+        const backendProcess = spawn("python", ["app.py"], { cwd: BACKEND_DIR });
+    } else {
+        const exec_name = "./app" + EXEC_EXTENSION;
+        const backendProcess = spawn(exec_name, { cwd: BACKEND_BIN_DIR });
+    }
 
     backendProcess.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
@@ -27,7 +30,7 @@ function startMusicRemoverProcess() {
 
 async function setUp() {
     initIpcHandlers();
-    startMusicRemoverProcess();
+    // startMusicRemoverProcess();
     LibraryService.initQueue();
 }
 

@@ -34,7 +34,7 @@ class VideoRepository {
         return new VideoModel({
             id: id,
             title: info.title,
-            thumbnailUri: path.resolve(videoPath, "thumbnail.jpg"),
+            thumbnailUri: path.join(videoPath, "thumbnail.jpg"),
             status: info.status
         });
     }
@@ -44,7 +44,7 @@ class VideoRepository {
             fs.mkdirSync(video.dir);
         }
         fs.writeFile(
-            path.resolve(video.infoPath),
+            path.join(video.infoPath),
             video.stringifyInfo(),
             (err) => {
                 if (err) throw err;

@@ -42,7 +42,7 @@ git clone git@github.com:karim-bouchez/moubah.git --recursive
 <!-- [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) -->
 
 ```bash
-npm install
+npm install -–save-dev
 ```
 
 ### ☄️ Run
@@ -64,7 +64,7 @@ npm run make
 
 ## 🎯 To-do list
 
-- [ ] 🧼 Use ffmpeg-static for binaries
+- [x] 🧼 Use ffmpeg-static for binaries
 - [ ] 🆕 Add a "delete" button
 - [ ] 🆕 Run "music-remover" automatically from "moubah" (has to be compatible on Windows/Mac/Mac M1)
 - [ ] 🆕 Don't allow to download the same video twice

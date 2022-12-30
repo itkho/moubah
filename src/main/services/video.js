@@ -98,7 +98,7 @@ class VideoService {
     }
 
     addAudioFromChunksDone() {
-        const audioListFile = path.resolve(this.video.chunksDoneDir, "audioListFile.txt");
+        const audioListFile = path.join(this.video.chunksDoneDir, "audioListFile.txt");
         fs.writeFileSync(
             audioListFile,
             fs.readdirSync(this.video.chunksDoneDir)
