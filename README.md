@@ -38,7 +38,8 @@ git clone git@github.com:karim-bouchez/moubah.git --recursive
 
 ### Install dependencies
 
-> **_For Windows users:_** use [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
+> **_For Windows users:_** use PowerShell
+<!-- [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) -->
 
 ```bash
 npm install
