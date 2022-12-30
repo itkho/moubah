@@ -30,7 +30,7 @@ const AUDIO_CHUNK_QUEUE_LOW = "audio-chunk:todo:priority-low";
 
 console.log(app.getAppPath());
 const MUSIC_REMOVER_DIR = path.join(app.getAppPath(), "music-remover");
-const PYTHON_DIR = path.join(MUSIC_REMOVER_DIR, ".venv", "bin", "python");
+const PYTHON_DIR = path.join(MUSIC_REMOVER_DIR, ".venv", "bin");
 const RESOURCE_DIR = "TODO";
 const FFMPEG_BIN_DIR = path.dirname(require('ffmpeg-static'));
 const FFPROBE_BIN_DIR = path.dirname(require('ffprobe-static').path);

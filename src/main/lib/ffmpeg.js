@@ -46,10 +46,8 @@ class FFmpeg {
             console.log(`convertAudioToMono stdout: ${result.stdout}`);
             console.error(`convertAudioToMono stderr: ${result.stderr}`);
         }
-        console.log(1);
         // fs.rmSync(audioPath, { force: true });
         fs.renameSync(audioPath, `${audioPath}.old`)
-        console.log(2);
         fs.renameSync(tmpAudioPath, audioPath)
     }
 
