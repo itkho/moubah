@@ -40,8 +40,3 @@ app.on('quit', _ => tearDown());
 // code. You can also put them in separate files and import them here.
 setUp();
 console.log(app.getPath("logs"));
-console.log({ FFMPEG_BIN_DIR });
-console.log({ FFPROBE_BIN_DIR });
-console.log({ IS_DEV });
-console.log(process.env.NODE_ENV);
-// console.log(process.env);

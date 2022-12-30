@@ -1,4 +1,4 @@
-const { STORAGE_DIR_PATH } = require("../const");
+const { STORAGE_DIR_PATH, DIR_SEPARATOR } = require("../const");
 
 class AudioModel {
 
@@ -7,8 +7,7 @@ class AudioModel {
     }
 
     get videoId() {
-        // TODO: adapt either it's win or mac
-        return this.path.split(STORAGE_DIR_PATH)[1].split("/")[1];
+        return this.path.split(STORAGE_DIR_PATH)[1].split(DIR_SEPARATOR)[1];
     }
 }
 

@@ -7,6 +7,7 @@ const fs = require("fs");
 const IS_DEV = true;
 const OS = "win";
 const PATH_SEPARATOR = OS == "win" ? ";" : ":";
+const DIR_SEPARATOR = OS == "win" ? "\\" : "/";
 
 const AUDIO_CHUNK_QUEUE_HIGH = "audio-chunk:todo:priority-high";
 const AUDIO_CHUNK_QUEUE_LOW = "audio-chunk:todo:priority-low";
@@ -31,6 +32,7 @@ module.exports = {
     IS_DEV,
     OS,
     PATH_SEPARATOR,
+    DIR_SEPARATOR,
     STORAGE_DIR_PATH,
     TEMP_PATH,
     BACKEND_BIN_DIR,
