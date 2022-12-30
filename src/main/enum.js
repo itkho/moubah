@@ -7,4 +7,4 @@ const VideoStatus = Object.freeze({
 
 module.exports = {
     VideoStatus,
-}
+};

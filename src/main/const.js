@@ -1,5 +1,5 @@
 const path = require("path");
-const { app } = require('electron');
+const { app } = require("electron");
 const fs = require("fs");
 const os = require("os");
 
@@ -18,7 +18,7 @@ switch (os.platform()) {
         OS = "mac";
         break;
     default:
-        throw `This OS (${os.platform()}) isn't supported yet`
+        throw `This OS (${os.platform()}) isn't supported yet`;
 }
 const IS_APPLE_SILICON = OS == "mac" && os.arch() == "arm64";
 const PATH_SEPARATOR = OS == "win" ? ";" : ":";
@@ -32,20 +32,19 @@ console.log(app.getAppPath());
 const MUSIC_REMOVER_DIR = path.join(app.getAppPath(), "music-remover");
 const PYTHON_DIR = path.join(MUSIC_REMOVER_DIR, ".venv", "bin");
 const RESOURCE_DIR = "TODO";
-const FFMPEG_BIN_DIR = path.dirname(require('ffmpeg-static'));
-const FFPROBE_BIN_DIR = path.dirname(require('ffprobe-static').path);
+const FFMPEG_BIN_DIR = path.dirname(require("ffmpeg-static"));
+const FFPROBE_BIN_DIR = path.dirname(require("ffprobe-static").path);
 
-const STORAGE_DIR_PATH = path.join(app.getPath("videos"), "Moubah")
+const STORAGE_DIR_PATH = path.join(app.getPath("videos"), "Moubah");
 if (!fs.existsSync(STORAGE_DIR_PATH)) {
     fs.mkdirSync(STORAGE_DIR_PATH);
 }
 
 // const TEMP_PATH = path.join(app.getPath("temp"), "Moubah")
-const TEMP_PATH = path.join(app.getPath("videos"), "Moubah-tmp")
+const TEMP_PATH = path.join(app.getPath("videos"), "Moubah-tmp");
 if (!fs.existsSync(TEMP_PATH)) {
     fs.mkdirSync(TEMP_PATH);
 }
-
 
 module.exports = {
     IS_DEV,
@@ -63,4 +62,4 @@ module.exports = {
     FFPROBE_BIN_DIR,
     AUDIO_CHUNK_QUEUE_HIGH,
     AUDIO_CHUNK_QUEUE_LOW,
-}
+};

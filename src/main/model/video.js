@@ -7,7 +7,6 @@ const AudioModel = require("./audio.js");
 const { createPathIfDoesntExists } = require("../helpers.js");
 const VideoDTO = require("../../dto/video.js");
 
-
 class VideoModel {
     constructor({ id, title, thumbnailUri, status = VideoStatus.initial }) {
         this.id = id;
@@ -49,13 +48,15 @@ class VideoModel {
     }
 
     get audioChunksTodo() {
-        return fs.readdirSync(this.chunksTodoDir)
-            .map(file => new AudioModel(path.join(this.chunksTodoDir, file)));
+        return fs
+            .readdirSync(this.chunksTodoDir)
+            .map((file) => new AudioModel(path.join(this.chunksTodoDir, file)));
     }
 
     get audioChunksDone() {
-        return fs.readdirSync(this.chunksDoneDir)
-            .map(file => new AudioModel(path.join(this.chunksDoneDir, file)));
+        return fs
+            .readdirSync(this.chunksDoneDir)
+            .map((file) => new AudioModel(path.join(this.chunksDoneDir, file)));
     }
 
     get audio() {
@@ -74,16 +75,18 @@ class VideoModel {
                 if (nbChunksDone + nbChunksTodo === 0) {
                     return 0;
                 }
-                return Math.floor(nbChunksDone / (nbChunksDone + nbChunksTodo) * 100);
+                return Math.floor(
+                    (nbChunksDone / (nbChunksDone + nbChunksTodo)) * 100
+                );
             case VideoStatus.done:
-                return 100
+                return 100;
         }
     }
 
     stringifyInfo() {
         return JSON.stringify({
-            "title": this.title,
-            "status": this.status,
+            title: this.title,
+            status: this.status,
         });
     }
 
@@ -95,8 +98,8 @@ class VideoModel {
             thumbnailUri: this.thumbnailUri,
             status: this.status,
             progress: this.progress,
-        })
+        });
     }
 }
 
-module.exports = VideoModel
+module.exports = VideoModel;

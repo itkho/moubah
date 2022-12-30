@@ -4,7 +4,7 @@ import { displayLibrary } from "./library.js";
 const views = document.getElementsByClassName("view");
 
 function onViewDisplayed(view) {
-    const viewName = view.id.replace("-view", "")
+    const viewName = view.id.replace("-view", "");
     switch (viewName) {
         case View.search:
             break;
@@ -25,4 +25,4 @@ export function switchView() {
             view.style.display = "none";
         }
     });
-};
+}

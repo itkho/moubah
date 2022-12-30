@@ -1,7 +1,6 @@
 const { STORAGE_DIR_PATH, DIR_SEPARATOR } = require("../const");
 
 class AudioModel {
-
     constructor(path) {
         this.path = path;
     }
@@ -11,4 +10,4 @@ class AudioModel {
     }
 }
 
-module.exports = AudioModel
+module.exports = AudioModel;

@@ -18,4 +18,4 @@ function pushToQueue(queueName, chunkRequestDTO) {
     queue.push(chunkRequestDTO);
 }
 
-module.exports = { addWorkerToQueue, pushToQueue }
+module.exports = { addWorkerToQueue, pushToQueue };

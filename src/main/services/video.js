@@ -1,13 +1,13 @@
-const fs = require('fs');
+const fs = require("fs");
 const path = require("path");
-const ytdl = require('ytdl-core');
-const { AUDIO_CHUNK_QUEUE_HIGH } = require('../const');
-const { VideoStatus } = require('../enum');
+const ytdl = require("ytdl-core");
+const { AUDIO_CHUNK_QUEUE_HIGH } = require("../const");
+const { VideoStatus } = require("../enum");
 const FFmpeg = require("../lib/ffmpeg");
 const VideoModel = require("../model/video");
 const VideoRepository = require("../repository/video");
-const ChunkRequestDTO = require('../../dto/chunk-request');
-const { pushToQueue } = require('../queue');
+const ChunkRequestDTO = require("../../dto/chunk-request");
+const { pushToQueue } = require("../queue");
 
 // TODO: inherit from AbstractInstanceService
 // TODO: add child YtVideoService for logic specific to Yt (to facilitate the futur implementation of FileVideoService)
@@ -20,14 +20,14 @@ class VideoService {
         if (!ytdl.validateID(videoId)) {
             console.error(`Youtube ID ${videoId} doesn't exists!`);
             // TODO: add Error objects
-            throw `Youtube ID ${videoId} doesn't exists!`
+            throw `Youtube ID ${videoId} doesn't exists!`;
         }
 
         const info = await ytdl.getBasicInfo(videoId);
         const video = new VideoModel({
             id: videoId,
             title: info.videoDetails.title,
-            thumbnailUri: info.videoDetails.thumbnails[0].url
+            thumbnailUri: info.videoDetails.thumbnails[0].url,
         });
         VideoRepository.save(video);
         return new VideoService(video);
@@ -41,23 +41,25 @@ class VideoService {
         await this.#downloadVideo();
         console.log(`Video downloaded: ${fs.existsSync(this.video.path)}`);
         await this.#downloadAudioChunks();
-        console.log(`Audio downloaded: ${fs.existsSync(this.video.audio.path)}`);
+        console.log(
+            `Audio downloaded: ${fs.existsSync(this.video.audio.path)}`
+        );
         this.sendAudioChunksTodo();
     }
 
     async #downloadVideo() {
         const writerStream = fs.createWriteStream(this.video.path);
         ytdl(this.video.id, {
-            filter: format => {
+            filter: (format) => {
                 return (
-                    format.container === 'mp4'
-                    && format.hasVideo === true
-                    && format.hasAudio === false
-                )
+                    format.container === "mp4" &&
+                    format.hasVideo === true &&
+                    format.hasAudio === false
+                );
             },
         }).pipe(writerStream);
         return new Promise((resolve, reject) => {
-            writerStream.on('finish', resolve);
+            writerStream.on("finish", resolve);
         });
     }
 
@@ -65,20 +67,20 @@ class VideoService {
         // TODO: use tmp directory
         const writerStream = fs.createWriteStream(this.video.audio.path);
         ytdl(this.video.id, {
-            filter: format => {
+            filter: (format) => {
                 return (
-                    format.container === 'mp4'
-                    && format.hasVideo === false
-                    && format.hasAudio === true
+                    format.container === "mp4" &&
+                    format.hasVideo === false &&
+                    format.hasAudio === true
                     // && format.audioQuality === "AUDIO_QUALITY_LOW"
-                )
+                );
             },
         }).pipe(writerStream);
         return new Promise((resolve, reject) => {
-            writerStream.on('finish', () => {
+            writerStream.on("finish", () => {
                 console.log("Download audio finished");
                 FFmpeg.convertAudioToMono(this.video.audio.path);
-                FFmpeg.split(this.video.audio.path, this.video.chunksTodoDir)
+                FFmpeg.split(this.video.audio.path, this.video.chunksTodoDir);
                 resolve();
             });
         });
@@ -87,27 +89,43 @@ class VideoService {
     sendAudioChunksTodo() {
         console.log("Processing...");
         this.setStatus(VideoStatus.processing);
-        this.video.audioChunksTodo.forEach(audio => {
+        this.video.audioChunksTodo.forEach((audio) => {
             const chunkRequestDTO = new ChunkRequestDTO({
                 input_path: audio.path,
-                output_path: path.join(this.video.chunksDoneDir, path.basename(audio.path)),
-                remove_original: true
-            })
+                output_path: path.join(
+                    this.video.chunksDoneDir,
+                    path.basename(audio.path)
+                ),
+                remove_original: true,
+            });
             pushToQueue(AUDIO_CHUNK_QUEUE_HIGH, chunkRequestDTO);
-        })
+        });
     }
 
     addAudioFromChunksDone() {
-        const audioListFile = path.join(this.video.chunksDoneDir, "audioListFile.txt");
+        const audioListFile = path.join(
+            this.video.chunksDoneDir,
+            "audioListFile.txt"
+        );
         fs.writeFileSync(
             audioListFile,
-            fs.readdirSync(this.video.chunksDoneDir)
-                .filter(file => file.match(/^chunk_(\d){3}.wav$/g))
-                .map(file => `file '${path.join(this.video.chunksDoneDir, file)}'`)
+            fs
+                .readdirSync(this.video.chunksDoneDir)
+                .filter((file) => file.match(/^chunk_(\d){3}.wav$/g))
+                .map(
+                    (file) =>
+                        `file '${path.join(this.video.chunksDoneDir, file)}'`
+                )
                 .join("\n")
         );
-        FFmpeg.merge(audioListFile, path.join(this.video.dir, "audio_wo_music.wav"))
-        FFmpeg.addAudioToVideo(path.join(this.video.dir, "audio_wo_music.wav"), this.video.path)
+        FFmpeg.merge(
+            audioListFile,
+            path.join(this.video.dir, "audio_wo_music.wav")
+        );
+        FFmpeg.addAudioToVideo(
+            path.join(this.video.dir, "audio_wo_music.wav"),
+            this.video.path
+        );
         this.removeChunks();
         this.setStatus(VideoStatus.done);
     }
@@ -122,4 +140,4 @@ class VideoService {
     }
 }
 
-module.exports = VideoService
+module.exports = VideoService;

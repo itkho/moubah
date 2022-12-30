@@ -1,8 +1,13 @@
 const { spawnSync } = require("child_process");
 const path = require("path");
-const { FFMPEG_BIN_DIR, FFPROBE_BIN_DIR, TEMP_PATH, IS_DEV, PATH_SEPARATOR } = require("../const");
-var fs = require('fs');
-
+const {
+    FFMPEG_BIN_DIR,
+    FFPROBE_BIN_DIR,
+    TEMP_PATH,
+    IS_DEV,
+    PATH_SEPARATOR,
+} = require("../const");
+var fs = require("fs");
 
 class FFmpeg {
     constructor() {
@@ -14,17 +19,27 @@ class FFmpeg {
         const result = spawnSync(
             "ffmpeg",
             [
-                "-i", filePath,
-                "-c", "copy",
-                "-map", "0",
-                "-segment_time", "00:00:10",
-                "-f", "segment",
-                "-reset_timestamps", "1",
-                `${outputPath}/${outputFormat}`
+                "-i",
+                filePath,
+                "-c",
+                "copy",
+                "-map",
+                "0",
+                "-segment_time",
+                "00:00:10",
+                "-f",
+                "segment",
+                "-reset_timestamps",
+                "1",
+                `${outputPath}/${outputFormat}`,
             ],
             // TODO: remove all "cwd" (should not be useful)
-            { env: { PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}` } }
-        )
+            {
+                env: {
+                    PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}`,
+                },
+            }
+        );
         if (IS_DEV) {
             console.log(`split stdout: ${result.stdout}`);
             console.error(`split stderr: ${result.stderr}`);
@@ -35,33 +50,32 @@ class FFmpeg {
         const tmpAudioPath = path.join(TEMP_PATH, "audio.mp3");
         const result = spawnSync(
             "ffmpeg",
-            [
-                "-i", audioPath,
-                "-ac", "1",
-                tmpAudioPath, "-y"
-            ],
-            { env: { PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}` } }
-        )
+            ["-i", audioPath, "-ac", "1", tmpAudioPath, "-y"],
+            {
+                env: {
+                    PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}`,
+                },
+            }
+        );
         if (IS_DEV) {
             console.log(`convertAudioToMono stdout: ${result.stdout}`);
             console.error(`convertAudioToMono stderr: ${result.stderr}`);
         }
         // fs.rmSync(audioPath, { force: true });
-        fs.renameSync(audioPath, `${audioPath}.old`)
-        fs.renameSync(tmpAudioPath, audioPath)
+        fs.renameSync(audioPath, `${audioPath}.old`);
+        fs.renameSync(tmpAudioPath, audioPath);
     }
 
     static extractAudioFromVideo(videoPath, audioPath) {
         const result = spawnSync(
             "ffmpeg",
-            [
-                "-i", videoPath,
-                "-q:a", "0",
-                "-map", "a",
-                audioPath, "-y"
-            ],
-            { env: { PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}` } }
-        )
+            ["-i", videoPath, "-q:a", "0", "-map", "a", audioPath, "-y"],
+            {
+                env: {
+                    PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}`,
+                },
+            }
+        );
 
         if (IS_DEV) {
             console.log(`extractAudioFromVideo stdout: ${result.stdout}`);
@@ -73,14 +87,23 @@ class FFmpeg {
         const result = spawnSync(
             "ffmpeg",
             [
-                "-f", "concat",
-                "-safe", "0",
-                "-i", audioListFile,
-                "-c", "copy",
-                outputPath, "-y"
+                "-f",
+                "concat",
+                "-safe",
+                "0",
+                "-i",
+                audioListFile,
+                "-c",
+                "copy",
+                outputPath,
+                "-y",
             ],
-            { env: { PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}` } }
-        )
+            {
+                env: {
+                    PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}`,
+                },
+            }
+        );
         if (IS_DEV) {
             console.log(`merge stdout: ${result.stdout}`);
             console.error(`merge stderr: ${result.stderr}`);
@@ -92,22 +115,32 @@ class FFmpeg {
         const result = spawnSync(
             "ffmpeg",
             [
-                "-i", videoPath,
-                "-i", audioPath,
-                "-map", "0:0",
-                "-map", "1:0",
-                "-c:v", "copy",
-                tmpVideoPath, "-y"
+                "-i",
+                videoPath,
+                "-i",
+                audioPath,
+                "-map",
+                "0:0",
+                "-map",
+                "1:0",
+                "-c:v",
+                "copy",
+                tmpVideoPath,
+                "-y",
             ],
-            { env: { PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}` } }
-        )
+            {
+                env: {
+                    PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}`,
+                },
+            }
+        );
         if (IS_DEV) {
             console.log(`addAudioToVideo stdout: ${result.stdout}`);
             console.error(`addAudioToVideo stderr: ${result.stderr}`);
         }
         // fs.rmSync(videoPath);
-        fs.renameSync(tmpVideoPath, videoPath)
+        fs.renameSync(tmpVideoPath, videoPath);
     }
 }
 
-module.exports = FFmpeg
+module.exports = FFmpeg;

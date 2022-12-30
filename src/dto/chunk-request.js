@@ -6,4 +6,4 @@ class ChunkRequestDTO {
     }
 }
 
-module.exports = ChunkRequestDTO
+module.exports = ChunkRequestDTO;

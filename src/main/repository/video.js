@@ -1,32 +1,35 @@
 const jetpack = require("fs-jetpack");
 const fs = require("fs");
 const path = require("path");
-const download = require('image-downloader');
+const download = require("image-downloader");
 
 const VideoModel = require("../model/video.js");
 const { STORAGE_DIR_PATH } = require("../const.js");
 
-
 class VideoRepository {
-
     static async getAllVideos() {
-        const videoIds = fs.readdirSync(STORAGE_DIR_PATH, { "withFileTypes": true })
-            .filter(item => item.isDirectory())
-            .map(item => item.name);
-        const videos = await Promise.all(videoIds.map(async (videoId) => {
-            return await VideoRepository.getVideoById(videoId);
-        }));
-        return videos
+        const videoIds = fs
+            .readdirSync(STORAGE_DIR_PATH, { withFileTypes: true })
+            .filter((item) => item.isDirectory())
+            .map((item) => item.name);
+        const videos = await Promise.all(
+            videoIds.map(async (videoId) => {
+                return await VideoRepository.getVideoById(videoId);
+            })
+        );
+        return videos;
     }
 
     static async getVideosTodo() {
         const videos = await VideoRepository.getAllVideos();
-        const videosTodo = videos.filter(video => video.audioChunksTodo.length !== 0);
+        const videosTodo = videos.filter(
+            (video) => video.audioChunksTodo.length !== 0
+        );
         return videosTodo;
     }
 
     static async getVideoById(id) {
-        const videoPath = path.join(STORAGE_DIR_PATH, id)
+        const videoPath = path.join(STORAGE_DIR_PATH, id);
         if (!fs.existsSync(videoPath)) {
             return null;
         }
@@ -35,7 +38,7 @@ class VideoRepository {
             id: id,
             title: info.title,
             thumbnailUri: path.join(videoPath, "thumbnail.jpg"),
-            status: info.status
+            status: info.status,
         });
     }
 
@@ -51,7 +54,10 @@ class VideoRepository {
             }
         );
         if (!fs.existsSync(video.thumbnailPath)) {
-            download.image({ url: video.thumbnailUri, dest: video.thumbnailPath });
+            download.image({
+                url: video.thumbnailUri,
+                dest: video.thumbnailPath,
+            });
         }
     }
 
@@ -60,4 +66,4 @@ class VideoRepository {
     }
 }
 
-module.exports = VideoRepository
+module.exports = VideoRepository;

@@ -1,14 +1,7 @@
 // TODO: Doesn't seem possible to import it in ES6 module (renderer process)
 // See with TypeScript if it's not better?
 class VideoDTO {
-    constructor({
-        id,
-        title,
-        videoUri,
-        thumbnailUri,
-        status,
-        progress,
-    }) {
+    constructor({ id, title, videoUri, thumbnailUri, status, progress }) {
         this.id = id;
         this.title = title;
         this.videoUri = videoUri;
@@ -18,4 +11,4 @@ class VideoDTO {
     }
 }
 
-module.exports = VideoDTO
+module.exports = VideoDTO;

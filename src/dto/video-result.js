@@ -1,12 +1,5 @@
 class VideoResultDTO {
-    constructor({
-        id,
-        title,
-        thumbnail,
-        timestamp,
-        views,
-        author,
-    }) {
+    constructor({ id, title, thumbnail, timestamp, views, author }) {
         this.id = id;
         this.title = title;
         this.thumbnail = thumbnail;
@@ -16,4 +9,4 @@ class VideoResultDTO {
     }
 }
 
-module.exports = VideoResultDTO
+module.exports = VideoResultDTO;

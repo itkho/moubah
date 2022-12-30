@@ -1,5 +1,4 @@
-
-const player = videojs('video-player', {
+const player = videojs("video-player", {
     aspectRatio: "16:9",
 });
 
@@ -20,5 +19,4 @@ export default class Player {
         player.poster(thumbnailUri);
         player.src({ src: videoUri, type: "video/mp4" });
     }
-
 }

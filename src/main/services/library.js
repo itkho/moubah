@@ -9,21 +9,22 @@ const { getMainWindow } = require("../../main-window");
 const { pushToQueue, addWorkerToQueue } = require("../queue");
 const { removeMusic } = require("../lib/music-remover");
 
-
 class LibraryService {
-
     static async initQueue() {
         addWorkerToQueue(AUDIO_CHUNK_QUEUE_LOW, LibraryService.removeMusic);
         const videos = await VideoRepository.getVideosTodo();
-        videos.forEach(video => {
-            video.audioChunksTodo.forEach(audio => {
+        videos.forEach((video) => {
+            video.audioChunksTodo.forEach((audio) => {
                 const chunkRequestDTO = new ChunkRequestDTO({
                     input_path: audio.path,
-                    output_path: path.join(video.chunksDoneDir, path.basename(audio.path)),
-                    remove_original: true
+                    output_path: path.join(
+                        video.chunksDoneDir,
+                        path.basename(audio.path)
+                    ),
+                    remove_original: true,
                 });
                 pushToQueue(AUDIO_CHUNK_QUEUE_LOW, chunkRequestDTO);
-            })
+            });
         });
     }
 
@@ -32,10 +33,12 @@ class LibraryService {
             console.log(`Call gRPC ${chunkRequestDTO.input_path}`);
             const response = await removeMusic(chunkRequestDTO);
             if (!response.succeeded) {
-                console.error(`Error on ${chunkRequestDTO.input_path}:\n${response.error}`);
+                console.error(
+                    `Error on ${chunkRequestDTO.input_path}:\n${response.error}`
+                );
                 return;
             }
-            LibraryService.updateVideoInfo(chunkRequestDTO.output_path)
+            LibraryService.updateVideoInfo(chunkRequestDTO.output_path);
         } catch (error) {
             console.error(error);
         }
@@ -48,8 +51,8 @@ class LibraryService {
         if (video.audioChunksTodo.length === 0) {
             videoService.addAudioFromChunksDone();
         }
-        getMainWindow().webContents.send("video:updated", video.toDTO())
+        getMainWindow().webContents.send("video:updated", video.toDTO());
     }
 }
 
-module.exports = LibraryService
+module.exports = LibraryService;

@@ -1,73 +1,80 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="script-src 'self' https://kit.fontawesome.com/ https://vjs.zencdn.net/"
+        />
+        <title>Moubah</title>
+        <link
+            rel="stylesheet"
+            href="https://vjs.zencdn.net/7.20.3/video-js.css"
+        />
+        <script
+            src="https://kit.fontawesome.com/fcc575c3ef.js"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="stylesheet" href="css/index.css" />
+        <script type="module" defer src="./js/renderer.js"></script>
+    </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy"
-    content="script-src 'self' https://kit.fontawesome.com/ https://vjs.zencdn.net/" />
-  <title>Moubah</title>
-  <link rel="stylesheet" href="https://vjs.zencdn.net/7.20.3/video-js.css" />
-  <script src="https://kit.fontawesome.com/fcc575c3ef.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/index.css" />
-  <script type="module" defer src="./js/renderer.js"></script>
-</head>
-
-<body>
-
-  <div class="sidenav">
-    <div class="nav-link" id="search-nav-link">Search</div>
-    <div class="nav-link" id="library-nav-link">Library</div>
-    <div class="nav-link" id="player-nav-link">Player</div>
-  </div>
-
-
-  <div class="main">
-
-    <div class="view" id="search-view">
-
-      <div id="search">
-        <input type="text" id="search-bar" placeholder="Search...">
-        <button type="submit" id="search-button">
-          <i class="fa fa-search"></i>
-        </button>
-      </div>
-
-      <div id="video-wrapper">
-
-        <div class="arrow">
-          <i class="fa-solid fa-arrow-left fa-2xl"></i>
+    <body>
+        <div class="sidenav">
+            <div class="nav-link" id="search-nav-link">Search</div>
+            <div class="nav-link" id="library-nav-link">Library</div>
+            <div class="nav-link" id="player-nav-link">Player</div>
         </div>
 
-        <div id="video-card"></div>
+        <div class="main">
+            <div class="view" id="search-view">
+                <div id="search">
+                    <input
+                        type="text"
+                        id="search-bar"
+                        placeholder="Search..."
+                    />
+                    <button type="submit" id="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
 
-        <div class="arrow">
-          <i class="fa-solid fa-arrow-right fa-2xl"></i>
+                <div id="video-wrapper">
+                    <div class="arrow">
+                        <i class="fa-solid fa-arrow-left fa-2xl"></i>
+                    </div>
+
+                    <div id="video-card"></div>
+
+                    <div class="arrow">
+                        <i class="fa-solid fa-arrow-right fa-2xl"></i>
+                    </div>
+                </div>
+
+                <button type="button" id="download-button">
+                    <span>Download</span>
+                    <i class="fa-solid fa-download"></i>
+                </button>
+            </div>
+
+            <div class="view" id="library-view">
+                <div id="video-list-container">
+                    <div id="video-list"></div>
+                </div>
+            </div>
+
+            <div class="view" id="player-view">
+                <div id="video-player-container">
+                    <video
+                        id="video-player"
+                        class="video-js"
+                        controls
+                        preload="auto"
+                    ></video>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <button type="button" id="download-button">
-        <span>Download</span>
-        <i class="fa-solid fa-download"></i>
-      </button>
-
-    </div>
-
-    <div class="view" id="library-view">
-      <div id="video-list-container">
-        <div id="video-list"></div>
-      </div>
-    </div>
-
-    <div class="view" id="player-view">
-      <div id="video-player-container">
-        <video id="video-player" class="video-js" controls preload="auto">
-        </video>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
-
-</body>
-
+        <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
+    </body>
 </html>

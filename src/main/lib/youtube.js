@@ -1,7 +1,6 @@
-const ytSearch = require('yt-search');
+const ytSearch = require("yt-search");
 
 const VideoResultDTO = require("../../dto/video-result.js");
-
 
 class YouTube {
     constructor() {
@@ -10,19 +9,19 @@ class YouTube {
 
     static async search(query) {
         const res = await ytSearch(query);
-        const videoResultDTO = res.videos.map(video =>
-            new VideoResultDTO({
-                id: video.videoId,
-                title: video.title,
-                thumbnail: video.thumbnail,
-                timestamp: video.timestamp,
-                views: video.views,
-                author: video.author,
-            })
+        const videoResultDTO = res.videos.map(
+            (video) =>
+                new VideoResultDTO({
+                    id: video.videoId,
+                    title: video.title,
+                    thumbnail: video.thumbnail,
+                    timestamp: video.timestamp,
+                    views: video.views,
+                    author: video.author,
+                })
         );
         return videoResultDTO;
     }
-
 }
 
-module.exports = YouTube
+module.exports = YouTube;
