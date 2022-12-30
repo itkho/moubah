@@ -27,6 +27,7 @@ function startMusicRemoverProcess() {
 
 async function setUp() {
     initIpcHandlers();
+    startMusicRemoverProcess();
     LibraryService.initQueue();
 }
 

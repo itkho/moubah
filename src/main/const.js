@@ -3,11 +3,15 @@ const { app } = require('electron');
 const fs = require("fs");
 
 // Warning: IS_DEV works, but not IS_PROD (maybe because there is no process.env in production 🤷)
-// const IS_DEV = process.env.NODE_ENV === "development";
-const IS_DEV = true;
+// Warning for Windows: "NODE_ENV=development" in the package.json dones't work, you have to use "set NODE_ENV=development"
+// TODO: use dotenv for this instead
+const IS_DEV = process.env.NODE_ENV === "development";
+// const IS_DEV = true;
+
 const OS = "win";
 const PATH_SEPARATOR = OS == "win" ? ";" : ":";
 const DIR_SEPARATOR = OS == "win" ? "\\" : "/";
+const IS_APPLE_SILICON = "TODO";
 
 const AUDIO_CHUNK_QUEUE_HIGH = "audio-chunk:todo:priority-high";
 const AUDIO_CHUNK_QUEUE_LOW = "audio-chunk:todo:priority-low";
@@ -33,6 +37,7 @@ module.exports = {
     OS,
     PATH_SEPARATOR,
     DIR_SEPARATOR,
+    IS_APPLE_SILICON,
     STORAGE_DIR_PATH,
     TEMP_PATH,
     BACKEND_BIN_DIR,
