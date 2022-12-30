@@ -4,7 +4,7 @@
 </h1>
 </br>
 
-## Description
+## ℹ️ Description
 
 Desktop application built with Electron to play YouTube videos without background music
 
@@ -28,7 +28,7 @@ This App use [music-remover](https://github.com/karim-bouchez/music-remover).
 > ✅ Supported | 📆 Not tested yet | ❌ Not support plannned yet
 
 
-### Download the source code
+### 📥 Download the source code
 
 Use the `--recursive` option because of the git submodule:
 
@@ -36,7 +36,7 @@ Use the `--recursive` option because of the git submodule:
 git clone git@github.com:karim-bouchez/moubah.git --recursive
 ```
 
-### Install dependencies
+### 🔗 Install dependencies
 
 > **_For Windows users:_** use PowerShell
 <!-- [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) -->
@@ -45,20 +45,20 @@ git clone git@github.com:karim-bouchez/moubah.git --recursive
 npm install
 ```
 
-### Run
+### ☄️ Run
 
 ```bash
 npm run prod
 ```
 
-### Create an executable file
+### 📦 Create an executable file
 
 ```bash
 npm run make
 ```
 
 
-##  Troubleshooting
+## 🛠 Troubleshooting
 
 `no such file or directory ... protobuf/main.proto` on `npm run dev/prod` -> run: `git submodule update --init`
 
