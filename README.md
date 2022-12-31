@@ -8,7 +8,11 @@
 
 Desktop application built with Electron to play YouTube videos without background music
 
+Download the app : 🍏 ~~Apple~~ | 🪟 ~~Windows~~ | 🐧 ~~Linux~~
+
 This App use [music-remover](https://github.com/karim-bouchez/music-remover).
+
+</br>
 
 ## 💻 Tech Stack:
 
@@ -18,6 +22,7 @@ This App use [music-remover](https://github.com/karim-bouchez/music-remover).
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
+
 ### Supported OS
 
 | Windows | Mac (Intel) | Mac (Apple silicon) | Linux |
@@ -25,6 +30,8 @@ This App use [music-remover](https://github.com/karim-bouchez/music-remover).
 |   ✅    |     📆      |         ✅          |  ❌   |
 
 > ✅ Supported | 📆 Not tested yet | ❌ Not support plannned yet
+
+</br>
 
 ### 📥 Download the source code
 
@@ -59,6 +66,8 @@ npm run make
 ## 🛠 Troubleshooting
 
 `no such file or directory ... protobuf/main.proto` on `npm run dev/prod` -> run: `git submodule update --init`
+
+</br>
 
 ## 🎯 To-do list
 
