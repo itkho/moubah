@@ -83,6 +83,7 @@ async function setUp() {
 async function tearDown() {
     if (musicRemoverProcess) {
         try {
+            // TODO: check why the process isn't kill sometimes (the main process is killed before?)
             await kill(musicRemoverProcess.pid, "SIGTERM");
             console.log("'musicRemoverProcess' killed");
         } catch (error) {

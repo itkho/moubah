@@ -1,9 +1,16 @@
 const grpc = require("@grpc/grpc-js");
 const protoLoader = require("@grpc/proto-loader");
+const { app } = require("electron");
 const path = require("path");
 const { CONFIG_PATH } = require("../const");
 
-const PROTO_FILE = path.join(__dirname, "../protobuf/moubah.proto");
+const PROTO_FILE = path.join(
+    app.getAppPath(),
+    "music-remover",
+    "src",
+    "protobuf",
+    "moubah.proto"
+);
 const options = {
     keepCase: true,
     longs: String,
