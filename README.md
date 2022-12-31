@@ -77,7 +77,7 @@ npm run make
 -   [ ] 🧼 Use TS instead of JS
 -   [ ] 🧼 Use React framework
 -   [ ] 🆕 Add e2e tests
--   [ ] 🆕 improve logs (time) and add several level of logs (like logging in Python) 
+-   [ ] 🆕 improve logs (time + separate music-remover logs from moubah.log) and add several level of logs (like logging in Python) 
 -   [ ] 🆕 Setup CI/CD
 -   [ ] 🪲 Latency on UI on FFmpeg calls (splitting audio + merge)
 -   [ ] 🪲 Audio result isn't smooth, find why
