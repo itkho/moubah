@@ -1,6 +1,7 @@
 const grpc = require("@grpc/grpc-js");
 const protoLoader = require("@grpc/proto-loader");
 const path = require("path");
+const { CONFIG_PATH } = require("../const");
 
 const PROTO_FILE = path.join(__dirname, "../protobuf/moubah.proto");
 const options = {
@@ -14,9 +15,9 @@ const pkgDefs = protoLoader.loadSync(PROTO_FILE, options);
 
 const MusicRemover = grpc.loadPackageDefinition(pkgDefs).MusicRemover;
 
-const config = require(path.join(__dirname, "../protobuf/config.json"));
+const config = require(CONFIG_PATH);
 const client = new MusicRemover(
-    `${config["url"]}:${config["port"]}`,
+    `${config["host"]}:${config["port"]}`,
     grpc.credentials.createInsecure()
 );
 

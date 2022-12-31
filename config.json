@@ -1,0 +1,6 @@
+{
+    "grpc": {
+        "host": "localhost",
+        "port": 46471
+    }
+}

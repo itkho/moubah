@@ -11,17 +11,30 @@ const {
 } = require("./const");
 const LibraryService = require("./services/library");
 const { ping: pingMusicRemover } = require("./lib/music-remover");
+const config = require(CONFIG_PATH);
 
 function startMusicRemoverProcess() {
     let backendProcess;
     if (IS_APPLE_SILICON) {
         try {
-            backendProcess = spawn("arch", ["-x86_64", "python", "app.py"], {
-                cwd: MUSIC_REMOVER_DIR,
-                env: {
-                    PATH: `${PYTHON_DIR}${PATH_SEPARATOR}${process.env.PATH}`,
-                },
-            });
+            backendProcess = spawn(
+                "arch",
+                [
+                    "-x86_64",
+                    "python",
+                    "app.py",
+                    "--host",
+                    config["grpc"]["host"],
+                    "--port",
+                    config["grpc"]["port"],
+                ],
+                {
+                    cwd: MUSIC_REMOVER_DIR,
+                    env: {
+                        PATH: `${PYTHON_DIR}${PATH_SEPARATOR}${process.env.PATH}`,
+                    },
+                }
+            );
         } catch (error) {
             console.error(error);
         }

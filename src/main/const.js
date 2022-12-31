@@ -28,7 +28,7 @@ const EXEC_EXTENSION = OS == "win" ? ".exe" : "/";
 const AUDIO_CHUNK_QUEUE_HIGH = "audio-chunk:todo:priority-high";
 const AUDIO_CHUNK_QUEUE_LOW = "audio-chunk:todo:priority-low";
 
-console.log(app.getAppPath());
+const CONFIG_PATH = path.join(app.getAppPath(), "config.json");
 const MUSIC_REMOVER_DIR = path.join(app.getAppPath(), "music-remover");
 const PYTHON_DIR = path.join(MUSIC_REMOVER_DIR, ".venv", "bin");
 const RESOURCE_DIR = "TODO";
@@ -55,6 +55,7 @@ module.exports = {
     IS_APPLE_SILICON,
     STORAGE_DIR_PATH,
     TEMP_PATH,
+    CONFIG_PATH,
     MUSIC_REMOVER_DIR,
     PYTHON_DIR,
     RESOURCE_DIR,
