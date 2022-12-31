@@ -10,8 +10,6 @@ Desktop application built with Electron to play YouTube videos without backgroun
 
 Download the app : 🍏 ~~Apple~~ | 🪟 ~~Windows~~ | 🐧 ~~Linux~~
 
-This App use [music-remover](https://github.com/karim-bouchez/music-remover).
-
 </br>
 
 ## 💻 Tech Stack:
