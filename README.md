@@ -8,7 +8,9 @@
 
 Desktop application built with Electron to play YouTube videos without background music
 
-This App use [music-remover](https://github.com/karim-bouchez/music-remover).
+Download the app : 🍏 ~~Apple~~ | 🪟 ~~Windows~~ | 🐧 ~~Linux~~
+
+</br>
 
 ## 💻 Tech Stack:
 
@@ -18,6 +20,7 @@ This App use [music-remover](https://github.com/karim-bouchez/music-remover).
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
+
 ### Supported OS
 
 | Windows | Mac (Intel) | Mac (Apple silicon) | Linux |
@@ -25,6 +28,8 @@ This App use [music-remover](https://github.com/karim-bouchez/music-remover).
 |   ✅    |     📆      |         ✅          |  ❌   |
 
 > ✅ Supported | 📆 Not tested yet | ❌ Not support plannned yet
+
+</br>
 
 ### 📥 Download the source code
 
@@ -60,10 +65,15 @@ npm run make
 
 `no such file or directory ... protobuf/main.proto` on `npm run dev/prod` -> run: `git submodule update --init`
 
+</br>
+
 ## 🎯 To-do list
 
 -   [x] 🧼 Use ffmpeg-static for binaries
 -   [ ] 🆕 Add a "delete" button
+-   [ ] 🆕 Add a "log" button (that also open dev console) 
+-   [ ] 🆕 Add a "github" button
+-   [ ] 🆕 Add a "music remover server" availability status
 -   [ ] 🆕 Run "music-remover" automatically from "moubah" (has to be compatible on Windows/Mac/Mac M1)
 -   [ ] 🆕 Don't allow to download the same video twice
 -   [ ] 🆕 Add more infos about the video on the search view
@@ -74,6 +84,7 @@ npm run make
 -   [ ] 🧼 Use TS instead of JS
 -   [ ] 🧼 Use React framework
 -   [ ] 🆕 Add e2e tests
+-   [ ] 🆕 improve logs (time + separate music-remover logs from moubah.log) and add several level of logs (like logging in Python) 
 -   [ ] 🆕 Setup CI/CD
 -   [ ] 🪲 Latency on UI on FFmpeg calls (splitting audio + merge)
 -   [ ] 🪲 Audio result isn't smooth, find why
