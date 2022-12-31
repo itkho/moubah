@@ -64,6 +64,9 @@ npm run make
 
 -   [x] 🧼 Use ffmpeg-static for binaries
 -   [ ] 🆕 Add a "delete" button
+-   [ ] 🆕 Add a "log" button (that also open dev console) 
+-   [ ] 🆕 Add a "github" button
+-   [ ] 🆕 Add a "music remover server" availability status
 -   [ ] 🆕 Run "music-remover" automatically from "moubah" (has to be compatible on Windows/Mac/Mac M1)
 -   [ ] 🆕 Don't allow to download the same video twice
 -   [ ] 🆕 Add more infos about the video on the search view
@@ -74,6 +77,7 @@ npm run make
 -   [ ] 🧼 Use TS instead of JS
 -   [ ] 🧼 Use React framework
 -   [ ] 🆕 Add e2e tests
+-   [ ] 🆕 improve logs (time) and add several level of logs (like logging in Python) 
 -   [ ] 🆕 Setup CI/CD
 -   [ ] 🪲 Latency on UI on FFmpeg calls (splitting audio + merge)
 -   [ ] 🪲 Audio result isn't smooth, find why
