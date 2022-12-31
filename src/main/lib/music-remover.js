@@ -31,22 +31,21 @@ function removeMusic(chunkRequestDTO) {
     );
 }
 
-async function pingAppReady(recursive = true) {
+async function ping({ recursive = true }) {
     return new Promise(async (resolve, reject) => {
-        // Ping the path e.g http://localhost:3000
-        const [err] = await to(axios.get(healthCheckPath));
-
-        // resolve if the ping returns no error or error that is not related to the connection
-        if (!err) return resolve();
-        if (err.code !== "ECONNREFUSED") return resolve();
-
-        if (!recursive) reject();
-
-        setTimeout(async () => {
-            await pingAppReady(healthCheckPath, recursive);
-            resolve();
-        }, 5000);
+        client.Ping({}, (err, _) => {
+            if (!err) {
+                return resolve();
+            } else {
+                console.log("gRPC: " + err.details);
+                if (!recursive) reject();
+                setTimeout(async () => {
+                    await ping(recursive);
+                    resolve();
+                }, 1000);
+            }
+        });
     });
 }
 
-module.exports = { removeMusic };
+module.exports = { removeMusic, ping };

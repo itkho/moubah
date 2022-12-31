@@ -10,6 +10,7 @@ const {
     PATH_SEPARATOR,
 } = require("./const");
 const LibraryService = require("./services/library");
+const { ping: pingMusicRemover } = require("./lib/music-remover");
 
 function startMusicRemoverProcess() {
     let backendProcess;
@@ -45,7 +46,10 @@ function startMusicRemoverProcess() {
 async function setUp() {
     initIpcHandlers();
     startMusicRemoverProcess();
-    // LibraryService.initQueue();
+    pingMusicRemover({ recursive: true }).then(() => {
+        console.log("gRPC server UP!");
+        LibraryService.initQueue();
+    });
 }
 
 function tearDown() {}
