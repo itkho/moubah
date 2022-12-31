@@ -25,7 +25,7 @@ Download the app : 🍏 ~~Apple~~ | 🪟 ~~Windows~~ | 🐧 ~~Linux~~
 
 | Windows | Mac (Intel) | Mac (Apple silicon) | Linux |
 | :-----: | :---------: | :-----------------: | :---: |
-|   ✅    |     📆      |         ✅          |  ❌   |
+|   ✅    |     📆      | ✅ ([Python 3.8.10](https://www.python.org/downloads/release/python-3810/) required) |  ❌   |
 
 > ✅ Supported | 📆 Not tested yet | ❌ Not support plannned yet
 
