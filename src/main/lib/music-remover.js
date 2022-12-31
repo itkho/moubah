@@ -17,7 +17,7 @@ const MusicRemover = grpc.loadPackageDefinition(pkgDefs).MusicRemover;
 
 const config = require(CONFIG_PATH);
 const client = new MusicRemover(
-    `${config["host"]}:${config["port"]}`,
+    `${config["grpc"]["host"]}:${config["grpc"]["port"]}`,
     grpc.credentials.createInsecure()
 );
 

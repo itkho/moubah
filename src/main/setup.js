@@ -8,6 +8,7 @@ const {
     RESOURCE_DIR,
     PYTHON_DIR,
     PATH_SEPARATOR,
+    CONFIG_PATH,
 } = require("./const");
 const LibraryService = require("./services/library");
 const { ping: pingMusicRemover } = require("./lib/music-remover");
