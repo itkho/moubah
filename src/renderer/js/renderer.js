@@ -1,10 +1,10 @@
 import initIpcHandlers from "./ipc-handlers.js";
-import { switchView } from "./view/nav-bar.js";
 
 initIpcHandlers();
 
 // Navigation bar
 
+import { switchView } from "./view/nav-bar.js";
 const searchNavLink = document.getElementById("search-nav-link");
 const libraryNavLink = document.getElementById("library-nav-link");
 const playerNavLink = document.getElementById("player-nav-link");
@@ -35,3 +35,10 @@ searchButton.onclick = search;
 arrowRight.onclick = onClickArrowRight;
 arrowLeft.onclick = onClickArrowLeft;
 downloadButton.onclick = downloadVideo;
+
+// Library view
+
+import { refresh } from "./view/library.js";
+
+const libraryRefreshButton = document.getElementById("library-refresh");
+libraryRefreshButton.onclick = refresh;

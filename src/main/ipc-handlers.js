@@ -3,6 +3,7 @@ const { ipcMain } = require("electron");
 const VideoRepository = require("./repository/video");
 const YouTube = require("./lib/youtube");
 const VideoService = require("./services/video");
+const LibraryService = require("./services/library");
 
 function initIpcHandlers() {
     ipcMain.handle("youtube:search", (_event, query) => {
@@ -13,6 +14,10 @@ function initIpcHandlers() {
     ipcMain.handle("video:sendToDownload", async (_event, videoId) => {
         const videoService = await VideoService.createFromYtId(videoId);
         await videoService.download();
+    });
+
+    ipcMain.handle("video:refresh", async (_event) => {
+        LibraryService.initQueue();
     });
 
     ipcMain.handle("video:get", async (_event, videoId) => {

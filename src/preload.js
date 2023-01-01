@@ -5,6 +5,7 @@ contextBridge.exposeInMainWorld("videoAPI", {
     getYoutubeResult: (query) => ipcRenderer.invoke("youtube:search", query),
     sendToDownload: (videoId) =>
         ipcRenderer.invoke("video:sendToDownload", videoId),
+    refresh: () => ipcRenderer.invoke("video:refresh"),
     delete: (videoId) => ipcRenderer.invoke("video:delete", videoId),
     getById: (videoId) => ipcRenderer.invoke("video:get", videoId),
     getAll: async () => ipcRenderer.invoke("video:getAll"),

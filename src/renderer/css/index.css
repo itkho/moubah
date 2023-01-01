@@ -201,6 +201,15 @@ body {
 
 /* LIBRARY */
 
+#library-refresh {
+    color: var(--gray-2-color);
+}
+
+#library-refresh:hover {
+    color: var(--gray-3-color);
+    cursor: pointer;
+}
+
 #video-list-container {
     position: relative;
     /* border: 3px solid orange; */

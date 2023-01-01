@@ -3,6 +3,10 @@ import Player from "./player.js";
 const style = getComputedStyle(document.body);
 const videoList = document.getElementById("video-list");
 
+export function refresh() {
+    window.videoAPI.refresh();
+}
+
 export async function displayLibrary() {
     videoList.replaceChildren();
     const videosDTO = await window.videoAPI.getAll();
