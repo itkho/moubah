@@ -4,11 +4,33 @@
 </h1>
 </br>
 
-## ℹ️ Description
 
 Desktop application built with Electron to play YouTube videos without background music
 
 Download the app : 🍏 ~~Apple~~ | 🪟 ~~Windows~~ | 🐧 ~~Linux~~
+
+
+</br>
+
+## ℹ️ Why this? Let's dive in...
+
+> Desktop application ...
+
+A web page would have been more convenient for the end user, but the processing of the video requires a high CPU and/or GPU consumption combined with non-javascript dependencies that cannot take place in a browser (client side).
+A solution could have been to place this processing on the server side, but this would have had a considerable cost and the primary objective of this service is to be 100% free. This could happen in the future in cha Allah with the financial support of the community, but not now. 
+
+"What about a mobile app?"
+Here, the problem with doing client-side processing is that the machine learning model trained to separate voice from audio is not currently compatible to run on a phone (as far as I know, this [PR](https://github.com/deezer/spleeter/issues/477) is still opened, this [project](https://github.com/FaceOnLive/Spleeter-Android-iOS) doesn't seem to work, and the processing time would have been to slow anyway).
+As for the problem of server-side processing, it's the same as for the web version: not impossible, but it's not free
+
+> ... built with Electron ...
+
+A GUI built with a Python framework would have been technically simpler, but I turned to Electron to deepen my knowledge of the front end stack: JS / TS / React / HTML / CSS
+
+> ... to play YouTube videos without background music
+
+For the moment, only youtube videos are supported, but in the future, audios/videos can also be imported directly from the computer to have the background music removed, bi idhni Allah.
+The app is centred around youtube as there is a lot of useful (e.g. tutorials) and/or entertaining (e.g. documentaries) content available on this platform with music in the background. This being haram in Islam, this app makes it... Moubah
 
 </br>
 
