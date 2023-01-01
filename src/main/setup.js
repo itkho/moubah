@@ -67,7 +67,7 @@ function startMusicRemoverProcess() {
 
 async function setUp() {
     initIpcHandlers();
-    // startMusicRemoverProcess();
+    startMusicRemoverProcess();
     pingMusicRemover({ recursive: true }).then(async () => {
         console.log("gRPC server UP!");
         getMainWindow().webContents.send(

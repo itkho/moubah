@@ -20,9 +20,7 @@ export async function displayLibrary() {
 function selectVideo(videoDTO) {
     const videosItem = document.getElementsByClassName("video-item");
     for (let videoItem of videosItem) {
-        console.log({ videoItem });
         const videoText = videoItem.firstElementChild.lastElementChild;
-        console.log({ videoText });
         videoText.style.color = null;
         if (videoDTO.id === videoItem.id.replace("video-id:", "")) {
             videoText.style.color = style.getPropertyValue("--ok-color");
@@ -38,37 +36,61 @@ export async function updateVideoInfo(videoDTO) {
         return;
     }
 
-    const videoInfo = document.createElement("div");
-    videoInfo.style.display = "flex";
+    console.log(videoItem.hasChildNodes());
+    if (videoItem.hasChildNodes()) {
+        let progress = "";
 
-    const videoThumbnail = document.createElement("img");
-    videoThumbnail.className = "video-img";
-    videoThumbnail.src = videoDTO.thumbnailUri;
-    videoInfo.appendChild(videoThumbnail);
+        if (videoDTO.status !== "done") {
+            progress = videoDTO.progress + "% | ";
+        }
 
-    let progress = "";
-    if (videoDTO.status !== "done") {
-        progress = videoDTO.progress + "% | ";
-    }
+        const videoInfo = videoItem.getElementsByClassName("video-info")[0];
+        if (videoDTO.status === "done") {
+            videoInfo.onclick = () => {
+                selectVideo(videoDTO);
+            };
+        }
 
-    const videoText = document.createElement("div");
-    videoText.className = "video-title";
-    videoText.innerHTML = progress + videoDTO.title;
-    videoInfo.appendChild(videoText);
+        const videoText = videoInfo.getElementsByClassName("video-title")[0];
+        console.log({ progress });
+        console.log({ videoText });
+        videoText.innerHTML = progress + videoDTO.title;
+        // videoText.style.backgroundColor = "red";
+        // videoItem.style.backgroundColor = "red";
+    } else {
+        const videoInfo = document.createElement("div");
+        videoInfo.className = "video-info";
+        videoInfo.style.display = "flex";
 
-    if (videoDTO.status === "done") {
-        videoInfo.onclick = () => {
-            selectVideo(videoDTO);
+        const videoThumbnail = document.createElement("img");
+        videoThumbnail.className = "video-img";
+        videoThumbnail.src = videoDTO.thumbnailUri;
+        videoInfo.appendChild(videoThumbnail);
+
+        let progress = "";
+        if (videoDTO.status !== "done") {
+            progress = videoDTO.progress + "% | ";
+        }
+
+        const videoText = document.createElement("div");
+        videoText.className = "video-title";
+        videoText.innerHTML = progress + videoDTO.title;
+        videoInfo.appendChild(videoText);
+
+        if (videoDTO.status === "done") {
+            videoInfo.onclick = () => {
+                selectVideo(videoDTO);
+            };
+        }
+
+        const deleteButton = document.createElement("i");
+        deleteButton.className = "fa-solid fa-trash";
+        deleteButton.onclick = () => {
+            window.videoAPI.delete(videoDTO.id);
+            videoItem.remove();
         };
+
+        videoItem.appendChild(videoInfo);
+        videoItem.appendChild(deleteButton);
     }
-
-    const deleteButton = document.createElement("i");
-    deleteButton.className = "fa-solid fa-trash";
-    deleteButton.onclick = () => {
-        window.videoAPI.delete(videoDTO.id);
-        videoItem.remove();
-    };
-
-    videoItem.appendChild(videoInfo);
-    videoItem.appendChild(deleteButton);
 }
