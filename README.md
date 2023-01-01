@@ -5,14 +5,14 @@
 </br>
 
 
+## ℹ️ Descritpion
+
 Desktop application built with Electron to play YouTube videos without background music
 
-Download the app : 🍏 ~~Apple~~ | 🪟 ~~Windows~~ | 🐧 ~~Linux~~
-
+<details>
+<summary>🔎 Why this? Let's dive in...</summary>
 
 </br>
-
-## ℹ️ Why this? Let's dive in...
 
 > Desktop application ...
 
@@ -31,6 +31,10 @@ A GUI built with a Python framework would have been technically simpler, but I t
 
 For the moment, only youtube videos are supported, but in the future, audios/videos can also be imported directly from the computer to have the background music removed, bi idhni Allah.
 The app is centred around youtube as there is a lot of useful (e.g. tutorials) and/or entertaining (e.g. documentaries) content available on this platform with music in the background. This being haram in Islam, this app makes it... Moubah
+
+</details>
+
+**Download the app** : 🍏 ~~Apple~~ | 🪟 ~~Windows~~ | 🐧 ~~Linux~~
 
 </br>
 
@@ -92,12 +96,12 @@ npm run make
 ## 🎯 To-do list
 
 -   [x] 🧼 Use ffmpeg-static for binaries
--   [ ] 🆕 Add a "delete" button
+-   [x] 🆕 Add a "delete" button
 -   [ ] 🆕 Add a "log" button (that also open dev console) 
 -   [ ] 🆕 Add a "github" button
--   [ ] 🆕 Add a "music remover server" availability status
--   [ ] 🆕 Run "music-remover" automatically from "moubah" (has to be compatible on Windows/Mac/Mac M1)
--   [ ] 🆕 Don't allow to download the same video twice
+-   [x] 🆕 Add a "music remover server" availability status
+-   [x] 🆕 Run "music-remover" automatically from "moubah" (has to be compatible on Windows/Mac/Mac M1)
+-   [x] 🆕 Don't allow to download the same video twice
 -   [ ] 🆕 Add more infos about the video on the search view
 -   [ ] 🆕 Add a refresh button to the library view
 -   [ ] 🆕 Improve UI/UX
@@ -108,8 +112,8 @@ npm run make
 -   [ ] 🆕 Add e2e tests
 -   [ ] 🆕 improve logs (time + separate music-remover logs from moubah.log) and add several level of logs (like logging in Python) 
 -   [ ] 🆕 Setup CI/CD
--   [ ] 🪲 Latency on UI on FFmpeg calls (splitting audio + merge)
--   [ ] 🪲 Audio result isn't smooth, find why
+-   [x] 🪲 Latency on UI on FFmpeg calls (splitting audio + merge)
+-   [ ] 🪲 Audio result isn't smooth, find why...
 -   [ ] 🆕 Add an uninstaller
 -   [ ] 🆕 Notification system on new release
 -   [ ] 🆕 Preview videos (without sound) on hover
