@@ -102,7 +102,7 @@ class VideoService {
         });
     }
 
-    addAudioFromChunksDone() {
+    async addAudioFromChunksDone() {
         const audioListFile = path.join(
             this.video.chunksDoneDir,
             "audioListFile.txt"
@@ -122,7 +122,7 @@ class VideoService {
             audioListFile,
             path.join(this.video.dir, "audio_wo_music.wav")
         );
-        FFmpeg.addAudioToVideo(
+        await FFmpeg.addAudioToVideo(
             path.join(this.video.dir, "audio_wo_music.wav"),
             this.video.path
         );
