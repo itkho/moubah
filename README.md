@@ -103,7 +103,7 @@ npm run make
 -   [x] 🆕 Run "music-remover" automatically from "moubah" (has to be compatible on Windows/Mac/Mac M1)
 -   [x] 🆕 Don't allow to download the same video twice
 -   [ ] 🆕 Add more infos about the video on the search view
--   [ ] 🆕 Add a refresh button to the library view
+-   [x] 🆕 Add a refresh button to the library view
 -   [ ] 🆕 Improve UI/UX
 -   [ ] 🆕 Support multi-languages (at least french and english)
 -   [ ] 🧼 Use Hexagonal architecture
