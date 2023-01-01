@@ -30,33 +30,24 @@ function selectVideo(videoDTO) {
 }
 
 export async function updateVideoInfo(videoDTO) {
-    // TODO: handle the case where the video item isn't created yet
     const videoItem = document.getElementById(`video-id:${videoDTO.id}`);
     if (!videoItem) {
         return;
     }
 
-    console.log(videoItem.hasChildNodes());
     if (videoItem.hasChildNodes()) {
-        let progress = "";
-
-        if (videoDTO.status !== "done") {
-            progress = videoDTO.progress + "% | ";
-        }
-
         const videoInfo = videoItem.getElementsByClassName("video-info")[0];
         if (videoDTO.status === "done") {
             videoInfo.onclick = () => {
                 selectVideo(videoDTO);
             };
         }
-
+        let progress = "";
+        if (videoDTO.status !== "done") {
+            progress = videoDTO.progress + "% | ";
+        }
         const videoText = videoInfo.getElementsByClassName("video-title")[0];
-        console.log({ progress });
-        console.log({ videoText });
         videoText.innerHTML = progress + videoDTO.title;
-        // videoText.style.backgroundColor = "red";
-        // videoItem.style.backgroundColor = "red";
     } else {
         const videoInfo = document.createElement("div");
         videoInfo.className = "video-info";

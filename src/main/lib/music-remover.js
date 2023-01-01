@@ -39,6 +39,17 @@ function removeMusic(chunkRequestDTO) {
     );
 }
 
+function getProcessId() {
+    return new Promise((resolve, reject) =>
+        client.GetProcess({}, (err, response) => {
+            if (err) {
+                return reject(err);
+            }
+            resolve(response.id);
+        })
+    );
+}
+
 async function ping({ recursive = true }) {
     return new Promise(async (resolve, reject) => {
         client.Ping({}, (err, _) => {
@@ -50,10 +61,10 @@ async function ping({ recursive = true }) {
                 setTimeout(async () => {
                     await ping(recursive);
                     resolve();
-                }, 1000);
+                }, 2000);
             }
         });
     });
 }
 
-module.exports = { removeMusic, ping };
+module.exports = { removeMusic, ping, getProcessId };
