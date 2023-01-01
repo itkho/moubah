@@ -62,6 +62,8 @@ class VideoRepository {
     }
 
     static delete(video) {
+        if (!video.dir.includes(STORAGE_DIR_PATH))
+            throw "Cannot remove this folder (out of access scope)";
         fs.rmSync(video.dir, { recursive: true, force: true });
     }
 }
