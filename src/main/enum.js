@@ -5,6 +5,12 @@ const VideoStatus = Object.freeze({
     done: "done",
 });
 
+const MusicRemoverStatus = Object.freeze({
+    up: "up",
+    down: "down",
+});
+
 module.exports = {
     VideoStatus,
+    MusicRemoverStatus,
 };

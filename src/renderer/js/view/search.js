@@ -6,6 +6,7 @@ const searchButton = document.getElementById("search-button");
 const downloadButton = document.getElementById("download-button");
 const arrowLeft = document.getElementsByClassName("fa-arrow-left")[0];
 const arrowRight = document.getElementsByClassName("fa-arrow-right")[0];
+const musicRemoverStatus = document.getElementById("music-remover-status");
 
 let currentVideoIndex = 0;
 let videos;
@@ -60,5 +61,20 @@ export function onClickArrowLeft() {
         arrowLeft.style.color = style.getPropertyValue("--gray-1-color");
     } else {
         arrowLeft.style.color = style.getPropertyValue("--gray-2-color");
+    }
+}
+
+export async function updateMusicRemoverStatus(status) {
+    switch (status) {
+        case "up":
+            musicRemoverStatus.style.color =
+                style.getPropertyValue("--ok-color");
+            break;
+        case "down":
+            musicRemoverStatus.style.color =
+                style.getPropertyValue("--ko-color");
+            break;
+        default:
+            throw `The status ${status} isn't recognized`;
     }
 }

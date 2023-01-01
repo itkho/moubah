@@ -7,10 +7,10 @@ contextBridge.exposeInMainWorld("videoAPI", {
         ipcRenderer.invoke("video:sendToDownload", videoId),
     getById: (videoId) => ipcRenderer.invoke("video:get", videoId),
     getAll: async () => ipcRenderer.invoke("video:getAll"),
-    // TODO: finish the implementation
-    getBackendStatus: () => ipcRenderer.invoke("backend:status"),
 
     // Main --> Process
     handleVideoUpdatedEvent: (callback) =>
         ipcRenderer.on("video:updated", callback),
+    handleMusicRemoverStatusUpdatedEvent: (callback) =>
+        ipcRenderer.on("music-remover:status:updated", callback),
 });

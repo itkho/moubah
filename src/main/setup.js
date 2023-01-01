@@ -16,6 +16,8 @@ const {
 const LibraryService = require("./services/library");
 const { ping: pingMusicRemover } = require("./lib/music-remover");
 const { sleep } = require("./helpers.js");
+const { MusicRemoverStatus } = require("./enum");
+const { getMainWindow } = require("../main-window");
 const config = require(CONFIG_PATH);
 
 let musicRemoverProcess;
@@ -68,15 +70,11 @@ async function setUp() {
     startMusicRemoverProcess();
     pingMusicRemover({ recursive: true }).then(async () => {
         console.log("gRPC server UP!");
+        getMainWindow().webContents.send(
+            "music-remover:status:updated",
+            MusicRemoverStatus.up
+        );
         LibraryService.initQueue();
-
-        // console.log("Killing 'musicRemoverProcess'...");
-        // await sleep(3000);
-        // console.log(musicRemoverProcess.pid);
-        // kill(musicRemoverProcess.pid, function (err) {
-        //     if (err) console.error({ err });
-        // });
-        // console.log("DONE 'musicRemoverProcess'...");
     });
 }
 

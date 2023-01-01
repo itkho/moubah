@@ -1,11 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 :root {
-    --highlight-color: #eb5e28;
+    --highlight-color: #e63946;
     --background-color: #fffcf2;
     --gray-1-color: #ccc5b9;
     --gray-2-color: #403d39;
     --gray-3-color: #252422;
+    --ok-color: #606c38;
+    --ko-color: #e63946;
 }
 
 html,
@@ -164,6 +166,10 @@ body {
     height: 260px;
     aspect-ratio: 16/9;
     object-fit: cover;
+}
+
+#music-remover-status {
+    color: var(--ko-color);
 }
 
 /* DOWNLOAD */
