@@ -24,6 +24,11 @@ function initIpcHandlers() {
         const videos = await VideoRepository.getAllVideos();
         return videos.map((video) => video.toDTO());
     });
+
+    ipcMain.handle("video:delete", async (_event, videoId) => {
+        const video = await VideoRepository.getVideoById(videoId);
+        VideoRepository.delete(video);
+    });
 }
 
 module.exports = initIpcHandlers;

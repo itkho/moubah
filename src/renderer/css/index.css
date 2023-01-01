@@ -186,6 +186,10 @@ body {
     font-size: 16px;
     cursor: pointer;
 }
+#download-button:hover {
+    background-color: var(--gray-1-color);
+    color: var(--gray-2-color);
+}
 
 #download-button > span {
     margin: 0px 10px;

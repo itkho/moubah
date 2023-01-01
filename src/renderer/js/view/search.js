@@ -10,6 +10,10 @@ const musicRemoverStatus = document.getElementById("music-remover-status");
 
 let currentVideoIndex = 0;
 let videos;
+let downloadedVideoIds;
+window.videoAPI.getAll().then((videos) => {
+    downloadedVideoIds = new Set(videos.map((video) => video.id));
+});
 
 export function searchOnEnter(event) {
     if (event.key === "Enter") {
@@ -22,20 +26,38 @@ function displayVideo(video) {
         <div id="video-title">${video.title}</div>
         <img id="video-img" src=${video.thumbnail}>
     `;
+    updateDownloadButton();
+}
+
+function updateDownloadButton() {
+    const video = videos[currentVideoIndex];
+    console.log(video.id);
+    console.log({ downloadedVideoIds });
+    console.log(downloadedVideoIds.has(video.id));
+    if (downloadedVideoIds.has(video.id)) {
+        downloadButton.style.textDecoration = "line-through";
+        downloadButton.style.pointerEvents = "none";
+    } else {
+        downloadButton.style.textDecoration = null;
+        downloadButton.style.pointerEvents = null;
+    }
 }
 
 export async function search() {
     videos = await window.videoAPI.getYoutubeResult(searchBar.value);
-    displayVideo(videos[currentVideoIndex]);
+    const video = videos[currentVideoIndex];
+    displayVideo(video);
     downloadButton.style.display = "flex";
     for (var arrow of arrows) {
         arrow.style.display = "flex";
     }
 }
 
-export async function downloadVideo() {
+export function downloadVideo() {
     let video = videos[currentVideoIndex];
-    await window.videoAPI.sendToDownload(video.id);
+    window.videoAPI.sendToDownload(video.id);
+    downloadedVideoIds.add(video.id);
+    updateDownloadButton();
 }
 
 export function onClickArrowRight() {
