@@ -1,4 +1,4 @@
-const { BrowserWindow, app } = require("electron");
+const { BrowserWindow, app, shell } = require("electron");
 const path = require("path");
 const fs = require("fs");
 const util = require("util");
@@ -37,6 +37,12 @@ function create() {
             log_stderr.write(util.format(d) + "\n");
         };
     }
+
+    // Open URLs for anchor with target="_blank" in a navigator (not in Electon)
+    mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+        shell.openExternal(url);
+        return { action: "deny" };
+    });
 
     mainWindow.loadFile(path.join(__dirname, "renderer/index.html"));
     return mainWindow;
