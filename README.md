@@ -97,8 +97,8 @@ npm run make
 
 -   [x] 🧼 Use ffmpeg-static for binaries
 -   [x] 🆕 Add a "delete" button
--   [ ] 🆕 Add a "log" button (that also open dev console) 
--   [ ] 🆕 Add a "github" button
+-   [x] 🆕 Add a "log" button (that also open dev console) 
+-   [x] 🆕 Add a "github" button
 -   [x] 🆕 Add a "music remover server" availability status
 -   [x] 🆕 Run "music-remover" automatically from "moubah" (has to be compatible on Windows/Mac/Mac M1)
 -   [x] 🆕 Don't allow to download the same video twice
