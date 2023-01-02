@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const util = require("util");
 
-const { IS_DEV } = require("./main/const");
+const { IS_DEV, LOGS_DIR_PATH } = require("./main/const");
 
 let mainWindow;
 
@@ -22,7 +22,7 @@ function create() {
         mainWindow.webContents.openDevTools();
     } else {
         var log_file = fs.createWriteStream(
-            path.join(app.getPath("logs"), "main-process.log"),
+            path.join(LOGS_DIR_PATH, "main-process.log"),
             { flags: "w" }
         );
         var log_stdout = process.stdout;
@@ -52,4 +52,12 @@ function get() {
     return mainWindow;
 }
 
-module.exports = { createMainWindow: create, getMainWindow: get };
+function toogleDevTools() {
+    mainWindow.webContents.toggleDevTools();
+}
+
+module.exports = {
+    createMainWindow: create,
+    getMainWindow: get,
+    toogleDevTools,
+};

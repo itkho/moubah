@@ -4,6 +4,8 @@ const VideoRepository = require("./repository/video");
 const YouTube = require("./lib/youtube");
 const VideoService = require("./services/video");
 const LibraryService = require("./services/library");
+const { toogleDevTools } = require("../main-window");
+const { openLogsInFileExplorer } = require("./helpers");
 
 function initIpcHandlers() {
     ipcMain.handle("youtube:search", (_event, query) => {
@@ -33,6 +35,14 @@ function initIpcHandlers() {
     ipcMain.handle("video:delete", async (_event, videoId) => {
         const video = await VideoRepository.getVideoById(videoId);
         VideoRepository.delete(video);
+    });
+
+    ipcMain.handle("devTools:toogle", async (_event) => {
+        toogleDevTools();
+    });
+
+    ipcMain.handle("openFileExplorer:logs", async (_event) => {
+        openLogsInFileExplorer();
     });
 }
 

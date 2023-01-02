@@ -9,6 +9,9 @@ contextBridge.exposeInMainWorld("videoAPI", {
     delete: (videoId) => ipcRenderer.invoke("video:delete", videoId),
     getById: (videoId) => ipcRenderer.invoke("video:get", videoId),
     getAll: async () => ipcRenderer.invoke("video:getAll"),
+    // TODO: create an other contextBrige for this one
+    toogleDevTools: () => ipcRenderer.invoke("devTools:toogle"),
+    openLogsDir: () => ipcRenderer.invoke("openFileExplorer:logs"),
 
     // Main --> Process
     handleVideoUpdatedEvent: (callback) =>

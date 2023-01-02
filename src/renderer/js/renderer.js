@@ -42,3 +42,13 @@ import { refresh } from "./view/library.js";
 
 const libraryRefreshButton = document.getElementById("library-refresh");
 libraryRefreshButton.onclick = refresh;
+
+// Footer
+
+import { toogleDevTools, openLogsDir } from "./view/footer.js";
+
+const devToolsButton = document.getElementById("dev-tools");
+const logsButton = document.getElementById("logs");
+
+devToolsButton.onclick = toogleDevTools;
+logsButton.onclick = openLogsDir;

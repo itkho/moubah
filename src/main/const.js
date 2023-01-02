@@ -35,6 +35,7 @@ const RESOURCE_DIR = "TODO";
 const FFMPEG_BIN_DIR = path.dirname(require("ffmpeg-static"));
 const FFPROBE_BIN_DIR = path.dirname(require("ffprobe-static").path);
 
+const LOGS_DIR_PATH = path.join(app.getPath("logs"));
 const STORAGE_DIR_PATH = path.join(app.getPath("videos"), "Moubah");
 if (!fs.existsSync(STORAGE_DIR_PATH)) {
     fs.mkdirSync(STORAGE_DIR_PATH);
@@ -53,6 +54,7 @@ module.exports = {
     DIR_SEPARATOR,
     EXEC_EXTENSION,
     IS_APPLE_SILICON,
+    LOGS_DIR_PATH,
     STORAGE_DIR_PATH,
     TEMP_PATH,
     CONFIG_PATH,

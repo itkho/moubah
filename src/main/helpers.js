@@ -1,8 +1,9 @@
 const { exec } = require("child_process");
-const { app } = require("electron");
+const { shell } = require("electron");
 const fs = require("fs");
 const path = require("path");
 const util = require("util");
+const { LOGS_DIR_PATH } = require("./const");
 
 function createPathIfDoesntExists(path) {
     if (!fs.existsSync(path)) {
@@ -11,11 +12,19 @@ function createPathIfDoesntExists(path) {
     return path;
 }
 
+function openLogsInFileExplorer() {
+    openFileExplorer(LOGS_DIR_PATH);
+}
+
+function openFileExplorer(path) {
+    shell.showItemInFolder(path);
+}
+
 function run(cmd) {
     // TODO: Not sure why it's here exactly??
     // duplicated of logic from main-window.js -> create() ??
     // ------------------------------------------------------
-    const logPath = path.join(app.getPath("logs"), "ui.log");
+    const logPath = path.join(LOGS_DIR_PATH, "ui.log");
     const logFile = fs.createWriteStream(logPath, { flags: "w" });
     const logStdout = process.stdout;
 
@@ -51,4 +60,6 @@ module.exports = {
     run,
     sleep,
     createPathIfDoesntExists,
+    openLogsInFileExplorer,
+    openFileExplorer,
 };
