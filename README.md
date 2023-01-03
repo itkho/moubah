@@ -139,6 +139,7 @@ npm run make
 -   [ ] 🧼 Use Hexagonal architecture
 -   [ ] 🧼 Use TS instead of JS
 -   [ ] 🧼 Use React framework
+-   [ ] 🧼 Use tailwind css 
 -   [ ] 🆕 Add e2e tests
 -   [ ] 🆕 improve logs (time + separate music-remover logs from moubah.log) and add several level of logs (like logging in Python)
 -   [ ] 🆕 Setup CI/CD
