@@ -45,6 +45,11 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![gRPC](https://img.shields.io/badge/gRPC-244c5a.svg?style=for-the-badge&logoColor=white)
+<!-- ![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) -->
+<!-- ![React](https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white) -->
+<!-- ![Tailwind CSS](https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white) -->
+
+
 
 </br>
 
@@ -77,10 +82,6 @@ git clone git@github.com:karim-bouchez/moubah.git --recursive
 </br>
 
 ### 🔗 Install dependencies
-
-<!-- > _**On Windows:** use `.exe` (PowerShell recommended)_ -->
-
-<!-- > _**On Mac with Apple chip:** use `arch -x86_64` at the begin command when indicated_ -->
 
 Install npm packages:
 
