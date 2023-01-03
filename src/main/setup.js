@@ -79,6 +79,7 @@ async function setUp() {
     pingMusicRemover({ recursive: true }).then(() => {
         console.log("gRPC server UP!");
         LibraryService.initQueue();
+        // TODO: remove this setTimeout, and wait for the renderer to finish before firing this event
         // Delay of 1 second because the renderer process may not be ready yet
         setTimeout(() => {
             getMainWindow().webContents.send(

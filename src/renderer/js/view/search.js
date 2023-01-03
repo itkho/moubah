@@ -1,3 +1,5 @@
+import { abbrNum } from "../helpers.js";
+
 const style = getComputedStyle(document.body);
 const videoCard = document.getElementById("video-card");
 const arrows = document.getElementsByClassName("arrow");
@@ -23,7 +25,12 @@ export function searchOnEnter(event) {
 
 function displayVideo(video) {
     videoCard.innerHTML = `
-        <div id="video-title">${video.title}</div>
+        <div>Title: ${video.title}</div>
+        <div>Duration: ${video.timestamp} | Views: ${abbrNum(
+        video.views,
+        0
+    )} views</div>
+        <div>Author: ${video.author.name}</div>
         <img id="video-img" src=${video.thumbnail}>
     `;
     updateDownloadButton();
@@ -31,9 +38,6 @@ function displayVideo(video) {
 
 function updateDownloadButton() {
     const video = videos[currentVideoIndex];
-    console.log(video.id);
-    console.log({ downloadedVideoIds });
-    console.log(downloadedVideoIds.has(video.id));
     if (downloadedVideoIds.has(video.id)) {
         downloadButton.style.textDecoration = "line-through";
         downloadButton.style.pointerEvents = "none";
