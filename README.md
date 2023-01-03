@@ -69,14 +69,23 @@ git clone git@github.com:karim-bouchez/moubah.git --recursive
 
 <!-- > _**On Mac with Apple chip:** use `arch -x86_64` at the begin command when indicated_ -->
 
+Install npm packages:
+
 ```bash
 npm install -–save-dev
 ```
 
+Install the music remover server:
+
+```bash
+cd music-remover
+```
+... then follow the "🔧 Setup" section [here](https://github.com/karim-bouchez/music-remover)
+
 ### ☄️ Run
 
 ```bash
-npm run prod
+npm run dev
 ```
 
 ### 📦 Create an executable file
