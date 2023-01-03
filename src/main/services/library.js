@@ -49,7 +49,7 @@ class LibraryService {
         const video = await VideoRepository.getVideoById(audio.videoId);
         const videoService = new VideoService(video);
         if (video.audioChunksTodo.length === 0) {
-            videoService.addAudioFromChunksDone();
+            videoService.processChunksDone();
         }
         getMainWindow().webContents.send("video:updated", video.toDTO());
     }

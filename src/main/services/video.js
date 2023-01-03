@@ -41,9 +41,7 @@ class VideoService {
         await this.#downloadVideo();
         console.log(`Video downloaded: ${fs.existsSync(this.video.path)}`);
         await this.#downloadAudioChunks();
-        console.log(
-            `Audio downloaded: ${fs.existsSync(this.video.audio.path)}`
-        );
+        console.log(`Audio downloaded: ${fs.existsSync(this.video.audioPath)}`);
         this.sendAudioChunksTodo();
     }
 
@@ -65,7 +63,7 @@ class VideoService {
 
     async #downloadAudioChunks() {
         // TODO: use tmp directory
-        const writerStream = fs.createWriteStream(this.video.audio.path);
+        const writerStream = fs.createWriteStream(this.video.audioPath);
         ytdl(this.video.id, {
             filter: (format) => {
                 return (
@@ -79,8 +77,8 @@ class VideoService {
         return new Promise((resolve, reject) => {
             writerStream.on("finish", () => {
                 console.log("Download audio finished");
-                FFmpeg.convertAudioToMono(this.video.audio.path);
-                FFmpeg.split(this.video.audio.path, this.video.chunksTodoDir);
+                FFmpeg.convertAudioToMono(this.video.audioPath);
+                FFmpeg.split(this.video.audioPath, this.video.chunksTodoDir);
                 resolve();
             });
         });
@@ -100,6 +98,13 @@ class VideoService {
             });
             pushToQueue(AUDIO_CHUNK_QUEUE_HIGH, chunkRequestDTO);
         });
+    }
+
+    processChunksDone() {
+        this.addAudioFromChunksDone();
+        this.removeChunks();
+        this.removeAudiosOnly();
+        this.setStatus(VideoStatus.done);
     }
 
     async addAudioFromChunksDone() {
@@ -126,12 +131,15 @@ class VideoService {
             path.join(this.video.dir, "audio_wo_music.wav"),
             this.video.path
         );
-        this.removeChunks();
-        this.setStatus(VideoStatus.done);
     }
 
     removeChunks() {
         fs.rmSync(this.video.chunksDir, { recursive: true, force: true });
+    }
+
+    removeAudiosOnly() {
+        fs.rmSync(path.join(this.video.dir, "audio_wo_music.wav"));
+        fs.rmSync(this.video.audioPath);
     }
 
     setStatus(status) {
