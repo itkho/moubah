@@ -65,11 +65,9 @@ git clone git@github.com:karim-bouchez/moubah.git --recursive
 
 ### 🔗 Install dependencies
 
-> _**On Windows:** use `.exe` (PowerShell recommended)_
+<!-- > _**On Windows:** use `.exe` (PowerShell recommended)_ -->
 
 <!-- > _**On Mac with Apple chip:** use `arch -x86_64` at the begin command when indicated_ -->
-
-<!-- [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) -->
 
 ```bash
 npm install -–save-dev
