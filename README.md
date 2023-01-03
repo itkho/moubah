@@ -37,7 +37,7 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 
 </br>
 
-## 💻 Tech Stack:
+## 📚 Tech Stack:
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![Electron.js](https://img.shields.io/badge/Electron-191970?style=for-the-badge&logo=Electron&logoColor=white)
@@ -45,7 +45,11 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
-### Supported OS
+### 🗺 Architecture diagram
+
+![Moubah architecture diagram](./moubah-architecture.drawio.svg)
+
+### 💻 Supported OS
 
 | Windows | Mac (Intel) |                                 Mac (Apple silicon)                                  | Linux |
 | :-----: | :---------: | :----------------------------------------------------------------------------------: | :---: |
@@ -80,6 +84,7 @@ Install the music remover server:
 ```bash
 cd music-remover
 ```
+
 ... then follow the "🔧 Setup" section [here](https://github.com/karim-bouchez/music-remover)
 
 ### ☄️ Run
