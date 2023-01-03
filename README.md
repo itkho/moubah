@@ -4,7 +4,6 @@
 </h1>
 </br>
 
-
 ## ℹ️ Descritpion
 
 Desktop application built with Electron to play YouTube videos without background music
@@ -17,7 +16,7 @@ Desktop application built with Electron to play YouTube videos without backgroun
 > Desktop application ...
 
 A web page would have been more convenient for the end user, but the processing of the video requires a high CPU and/or GPU consumption combined with non-javascript dependencies that cannot take place in a browser (client side).
-A solution could have been to place this processing on the server side, but this would have had a considerable cost and the primary objective of this service is to be 100% free. This could happen in the future in cha Allah with the financial support of the community, but not now. 
+A solution could have been to place this processing on the server side, but this would have had a considerable cost and the primary objective of this service is to be 100% free. This could happen in the future in cha Allah with the financial support of the community, but not now.
 
 "What about a mobile app?"
 Here, the problem with doing client-side processing is that the machine learning model trained to separate voice from audio is not currently compatible to run on a phone (as far as I know, this [PR](https://github.com/deezer/spleeter/issues/477) is still opened, this [project](https://github.com/FaceOnLive/Spleeter-Android-iOS) doesn't seem to work, and the processing time would have been to slow anyway).
@@ -46,11 +45,10 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
-
 ### Supported OS
 
-| Windows | Mac (Intel) | Mac (Apple silicon) | Linux |
-| :-----: | :---------: | :-----------------: | :---: |
+| Windows | Mac (Intel) |                                 Mac (Apple silicon)                                  | Linux |
+| :-----: | :---------: | :----------------------------------------------------------------------------------: | :---: |
 |   ✅    |     📆      | ✅ ([Python 3.8.10](https://www.python.org/downloads/release/python-3810/) required) |  ❌   |
 
 > ✅ Supported | 📆 Not tested yet | ❌ Not support plannned yet
@@ -67,7 +65,9 @@ git clone git@github.com:karim-bouchez/moubah.git --recursive
 
 ### 🔗 Install dependencies
 
-> **_For Windows users:_** use PowerShell
+> _**On Windows:** use `.exe` (PowerShell recommended)_
+
+<!-- > _**On Mac with Apple chip:** use `arch -x86_64` at the begin command when indicated_ -->
 
 <!-- [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) -->
 
@@ -97,7 +97,7 @@ npm run make
 
 -   [x] 🧼 Use ffmpeg-static for binaries
 -   [x] 🆕 Add a "delete" button
--   [x] 🆕 Add a "log" button (that also open dev console) 
+-   [x] 🆕 Add a "log" button (that also open dev console)
 -   [x] 🆕 Add a "github" button
 -   [x] 🆕 Add a "music remover server" availability status
 -   [x] 🆕 Run "music-remover" automatically from "moubah" (has to be compatible on Windows/Mac/Mac M1)
@@ -110,7 +110,7 @@ npm run make
 -   [ ] 🧼 Use TS instead of JS
 -   [ ] 🧼 Use React framework
 -   [ ] 🆕 Add e2e tests
--   [ ] 🆕 improve logs (time + separate music-remover logs from moubah.log) and add several level of logs (like logging in Python) 
+-   [ ] 🆕 improve logs (time + separate music-remover logs from moubah.log) and add several level of logs (like logging in Python)
 -   [ ] 🆕 Setup CI/CD
 -   [x] 🪲 Latency on UI on FFmpeg calls (splitting audio + merge)
 -   [ ] 🪲 Audio result isn't smooth, find why...
