@@ -91,13 +91,13 @@ npm install -–save-dev
 
 </br>
 
-Install the music remover server:
+Install the [music remover](https://github.com/karim-bouchez/music-remover) server:
 
 ```bash
 cd music-remover
 ```
 
-... then follow the "🔧 Setup" section [here](https://github.com/karim-bouchez/music-remover)
+... then follow the "🔧 Setup" section [here](https://github.com/karim-bouchez/music-remover#-setup)
 
 </br>
 
