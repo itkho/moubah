@@ -75,10 +75,13 @@ class VideoService {
             },
         }).pipe(writerStream);
         return new Promise((resolve, reject) => {
-            writerStream.on("finish", () => {
+            writerStream.on("finish", async () => {
                 console.log("Download audio finished");
-                FFmpeg.convertAudioToMono(this.video.audioPath);
-                FFmpeg.split(this.video.audioPath, this.video.chunksTodoDir);
+                await FFmpeg.convertAudioToMono(this.video.audioPath);
+                await FFmpeg.split(
+                    this.video.audioPath,
+                    this.video.chunksTodoDir
+                );
                 resolve();
             });
         });
@@ -123,7 +126,7 @@ class VideoService {
                 )
                 .join("\n")
         );
-        FFmpeg.merge(
+        await FFmpeg.merge(
             audioListFile,
             path.join(this.video.dir, "audio_wo_music.wav")
         );

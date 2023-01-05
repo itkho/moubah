@@ -1,4 +1,4 @@
-const { spawnSync, spawn } = require("child_process");
+const { spawn } = require("child_process");
 const path = require("path");
 const {
     FFMPEG_BIN_DIR,
@@ -17,7 +17,7 @@ class FFmpeg {
     static split(filePath, outputPath, outputFormat = "chunk_%03d.wav") {
         // TODO: raise an error if there is more than 999 chunks
         return new Promise((resolve, reject) => {
-            const result = spawnSync(
+            const result = spawn(
                 "ffmpeg",
                 [
                     "-i",
@@ -60,7 +60,7 @@ class FFmpeg {
     static convertAudioToMono(audioPath) {
         return new Promise((resolve, reject) => {
             const tmpAudioPath = path.join(TEMP_PATH, "audio.mp3");
-            const result = spawnSync(
+            const result = spawn(
                 "ffmpeg",
                 ["-i", audioPath, "-ac", "1", tmpAudioPath, "-y"],
                 {
