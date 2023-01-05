@@ -86,7 +86,7 @@ async function setUp() {
         musicRemoverProcessId = await getProcessId();
         console.log("gRPC server already UP!");
     } catch (error) {
-        // startMusicRemoverProcess();
+        startMusicRemoverProcess();
     }
 
     pingMusicRemover({ recursive: true }).then(() => {

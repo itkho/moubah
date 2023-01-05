@@ -45,11 +45,10 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![gRPC](https://img.shields.io/badge/gRPC-244c5a.svg?style=for-the-badge&logoColor=white)
+
 <!-- ![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) -->
 <!-- ![React](https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white) -->
 <!-- ![Tailwind CSS](https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white) -->
-
-
 
 </br>
 
@@ -104,7 +103,7 @@ cd music-remover
 ### ☄️ Run
 
 ```bash
-npm run dev
+npm start
 ```
 
 </br>
@@ -139,7 +138,7 @@ npm run make
 -   [ ] 🧼 Use Hexagonal architecture
 -   [ ] 🧼 Use TS instead of JS
 -   [ ] 🧼 Use React framework
--   [ ] 🧼 Use tailwind css 
+-   [ ] 🧼 Use tailwind css
 -   [ ] 🆕 Add e2e tests
 -   [ ] 🆕 improve logs (time + separate music-remover logs from moubah.log) and add several level of logs (like logging in Python)
 -   [ ] 🆕 Setup CI/CD
