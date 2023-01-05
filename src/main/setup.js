@@ -49,8 +49,17 @@ function startMusicRemoverProcess() {
             console.error(error);
         }
     } else {
-        const exec_name = "./app" + EXEC_EXTENSION;
-        musicRemoverProcess = spawn(exec_name, { cwd: RESOURCE_DIR });
+        const exec_name = "./music-remover" + EXEC_EXTENSION;
+        musicRemoverProcess = spawn(
+            exec_name,
+            [
+                "--host",
+                config["grpc"]["host"],
+                "--port",
+                config["grpc"]["port"],
+            ],
+            { cwd: RESOURCE_DIR }
+        );
     }
     const musicRemoverLogger = mainLogger.child({
         process: "music-remover",
