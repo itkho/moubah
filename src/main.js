@@ -2,12 +2,6 @@ const { app, BrowserWindow } = require("electron");
 
 const { setUp, tearDown } = require("./main/setup");
 const { createMainWindow } = require("./main-window");
-const {
-    IS_DEV,
-    FFMPEG_BIN_DIR,
-    FFPROBE_BIN_DIR,
-    LOGS_DIR_PATH,
-} = require("./main/const");
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -42,4 +36,3 @@ app.on("before-quit", async () => await tearDown());
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 setUp();
-console.log(LOGS_DIR_PATH);

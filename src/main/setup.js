@@ -18,6 +18,7 @@ const { ping: pingMusicRemover, getProcessId } = require("./lib/music-remover");
 const { sleep } = require("./helpers.js");
 const { MusicRemoverStatus } = require("./enum");
 const { getMainWindow } = require("../main-window");
+const { mainLogger } = require("./logger");
 const config = require(CONFIG_PATH);
 
 let musicRemoverProcess;
@@ -51,9 +52,12 @@ function startMusicRemoverProcess() {
         const exec_name = "./app" + EXEC_EXTENSION;
         musicRemoverProcess = spawn(exec_name, { cwd: RESOURCE_DIR });
     }
+    const musicRemoverLogger = mainLogger.child({
+        process: "music-remover",
+    });
 
     musicRemoverProcess.stdout.on("data", (data) => {
-        console.log(`stdout: ${data}`);
+        musicRemoverLogger.info(data);
     });
 
     musicRemoverProcess.stderr.on("data", (data) => {
@@ -73,11 +77,12 @@ async function setUp() {
         musicRemoverProcessId = await getProcessId();
         console.log("gRPC server already UP!");
     } catch (error) {
-        startMusicRemoverProcess();
+        // startMusicRemoverProcess();
     }
 
     pingMusicRemover({ recursive: true }).then(() => {
         console.log("gRPC server UP!");
+        mainLogger.info("gRPC server UP!");
         LibraryService.initQueue();
         // TODO: remove this setTimeout, and wait for the renderer to finish before firing this event
         // Delay of 1 second because the renderer process may not be ready yet

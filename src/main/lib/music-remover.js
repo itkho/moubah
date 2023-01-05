@@ -3,6 +3,7 @@ const protoLoader = require("@grpc/proto-loader");
 const { app } = require("electron");
 const path = require("path");
 const { CONFIG_PATH } = require("../const");
+const { mainLogger } = require("../logger");
 
 const PROTO_FILE = path.join(
     app.getAppPath(),
@@ -56,7 +57,8 @@ async function ping({ recursive = true }) {
             if (!err) {
                 return resolve();
             } else {
-                console.log("gRPC: " + err.details);
+                mainLogger.info("gRPC: " + err.details);
+                // console.log("gRPC: " + err.details);
                 if (!recursive) reject();
                 setTimeout(async () => {
                     await ping(recursive);

@@ -18,26 +18,6 @@ function create() {
         },
     });
 
-    if (IS_DEV) {
-        mainWindow.webContents.openDevTools();
-    } else {
-        var log_file = fs.createWriteStream(
-            path.join(LOGS_DIR_PATH, "main-process.log"),
-            { flags: "w" }
-        );
-        var log_stdout = process.stdout;
-        var log_stderr = process.stderr;
-
-        console.log = function (d) {
-            log_file.write(util.format(d) + "\n");
-            log_stdout.write(util.format(d) + "\n");
-        };
-        console.error = function (d) {
-            log_file.write(util.format(d) + "\n");
-            log_stderr.write(util.format(d) + "\n");
-        };
-    }
-
     // Open URLs for anchor with target="_blank" in a navigator (not in Electon)
     mainWindow.webContents.setWindowOpenHandler(({ url }) => {
         shell.openExternal(url);

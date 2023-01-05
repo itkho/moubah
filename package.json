@@ -52,6 +52,7 @@
         "ffprobe-static": "^3.1.0",
         "fs-jetpack": "^5.1.0",
         "image-downloader": "^4.3.0",
+        "pino": "^8.8.0",
         "tree-kill": "^1.2.2",
         "video.js": "^7.20.3",
         "yt-search": "^2.10.3",
@@ -70,6 +71,7 @@
         "electronmon": "^2.0.2",
         "glob": "^8.0.3",
         "is-wsl": "^2.2.0",
+        "pino-pretty": "^9.1.1",
         "prettier": "2.8.1"
     },
     "build": {
