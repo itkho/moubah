@@ -8,6 +8,7 @@ const ChunkRequestDTO = require("../../dto/chunk-request");
 const { getMainWindow } = require("../../main-window");
 const { pushToQueue, addWorkerToQueue } = require("../queue");
 const { removeMusic } = require("../lib/music-remover");
+const { mainLogger } = require("../logger");
 
 class LibraryService {
     static async initQueue() {
@@ -29,18 +30,23 @@ class LibraryService {
     }
 
     static async removeMusic(chunkRequestDTO) {
+        if (!fs.existsSync(chunkRequestDTO.input_path)) {
+            mainLogger.info(
+                `Audio chunk already processed: ${chunkRequestDTO.input_path}`
+            );
+            return;
+        }
+        chunkRequestDTO.input_path;
         try {
-            console.log(`Call gRPC ${chunkRequestDTO.input_path}`);
+            mainLogger.info(`Call gRPC ${chunkRequestDTO.input_path}`);
             const response = await removeMusic(chunkRequestDTO);
             if (!response.succeeded) {
-                console.error(
-                    `Error on ${chunkRequestDTO.input_path}:\n${response.error}`
-                );
+                mainLogger.error(response.error);
                 return;
             }
             LibraryService.updateVideoInfo(chunkRequestDTO.output_path);
         } catch (error) {
-            console.error(error);
+            mainLogger.error(error);
         }
     }
 

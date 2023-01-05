@@ -8,6 +8,7 @@ const {
     PATH_SEPARATOR,
 } = require("../const");
 var fs = require("fs");
+const { mainLogger } = require("../logger");
 
 class FFmpeg {
     constructor() {
@@ -43,11 +44,11 @@ class FFmpeg {
 
             if (IS_DEV) {
                 result.stdout.on("data", (data) => {
-                    console.log(`FFmpeg split stdout: ${data}`);
+                    mainLogger.debug(`FFmpeg split stdout: ${data}`);
                 });
 
                 result.stderr.on("data", (data) => {
-                    console.error(`FFmpeg split stderr: ${data}`);
+                    mainLogger.debug(`FFmpeg split stderr: ${data}`);
                 });
             }
 
@@ -72,11 +73,15 @@ class FFmpeg {
 
             if (IS_DEV) {
                 result.stdout.on("data", (data) => {
-                    console.log(`FFmpeg convertAudioToMono stdout: ${data}`);
+                    mainLogger.debug(
+                        `FFmpeg convertAudioToMono stdout: ${data}`
+                    );
                 });
 
                 result.stderr.on("data", (data) => {
-                    console.error(`FFmpeg convertAudioToMono stderr: ${data}`);
+                    mainLogger.debug(
+                        `FFmpeg convertAudioToMono stderr: ${data}`
+                    );
                 });
             }
 
@@ -103,11 +108,13 @@ class FFmpeg {
 
             if (IS_DEV) {
                 result.stdout.on("data", (data) => {
-                    console.log(`FFmpeg extractAudioFromVideo stdout: ${data}`);
+                    mainLogger.debug(
+                        `FFmpeg extractAudioFromVideo stdout: ${data}`
+                    );
                 });
 
                 result.stderr.on("data", (data) => {
-                    console.error(
+                    mainLogger.debug(
                         `FFmpeg extractAudioFromVideo stderr: ${data}`
                     );
                 });
@@ -144,11 +151,11 @@ class FFmpeg {
 
             if (IS_DEV) {
                 result.stdout.on("data", (data) => {
-                    console.log(`FFmpeg merge stdout: ${data}`);
+                    mainLogger.debug(`FFmpeg merge stdout: ${data}`);
                 });
 
                 result.stderr.on("data", (data) => {
-                    console.error(`FFmpeg merge stderr: ${data}`);
+                    mainLogger.debug(`FFmpeg merge stderr: ${data}`);
                 });
             }
 
@@ -186,11 +193,11 @@ class FFmpeg {
 
             if (IS_DEV) {
                 result.stdout.on("data", (data) => {
-                    console.log(`FFmpeg addAudioToVideo stdout: ${data}`);
+                    mainLogger.debug(`FFmpeg addAudioToVideo stdout: ${data}`);
                 });
 
                 result.stderr.on("data", (data) => {
-                    console.error(`FFmpeg addAudioToVideo stderr: ${data}`);
+                    mainLogger.debug(`FFmpeg addAudioToVideo stderr: ${data}`);
                 });
             }
 

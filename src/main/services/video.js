@@ -8,6 +8,7 @@ const VideoModel = require("../model/video");
 const VideoRepository = require("../repository/video");
 const ChunkRequestDTO = require("../../dto/chunk-request");
 const { pushToQueue } = require("../queue");
+const { mainLogger } = require("../logger");
 
 // TODO: inherit from AbstractInstanceService
 // TODO: add child YtVideoService for logic specific to Yt (to facilitate the futur implementation of FileVideoService)
@@ -18,7 +19,7 @@ class VideoService {
 
     static async createFromYtId(videoId) {
         if (!ytdl.validateID(videoId)) {
-            console.error(`Youtube ID ${videoId} doesn't exists!`);
+            mainLogger.error(`Youtube ID ${videoId} doesn't exists!`);
             // TODO: add Error objects
             throw `Youtube ID ${videoId} doesn't exists!`;
         }
@@ -37,11 +38,13 @@ class VideoService {
         // TODO: add download progress (should be possible according to the doc)
         // https://www.npmjs.com/package/ytdl-core#:~:text=format%20to%20download.-,Event%3A%20progress,-number%20%2D%20Chunk%20length
         this.setStatus(VideoStatus.downloading);
-        console.log("Donwloading...");
+        mainLogger.info("Donwloading...");
         await this.#downloadVideo();
-        console.log(`Video downloaded: ${fs.existsSync(this.video.path)}`);
+        mainLogger.info(`Video downloaded: ${fs.existsSync(this.video.path)}`);
         await this.#downloadAudioChunks();
-        console.log(`Audio downloaded: ${fs.existsSync(this.video.audioPath)}`);
+        mainLogger.info(
+            `Audio downloaded: ${fs.existsSync(this.video.audioPath)}`
+        );
         this.sendAudioChunksTodo();
     }
 
@@ -76,7 +79,7 @@ class VideoService {
         }).pipe(writerStream);
         return new Promise((resolve, reject) => {
             writerStream.on("finish", async () => {
-                console.log("Download audio finished");
+                mainLogger.info("Download audio finished");
                 await FFmpeg.convertAudioToMono(this.video.audioPath);
                 await FFmpeg.split(
                     this.video.audioPath,
@@ -88,7 +91,7 @@ class VideoService {
     }
 
     sendAudioChunksTodo() {
-        console.log("Processing...");
+        mainLogger.info("Processing...");
         this.setStatus(VideoStatus.processing);
         this.video.audioChunksTodo.forEach((audio) => {
             const chunkRequestDTO = new ChunkRequestDTO({

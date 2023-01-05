@@ -1,9 +1,10 @@
 const fastq = require("fastq");
+const { mainLogger } = require("./logger");
 let queue;
 
 function addWorkerToQueue(queueName, worker) {
     if (queue) {
-        console.error("A worker is already associated with this queue");
+        mainLogger.warn("A worker is already associated with this queue");
         return;
     }
     queue = fastq.promise(worker, 1);
@@ -12,7 +13,7 @@ function addWorkerToQueue(queueName, worker) {
 function pushToQueue(queueName, chunkRequestDTO) {
     // TODO: manage 2 queue (one for LOW and another for HIGH priority)
     if (!queue) {
-        console.error("No worker associated with the queue yet");
+        mainLogger.warn("No worker associated with the queue yet");
         return;
     }
     queue.push(chunkRequestDTO);

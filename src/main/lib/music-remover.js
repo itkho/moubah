@@ -58,7 +58,6 @@ async function ping({ recursive = true }) {
                 return resolve();
             } else {
                 mainLogger.info("gRPC: " + err.details);
-                // console.log("gRPC: " + err.details);
                 if (!recursive) reject();
                 setTimeout(async () => {
                     await ping(recursive);

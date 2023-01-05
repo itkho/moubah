@@ -46,35 +46,42 @@ function startMusicRemoverProcess() {
                 }
             );
         } catch (error) {
-            console.error(error);
+            mainLogger.error(error);
         }
     } else {
         const exec_name = "./music-remover" + EXEC_EXTENSION;
-        musicRemoverProcess = spawn(
-            exec_name,
-            [
-                "--host",
-                config["grpc"]["host"],
-                "--port",
-                config["grpc"]["port"],
-            ],
-            { cwd: RESOURCE_DIR }
-        );
+        try {
+            musicRemoverProcess = spawn(
+                exec_name,
+                [
+                    "--host",
+                    config["grpc"]["host"],
+                    "--port",
+                    config["grpc"]["port"],
+                ],
+                { cwd: RESOURCE_DIR }
+            );
+        } catch (error) {
+            mainLogger.error(error);
+        }
     }
+    mainLogger.info("TEST BEFORE");
     const musicRemoverLogger = mainLogger.child({
         process: "music-remover",
     });
+    musicRemoverLogger.info("TEST AFTER");
+    mainLogger.info("TEST AFTER 2");
 
     musicRemoverProcess.stdout.on("data", (data) => {
-        musicRemoverLogger.info(data);
+        musicRemoverLogger.info(`stdout: ${data}`);
     });
 
     musicRemoverProcess.stderr.on("data", (data) => {
-        console.error(`stderr: ${data}`);
+        musicRemoverLogger.error(`stderr: ${data}`);
     });
 
     musicRemoverProcess.on("close", (code) => {
-        console.log(`child process exited with code ${code}`);
+        musicRemoverLogger.fatal(`child process exited with code ${code}`);
     });
 }
 
@@ -84,13 +91,12 @@ async function setUp() {
     // Test is the server isn't already up (from a previous session)
     try {
         musicRemoverProcessId = await getProcessId();
-        console.log("gRPC server already UP!");
+        mainLogger.warn("gRPC server already UP!");
     } catch (error) {
         startMusicRemoverProcess();
     }
 
     pingMusicRemover({ recursive: true }).then(() => {
-        console.log("gRPC server UP!");
         mainLogger.info("gRPC server UP!");
         LibraryService.initQueue();
         // TODO: remove this setTimeout, and wait for the renderer to finish before firing this event
@@ -109,11 +115,11 @@ async function tearDown() {
     if (musicRemoverProcessId) {
         try {
             // TODO: check why the process isn't kill sometimes (the main process is killed before?)
-            console.log("Killing 'musicRemoverProcess'...");
+            mainLogger.info("Killing 'musicRemoverProcess'...");
             await kill(musicRemoverProcessId, "SIGTERM");
-            console.log("'musicRemoverProcess' killed");
+            mainLogger.info("'musicRemoverProcess' killed");
         } catch (error) {
-            console.error({ error });
+            mainLogger.error(error);
         }
     }
 }
