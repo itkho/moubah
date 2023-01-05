@@ -1,8 +1,5 @@
-const { exec } = require("child_process");
 const { shell } = require("electron");
 const fs = require("fs");
-const path = require("path");
-const util = require("util");
 const { LOGS_DIR_PATH } = require("./const");
 
 function createPathIfDoesntExists(path) {
