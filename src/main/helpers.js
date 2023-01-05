@@ -24,9 +24,22 @@ function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
 
+function logSpawn(process, logger, prefix = "") {
+    process.stdout.on("data", (data) => {
+        logger.info(`${prefix} stdout: ${data}`);
+    });
+    process.stderr.on("data", (data) => {
+        logger.error(`${prefix} stderr: ${data}`);
+    });
+    process.on("close", (code) => {
+        logger.info(`child process ${prefix} exited with code ${code}`);
+    });
+}
+
 module.exports = {
     sleep,
     createPathIfDoesntExists,
     openLogsInFileExplorer,
     openFileExplorer,
+    logSpawn,
 };

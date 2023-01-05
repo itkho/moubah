@@ -15,74 +15,64 @@ const {
 } = require("./const");
 const LibraryService = require("./services/library");
 const { ping: pingMusicRemover, getProcessId } = require("./lib/music-remover");
-const { sleep } = require("./helpers.js");
 const { MusicRemoverStatus } = require("./enum");
 const { getMainWindow } = require("../main-window");
 const { mainLogger } = require("./logger");
 const config = require(CONFIG_PATH);
 
-let musicRemoverProcess;
 let musicRemoverProcessId;
 
 function startMusicRemoverProcess() {
-    if (IS_APPLE_SILICON) {
-        try {
-            musicRemoverProcess = spawn(
-                "arch",
-                [
-                    "-x86_64",
-                    "python",
-                    "app.py",
-                    "--host",
-                    config["grpc"]["host"],
-                    "--port",
-                    config["grpc"]["port"],
-                ],
-                {
-                    cwd: MUSIC_REMOVER_DIR,
-                    env: {
-                        PATH: `${PYTHON_DIR}${PATH_SEPARATOR}${process.env.PATH}`,
-                    },
-                }
-            );
-        } catch (error) {
-            mainLogger.error(error);
-        }
-    } else {
-        const exec_name = "./music-remover" + EXEC_EXTENSION;
-        try {
-            musicRemoverProcess = spawn(
-                exec_name,
-                [
-                    "--host",
-                    config["grpc"]["host"],
-                    "--port",
-                    config["grpc"]["port"],
-                ],
-                { cwd: RESOURCE_DIR }
-            );
-        } catch (error) {
-            mainLogger.error(error);
-        }
+    function startFromSource() {
+        return spawn(
+            "arch",
+            [
+                "-x86_64",
+                "python",
+                "app.py",
+                "--host",
+                config["grpc"]["host"],
+                "--port",
+                config["grpc"]["port"],
+            ],
+            {
+                cwd: MUSIC_REMOVER_DIR,
+                env: {
+                    PATH: `${PYTHON_DIR}${PATH_SEPARATOR}${process.env.PATH}`,
+                },
+            }
+        );
     }
-    mainLogger.info("TEST BEFORE");
-    const musicRemoverLogger = mainLogger.child({
-        process: "music-remover",
-    });
-    musicRemoverLogger.info("TEST AFTER");
-    mainLogger.info("TEST AFTER 2");
 
-    musicRemoverProcess.stdout.on("data", (data) => {
-        musicRemoverLogger.info(`stdout: ${data}`);
-    });
+    function startFromExec() {
+        const exec_name = "./music-remover" + EXEC_EXTENSION;
+        return spawn(
+            exec_name,
+            [
+                "--host",
+                config["grpc"]["host"],
+                "--port",
+                config["grpc"]["port"],
+            ],
+            { cwd: RESOURCE_DIR }
+        );
+    }
 
-    musicRemoverProcess.stderr.on("data", (data) => {
-        musicRemoverLogger.error(`stderr: ${data}`);
-    });
+    let musicRemoverProcess;
+    try {
+        if (IS_APPLE_SILICON) {
+            musicRemoverProcess = startFromSource();
+        } else {
+            musicRemoverProcess = startFromExec();
+        }
+    } catch (error) {
+        mainLogger.error(error);
+        return;
+    }
+    logSpawn(musicRemoverProcess, mainLogger, "music-remover");
 
-    musicRemoverProcess.on("close", (code) => {
-        musicRemoverLogger.fatal(`child process exited with code ${code}`);
-    });
+    // Save PID in order to terminate it on quit
+    musicRemoverProcessId = musicRemoverProcess.pid;
 }
 
 async function setUp() {
@@ -111,7 +101,6 @@ async function setUp() {
 }
 
 async function tearDown() {
-    if (musicRemoverProcess) musicRemoverProcessId = musicRemoverProcess.pid;
     if (musicRemoverProcessId) {
         try {
             // TODO: check why the process isn't kill sometimes (the main process is killed before?)
