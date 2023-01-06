@@ -1,9 +1,7 @@
-const { BrowserWindow, app, shell } = require("electron");
+const { BrowserWindow, shell } = require("electron");
 const path = require("path");
-const fs = require("fs");
-const util = require("util");
 
-const { IS_DEV, LOGS_DIR_PATH } = require("./main/const");
+const { IS_DEV } = require("./main/const");
 
 let mainWindow;
 

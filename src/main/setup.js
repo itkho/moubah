@@ -71,7 +71,7 @@ function startMusicRemoverProcess() {
         mainLogger.error(error);
         return;
     }
-    logSpawn(musicRemoverProcess, mainLogger, "music-remover");
+    logSpawn(musicRemoverProcess, mainLogger.debug, "music-remover");
 
     // Save PID in order to terminate it on quit
     musicRemoverProcessId = musicRemoverProcess.pid;
@@ -85,7 +85,7 @@ async function setUp() {
         musicRemoverProcessId = await getProcessId();
         mainLogger.warn("gRPC server already UP!");
     } catch (error) {
-        startMusicRemoverProcess();
+        // startMusicRemoverProcess();
     }
 
     pingMusicRemover({ recursive: true }).then(() => {

@@ -3,7 +3,8 @@ const { app } = require("electron");
 const fs = require("fs");
 const os = require("os");
 
-const IS_DEV = process.env.NODE_ENV === "development";
+// const IS_DEV = process.env.NODE_ENV === "development";
+const IS_DEV = true;
 
 let OS;
 switch (os.platform()) {

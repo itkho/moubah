@@ -129,6 +129,7 @@ class VideoService {
                 )
                 .join("\n")
         );
+        mainLogger.debug(`File created: ${audioListFile}`);
         await FFmpeg.merge(
             audioListFile,
             path.join(this.video.dir, "audio_wo_music.wav")

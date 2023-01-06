@@ -104,6 +104,7 @@ cd music-remover
 
 ```bash
 npm start
+# or debug it 🪲 with: npm run debug
 ```
 
 </br>
@@ -135,6 +136,7 @@ npm run make
 -   [x] 🆕 Add a refresh button to the library view
 -   [ ] 🪲 On mac: quit when the close button is clicked
 -   [ ] 🆕 Improve UI/UX
+-   [ ] 🪲 First installation/run is very long -> make a progress bar or something
 -   [ ] 🆕 Support multi-languages (at least french and english)
 -   [ ] 🧼 Use Hexagonal architecture
 -   [ ] 🧼 Use TS instead of JS

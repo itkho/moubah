@@ -17,6 +17,7 @@ function pushToQueue(queueName, chunkRequestDTO) {
         return;
     }
     queue.push(chunkRequestDTO);
+    mainLogger.debug(`Pushed to the queue: ${chunkRequestDTO.input_path}`);
 }
 
 module.exports = { addWorkerToQueue, pushToQueue };

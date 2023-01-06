@@ -4,7 +4,6 @@ const {
     FFMPEG_BIN_DIR,
     FFPROBE_BIN_DIR,
     TEMP_PATH,
-    IS_DEV,
     PATH_SEPARATOR,
 } = require("../const");
 var fs = require("fs");
@@ -43,9 +42,7 @@ class FFmpeg {
                 }
             );
 
-            if (IS_DEV) {
-                logSpawn(result, mainLogger, "FFmpeg split");
-            }
+            logSpawn(result, mainLogger.debug, "FFmpeg split");
 
             result.on("close", (code) => {
                 resolve();
@@ -66,9 +63,7 @@ class FFmpeg {
                 }
             );
 
-            if (IS_DEV) {
-                logSpawn(result, mainLogger, "FFmpeg convertAudioToMono");
-            }
+            logSpawn(result, mainLogger.debug, "FFmpeg convertAudioToMono");
 
             result.on("close", (code) => {
                 // fs.rmSync(audioPath, { force: true });
@@ -91,9 +86,7 @@ class FFmpeg {
                 }
             );
 
-            if (IS_DEV) {
-                logSpawn(result, mainLogger, "FFmpeg extractAudioFromVideo");
-            }
+            logSpawn(result, mainLogger.debug, "FFmpeg extractAudioFromVideo");
 
             result.on("close", (code) => {
                 resolve();
@@ -124,9 +117,7 @@ class FFmpeg {
                 }
             );
 
-            if (IS_DEV) {
-                logSpawn(result, mainLogger, "FFmpeg merge");
-            }
+            logSpawn(result, mainLogger.debug, "FFmpeg merge");
 
             result.on("close", (code) => {
                 resolve();
@@ -160,9 +151,7 @@ class FFmpeg {
                 }
             );
 
-            if (IS_DEV) {
-                logSpawn(result, mainLogger, "FFmpeg addAudioToVideo");
-            }
+            logSpawn(result, mainLogger.debug, "FFmpeg addAudioToVideo");
 
             result.on("close", (code) => {
                 // fs.rmSync(videoPath);

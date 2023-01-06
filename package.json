@@ -15,32 +15,6 @@
         "email": "bouchez.karim@gmail.com"
     },
     "license": "AGPL-3",
-    "config": {
-        "forge": {
-            "makers": [
-                {
-                    "name": "@electron-forge/maker-squirrel",
-                    "config": {
-                        "name": "moubah"
-                    }
-                },
-                {
-                    "name": "@electron-forge/maker-zip",
-                    "platforms": [
-                        "darwin"
-                    ]
-                },
-                {
-                    "name": "@electron-forge/maker-deb",
-                    "config": {}
-                },
-                {
-                    "name": "@electron-forge/maker-rpm",
-                    "config": {}
-                }
-            ]
-        }
-    },
     "dependencies": {
         "@grpc/grpc-js": "^1.8.0",
         "detect-port": "^1.5.1",
@@ -69,6 +43,32 @@
         "electron-builder": "^22.10.3",
         "electronmon": "^2.0.2",
         "prettier": "2.8.1"
+    },
+    "config": {
+        "forge": {
+            "makers": [
+                {
+                    "name": "@electron-forge/maker-squirrel",
+                    "config": {
+                        "name": "moubah"
+                    }
+                },
+                {
+                    "name": "@electron-forge/maker-zip",
+                    "platforms": [
+                        "darwin"
+                    ]
+                },
+                {
+                    "name": "@electron-forge/maker-deb",
+                    "config": {}
+                },
+                {
+                    "name": "@electron-forge/maker-rpm",
+                    "config": {}
+                }
+            ]
+        }
     },
     "build": {
         "appId": "com.moubah.app"
