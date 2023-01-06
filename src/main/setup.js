@@ -80,7 +80,7 @@ function startMusicRemoverProcess() {
 async function setUp() {
     initIpcHandlers();
 
-    // Test is the server isn't already up (from a previous session)
+    // Test if the server isn't already up (from a previous session)
     try {
         musicRemoverProcessId = await getProcessId();
         mainLogger.warn("gRPC server already UP!");
