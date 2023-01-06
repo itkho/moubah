@@ -133,6 +133,7 @@ npm run make
 -   [x] 🆕 Don't allow to download the same video twice
 -   [x] 🆕 Add more infos about the video on the search view
 -   [x] 🆕 Add a refresh button to the library view
+-   [ ] 🪲 On mac: quit when the close button is clicked
 -   [ ] 🆕 Improve UI/UX
 -   [ ] 🆕 Support multi-languages (at least french and english)
 -   [ ] 🧼 Use Hexagonal architecture
