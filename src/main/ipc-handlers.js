@@ -6,6 +6,7 @@ const VideoService = require("./services/video");
 const LibraryService = require("./services/library");
 const { toogleDevTools } = require("../main-window");
 const { openLogsInFileExplorer } = require("./helpers");
+const { rendererLogger } = require("./logger");
 
 function initIpcHandlers() {
     ipcMain.handle("youtube:search", (_event, query) => {
@@ -43,6 +44,26 @@ function initIpcHandlers() {
 
     ipcMain.handle("openFileExplorer:logs", async (_event) => {
         openLogsInFileExplorer();
+    });
+
+    ipcMain.handle("log:create", async (_event, level, msg) => {
+        switch (level) {
+            case "debug":
+                rendererLogger.debug(msg);
+                break;
+            case "info":
+                rendererLogger.info(msg);
+                break;
+            case "warn":
+                rendererLogger.warn(msg);
+                break;
+            case "error":
+                rendererLogger.error(msg);
+                break;
+            default:
+                rendererLogger.info(msg);
+                break;
+        }
     });
 }
 
