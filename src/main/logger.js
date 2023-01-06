@@ -40,6 +40,9 @@ const rendererStreams = [
 ];
 const rendererLogger = pino({}, pino.multistream(rendererStreams));
 
+rendererLogger.fatal(`PINO_LOG_LEVEL: ${process.env.PINO_LOG_LEVEL}`);
+rendererLogger.fatal(`NODE_ENV: ${process.env.NODE_ENV}`);
+
 process.on("uncaughtException", (err) => {
     mainLogger.error(err);
     process.exit(1);

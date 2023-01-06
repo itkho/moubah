@@ -18,6 +18,7 @@ const { ping: pingMusicRemover, getProcessId } = require("./lib/music-remover");
 const { MusicRemoverStatus } = require("./enum");
 const { getMainWindow } = require("../main-window");
 const { mainLogger } = require("./logger");
+const { logSpawn } = require("./helpers");
 const config = require(CONFIG_PATH);
 
 let musicRemoverProcessId;

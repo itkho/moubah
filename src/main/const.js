@@ -3,11 +3,7 @@ const { app } = require("electron");
 const fs = require("fs");
 const os = require("os");
 
-// Warning: IS_DEV works, but not IS_PROD (maybe because there is no process.env in production 🤷)
-// Warning for Windows: "NODE_ENV=development" in the package.json dones't work, you have to use "set NODE_ENV=development"
-// TODO: use dotenv for this instead
 const IS_DEV = process.env.NODE_ENV === "development";
-// const IS_DEV = true;
 
 let OS;
 switch (os.platform()) {
