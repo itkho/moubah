@@ -8,10 +8,12 @@ import { switchView } from "./view/nav-bar.js";
 const searchNavLink = document.getElementById("search-nav-link");
 const libraryNavLink = document.getElementById("library-nav-link");
 const playerNavLink = document.getElementById("player-nav-link");
+const contactNavLink = document.getElementById("contact-nav-link");
 
 searchNavLink.onclick = switchView;
 libraryNavLink.onclick = switchView;
 playerNavLink.onclick = switchView;
+contactNavLink.onclick = switchView;
 searchNavLink.click();
 
 // Search view
