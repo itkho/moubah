@@ -9,15 +9,21 @@ contextBridge.exposeInMainWorld("videoAPI", {
     delete: (videoId) => ipcRenderer.invoke("video:delete", videoId),
     getById: (videoId) => ipcRenderer.invoke("video:get", videoId),
     getAll: async () => ipcRenderer.invoke("video:getAll"),
-    // TODO: create an other contextBrige for this
-    toogleDevTools: () => ipcRenderer.invoke("devTools:toogle"),
-    openLogsDir: () => ipcRenderer.invoke("openFileExplorer:logs"),
-    log: (level, msg) => ipcRenderer.invoke("log:create", level, msg),
 
     // Main --> Process
     handleVideoUpdatedEvent: (callback) =>
         ipcRenderer.on("video:updated", callback),
-    // TODO: create an other contextBrige for this
-    handleMusicRemoverStatusUpdatedEvent: (callback) =>
+});
+
+contextBridge.exposeInMainWorld("musicRemoverAPI", {
+    // Main --> Process
+    handleStatusUpdatedEvent: (callback) =>
         ipcRenderer.on("music-remover:status:updated", callback),
+});
+
+contextBridge.exposeInMainWorld("mainAPI", {
+    // Process --> Main
+    toogleDevTools: () => ipcRenderer.invoke("devTools:toogle"),
+    openLogsDir: () => ipcRenderer.invoke("openFileExplorer:logs"),
+    log: (level, msg) => ipcRenderer.invoke("log:create", level, msg),
 });

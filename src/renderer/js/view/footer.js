@@ -1,7 +1,7 @@
 export function toogleDevTools() {
-    window.videoAPI.toogleDevTools();
+    window.mainAPI.toogleDevTools();
 }
 
 export function openLogsDir() {
-    window.videoAPI.openLogsDir();
+    window.mainAPI.openLogsDir();
 }

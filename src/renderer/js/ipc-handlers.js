@@ -5,9 +5,7 @@ export default function initIpcHandlers() {
     window.videoAPI.handleVideoUpdatedEvent(async (_event, videoDTO) => {
         updateVideoInfo(videoDTO);
     });
-    window.videoAPI.handleMusicRemoverStatusUpdatedEvent(
-        async (_event, status) => {
-            updateMusicRemoverStatus(status);
-        }
-    );
+    window.musicRemoverAPI.handleStatusUpdatedEvent(async (_event, status) => {
+        updateMusicRemoverStatus(status);
+    });
 }
