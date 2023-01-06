@@ -1,22 +1,20 @@
 {
     "name": "moubah",
     "productName": "Moubah",
-    "version": "1.0.0",
-    "description": "My Electron application description",
+    "version": "0.0.1",
+    "description": "Desktop application to play YouTube videos without background music",
     "main": "src/main.js",
     "scripts": {
         "start": "electron-forge start",
         "debug": "cross-env PINO_LOG_LEVEL=debug NODE_ENV=development electron-forge start",
-        "package": "electron-forge package",
-        "make": "electron-forge make",
-        "publish": "electron-forge publish"
+        "make": "electron-forge make"
     },
     "keywords": [],
     "author": {
-        "name": "Karim EL HAJOUI",
-        "email": "karimelhajoui63@gmail.com"
+        "name": "Karim Bouchez",
+        "email": "bouchez.karim@gmail.com"
     },
-    "license": "MIT",
+    "license": "AGPL-3",
     "config": {
         "forge": {
             "makers": [
@@ -53,6 +51,7 @@
         "fs-jetpack": "^5.1.0",
         "image-downloader": "^4.3.0",
         "pino": "^8.8.0",
+        "pino-pretty": "^9.1.1",
         "tree-kill": "^1.2.2",
         "video.js": "^7.20.3",
         "yt-search": "^2.10.3",
@@ -69,9 +68,6 @@
         "electron": "^22.0.0",
         "electron-builder": "^22.10.3",
         "electronmon": "^2.0.2",
-        "glob": "^8.0.3",
-        "is-wsl": "^2.2.0",
-        "pino-pretty": "^9.1.1",
         "prettier": "2.8.1"
     },
     "build": {

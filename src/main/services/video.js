@@ -140,6 +140,8 @@ class VideoService {
     }
 
     removeChunks() {
+        if (!this.video.chunksDir.includes(STORAGE_DIR_PATH))
+            throw "Cannot remove this folder (out of access scope)";
         fs.rmSync(this.video.chunksDir, { recursive: true, force: true });
     }
 

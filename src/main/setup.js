@@ -61,6 +61,7 @@ function startMusicRemoverProcess() {
 
     let musicRemoverProcess;
     try {
+        // The executable file doesn't work on Apple silicon for the moment
         if (IS_APPLE_SILICON) {
             musicRemoverProcess = startFromSource();
         } else {
