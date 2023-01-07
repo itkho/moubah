@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const ytdl = require("ytdl-core");
-const { AUDIO_CHUNK_QUEUE_HIGH } = require("../const");
+const { AUDIO_CHUNK_QUEUE_HIGH, STORAGE_DIR_PATH } = require("../const");
 const { VideoStatus } = require("../enum");
 const FFmpeg = require("../lib/ffmpeg");
 const VideoModel = require("../model/video");
@@ -106,8 +106,8 @@ class VideoService {
         });
     }
 
-    processChunksDone() {
-        this.addAudioFromChunksDone();
+    async processChunksDone() {
+        await this.addAudioFromChunksDone();
         this.removeChunks();
         this.removeAudiosOnly();
         this.setStatus(VideoStatus.done);
@@ -129,10 +129,20 @@ class VideoService {
                 )
                 .join("\n")
         );
+        mainLogger.debug(
+            `File ${audioListFile} created: ${
+                fs.existsSync(STORAGE_DIR_PATH) ? "✅" : "❌"
+            }`
+        );
         mainLogger.debug(`File created: ${audioListFile}`);
         await FFmpeg.merge(
             audioListFile,
             path.join(this.video.dir, "audio_wo_music.wav")
+        );
+        mainLogger.debug(
+            `Audio file ${audioListFile} created: ${
+                path.join(this.video.dir, "audio_wo_music.wav") ? "✅" : "❌"
+            }`
         );
         await FFmpeg.addAudioToVideo(
             path.join(this.video.dir, "audio_wo_music.wav"),
