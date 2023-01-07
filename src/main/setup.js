@@ -8,34 +8,38 @@ const {
     EXEC_EXTENSION,
     IS_APPLE_SILICON,
     MUSIC_REMOVER_DIR,
-    RESOURCE_DIR,
+    MUSIC_REMOVER_EXE_DIR,
     PYTHON_DIR,
     PATH_SEPARATOR,
     CONFIG_PATH,
+    LOGS_DIR_PATH,
 } = require("./const");
 const LibraryService = require("./services/library");
 const { ping: pingMusicRemover, getProcessId } = require("./lib/music-remover");
 const { MusicRemoverStatus } = require("./enum");
 const { getMainWindow } = require("../main-window");
-const { mainLogger } = require("./logger");
-const { logSpawn } = require("./helpers");
+const { mainLogger, logLevel } = require("./logger");
+const path = require("path");
 const config = require(CONFIG_PATH);
 
 let musicRemoverProcessId;
 
 function startMusicRemoverProcess() {
+    const musicRemoverOptions = [
+        "--host",
+        config["grpc"]["host"],
+        "--port",
+        config["grpc"]["port"],
+        "--log_path",
+        path.join(LOGS_DIR_PATH, "music-remover.log"),
+        "--log_level",
+        logLevel.toUpperCase(),
+    ];
+
     function startFromSource() {
         return spawn(
             "arch",
-            [
-                "-x86_64",
-                "python",
-                "app.py",
-                "--host",
-                config["grpc"]["host"],
-                "--port",
-                config["grpc"]["port"],
-            ],
+            ["-x86_64", "python", "app.py"].concat(musicRemoverOptions),
             {
                 cwd: MUSIC_REMOVER_DIR,
                 env: {
@@ -47,16 +51,9 @@ function startMusicRemoverProcess() {
 
     function startFromExec() {
         const exec_name = "./music-remover" + EXEC_EXTENSION;
-        return spawn(
-            exec_name,
-            [
-                "--host",
-                config["grpc"]["host"],
-                "--port",
-                config["grpc"]["port"],
-            ],
-            { cwd: RESOURCE_DIR }
-        );
+        return spawn(exec_name, musicRemoverOptions, {
+            cwd: MUSIC_REMOVER_EXE_DIR,
+        });
     }
 
     let musicRemoverProcess;
@@ -71,7 +68,10 @@ function startMusicRemoverProcess() {
         mainLogger.error(error);
         return;
     }
-    logSpawn(musicRemoverProcess, mainLogger.debug, "music-remover");
+
+    musicRemoverProcess.on("close", (code) => {
+        mainLogger.fatal(`🚨 Music remover process exited with code ${code}`);
+    });
 
     // Save PID in order to terminate it on quit
     musicRemoverProcessId = musicRemoverProcess.pid;
@@ -89,7 +89,7 @@ async function setUp() {
     }
 
     pingMusicRemover({ recursive: true }).then(() => {
-        mainLogger.info("gRPC server UP!");
+        mainLogger.info("gRPC server UP! ✅");
         LibraryService.initQueue();
         // TODO: remove this setTimeout, and wait for the renderer to finish before firing this event
         // Delay of 1 second because the renderer process may not be ready yet

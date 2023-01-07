@@ -68,4 +68,4 @@ process.on("unhandledRejection", (err) => {
     process.exit(1);
 });
 
-module.exports = { mainLogger, rendererLogger };
+module.exports = { mainLogger, rendererLogger, logLevel };

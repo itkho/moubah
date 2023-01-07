@@ -1,5 +1,6 @@
 const fastq = require("fastq");
 const { mainLogger } = require("./logger");
+
 let queue;
 
 function addWorkerToQueue(queueName, worker) {
@@ -8,6 +9,7 @@ function addWorkerToQueue(queueName, worker) {
         return;
     }
     queue = fastq.promise(worker, 1);
+    mainLogger.debug(`Worker added to "${queueName}" queue`);
 }
 
 function pushToQueue(queueName, chunkRequestDTO) {
@@ -17,7 +19,9 @@ function pushToQueue(queueName, chunkRequestDTO) {
         return;
     }
     queue.push(chunkRequestDTO);
-    mainLogger.debug(`Pushed to the queue: ${chunkRequestDTO.input_path}`);
+    mainLogger.debug(
+        `Pushed to the queue "${queueName}": ${chunkRequestDTO.input_path}`
+    );
 }
 
 module.exports = { addWorkerToQueue, pushToQueue };

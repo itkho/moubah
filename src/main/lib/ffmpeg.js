@@ -15,6 +15,50 @@ class FFmpeg {
         throw new TypeError("Cannot construct FFmpeg instances directly");
     }
 
+    static extractAudioFromVideo(videoPath, audioPath) {
+        return new Promise((resolve, reject) => {
+            const result = spawn(
+                "ffmpeg",
+                ["-i", videoPath, "-q:a", "0", "-map", "a", audioPath, "-y"],
+                {
+                    env: {
+                        PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}`,
+                    },
+                }
+            );
+
+            logSpawn(result, mainLogger, "FFmpeg extractAudioFromVideo");
+
+            result.on("close", (code) => {
+                resolve();
+            });
+        });
+    }
+
+    static convertAudioToMono(audioPath) {
+        return new Promise((resolve, reject) => {
+            const tmpAudioPath = path.join(TEMP_PATH, "audio.mp3");
+            const result = spawn(
+                "ffmpeg",
+                ["-i", audioPath, "-ac", "1", tmpAudioPath, "-y"],
+                {
+                    env: {
+                        PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}`,
+                    },
+                }
+            );
+
+            logSpawn(result, mainLogger, "FFmpeg convertAudioToMono");
+
+            result.on("close", (code) => {
+                // fs.rmSync(audioPath, { force: true });
+                fs.renameSync(audioPath, `${audioPath}.old`);
+                fs.renameSync(tmpAudioPath, audioPath);
+                resolve();
+            });
+        });
+    }
+
     static split(filePath, outputPath, outputFormat = "chunk_%03d.wav") {
         // TODO: raise an error if there is more than 999 chunks
         return new Promise((resolve, reject) => {
@@ -42,51 +86,7 @@ class FFmpeg {
                 }
             );
 
-            logSpawn(result, mainLogger.debug, "FFmpeg split");
-
-            result.on("close", (code) => {
-                resolve();
-            });
-        });
-    }
-
-    static convertAudioToMono(audioPath) {
-        return new Promise((resolve, reject) => {
-            const tmpAudioPath = path.join(TEMP_PATH, "audio.mp3");
-            const result = spawn(
-                "ffmpeg",
-                ["-i", audioPath, "-ac", "1", tmpAudioPath, "-y"],
-                {
-                    env: {
-                        PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}`,
-                    },
-                }
-            );
-
-            logSpawn(result, mainLogger.debug, "FFmpeg convertAudioToMono");
-
-            result.on("close", (code) => {
-                // fs.rmSync(audioPath, { force: true });
-                fs.renameSync(audioPath, `${audioPath}.old`);
-                fs.renameSync(tmpAudioPath, audioPath);
-                resolve();
-            });
-        });
-    }
-
-    static extractAudioFromVideo(videoPath, audioPath) {
-        return new Promise((resolve, reject) => {
-            const result = spawn(
-                "ffmpeg",
-                ["-i", videoPath, "-q:a", "0", "-map", "a", audioPath, "-y"],
-                {
-                    env: {
-                        PATH: `${FFMPEG_BIN_DIR}${PATH_SEPARATOR}${FFPROBE_BIN_DIR}`,
-                    },
-                }
-            );
-
-            logSpawn(result, mainLogger.debug, "FFmpeg extractAudioFromVideo");
+            logSpawn(result, mainLogger, "FFmpeg split");
 
             result.on("close", (code) => {
                 resolve();
@@ -117,7 +117,7 @@ class FFmpeg {
                 }
             );
 
-            logSpawn(result, mainLogger.debug, "FFmpeg merge");
+            logSpawn(result, mainLogger, "FFmpeg merge");
 
             result.on("close", (code) => {
                 resolve();
@@ -151,7 +151,7 @@ class FFmpeg {
                 }
             );
 
-            logSpawn(result, mainLogger.debug, "FFmpeg addAudioToVideo");
+            logSpawn(result, mainLogger, "FFmpeg addAudioToVideo");
 
             result.on("close", (code) => {
                 // fs.rmSync(videoPath);

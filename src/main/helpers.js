@@ -21,15 +21,16 @@ function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
 
-function logSpawn(process, loggerFunc, prefix = "") {
+function logSpawn(process, logger, prefix = "") {
+    // I didn't manage to pass the log level as a parameter
     process.stdout.on("data", (data) => {
-        loggerFunc(`${prefix} stdout: ${data}`);
+        logger.debug(`${prefix} stdout: ${data}`);
     });
     process.stderr.on("data", (data) => {
-        loggerFunc(`${prefix} stderr: ${data}`);
+        logger.debug(`${prefix} stderr: ${data}`);
     });
     process.on("close", (code) => {
-        loggerFunc(`child process ${prefix} exited with code ${code}`);
+        logger.debug(`child process ${prefix} exited with code ${code}`);
     });
 }
 

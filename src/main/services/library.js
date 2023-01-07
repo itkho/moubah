@@ -1,4 +1,5 @@
 const path = require("path");
+const fs = require("fs");
 
 const { AUDIO_CHUNK_QUEUE_LOW } = require("../const");
 const AudioModel = require("../model/audio");
