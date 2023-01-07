@@ -33,6 +33,8 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 
 </details>
 
+</br>
+
 **Download the app** : 🍏 ~~Apple~~ | 🪟 ~~Windows~~ | 🐧 ~~Linux~~
 
 </br>
@@ -134,6 +136,7 @@ npm run make
 -   [x] 🆕 Don't allow to download the same video twice
 -   [x] 🆕 Add more infos about the video on the search view
 -   [x] 🆕 Add a refresh button to the library view
+-   [x] 🪲 Latency on UI on FFmpeg calls (splitting audio + merge)
 -   [ ] 🪲 On mac: quit when the close button is clicked
 -   [ ] 🆕 Improve UI/UX
 -   [ ] 🪲 First installation/run is very long -> make a progress bar or something
@@ -145,13 +148,12 @@ npm run make
 -   [ ] 🆕 Add e2e tests
 -   [ ] 🆕 improve logs (time + separate music-remover logs from moubah.log) and add several level of logs (like logging in Python)
 -   [ ] 🆕 Setup CI/CD
--   [x] 🪲 Latency on UI on FFmpeg calls (splitting audio + merge)
 -   [ ] 🪲 Audio result isn't smooth, find why...
 -   [ ] 🆕 Add an uninstaller
 -   [ ] 🆕 Notification system on new release
 -   [ ] 🆕 Preview videos (without sound) on hover
 -   [ ] 🆕 Be able to see "directly" the video (and don't have to wait until the whole video is processed)
 -   [ ] 🆕 Be able to open Moubah from YouTube (see [here](https://docs.freetubeapp.io/usage/browser-extension/))
--   [ ] 🆕 Add an ML filter on thumbnail that blur women
+-   [ ] 🆕 Add an ML filter on thumbnail that blur thumbnails with women
 
 > 🪲 Fix bug | 🆕 Add new feature | 🧼 Refactoring code
