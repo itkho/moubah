@@ -93,7 +93,7 @@ git clone git@github.com:karim-bouchez/moubah.git --recursive
 Install npm packages:
 
 ```bash
-npm install -–save-dev
+npm install
 ```
 
 </br>
