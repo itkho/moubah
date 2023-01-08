@@ -35,7 +35,9 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 
 </br>
 
-![Alt Text](moubah-example.gif)
+<p align="center">
+  <img src="moubah-example.gif" alt="Example of Moubah usage" />
+</p>
 
 **Download the app** : 🍏 ~~Apple~~ | 🪟 ~~Windows~~ | 🐧 ~~Linux~~
 
@@ -58,7 +60,9 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 
 ### 🗺 Architecture diagram
 
-![Moubah architecture diagram](./moubah-architecture.drawio.svg)
+<p align="center">
+  <img src="moubah-architecture.drawio.svg" alt="Moubah architecture diagram" />
+</p>
 
 </br>
 
