@@ -35,6 +35,8 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 
 </br>
 
+![Alt Text](moubah-example.gif)
+
 **Download the app** : 🍏 ~~Apple~~ | 🪟 ~~Windows~~ | 🐧 ~~Linux~~
 
 </br>
