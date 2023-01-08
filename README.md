@@ -133,16 +133,6 @@ npm run make
 
 ## 🎯 To-do list
 
--   [x] 🧼 Use ffmpeg-static for binaries
--   [x] 🆕 Add a "delete" button
--   [x] 🆕 Add a "log" button (that also open dev console)
--   [x] 🆕 Add a "github" button
--   [x] 🆕 Add a "music remover server" availability status
--   [x] 🆕 Run "music-remover" automatically from "moubah" (has to be compatible on Windows/Mac/Mac M1)
--   [x] 🆕 Don't allow to download the same video twice
--   [x] 🆕 Add more infos about the video on the search view
--   [x] 🆕 Add a refresh button to the library view
--   [x] 🪲 Latency on UI on FFmpeg calls (splitting audio + merge)
 -   [ ] 🪲 On mac: quit when the close button is clicked
 -   [ ] 🆕 Improve UI/UX
 -   [ ] 🪲 First installation/run is very long -> make a progress bar or something
