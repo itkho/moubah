@@ -1,0 +1,89 @@
+{
+    "name": "moubah",
+    "version": "0.1.0",
+    "license": "AGPL-3",
+    "main": "main/out/index.js",
+    "author": {
+        "name": "Karim Bouchez",
+        "email": "bouchez.karim@gmail.com"
+    },
+    "description": "Desktop application to play YouTube videos without background music",
+    "repository": {
+        "url": "https://github.com/karim-bouchez/moubah"
+    },
+    "keywords": [],
+    "productName": "Moubah",
+    "scripts": {
+        "dev": "concurrently \"npm run dev:vite\" \" npm run dev:electron\"",
+        "dev:vite": "vite",
+        "dev:electron": "npm run build:electron && electron .",
+        "build": "npm run build:vite && npm run build:electron",
+        "build:vite": "vite build",
+        "build:electron": "tsc -p main",
+        "dist": "npm run build && electron-builder",
+        "pack": "npm run build && electron-builder --dir",
+        "clean": "rimraf dist main/out renderer/out",
+        "type-check": "tsc",
+        "lint": "eslint . --ext js,jsx,ts,tsx",
+        "lint:fix": "eslint . --ext js,jsx,ts,tsx --fix"
+    },
+    "dependencies": {
+        "@grpc/grpc-js": "^1.8.2",
+        "@types/yt-search": "^2.3.2",
+        "@vitejs/plugin-react": "^1.2.0",
+        "detect-port": "^1.5.1",
+        "dotenv": "^16.0.3",
+        "electron-is-dev": "^2.0.0",
+        "electron-squirrel-startup": "^1.0.0",
+        "fastq": "^1.14.0",
+        "ffmpeg-static": "^5.1.0",
+        "ffprobe-static": "^3.1.0",
+        "fs-jetpack": "^5.1.0",
+        "google-protobuf": "^3.21.2",
+        "image-downloader": "^4.3.0",
+        "pino": "^8.8.0",
+        "pino-pretty": "^9.1.1",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "tree-kill": "^1.2.2",
+        "video.js": "^7.20.3",
+        "vite": "^2.8.6",
+        "yt-search": "^2.10.3",
+        "ytdl-core": "^4.11.2"
+    },
+    "devDependencies": {
+        "@types/google-protobuf": "^3.15.6",
+        "@types/node": "^17.0.22",
+        "@types/react": "^17.0.41",
+        "@types/react-dom": "^17.0.14",
+        "@typescript-eslint/eslint-plugin": "5.16.0",
+        "@typescript-eslint/parser": "5.16.0",
+        "autoprefixer": "^10.4.4",
+        "concurrently": "^7.0.0",
+        "electron": "^17.1.2",
+        "electron-builder": "^22.14.13",
+        "eslint": "8.11.0",
+        "eslint-config-airbnb": "19.0.4",
+        "eslint-config-prettier": "8.5.0",
+        "eslint-plugin-import": "^2.25.4",
+        "eslint-plugin-jsx-a11y": "^6.5.1",
+        "eslint-plugin-prettier": "4.0.0",
+        "eslint-plugin-react": "^7.29.4",
+        "grpc-tools": "^1.12.3",
+        "postcss": "^8.4.12",
+        "prettier": "2.8.1",
+        "tailwindcss": "^3.0.23",
+        "ts-protoc-gen": "^0.15.0",
+        "typescript": "^4.6.2"
+    },
+    "build": {
+        "asar": true,
+        "files": [
+            "main/out",
+            "renderer/out"
+        ],
+        "directories": {
+            "buildResources": "resources"
+        }
+    }
+}

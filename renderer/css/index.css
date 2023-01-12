@@ -1,0 +1,310 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+:root {
+    --highlight-color: #e63946;
+    --background-color: #fffcf2;
+    --gray-1-color: #ccc5b9;
+    --gray-2-color: #403d39;
+    --gray-3-color: #252422;
+    --ok-color: #606c38;
+    --ko-color: #e63946;
+}
+
+html,
+body {
+    background: var(--background-color);
+    font-family: "Open Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+a {
+    all: unset;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.view {
+    display: none;
+    flex-direction: column;
+    margin: 30px 0px;
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+#middle {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+#footer {
+    background-color: var(--gray-3-color);
+    color: var(--gray-1-color);
+    font-size: small;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 5px;
+    align-items: baseline;
+}
+
+.footer-item:first-child {
+    flex-grow: 1;
+}
+
+.footer-item:first-child:hover {
+    flex-grow: 1;
+    color: var(--gray-1-color);
+    cursor: default;
+}
+
+.footer-item {
+    margin: 0px 8px;
+}
+
+.footer-item:hover {
+    color: var(--background-color);
+    cursor: pointer;
+}
+
+.footer-icon {
+    margin: 0px 3px;
+}
+
+/* SIDE BAR */
+
+/* The sidebar menu */
+.sidenav {
+    width: 160px;
+    /* Set the width of the sidebar */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    /* Stay at the top */
+    left: 0;
+    background-color: var(--gray-2-color);
+    /* Black */
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* The navigation menu links */
+.sidenav div {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    color: var(--gray-1-color);
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav div:hover {
+    color: var(--background-color);
+}
+
+/* Style page content */
+.main {
+    height: 100%;
+    padding: 0px 10px;
+    flex-grow: 1;
+    display: flex;
+}
+
+/* SEARCH BAR */
+
+#search {
+    width: 40%;
+    left: 50%;
+    transform: translate(-50%);
+    position: relative;
+    display: flex;
+}
+
+#search-view {
+    margin: 0px;
+}
+
+#search-bar {
+    width: 100%;
+    border: 3px solid var(--gray-2-color);
+    border-right: none;
+    margin-top: 30px;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: var(--gray-2-color);
+    background: var(--gray-1-color);
+    font-weight: bold;
+}
+
+/* #searchBar:focus{
+  color: var(--gray-3-color);
+} */
+
+#search-button {
+    width: 40px;
+    height: 36px;
+    margin-top: 30px;
+    border: 1px solid var(--gray-2-color);
+    background: var(--gray-2-color);
+    text-align: center;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.fa-search {
+    color: var(--background-color);
+    /* color: var(--highlight-color); */
+}
+
+/* VIDEO */
+
+#video-wrapper {
+    display: flex;
+    align-items: center;
+    margin: 30px 0px;
+}
+
+.arrow {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    display: none;
+    cursor: pointer;
+}
+
+.fa-arrow-left {
+    color: var(--gray-1-color);
+}
+
+.fa-arrow-right {
+    color: var(--gray-2-color);
+}
+
+#video-card {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    /* align-items: center; */
+    padding: 10px;
+}
+
+#video-title {
+    margin: 5px;
+    width: 480px;
+    color: var(--gray-3-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#video-img {
+    margin: 5px;
+    height: 260px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+#music-remover-status {
+    color: var(--ko-color);
+}
+
+/* DOWNLOAD */
+
+#download-button {
+    width: 30%;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    justify-content: center;
+    background-color: var(--gray-2-color);
+    color: var(--gray-1-color);
+    font-size: 16px;
+    cursor: pointer;
+}
+#download-button:hover {
+    background-color: var(--gray-1-color);
+    color: var(--gray-2-color);
+}
+
+#download-button > span {
+    margin: 0px 10px;
+}
+
+.fa-download {
+    color: var(--highlight-color);
+}
+
+/* LIBRARY */
+
+#library-refresh {
+    color: var(--gray-2-color);
+}
+
+#library-refresh:hover {
+    color: var(--gray-3-color);
+    cursor: pointer;
+}
+
+#video-list-container {
+    position: relative;
+    /* border: 3px solid orange; */
+    flex-grow: 1;
+    /* display: flex; */
+}
+
+#video-list {
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    overflow: scroll;
+    margin: 0;
+    padding: 0;
+    /* border: 2px solid red;   */
+}
+
+#video-list > div {
+    /* border: 2px solid pink; */
+    cursor: pointer;
+}
+
+#video-list .video-title {
+    /* border: 2px solid green; */
+    flex-grow: 1;
+}
+
+#video-list .video-img {
+    width: 100px;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+}
+
+/* Contact */
+
+.email {
+    cursor: pointer;
+    color: var(--gray-2-color);
+}
+
+.email:hover {
+    color: var(--gray-3-color);
+}
