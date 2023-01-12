@@ -1,4 +1,4 @@
-import { STORAGE_DIR_PATH, DIR_SEPARATOR } from "../const";
+import { STORAGE_DIR_PATH, DIR_SEPARATOR } from "../utils/const";
 
 export default class AudioModel {
     path: string;

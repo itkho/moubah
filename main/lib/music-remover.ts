@@ -5,9 +5,9 @@ import { Empty } from "google-protobuf/google/protobuf/empty_pb";
 import { MusicRemoverClient } from "../proto/moubah_grpc_pb";
 import { AudioRequest, GenericResponse } from "../proto/moubah_pb";
 
-import { CONFIG_PATH } from "../const";
-import ChunkRequestDTO from "../../dto/chunk-request";
-import { mainLogger } from "../logger";
+import { CONFIG_PATH } from "../utils/const";
+import ChunkRequestDTO from "../dto/chunk-request";
+import { mainLogger } from "../utils/logger";
 
 const config = JSON.parse(readFileSync(CONFIG_PATH, "utf8"));
 const client = new MusicRemoverClient(

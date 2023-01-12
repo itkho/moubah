@@ -1,7 +1,7 @@
 import fastq from "fastq";
 import ChunkRequestDTO from "../dto/chunk-request";
-import { QueueName } from "./enum";
-import { mainLogger } from "./logger";
+import { QueueName } from "../utils/enum";
+import { mainLogger } from "../utils/logger";
 
 let queue: fastq.queue;
 

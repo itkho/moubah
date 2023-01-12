@@ -5,9 +5,9 @@ import {
     FFPROBE_BIN_DIR,
     TEMP_PATH,
     PATH_SEPARATOR,
-} from "../const";
+} from "../utils/const";
 import fs from "fs";
-import { logSpawn, mainLogger } from "../logger";
+import { logSpawn, mainLogger } from "../utils/logger";
 
 export function extractAudioFromVideo(videoPath: string, audioPath: string) {
     return new Promise<void>((resolve, _reject) => {

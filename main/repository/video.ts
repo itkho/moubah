@@ -4,7 +4,7 @@ import path from "path";
 import download from "image-downloader";
 
 import VideoModel from "../model/video.js";
-import { STORAGE_DIR_PATH } from "../const.js";
+import { STORAGE_DIR_PATH } from "../utils/const.js";
 
 export async function getVideoById(id: string) {
     const videoPath = path.join(STORAGE_DIR_PATH, id);

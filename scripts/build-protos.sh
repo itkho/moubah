@@ -5,7 +5,7 @@ PROTOC_GEN_TS_PATH="./node_modules/.bin/protoc-gen-ts"
 PROTOC_GEN_GRPC_PATH="./node_modules/.bin/grpc_tools_node_protoc_plugin"
 
 IN_DIR="./music-remover/src/protobuf"
-OUT_DIR="./main/main/proto"
+OUT_DIR="./main/proto"
 mkdir -p ${OUT_DIR}
 
 $PROTOC \

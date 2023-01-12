@@ -4,12 +4,12 @@ import fs from "fs";
 import AudioModel from "../model/audio";
 import { getVideoById, getVideosTodo } from "../repository/video";
 import VideoService from "./video";
-import ChunkRequestDTO from "../../dto/chunk-request";
-import { get as getMainWindow } from "../../main-window";
-import { pushToQueue, addWorkerToQueue } from "../queue";
-import { mainLogger } from "../logger";
+import ChunkRequestDTO from "../dto/chunk-request";
+import { get as getMainWindow } from "../main-window";
+import { pushToQueue, addWorkerToQueue } from "../lib/queue";
+import { mainLogger } from "../utils/logger";
 import { removeMusic } from "../lib/music-remover";
-import { QueueName } from "../enum";
+import { QueueName } from "../utils/enum";
 
 export async function initQueue() {
     addWorkerToQueue(QueueName.LowPriorityAudioChunks, removeMusicFromChunk);

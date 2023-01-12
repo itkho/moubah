@@ -1,6 +1,6 @@
 import { BrowserWindow, app, ipcMain, IpcMainEvent } from "electron";
 import { create as createMainWindow } from "./main-window";
-import { setUp, tearDown } from "./main/setup";
+import { setUp, tearDown } from "./setup";
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

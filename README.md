@@ -133,14 +133,15 @@ npm run make
 
 ## 🎯 To-do list
 
--   [ ] 🪲 On mac: quit when the close button is clicked
--   [ ] 🆕 Improve UI/UX
--   [ ] 🪲 First installation/run is very long -> make a progress bar or something
--   [ ] 🆕 Support multi-languages (at least french and english)
--   [ ] 🧼 Use Hexagonal architecture
 -   [ ] 🧼 Use TS instead of JS
 -   [ ] 🧼 Use React framework
 -   [ ] 🧼 Use tailwind css
+-   [ ] 🧼 Use absolute path (instead of relative ones)
+-   [ ] 🪲 On mac: quit when the close button is clicked
+-   [ ] 🧼 Use Hexagonal architecture
+-   [ ] 🆕 Improve UI/UX
+-   [ ] 🪲 First installation/run is very long -> make a progress bar or something
+-   [ ] 🆕 Support multi-languages (at least french and english)
 -   [ ] 🆕 Add e2e tests
 -   [ ] 🆕 improve logs (time + separate music-remover logs from moubah.log) and add several level of logs (like logging in Python)
 -   [ ] 🆕 Setup CI/CD

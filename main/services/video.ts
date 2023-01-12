@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
 import ytdl from "ytdl-core";
-import { STORAGE_DIR_PATH } from "../const";
-import { QueueName, VideoStatus } from "../enum";
+import { STORAGE_DIR_PATH } from "../utils/const";
+import { QueueName, VideoStatus } from "../utils/enum";
 import {
     addAudioToVideo,
     convertAudioToMono,
@@ -11,9 +11,9 @@ import {
 } from "../lib/ffmpeg";
 import VideoModel from "../model/video";
 import { save } from "../repository/video";
-import ChunkRequestDTO from "../../dto/chunk-request";
-import { pushToQueue } from "../queue";
-import { mainLogger } from "../logger";
+import ChunkRequestDTO from "../dto/chunk-request";
+import { pushToQueue } from "../lib/queue";
+import { mainLogger } from "../utils/logger";
 
 // TODO: inherit from AbstractInstanceService
 // TODO: add child YtVideoService for logic specific to Yt (to facilitate the futur implementation of FileVideoService)

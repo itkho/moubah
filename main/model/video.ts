@@ -1,11 +1,11 @@
 import path from "path";
 import fs from "fs";
-import { STORAGE_DIR_PATH } from "../const.js";
+import { STORAGE_DIR_PATH } from "../utils/const.js";
 
-import { VideoStatus } from "../enum.js";
+import { VideoStatus } from "../utils/enum.js";
 import AudioModel from "./audio.js";
-import { createPathIfDoesntExists } from "../helpers.js";
-import VideoDTO from "../../dto/video.js";
+import { createPathIfDoesntExists } from "../utils/helpers.js";
+import VideoDTO from "../dto/video.js";
 
 export default class VideoModel {
     id: string;

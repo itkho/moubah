@@ -13,11 +13,11 @@ import {
     PATH_SEPARATOR,
     CONFIG_PATH,
     LOGS_DIR_PATH,
-} from "./const";
+} from "./utils/const";
 import { ping as pingMusicRemover, getProcessId } from "./lib/music-remover";
-import { MusicRemoverStatus } from "./enum";
-import { get as getMainWindow } from "../main-window";
-import { mainLogger, logLevel } from "./logger";
+import { MusicRemoverStatus } from "./utils/enum";
+import { get as getMainWindow } from "./main-window";
+import { mainLogger, logLevel } from "./utils/logger";
 import path from "path";
 import { initQueue } from "./services/library";
 const config = require(CONFIG_PATH);

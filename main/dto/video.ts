@@ -1,6 +1,6 @@
 // TODO: Doesn't seem possible to import it in ES6 module (renderer process)
 
-import { VideoStatus } from "../main/enum";
+import { VideoStatus } from "../utils/enum";
 
 // See with TypeScript if it's not better?
 export default class VideoDTO {

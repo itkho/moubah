@@ -4,9 +4,9 @@ import { getVideoById, getAllVideos, remove } from "./repository/video";
 import { search } from "./lib/youtube";
 import VideoService from "./services/video";
 import { initQueue } from "./services/library";
-import { toogleDevTools } from "../main-window";
-import { openLogsInFileExplorer } from "./helpers";
-import { rendererLogger } from "./logger";
+import { toogleDevTools } from "./main-window";
+import { openLogsInFileExplorer } from "./utils/helpers";
+import { rendererLogger } from "./utils/logger";
 
 export default function initIpcHandlers() {
     ipcMain.handle("youtube:search", (_event, query) => {
