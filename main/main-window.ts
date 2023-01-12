@@ -1,6 +1,6 @@
 import { join } from "path";
 import isDev from "electron-is-dev";
-import { BrowserWindow, shell } from "electron";
+import { app, BrowserWindow, shell } from "electron";
 
 let mainWindow: BrowserWindow;
 
@@ -20,15 +20,15 @@ export function create() {
         const port = process.env.PORT || 3000;
         mainWindow?.loadURL(`http://localhost:${port}`);
     } else {
-        mainWindow?.loadFile(join(__dirname, "../renderer/out/index.html"));
+        mainWindow?.loadFile(join(app.getAppPath(), "renderer/out/index.html"));
     }
-    // Open URLs for anchor with target="_blank" in a navigator (not in Electon)
+
+    // Open URLs from anchor with target="_blank" in a navigator, not in the Electon app
     mainWindow.webContents.setWindowOpenHandler(({ url }) => {
         shell.openExternal(url);
         return { action: "deny" };
     });
 
-    mainWindow.loadFile(join(__dirname, "renderer/index.html"));
     return mainWindow;
 }
 
