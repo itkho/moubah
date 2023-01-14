@@ -13,15 +13,15 @@ export default function App() {
             <div className="w-screen h-screen flex flex-col">
                 <ViewProvider>
                     <div className="flex-grow flex">
-                        <div className="basis-48 bg-green-400">
+                        <div className="basis-48">
                             <NavBar />
                         </div>
 
-                        <div className="flex-grow bg-blue-400">
+                        <div className="flex-grow">
                             <MainView />
                         </div>
                     </div>
-                    <div className="basis-1 bg-red-600">
+                    <div className="basis-1">
                         <Footer />
                     </div>
                 </ViewProvider>

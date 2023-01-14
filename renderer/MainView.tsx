@@ -31,11 +31,11 @@ export default function MainView() {
     }
 
     return (
-        <>
+        <div className="w-full h-full bg-background text-gray-3">
             <SearchView hidden={seachHidden} />
             <LibraryView hidden={libraryHidden} />
             <PlayerView hidden={playerHidden} />
             <ContactView hidden={contactHidden} />
-        </>
+        </div>
     );
 }
