@@ -10,7 +10,7 @@ export default function App() {
 
     return (
         <>
-            <div className="w-screen h-screen flex flex-col">
+            <div className="w-screen h-screen flex flex-col bg-background text-gray-3">
                 <ViewProvider>
                     <div className="flex-grow flex">
                         <div className="basis-48">

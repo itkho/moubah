@@ -31,7 +31,7 @@ export default function MainView() {
     }
 
     return (
-        <div className="w-full h-full bg-background text-gray-3">
+        <div className="w-full h-full">
             <SearchView hidden={seachHidden} />
             <LibraryView hidden={libraryHidden} />
             <PlayerView hidden={playerHidden} />
