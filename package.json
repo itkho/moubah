@@ -14,7 +14,7 @@
     "keywords": [],
     "productName": "Moubah",
     "scripts": {
-        "dev": "concurrently \"npm run dev:renderer\" \" npm run dev:main\"",
+        "dev": "cross-env PINO_LOG_LEVEL=debug NODE_ENV=development concurrently \"npm run dev:renderer\" \" npm run dev:main\"",
         "dev:renderer": "npm run build:renderer && vite",
         "dev:main": "npm run build:main && electron .",
         "build": "npm run build:renderer && npm run build:main",
@@ -29,6 +29,7 @@
     },
     "dependencies": {
         "@grpc/grpc-js": "^1.8.2",
+        "@heroicons/react": "^2.0.13",
         "@types/yt-search": "^2.3.2",
         "@vitejs/plugin-react": "^1.2.0",
         "detect-port": "^1.5.1",
@@ -60,6 +61,7 @@
         "@typescript-eslint/parser": "5.16.0",
         "autoprefixer": "^10.4.4",
         "concurrently": "^7.0.0",
+        "cross-env": "^7.0.3",
         "electron": "^17.1.2",
         "electron-builder": "^22.14.13",
         "eslint": "8.11.0",

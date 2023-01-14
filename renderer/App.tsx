@@ -1,93 +1,31 @@
-import React, { useEffect, useState } from "react";
-import AppBar from "./AppBar";
+import React from "react";
+import Footer from "./Footer";
+import MainView from "./MainView";
+import NavBar from "./NavBar";
 
-function App() {
-    // console.log(window.ipcRenderer);
+import { ViewProvider } from "./ViewContext";
 
-    const [isOpen, setOpen] = useState(false);
-    const [isSent, setSent] = useState(false);
-    const [fromMain, setFromMain] = useState<string | null>(null);
-
-    const handleToggle = () => {
-        if (isOpen) {
-            setOpen(false);
-            setSent(false);
-        } else {
-            setOpen(true);
-            setFromMain(null);
-        }
-    };
-    const sendMessageToElectron = () => {
-        if (window.videoApi) {
-            window.videoApi.sendMessage("Hello I'm from React World");
-        } else {
-            setFromMain(
-                "You are in a Browser, so no Electron functions are available"
-            );
-        }
-        setSent(true);
-    };
-
-    useEffect(() => {
-        if (isSent && window.videoApi)
-            window.videoApi.on("message", (message: string) => {
-                setFromMain(message);
-            });
-    }, [fromMain, isSent]);
+export default function App() {
+    console.log("App mounted!");
 
     return (
-        <div className="flex flex-col h-screen">
-            {window.videoApi && (
-                <div className="flex-none">
-                    <AppBar />
-                </div>
-            )}
-            <div className="flex-auto">
-                <div className=" flex flex-col justify-center items-center h-full bg-gray-800 space-y-4">
-                    <h1 className="text-2xl text-gray-200">
-                        Vite + React + Typescript + Electron + Tailwind
-                    </h1>
-                    <button
-                        className="bg-yellow-400 py-2 px-4 rounded focus:outline-none shadow hover:bg-yellow-200"
-                        onClick={handleToggle}
-                    >
-                        Click Me
-                    </button>
-                    {isOpen && (
-                        <div className="flex flex-col space-y-4 items-center">
-                            <div className="flex space-x-3">
-                                <h1 className="text-xl text-gray-50">
-                                    💝 Welcome 💝, now send a message to the
-                                    Main 📩📩
-                                </h1>
-                                <button
-                                    onClick={sendMessageToElectron}
-                                    className=" bg-green-400 rounded px-4 py-0 focus:outline-none hover:bg-green-300"
-                                >
-                                    Send
-                                </button>
-                            </div>
-                            {isSent && (
-                                <div>
-                                    <h4 className=" text-green-500">
-                                        Message sent!!
-                                    </h4>
-                                </div>
-                            )}
-                            {fromMain && (
-                                <div>
-                                    {" "}
-                                    <h4 className=" text-yellow-200">
-                                        {fromMain}
-                                    </h4>
-                                </div>
-                            )}
+        <>
+            <div className="w-screen h-screen flex flex-col">
+                <ViewProvider>
+                    <div className="flex-grow flex">
+                        <div className="basis-48 bg-green-400">
+                            <NavBar />
                         </div>
-                    )}
-                </div>
+
+                        <div className="flex-grow bg-blue-400">
+                            <MainView />
+                        </div>
+                    </div>
+                    <div className="basis-1 bg-red-600">
+                        <Footer />
+                    </div>
+                </ViewProvider>
             </div>
-        </div>
+        </>
     );
 }
-
-export default App;

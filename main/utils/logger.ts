@@ -8,12 +8,13 @@ const MAIN_LOG_PATH = path.join(LOGS_DIR_PATH, "main-process.log");
 const RENDERER_LOG_PATH = path.join(LOGS_DIR_PATH, "renderer-process.log");
 
 export const logLevel = process.env.PINO_LOG_LEVEL || "info";
-// A logLevel below "info" doesn't work if we don't set the level to the minimum here:
-// const logLevelMin = "debug";
 
-const mainStreams = [
+// A logLevel below "info" doesn't work if we don't set the level to the minimum here:
+const logLevelMin = "debug";
+
+const mainStreams: any = [
     {
-        // level: logLevelMin,
+        level: logLevelMin,
         stream: pretty({
             colorize: true,
             destination: 1, // stdout
@@ -22,7 +23,7 @@ const mainStreams = [
         }),
     },
     {
-        // level: logLevelMin,
+        level: logLevelMin,
         stream: pretty({
             colorize: false,
             destination: MAIN_LOG_PATH,
@@ -37,9 +38,9 @@ export const mainLogger = pino(
     pino.multistream(mainStreams)
 );
 
-const rendererStreams = [
+const rendererStreams: any = [
     {
-        // level: logLevelMin,
+        level: logLevelMin,
         stream: pretty({
             colorize: true,
             destination: 1, // stdout
@@ -48,7 +49,7 @@ const rendererStreams = [
         }),
     },
     {
-        // level: logLevelMin,
+        level: logLevelMin,
         stream: pretty({
             colorize: false,
             destination: RENDERER_LOG_PATH,

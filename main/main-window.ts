@@ -9,7 +9,7 @@ export function create() {
         width: 800,
         height: 700,
         webPreferences: {
-            nodeIntegration: true,
+            nodeIntegration: false,
             contextIsolation: true,
             preload: join(__dirname, "preload.js"),
         },

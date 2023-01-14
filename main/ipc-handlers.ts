@@ -6,11 +6,13 @@ import VideoService from "./services/video";
 import { initQueue } from "./services/library";
 import { toogleDevTools } from "./main-window";
 import { openLogsInFileExplorer } from "./utils/helpers";
-import { rendererLogger } from "./utils/logger";
+import { mainLogger, rendererLogger } from "./utils/logger";
 
 export default function initIpcHandlers() {
-    ipcMain.handle("youtube:search", (_event, query) => {
-        const res = search(query);
+    ipcMain.handle("youtube:search", async (_event, query) => {
+        mainLogger.debug(`Youtube search for: ${query}`);
+        const res: any = await search(query);
+        mainLogger.debug(`Number Youtube result: ${res.length}`);
         return res;
     });
 
