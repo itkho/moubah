@@ -1,4 +1,6 @@
 import { ipcRenderer, contextBridge } from "electron";
+import VideoDTO from "./dto/video";
+import VideoResultDTO from "./dto/video-result";
 
 declare global {
     interface Window {
@@ -10,19 +12,21 @@ declare global {
 
 const videoApi = {
     // Process --> Main
-    getYoutubeResult: (query: string) =>
+    getYoutubeResult: (query: string): Promise<VideoResultDTO[]> =>
         ipcRenderer.invoke("youtube:search", query),
-    sendToDownload: (videoId: string) =>
+    sendToDownload: (videoId: string): Promise<void> =>
         ipcRenderer.invoke("video:sendToDownload", videoId),
-    refresh: () => ipcRenderer.invoke("video:refresh"),
-    delete: (videoId: string) => ipcRenderer.invoke("video:delete", videoId),
-    getById: (videoId: string) => ipcRenderer.invoke("video:get", videoId),
-    getAll: async () => ipcRenderer.invoke("video:getAll"),
+    refresh: (): Promise<void> => ipcRenderer.invoke("video:refresh"),
+    delete: (videoId: string): Promise<void> =>
+        ipcRenderer.invoke("video:delete", videoId),
+    getById: (videoId: string): Promise<VideoDTO> =>
+        ipcRenderer.invoke("video:get", videoId),
+    getAll: async (): Promise<VideoDTO[]> => ipcRenderer.invoke("video:getAll"),
 
     // Main --> Process
-    // TODO: check the typing here
-    handleVideoUpdatedEvent: (callback: (data: any) => void) =>
-        ipcRenderer.on("video:updated", callback),
+    handleVideoUpdatedEvent: (
+        callback: (event: any, video: VideoDTO) => void
+    ) => ipcRenderer.on("video:updated", callback),
 
     /**
      * Here you can expose functions to the renderer process
@@ -56,9 +60,9 @@ const videoApi = {
 
 const musicRemoverApi = {
     // Main --> Process
-    // TODO: check the typing here
-    handleStatusUpdatedEvent: (callback: (data: any) => void) =>
-        ipcRenderer.on("music-remover:status:updated", callback),
+    handleStatusUpdatedEvent: (
+        callback: (event: any, status: string) => void
+    ) => ipcRenderer.on("music-remover:status:updated", callback),
 };
 
 const mainApi = {

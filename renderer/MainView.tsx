@@ -8,7 +8,7 @@ import SearchView from "./SearchView";
 export default function MainView() {
     console.log("MainView mounted!");
 
-    const view = useView();
+    const { view } = useView();
 
     let seachHidden = true;
     let libraryHidden = true;

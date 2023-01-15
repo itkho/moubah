@@ -5,11 +5,11 @@ import {
     PlayCircleIcon,
     ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/solid";
-import { useViewUpdate } from "./ViewContext";
+import { useView } from "./ViewContext";
 
 export default function NavBar() {
     console.log("NavBar mounted!");
-    const setView = useViewUpdate();
+    const { setView } = useView();
 
     return (
         <div className="w-full h-full bg-gray-2 text-gray-1">

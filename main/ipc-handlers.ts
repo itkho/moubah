@@ -7,14 +7,18 @@ import { initQueue } from "./services/library";
 import { toogleDevTools } from "./main-window";
 import { openLogsInFileExplorer } from "./utils/helpers";
 import { mainLogger, rendererLogger } from "./utils/logger";
+import VideoResultDTO from "./dto/video-result";
 
 export default function initIpcHandlers() {
-    ipcMain.handle("youtube:search", async (_event, query) => {
-        mainLogger.debug(`Youtube search for: ${query}`);
-        const res: any = await search(query);
-        mainLogger.debug(`Number Youtube result: ${res.length}`);
-        return res;
-    });
+    ipcMain.handle(
+        "youtube:search",
+        async (_event, query): Promise<VideoResultDTO[]> => {
+            mainLogger.debug(`Youtube search for: ${query}`);
+            const res: any = await search(query);
+            mainLogger.debug(`Number Youtube result: ${res.length}`);
+            return res;
+        }
+    );
 
     ipcMain.handle("video:sendToDownload", async (_event, videoId) => {
         const videoService = await VideoService.createFromYtId(videoId);
