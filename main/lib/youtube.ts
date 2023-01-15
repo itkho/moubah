@@ -6,14 +6,10 @@ export async function search(query: string) {
     const res = await ytSearch(query);
     const videoResults = res.videos.map(
         (video) =>
-            new VideoResultDTO(
-                video.videoId,
-                video.title,
-                video.thumbnail,
-                video.timestamp,
-                video.views,
-                video.author
-            )
+            new VideoResultDTO({
+                id: video.videoId,
+                ...video,
+            })
     );
     return videoResults;
 }

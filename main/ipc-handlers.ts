@@ -16,6 +16,10 @@ export default function initIpcHandlers() {
             mainLogger.debug(`Youtube search for: ${query}`);
             const res: any = await search(query);
             mainLogger.debug(`Number Youtube result: ${res.length}`);
+            mainLogger.debug(`typeof: ${typeof res[0]}`);
+            mainLogger.debug(
+                `instanceof VideoResultDTO: ${res[0] instanceof VideoResultDTO}`
+            );
             return res;
         }
     );

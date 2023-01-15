@@ -6,20 +6,22 @@ import {
 } from "@heroicons/react/24/solid";
 import VideoResultDTO from "../main/dto/video-result";
 import { abbrNum } from "./utils";
+import { useLocalVideo } from "./context/LocalVideoContext";
 
 export default function SearchView({ hidden }: { hidden: boolean }) {
     console.log("SearchView mounted!");
+
+    const { localVideoIds, addLocalVideos } = useLocalVideo();
 
     const [videoIndex, setVideoIndex] = useState(0);
     const [videos, setVideos] = useState<VideoResultDTO[]>([]);
     const [query, setQuery] = useState("");
     // const input = useRef<HTMLInputElement>(null);
 
-    console.log({ videos });
-
     async function search() {
-        console.log(query);
-        const videos = await window.videoApi.getYoutubeResult(query);
+        const videos = (await window.videoApi.getYoutubeResult(query)).map(
+            (video) => new VideoResultDTO(video)
+        );
         setVideos(videos);
     }
 
@@ -41,8 +43,8 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
 
     function removeMusic() {
         const video = videos[videoIndex];
-        window.videoApi.sendToDownload(video.id);
-        // setLocalVideos()
+        // window.videoApi.sendToDownload(video.id);
+        addLocalVideos(video);
     }
 
     return (
@@ -116,10 +118,12 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                                 <button
                                     onClick={removeMusic}
                                     className={`my-10 p-3 bg-gray-1 hover:bg-gray-2 hover:text-gray-1 rounded ${
-                                        null
-                                        // videos[videoIndex] in localVideos
-                                        //     ? "line-through pointer-events-none"
-                                        //     : ""
+                                        // null
+                                        localVideoIds.includes(
+                                            videos[videoIndex].id
+                                        )
+                                            ? "line-through pointer-events-none"
+                                            : ""
                                     }`}
                                 >
                                     🔇 Remove background music

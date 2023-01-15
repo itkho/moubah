@@ -3,7 +3,8 @@ import Footer from "./Footer";
 import MainView from "./MainView";
 import NavBar from "./NavBar";
 
-import { ViewProvider } from "./ViewContext";
+import { ViewProvider } from "./context/ViewContext";
+import { LocalVideoProvider } from "./context/LocalVideoContext";
 
 export default function App() {
     console.log("App mounted!");
@@ -18,7 +19,9 @@ export default function App() {
                         </div>
 
                         <div className="flex-grow">
-                            <MainView />
+                            <LocalVideoProvider>
+                                <MainView />
+                            </LocalVideoProvider>
                         </div>
                     </div>
                     <div className="basis-1">

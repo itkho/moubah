@@ -1,5 +1,5 @@
 import React from "react";
-import { useView } from "./ViewContext";
+import { useView } from "./context/ViewContext";
 import ContactView from "./ContactView";
 import LibraryView from "./LibraryView";
 import PlayerView from "./PlayerView";

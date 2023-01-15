@@ -104,8 +104,8 @@ export default class VideoModel {
         return new VideoDTO(
             this.id,
             this.title,
-            this.path,
             this.thumbnailUri,
+            this.path,
             this.status,
             this.progress
         );
