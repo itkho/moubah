@@ -9,6 +9,7 @@ export function create() {
         width: 800,
         height: 700,
         webPreferences: {
+            webSecurity: isDev ? false : true, // TODO: only needed on dev mode??
             nodeIntegration: false,
             contextIsolation: true,
             preload: join(__dirname, "preload.js"),

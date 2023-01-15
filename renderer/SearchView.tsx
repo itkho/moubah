@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import {
     MagnifyingGlassIcon,
     ArrowLeftIcon,
@@ -11,12 +11,11 @@ import { useLocalVideo } from "./context/LocalVideoContext";
 export default function SearchView({ hidden }: { hidden: boolean }) {
     console.log("SearchView mounted!");
 
-    const { localVideoIds, addLocalVideos } = useLocalVideo();
+    const { localVideoIds, addLocalVideo } = useLocalVideo();
 
     const [videoIndex, setVideoIndex] = useState(0);
     const [videos, setVideos] = useState<VideoResultDTO[]>([]);
     const [query, setQuery] = useState("");
-    // const input = useRef<HTMLInputElement>(null);
 
     async function search() {
         const videos = (await window.videoApi.getYoutubeResult(query)).map(
@@ -44,7 +43,7 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
     function removeMusic() {
         const video = videos[videoIndex];
         // window.videoApi.sendToDownload(video.id);
-        addLocalVideos(video);
+        addLocalVideo(video);
     }
 
     return (
@@ -53,9 +52,9 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                 <div className="h-full flex flex-col justify-between items-center">
                     <div className="flex my-10 w-1/3">
                         <input
-                            className="grow outline-none p-1 border-2 rounded-l border-gray-2 bg-gray-1"
-                            // ref={input}
+                            className="grow outline-none p-1 border-2 rounded-l border-gray-2 bg-gray-1 placeholder-gray-500"
                             value={query}
+                            placeholder="Enter a title or an URL"
                             onChange={onChange}
                             type="search"
                         />
@@ -67,12 +66,12 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                         </button>
                     </div>
 
-                    {videos.length && (
+                    {videos.length ? (
                         <>
-                            <div className="flex">
+                            <div className="flex justify-between items-center">
                                 <div>
                                     <ArrowLeftIcon
-                                        className={`h-10 ${
+                                        className={`h-10 m-20 ${
                                             videoIndex === 0
                                                 ? "text-gray-1"
                                                 : ""
@@ -80,32 +79,27 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                                         onClick={prevVideo}
                                     />
                                 </div>
-                                <div>
+                                <div className="basis-4/6">
+                                    <div className="overflow-hidden overflow-ellipsis">
+                                        Title: {videos[videoIndex].title}
+                                    </div>
+                                    <img
+                                        className="aspect-video"
+                                        src={videos[videoIndex].thumbnail}
+                                        alt="Thumbnail"
+                                    />
                                     <div>
-                                        <div>
-                                            Title: {videos[videoIndex].title}
-                                        </div>
-                                        <div>
-                                            Duration:{" "}
-                                            {videos[videoIndex].timestamp} |
-                                            Views:{" "}
-                                            {abbrNum(videos[videoIndex].views)}
-                                        </div>
-                                        <div>
-                                            Author:{" "}
-                                            {videos[videoIndex].author.name}
-                                        </div>
+                                        Duration: {videos[videoIndex].timestamp}{" "}
+                                        | Views:{" "}
+                                        {abbrNum(videos[videoIndex].views)}
                                     </div>
                                     <div>
-                                        <img
-                                            src={videos[videoIndex].thumbnail}
-                                            alt="Thumbnail"
-                                        />
+                                        Author: {videos[videoIndex].author.name}
                                     </div>
                                 </div>
                                 <div>
                                     <ArrowRightIcon
-                                        className={`h-10 ${
+                                        className={`h-10 m-20 ${
                                             videoIndex === videos.length - 1
                                                 ? "text-gray-1"
                                                 : ""
@@ -130,7 +124,7 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                                 </button>
                             </div>
                         </>
-                    )}
+                    ) : null}
                 </div>
             )}
         </>

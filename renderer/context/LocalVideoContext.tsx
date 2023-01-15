@@ -6,7 +6,8 @@ const LocalVideoContext = createContext(
     {} as {
         localVideos: VideoDTO[];
         localVideoIds: string[];
-        addLocalVideos: (video: VideoResultDTO) => void;
+        addLocalVideo: (video: VideoResultDTO) => void;
+        removeLocalVideo: (video: VideoDTO) => void;
     }
 );
 
@@ -19,21 +20,27 @@ export function LocalVideoProvider(props: { children: ReactNode }) {
 
     const localVideoIds = localVideos.map((video) => video.id);
 
-    function addLocalVideos(video: VideoResultDTO) {
-        console.log({ video });
-        console.log(video.id);
-        console.log(video.test());
-        console.log(video.toVideoDTO());
-
+    function addLocalVideo(video: VideoResultDTO) {
         setLocalVideos((currLocalVideos) => [
-            ...currLocalVideos,
             video.toVideoDTO(),
+            ...currLocalVideos,
         ]);
+    }
+
+    function removeLocalVideo(video: VideoDTO) {
+        setLocalVideos((currLocalVideos) =>
+            currLocalVideos.filter((localVideo) => localVideo.id != video.id)
+        );
     }
 
     return (
         <LocalVideoContext.Provider
-            value={{ localVideos, localVideoIds, addLocalVideos }}
+            value={{
+                localVideos,
+                localVideoIds,
+                addLocalVideo,
+                removeLocalVideo,
+            }}
         >
             {props.children}
         </LocalVideoContext.Provider>

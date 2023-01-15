@@ -101,13 +101,13 @@ export default class VideoModel {
     }
 
     toDTO() {
-        return new VideoDTO(
-            this.id,
-            this.title,
-            this.thumbnailUri,
-            this.path,
-            this.status,
-            this.progress
-        );
+        return new VideoDTO({
+            id: this.id,
+            title: this.title,
+            thumbnailUri: this.thumbnailUri,
+            videoUri: this.path,
+            status: this.status,
+            progress: this.progress,
+        });
     }
 }

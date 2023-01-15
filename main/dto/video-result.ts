@@ -29,12 +29,7 @@ export default class VideoResultDTO {
         this.author = video.author;
     }
 
-    test() {
-        console.log("TEST");
-        return "OK";
-    }
-
     toVideoDTO() {
-        return new VideoDTO(this.id, this.title, this.thumbnail);
+        return new VideoDTO({ thumbnailUri: this.thumbnail, ...this });
     }
 }

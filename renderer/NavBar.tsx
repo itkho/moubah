@@ -12,7 +12,7 @@ export default function NavBar() {
     const { setView } = useView();
 
     return (
-        <div className="w-full h-full bg-gray-2 text-gray-1">
+        <div className="basis-56 h-full bg-gray-2 text-gray-1">
             <ul className="p-8">
                 <li
                     onClick={() => setView("search")}

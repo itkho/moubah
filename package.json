@@ -79,13 +79,12 @@
         "typescript": "^4.6.2"
     },
     "build": {
-        "asar": true,
+        "asar": false,
         "files": [
             "main/out",
-            "renderer/out"
-        ],
-        "directories": {
-            "buildResources": "resources"
-        }
+            "renderer/out",
+            "config.json",
+            "music-remover"
+        ]
     }
 }

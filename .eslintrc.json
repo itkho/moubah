@@ -19,11 +19,7 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "plugins": [
-        "react",
-        "@typescript-eslint",
-        "prettier"
-    ],
+    "plugins": ["react", "@typescript-eslint", "prettier"],
     "rules": {
         // Prettier
         "prettier/prettier": "error",
@@ -39,14 +35,17 @@
         "react/button-has-type": 0,
         "react/no-children-prop": 0,
         "react/jsx-props-no-spreading": 0,
-        "react/function-component-definition": ["warn", {
-            "namedComponents": "function-declaration",
-            "unnamedComponents": "function-expression"
-        }],
+        "react/function-component-definition": [
+            "warn",
+            {
+                "namedComponents": "function-declaration",
+                "unnamedComponents": "function-expression"
+            }
+        ],
         "react/jsx-filename-extension": [
             2,
             {
-                "extensions": [".js",".jsx",".ts",".tsx"]
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
             }
         ],
         // Import
@@ -54,11 +53,11 @@
     },
     "settings": {
         "import/resolver": {
-          "node": {
-            "extensions": [".js", ".jsx", ".ts", ".tsx"]
-          }
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
         },
-        "import/core-modules": [ "electron", "electron-is-dev" ]
+        "import/core-modules": ["electron", "electron-is-dev"]
     },
-    "ignorePatterns": ["node_modules/", "dist/", "main/"]
+    "ignorePatterns": ["node_modules/", "dist/", "main/out", "renderer/out"]
 }

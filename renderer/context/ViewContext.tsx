@@ -1,9 +1,10 @@
 import React, { createContext, ReactNode, useContext, useState } from "react";
+import { View } from "../enums";
 
 const ViewContext = createContext(
     {} as {
         view: string;
-        setView: (view: string) => void;
+        setView: (view: View) => void;
     }
 );
 
@@ -12,7 +13,7 @@ export function useView() {
 }
 
 export function ViewProvider(props: { children: ReactNode }) {
-    const [view, setView] = useState("search");
+    const [view, setView] = useState(View.search);
 
     return (
         <ViewContext.Provider value={{ view, setView }}>
