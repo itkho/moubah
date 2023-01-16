@@ -36,8 +36,6 @@ export default function initIpcHandlers() {
 
     ipcMain.handle("video:getAll", async (_event) => {
         const videos = await getAllVideos();
-        console.log({ videos });
-
         return videos.map((video) => video.toDTO());
     });
 

@@ -49,9 +49,6 @@ export default class VideoModel {
     }
 
     get dir() {
-        console.log({ STORAGE_DIR_PATH });
-        console.log(this.id);
-        console.log(path.join(STORAGE_DIR_PATH, this.id));
         return createPathIfDoesntExists(path.join(STORAGE_DIR_PATH, this.id));
     }
 

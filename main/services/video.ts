@@ -37,10 +37,10 @@ export default class VideoService {
     }
 
     async download() {
+        mainLogger.info("Donwloading...");
         // TODO: add download progress (should be possible according to the doc)
         // https://www.npmjs.com/package/ytdl-core#:~:text=format%20to%20download.-,Event%3A%20progress,-number%20%2D%20Chunk%20length
         this.setStatus(VideoStatus.downloading);
-        mainLogger.info("Donwloading...");
         await this.#downloadVideo();
         mainLogger.info(
             `Video downloaded: ${fs.existsSync(this.video.videoPath)}`
