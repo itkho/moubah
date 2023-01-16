@@ -52,7 +52,7 @@ export async function updateVideoInfo(audioChunkDonePath: string) {
     const video = await getVideoById(audio.videoId);
     const videoService = new VideoService(video);
     if (video.audioChunksTodo.length === 0) {
-        videoService.processChunksDone();
+        await videoService.processChunksDone();
     }
     getMainWindow().webContents.send("video:updated", video.toDTO());
 }

@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import initIpcHandlers from "./ipc-handlers";
+
+initIpcHandlers();
 
 ReactDOM.render(
     <React.StrictMode>

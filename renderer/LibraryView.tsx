@@ -1,15 +1,25 @@
 import React, { useEffect } from "react";
+import VideoDTO from "../main/dto/video";
 import LocalVideoItem from "./components/LocalVideoItem";
 import { useLocalVideo } from "./context/LocalVideoContext";
+
+export let updateLocalVideo: (videoUpdated: VideoDTO) => void;
 
 export default function LibraryView({ hidden }: { hidden: boolean }) {
     console.log("LibraryView mounted!");
 
     const { localVideos, setLocalVideos } = useLocalVideo();
 
+    updateLocalVideo = (videoUpdated) => {
+        setLocalVideos(
+            localVideos.map((video) =>
+                video.id === videoUpdated.id ? videoUpdated : video
+            )
+        );
+    };
+
     useEffect(() => {
         window.videoApi.getAll().then((videos) => {
-            // videos;
             setLocalVideos(videos);
         });
     }, [hidden]);

@@ -7,6 +7,7 @@ import { useLocalVideo } from "../context/LocalVideoContext";
 import { usePlayer } from "../context/PlayerContext";
 import { useView } from "../context/ViewContext";
 import { View } from "../enums";
+import { VideoStatus } from "../../main/utils/enum";
 
 export default function LocalVideoItem({ video }: { video: VideoDTO }) {
     const { setView } = useView();
@@ -19,26 +20,47 @@ export default function LocalVideoItem({ video }: { video: VideoDTO }) {
     }
 
     function playVideo() {
+        if (video.status !== VideoStatus.done) return;
         updateVideo(video);
         setView(View.player);
     }
 
     return (
         <div className="flex my-4 h-28 items-center justify-between">
-            <div className="h-full flex" onClick={playVideo}>
+            <div
+                className={`h-full flex ${
+                    video.status === VideoStatus.done
+                        ? "cursor-pointer"
+                        : "cursor-not-allowed"
+                }`}
+                onClick={playVideo}
+            >
                 <img
                     className="aspect-video h-full"
                     src={cleanSrcPath(video.thumbnailUri)}
                     alt="Thumbnail"
                 />
-                <div className="grow p-3">
-                    {video.title} <br />
-                    Duration: {video.timestamp} | Views: {abbrNum(video.views!)}
-                    <br />
-                    Author: {video.author!.name}
+                <div className="grow p-2">
+                    <div className="overflow-ellipsis overflow-hidden whitespace-nowrap">
+                        {video.title}
+                    </div>
+                    <div>
+                        Duration: {video.timestamp} | Views:{" "}
+                        {abbrNum(video.views!)}
+                    </div>
+                    <div>Author: {video.author!.name}</div>
+                    <div>
+                        Status: {video.status}
+                        {video.status === VideoStatus.processing
+                            ? ` (${video.progress}%)`
+                            : ""}
+                    </div>
                 </div>
             </div>
-            <TrashIcon className="h-6 shrink-0" onClick={removeVideo} />
+            <TrashIcon
+                className="h-6 shrink-0 cursor-pointer"
+                onClick={removeVideo}
+            />
         </div>
     );
 }

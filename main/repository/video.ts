@@ -3,8 +3,10 @@ import fs from "fs";
 import path from "path";
 import download from "image-downloader";
 
+import { get as getMainWindow } from "../main-window";
 import VideoModel from "../model/video.js";
 import { STORAGE_DIR_PATH } from "../utils/const.js";
+import { mainLogger } from "../utils/logger.js";
 
 export async function getVideoById(id: string) {
     const videoPath = path.join(STORAGE_DIR_PATH, id);
@@ -12,10 +14,11 @@ export async function getVideoById(id: string) {
         throw Error(`Video ${id} not found`);
     }
     const info = jetpack.read(path.join(videoPath, "info.json"), "json");
+    const { status, ...videoInfo } = info;
     return new VideoModel({
         id: id,
-        info: info,
-        status: info.status,
+        info: videoInfo,
+        status: status,
     });
 }
 
@@ -44,9 +47,10 @@ export function save(video: VideoModel) {
     if (!fs.existsSync(video.dir)) {
         fs.mkdirSync(video.dir);
     }
+    mainLogger.debug({ status: video.status, ...video.info });
     fs.writeFile(
         path.join(video.infoPath),
-        JSON.stringify(video.info),
+        JSON.stringify({ status: video.status, ...video.info }),
         (err) => {
             if (err) throw err;
         }
@@ -57,6 +61,7 @@ export function save(video: VideoModel) {
             dest: video.thumbnailPath,
         });
     }
+    getMainWindow().webContents.send("video:updated", video.toDTO());
 }
 
 export function remove(video: VideoModel) {

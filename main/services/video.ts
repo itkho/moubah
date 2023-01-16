@@ -160,6 +160,7 @@ export default class VideoService {
     }
 
     setStatus(status: VideoStatus) {
+        mainLogger.debug(`setStatus ${status} on ${this.video.id}`);
         this.video.status = status;
         save(this.video);
     }
