@@ -15,6 +15,7 @@ export default function LocalVideoItem({ video }: { video: VideoDTO }) {
 
     function removeVideo() {
         removeLocalVideo(video);
+        window.videoApi.delete(video.id);
     }
 
     function playVideo() {
