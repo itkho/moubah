@@ -9,6 +9,7 @@ import { CONFIG_PATH } from "../utils/const";
 import ChunkRequestDTO from "../dto/chunk-request";
 import { mainLogger } from "../utils/logger";
 
+// const info = jetpack.read(path.join(videoPath, "info.json"), "json");
 const config = JSON.parse(readFileSync(CONFIG_PATH, "utf8"));
 const client = new MusicRemoverClient(
     `${config.grpc.host}:${config.grpc.port}`,

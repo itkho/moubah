@@ -14,6 +14,7 @@ import { save } from "../repository/video";
 import ChunkRequestDTO from "../dto/chunk-request";
 import { pushToQueue } from "../lib/queue";
 import { mainLogger } from "../utils/logger";
+import VideoDTO from "../dto/video";
 
 // TODO: inherit from AbstractInstanceService
 // TODO: add child YtVideoService for logic specific to Yt (to facilitate the futur implementation of FileVideoService)
@@ -24,19 +25,13 @@ export default class VideoService {
         this.video = video;
     }
 
-    static async createFromYtId(videoId: string) {
-        if (!ytdl.validateID(videoId)) {
-            mainLogger.error(`Youtube ID ${videoId} doesn't exists!`);
-            // TODO: add Error objects
-            throw `Youtube ID ${videoId} doesn't exists!`;
+    static async createFromYt(videoYt: VideoDTO) {
+        if (!ytdl.validateID(videoYt.id)) {
+            // TODO: check if we can keep the "throw" only
+            mainLogger.error(`Youtube ID ${videoYt.id} doesn't exists!`);
+            throw Error(`Youtube ID ${videoYt.id} doesn't exists!`);
         }
-
-        const info = await ytdl.getBasicInfo(videoId);
-        const video = new VideoModel(
-            videoId,
-            info.videoDetails.title,
-            info.videoDetails.thumbnails[0].url
-        );
+        const video = VideoModel.fromDTO(videoYt);
         save(video);
         return new VideoService(video);
     }
@@ -47,7 +42,9 @@ export default class VideoService {
         this.setStatus(VideoStatus.downloading);
         mainLogger.info("Donwloading...");
         await this.#downloadVideo();
-        mainLogger.info(`Video downloaded: ${fs.existsSync(this.video.path)}`);
+        mainLogger.info(
+            `Video downloaded: ${fs.existsSync(this.video.videoPath)}`
+        );
         await this.#downloadAudioChunks();
         mainLogger.info(
             `Audio downloaded: ${fs.existsSync(this.video.audioPath)}`
@@ -56,7 +53,7 @@ export default class VideoService {
     }
 
     async #downloadVideo() {
-        const writerStream = fs.createWriteStream(this.video.path);
+        const writerStream = fs.createWriteStream(this.video.videoPath);
         ytdl(this.video.id, {
             filter: (format) => {
                 return (
@@ -147,7 +144,7 @@ export default class VideoService {
         );
         await addAudioToVideo(
             path.join(this.video.dir, "audio_wo_music.wav"),
-            this.video.path
+            this.video.videoPath
         );
     }
 

@@ -1,6 +1,7 @@
 import React from "react";
 
 import { usePlayer } from "./context/PlayerContext";
+import { cleanSrcPath } from "./utils";
 
 export default function PlayerView({ hidden }: { hidden: boolean }) {
     console.log("PlayerView mounted!");
@@ -11,14 +12,12 @@ export default function PlayerView({ hidden }: { hidden: boolean }) {
         <>
             {!hidden && (
                 <div className="m-10">
-                    {/* {true ? ( */}
-                    {video ? (
+                    {video?.videoUri ? (
                         <>
                             <div>{video?.title}</div>
                             <div>{video?.author?.name}</div>
                             <video controls>
-                                {/* <source src={`file://${video?.videoUri}`} /> */}
-                                <source src="./assets/video.mp4" />
+                                <source src={cleanSrcPath(video?.videoUri)} />
                             </video>
                         </>
                     ) : (

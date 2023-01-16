@@ -4,6 +4,7 @@ import ContactView from "./ContactView";
 import LibraryView from "./LibraryView";
 import PlayerView from "./PlayerView";
 import SearchView from "./SearchView";
+import { View } from "./enums";
 
 export default function MainView() {
     console.log("MainView mounted!");
@@ -16,16 +17,16 @@ export default function MainView() {
     let contactHidden = true;
 
     switch (view) {
-        case "search":
+        case View.search:
             seachHidden = false;
             break;
-        case "library":
+        case View.library:
             libraryHidden = false;
             break;
-        case "player":
+        case View.player:
             playerHidden = false;
             break;
-        case "contact":
+        case View.contact:
             contactHidden = false;
             break;
     }

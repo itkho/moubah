@@ -1,4 +1,5 @@
 import { ipcMain } from "electron";
+import isDev from "electron-is-dev";
 
 import { getVideoById, getAllVideos, remove } from "./repository/video";
 import { search } from "./lib/youtube";
@@ -7,25 +8,20 @@ import { initQueue } from "./services/library";
 import { toogleDevTools } from "./main-window";
 import { openLogsInFileExplorer } from "./utils/helpers";
 import { mainLogger, rendererLogger } from "./utils/logger";
-import VideoResultDTO from "./dto/video-result";
+import VideoDTO from "./dto/video";
 
 export default function initIpcHandlers() {
     ipcMain.handle(
         "youtube:search",
-        async (_event, query): Promise<VideoResultDTO[]> => {
+        async (_event, query): Promise<VideoDTO[]> => {
             mainLogger.debug(`Youtube search for: ${query}`);
             const res: any = await search(query);
-            mainLogger.debug(`Number Youtube result: ${res.length}`);
-            mainLogger.debug(`typeof: ${typeof res[0]}`);
-            mainLogger.debug(
-                `instanceof VideoResultDTO: ${res[0] instanceof VideoResultDTO}`
-            );
             return res;
         }
     );
 
-    ipcMain.handle("video:sendToDownload", async (_event, videoId) => {
-        const videoService = await VideoService.createFromYtId(videoId);
+    ipcMain.handle("video:sendToDownload", async (_event, video) => {
+        const videoService = await VideoService.createFromYt(video);
         await videoService.download();
     });
 
@@ -40,6 +36,8 @@ export default function initIpcHandlers() {
 
     ipcMain.handle("video:getAll", async (_event) => {
         const videos = await getAllVideos();
+        console.log({ videos });
+
         return videos.map((video) => video.toDTO());
     });
 
@@ -74,5 +72,9 @@ export default function initIpcHandlers() {
                 rendererLogger.info(msg);
                 break;
         }
+    });
+
+    ipcMain.handle("isDev", (_event) => {
+        return isDev;
     });
 }

@@ -12,12 +12,11 @@ export async function getVideoById(id: string) {
         throw Error(`Video ${id} not found`);
     }
     const info = jetpack.read(path.join(videoPath, "info.json"), "json");
-    return new VideoModel(
-        id,
-        info.title,
-        path.join(videoPath, "thumbnail.jpg"),
-        info.status // as VideoStatus
-    );
+    return new VideoModel({
+        id: id,
+        info: info,
+        status: info.status,
+    });
 }
 
 export async function getAllVideos() {
@@ -45,12 +44,16 @@ export function save(video: VideoModel) {
     if (!fs.existsSync(video.dir)) {
         fs.mkdirSync(video.dir);
     }
-    fs.writeFile(path.join(video.infoPath), video.stringifyInfo(), (err) => {
-        if (err) throw err;
-    });
+    fs.writeFile(
+        path.join(video.infoPath),
+        JSON.stringify(video.info),
+        (err) => {
+            if (err) throw err;
+        }
+    );
     if (!fs.existsSync(video.thumbnailPath)) {
         download.image({
-            url: video.thumbnailUri,
+            url: video.info.originalThumbnailUri,
             dest: video.thumbnailPath,
         });
     }

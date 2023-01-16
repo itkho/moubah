@@ -5,31 +5,57 @@ import { STORAGE_DIR_PATH } from "../utils/const.js";
 import { VideoStatus } from "../utils/enum.js";
 import AudioModel from "./audio.js";
 import { createPathIfDoesntExists } from "../utils/helpers.js";
-import VideoDTO from "../dto/video.js";
+import VideoDTO, { Author } from "../dto/video.js";
+
+type Info = {
+    title: string;
+    timestamp: string;
+    views: number;
+    author: Author;
+    originalThumbnailUri: string;
+};
 
 export default class VideoModel {
     id: string;
-    title: string;
-    thumbnailUri: string;
+    info: Info;
     status: VideoStatus;
 
-    constructor(
-        id: string,
-        title: string,
-        thumbnailUri: string,
-        status = VideoStatus.initial
-    ) {
+    public static fromDTO(video: VideoDTO): VideoModel {
+        return new VideoModel({
+            id: video.id,
+            info: {
+                title: video.title,
+                timestamp: video.timestamp,
+                views: video.views,
+                author: video.author,
+                originalThumbnailUri: video.thumbnailUri,
+            },
+            status: video.status || VideoStatus.initial,
+        });
+    }
+
+    constructor({
+        id,
+        info,
+        status,
+    }: {
+        id: string;
+        info: Info;
+        status: VideoStatus;
+    }) {
         this.id = id;
-        this.title = title;
-        this.thumbnailUri = thumbnailUri;
+        this.info = info;
         this.status = status;
     }
 
     get dir() {
+        console.log({ STORAGE_DIR_PATH });
+        console.log(this.id);
+        console.log(path.join(STORAGE_DIR_PATH, this.id));
         return createPathIfDoesntExists(path.join(STORAGE_DIR_PATH, this.id));
     }
 
-    get path() {
+    get videoPath() {
         return path.join(this.dir, "video.mp4");
     }
 
@@ -94,20 +120,20 @@ export default class VideoModel {
     }
 
     stringifyInfo() {
-        return JSON.stringify({
-            title: this.title,
-            status: this.status,
-        });
+        return JSON.stringify(this.info);
     }
 
     toDTO() {
         return new VideoDTO({
             id: this.id,
-            title: this.title,
-            thumbnailUri: this.thumbnailUri,
-            videoUri: this.path,
             status: this.status,
             progress: this.progress,
+            thumbnailUri:
+                this.status === VideoStatus.initial
+                    ? this.info.originalThumbnailUri
+                    : this.thumbnailPath,
+            videoUri: this.videoPath,
+            ...this.info,
         });
     }
 }

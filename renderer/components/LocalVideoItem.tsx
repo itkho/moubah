@@ -2,7 +2,7 @@ import React from "react";
 
 import { TrashIcon } from "@heroicons/react/24/solid";
 import VideoDTO from "../../main/dto/video";
-import { abbrNum } from "../utils";
+import { abbrNum, cleanSrcPath } from "../utils";
 import { useLocalVideo } from "../context/LocalVideoContext";
 import { usePlayer } from "../context/PlayerContext";
 import { useView } from "../context/ViewContext";
@@ -27,7 +27,7 @@ export default function LocalVideoItem({ video }: { video: VideoDTO }) {
             <div className="h-full flex" onClick={playVideo}>
                 <img
                     className="aspect-video h-full"
-                    src={video.thumbnailUri}
+                    src={cleanSrcPath(video.thumbnailUri)}
                     alt="Thumbnail"
                 />
                 <div className="grow p-3">

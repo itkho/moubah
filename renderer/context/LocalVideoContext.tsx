@@ -1,12 +1,12 @@
 import React, { createContext, ReactNode, useContext, useState } from "react";
 import VideoDTO from "../../main/dto/video";
-import VideoResultDTO from "../../main/dto/video-result";
 
 const LocalVideoContext = createContext(
     {} as {
         localVideos: VideoDTO[];
+        setLocalVideos: (videos: VideoDTO[]) => void;
         localVideoIds: string[];
-        addLocalVideo: (video: VideoResultDTO) => void;
+        addLocalVideo: (video: VideoDTO) => void;
         removeLocalVideo: (video: VideoDTO) => void;
     }
 );
@@ -20,11 +20,8 @@ export function LocalVideoProvider(props: { children: ReactNode }) {
 
     const localVideoIds = localVideos.map((video) => video.id);
 
-    function addLocalVideo(video: VideoResultDTO) {
-        setLocalVideos((currLocalVideos) => [
-            video.toVideoDTO(),
-            ...currLocalVideos,
-        ]);
+    function addLocalVideo(video: VideoDTO) {
+        setLocalVideos((currLocalVideos) => [video, ...currLocalVideos]);
     }
 
     function removeLocalVideo(video: VideoDTO) {
@@ -37,6 +34,7 @@ export function LocalVideoProvider(props: { children: ReactNode }) {
         <LocalVideoContext.Provider
             value={{
                 localVideos,
+                setLocalVideos,
                 localVideoIds,
                 addLocalVideo,
                 removeLocalVideo,

@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LocalVideoItem from "./components/LocalVideoItem";
 import { useLocalVideo } from "./context/LocalVideoContext";
 
 export default function LibraryView({ hidden }: { hidden: boolean }) {
     console.log("LibraryView mounted!");
 
-    const { localVideos } = useLocalVideo();
+    const { localVideos, setLocalVideos } = useLocalVideo();
+
+    useEffect(() => {
+        window.videoApi.getAll().then((videos) => {
+            // videos;
+            setLocalVideos(videos);
+        });
+    }, [hidden]);
 
     return (
         <>
@@ -13,7 +20,9 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                 <div className="h-80 mx-2 my-10 px-8 overflow-auto">
                     {localVideos.length ? (
                         localVideos.map((video) => (
-                            <LocalVideoItem video={video} />
+                            <React.Fragment key={video.id}>
+                                <LocalVideoItem video={video} />
+                            </React.Fragment>
                         ))
                     ) : (
                         <div className="text-center">

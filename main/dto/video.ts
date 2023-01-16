@@ -1,5 +1,5 @@
 import { VideoStatus } from "../utils/enum";
-interface Author {
+export interface Author {
     name: string;
     url: string;
 }
@@ -7,33 +7,33 @@ interface Author {
 export default class VideoDTO {
     id: string;
     title: string;
-    videoUri?: string;
     thumbnailUri: string;
-    status: VideoStatus;
-    progress: number;
-    timestamp?: string;
-    views?: number;
-    author?: Author;
+    timestamp: string;
+    views: number;
+    author: Author;
+    status?: VideoStatus;
+    progress?: number;
+    videoUri?: string;
 
     constructor(video: {
         id: string;
         title: string;
         thumbnailUri: string;
-        videoUri?: string;
+        timestamp: string;
+        views: number;
+        author: Author;
         status?: VideoStatus;
         progress?: number;
-        timestamp?: string;
-        views?: number;
-        author?: Author;
+        videoUri?: string;
     }) {
         this.id = video.id;
         this.title = video.title;
-        this.videoUri = video.videoUri;
         this.thumbnailUri = video.thumbnailUri;
-        this.status = video.status || VideoStatus.initial;
-        this.progress = video.progress || 0;
         this.timestamp = video.timestamp;
         this.views = video.views;
         this.author = video.author;
+        this.status = video.status;
+        this.progress = video.progress;
+        this.videoUri = video.videoUri;
     }
 }

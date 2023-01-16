@@ -1,49 +1,23 @@
 import React, { useState } from "react";
-import {
-    MagnifyingGlassIcon,
-    ArrowLeftIcon,
-    ArrowRightIcon,
-} from "@heroicons/react/24/solid";
-import VideoResultDTO from "../main/dto/video-result";
-import { abbrNum } from "./utils";
-import { useLocalVideo } from "./context/LocalVideoContext";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import VideoResult from "./components/VideoResult";
+import VideoDTO from "../main/dto/video";
 
 export default function SearchView({ hidden }: { hidden: boolean }) {
     console.log("SearchView mounted!");
 
-    const { localVideoIds, addLocalVideo } = useLocalVideo();
-
-    const [videoIndex, setVideoIndex] = useState(0);
-    const [videos, setVideos] = useState<VideoResultDTO[]>([]);
+    const [videos, setVideos] = useState<VideoDTO[]>([]);
     const [query, setQuery] = useState("");
 
     async function search() {
         const videos = (await window.videoApi.getYoutubeResult(query)).map(
-            (video) => new VideoResultDTO(video)
+            (video) => new VideoDTO(video)
         );
         setVideos(videos);
     }
 
     function onChange(e: any) {
         setQuery(e.target.value);
-    }
-
-    function prevVideo() {
-        if (videoIndex - 1 >= 0) {
-            setVideoIndex((currVideoIndex) => currVideoIndex - 1);
-        }
-    }
-
-    function nextVideo() {
-        if (videoIndex + 1 <= videos.length - 1) {
-            setVideoIndex((currVideoIndex) => currVideoIndex + 1);
-        }
-    }
-
-    function removeMusic() {
-        const video = videos[videoIndex];
-        // window.videoApi.sendToDownload(video.id);
-        addLocalVideo(video);
     }
 
     return (
@@ -66,65 +40,7 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                         </button>
                     </div>
 
-                    {videos.length ? (
-                        <>
-                            <div className="flex justify-between items-center">
-                                <div>
-                                    <ArrowLeftIcon
-                                        className={`h-10 m-20 ${
-                                            videoIndex === 0
-                                                ? "text-gray-1"
-                                                : ""
-                                        }`}
-                                        onClick={prevVideo}
-                                    />
-                                </div>
-                                <div className="basis-4/6">
-                                    <div className="overflow-hidden overflow-ellipsis">
-                                        Title: {videos[videoIndex].title}
-                                    </div>
-                                    <img
-                                        className="aspect-video"
-                                        src={videos[videoIndex].thumbnail}
-                                        alt="Thumbnail"
-                                    />
-                                    <div>
-                                        Duration: {videos[videoIndex].timestamp}{" "}
-                                        | Views:{" "}
-                                        {abbrNum(videos[videoIndex].views)}
-                                    </div>
-                                    <div>
-                                        Author: {videos[videoIndex].author.name}
-                                    </div>
-                                </div>
-                                <div>
-                                    <ArrowRightIcon
-                                        className={`h-10 m-20 ${
-                                            videoIndex === videos.length - 1
-                                                ? "text-gray-1"
-                                                : ""
-                                        }`}
-                                        onClick={nextVideo}
-                                    />
-                                </div>
-                            </div>
-                            <div className="">
-                                <button
-                                    onClick={removeMusic}
-                                    className={`my-10 p-3 bg-gray-1 hover:bg-gray-2 hover:text-gray-1 rounded ${
-                                        // null
-                                        localVideoIds.includes(
-                                            videos[videoIndex].id
-                                        )
-                                            ? "line-through pointer-events-none"
-                                            : ""
-                                    }`}
-                                >
-                                    🔇 Remove background music
-                                </button>
-                            </div>
-                        </>
-                    ) : null}
+                    {videos.length ? <VideoResult videos={videos} /> : null}
                 </div>
             )}
         </>

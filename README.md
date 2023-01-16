@@ -133,10 +133,11 @@ npm run make
 
 ## 🎯 To-do list
 
--   [ ] 🧼 Use TS instead of JS
--   [ ] 🧼 Use React framework
--   [ ] 🧼 Use tailwind css
+-   [x] 🧼 Use TS instead of JS
+-   [x] 🧼 Use React framework
+-   [x] 🧼 Use tailwind css
 -   [ ] 🧼 Use absolute path (instead of relative ones)
+-   [ ] 🪲 Show a message when there is no internet connection (instead of a blank screen)
 -   [ ] 🪲 On mac: quit when the close button is clicked
 -   [ ] 🧼 Use Hexagonal architecture
 -   [ ] 🆕 Improve UI/UX
