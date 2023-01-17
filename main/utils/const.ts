@@ -3,9 +3,6 @@ import { app } from "electron";
 import { existsSync, mkdirSync } from "fs";
 import { platform, arch } from "os";
 
-export const IS_DEV = process.env.NODE_ENV === "development";
-// export const IS_DEV = true;
-
 export let OS: "win" | "mac";
 switch (platform()) {
     case "win32":
