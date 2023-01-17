@@ -15,8 +15,7 @@ export default function initIpcHandlers() {
         "youtube:search",
         async (_event, query): Promise<VideoDTO[]> => {
             mainLogger.debug(`Youtube search for: ${query}`);
-            const res: any = await search(query);
-            return res;
+            return await search(query);
         }
     );
 

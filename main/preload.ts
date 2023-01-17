@@ -1,4 +1,4 @@
-import { ipcRenderer, contextBridge } from "electron";
+import { ipcRenderer, contextBridge, IpcRendererEvent } from "electron";
 import VideoDTO from "./dto/video";
 import { MusicRemoverStatus } from "./utils/enum";
 
@@ -25,14 +25,14 @@ const videoApi = {
 
     // Main --> Process
     handleVideoUpdatedEvent: (
-        callback: (event: any, video: VideoDTO) => void
+        callback: (event: IpcRendererEvent, video: VideoDTO) => void
     ) => ipcRenderer.on("video:updated", callback),
 };
 
 const musicRemoverApi = {
     // Main --> Process
     handleStatusUpdatedEvent: (
-        callback: (event: any, status: MusicRemoverStatus) => void
+        callback: (event: IpcRendererEvent, status: MusicRemoverStatus) => void
     ) => ipcRenderer.on("music-remover:status:updated", callback),
 };
 

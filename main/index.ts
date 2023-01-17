@@ -1,4 +1,4 @@
-import { BrowserWindow, app, ipcMain, IpcMainEvent } from "electron";
+import { BrowserWindow, app } from "electron";
 import { create as createMainWindow } from "./main-window";
 import { setUp, tearDown } from "./setup";
 
@@ -30,15 +30,8 @@ if (require("electron-squirrel-startup")) {
     app.quit();
 }
 
-app.on("before-quit", async () => await tearDown());
+app.on("before-quit", tearDown);
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 setUp();
-
-// listen the channel `message` and resend the received message to the renderer process
-ipcMain.on("message", (event: IpcMainEvent, message: any) => {
-    console.log(message);
-    console.log("TEST 2");
-    setTimeout(() => event.sender.send("message", "hi from electron"), 500);
-});
