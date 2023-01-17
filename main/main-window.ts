@@ -9,7 +9,7 @@ export function create() {
         width: 800,
         height: 700,
         webPreferences: {
-            webSecurity: isDev ? false : true, // TODO: only needed on dev mode??
+            webSecurity: isDev ? false : true, // Disabled in deb mode because of vite
             nodeIntegration: false,
             contextIsolation: true,
             preload: join(__dirname, "preload.js"),

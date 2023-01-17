@@ -1,4 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, {
+    FormEventHandler,
+    KeyboardEventHandler,
+    useRef,
+    useState,
+} from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import VideoResult from "../components/VideoResult";
 import VideoDTO from "../../main/dto/video";
@@ -8,8 +13,7 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
 
     const [videos, setVideos] = useState<VideoDTO[]>([]);
     const [query, setQuery] = useState("");
-    // TODO: fix the "any" keywords
-    const searchButton = useRef<any>(null);
+    const searchButton = useRef<HTMLButtonElement>(null);
 
     async function search() {
         const videos = (await window.videoApi.getYoutubeResult(query)).map(
@@ -18,15 +22,15 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
         setVideos(videos);
     }
 
-    function onChange(e: any) {
-        setQuery(e.target.value);
-    }
+    const onChange: FormEventHandler<HTMLInputElement> = (event) => {
+        setQuery(event.currentTarget.value);
+    };
 
-    function onKeyDown(e: any) {
-        if (e.key === "Enter") {
+    const onKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {
+        if (event.key === "Enter") {
             searchButton.current?.click();
         }
-    }
+    };
 
     return (
         <>
