@@ -1,14 +1,16 @@
 # Dependency directories
-node_modules/
-resources
+node_modules
 
 # dotenv environment variables file
 .env
 
-# Electron-Forge
-out/
+# Output directories
+out
+dist
+
+# Backup
+backup
 
 # Others
 .DS_Store
 .vscode
-backup

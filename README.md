@@ -36,7 +36,7 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 </br>
 
 <p align="center">
-  <img src="moubah-example.gif" alt="Example of Moubah usage" />
+  <img src="demo.gif" alt="Example of Moubah usage" />
 </p>
 
 **Download the app** : 🍏 ~~Apple~~ | 🪟 ~~Windows~~ | 🐧 ~~Linux~~
@@ -45,16 +45,13 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 
 ## 📚 Tech Stack
 
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![Electron.js](https://img.shields.io/badge/Electron-191970?style=for-the-badge&logo=Electron&logoColor=white)
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![gRPC](https://img.shields.io/badge/gRPC-244c5a.svg?style=for-the-badge&logoColor=white)
-
-<!-- ![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) -->
-<!-- ![React](https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white) -->
-<!-- ![Tailwind CSS](https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white) -->
 
 </br>
 
@@ -133,14 +130,16 @@ npm run make
 
 ## 🎯 To-do list
 
+-   [x] 🧼 Use TS instead of JS
+-   [x] 🧼 Use React framework
+-   [x] 🧼 Use tailwind css
+-   [ ] 🧼 Use absolute path (instead of relative ones)
+-   [ ] 🪲 Show a message when there is no internet connection (instead of a blank screen)
 -   [ ] 🪲 On mac: quit when the close button is clicked
+-   [ ] 🧼 Use Hexagonal architecture
 -   [ ] 🆕 Improve UI/UX
 -   [ ] 🪲 First installation/run is very long -> make a progress bar or something
 -   [ ] 🆕 Support multi-languages (at least french and english)
--   [ ] 🧼 Use Hexagonal architecture
--   [ ] 🧼 Use TS instead of JS
--   [ ] 🧼 Use React framework
--   [ ] 🧼 Use tailwind css
 -   [ ] 🆕 Add e2e tests
 -   [ ] 🆕 improve logs (time + separate music-remover logs from moubah.log) and add several level of logs (like logging in Python)
 -   [ ] 🆕 Setup CI/CD
