@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useContext, useState } from "react";
-import { View } from "../enums";
+import { View } from "../utils/enums";
 
 const ViewContext = createContext(
     {} as {

@@ -1,7 +1,7 @@
 import React from "react";
-import Footer from "./Footer";
-import MainView from "./MainView";
-import NavBar from "./NavBar";
+import Footer from "./components/Footer";
+import MainView from "./views/MainView";
+import NavBar from "./components/NavBar";
 
 import { ViewProvider } from "./context/ViewContext";
 import { LocalVideoProvider } from "./context/LocalVideoContext";

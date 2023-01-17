@@ -1,7 +1,7 @@
 import React from "react";
 
-import { usePlayer } from "./context/PlayerContext";
-import { cleanSrcPath } from "./utils";
+import { usePlayer } from "../context/PlayerContext";
+import { cleanSrcPath } from "../utils/helpers";
 
 export default function PlayerView({ hidden }: { hidden: boolean }) {
     console.log("PlayerView mounted!");

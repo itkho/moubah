@@ -1,10 +1,10 @@
 import React from "react";
-import { useView } from "./context/ViewContext";
+import { useView } from "../context/ViewContext";
 import ContactView from "./ContactView";
 import LibraryView from "./LibraryView";
 import PlayerView from "./PlayerView";
 import SearchView from "./SearchView";
-import { View } from "./enums";
+import { View } from "../utils/enums";
 
 export default function MainView() {
     console.log("MainView mounted!");

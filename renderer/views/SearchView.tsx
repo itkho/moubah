@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import VideoResult from "./components/VideoResult";
-import VideoDTO from "../main/dto/video";
+import VideoResult from "../components/VideoResult";
+import VideoDTO from "../../main/dto/video";
 
 export default function SearchView({ hidden }: { hidden: boolean }) {
     console.log("SearchView mounted!");

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import VideoDTO from "../main/dto/video";
-import LocalVideoItem from "./components/LocalVideoItem";
-import { useLocalVideo } from "./context/LocalVideoContext";
+import VideoDTO from "../../main/dto/video";
+import LocalVideoItem from "../components/LocalVideoItem";
+import { useLocalVideo } from "../context/LocalVideoContext";
 
 export let updateLocalVideo: (videoUpdated: VideoDTO) => void;
 

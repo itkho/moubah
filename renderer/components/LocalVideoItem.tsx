@@ -2,11 +2,12 @@ import React from "react";
 
 import { TrashIcon } from "@heroicons/react/24/solid";
 import VideoDTO from "../../main/dto/video";
-import { abbrNum, cleanSrcPath } from "../utils";
+import { abbrNum, cleanSrcPath } from "../utils/helpers";
 import { useLocalVideo } from "../context/LocalVideoContext";
 import { usePlayer } from "../context/PlayerContext";
 import { useView } from "../context/ViewContext";
-import { View } from "../enums";
+import { View } from "../utils/enums";
+// TODO: move this in a shared folder (there is others too)
 import { VideoStatus } from "../../main/utils/enum";
 
 export default function LocalVideoItem({ video }: { video: VideoDTO }) {

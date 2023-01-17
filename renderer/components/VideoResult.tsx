@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
-import { abbrNum } from "../utils";
+import { abbrNum } from "../utils/helpers";
 import { useLocalVideo } from "../context/LocalVideoContext";
 import VideoDTO from "../../main/dto/video";
 

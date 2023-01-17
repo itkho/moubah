@@ -5,8 +5,8 @@ import {
     PlayCircleIcon,
     ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/solid";
-import { useView } from "./context/ViewContext";
-import { View } from "./enums";
+import { useView } from "../context/ViewContext";
+import { View } from "../utils/enums";
 
 export default function NavBar() {
     console.log("NavBar mounted!");

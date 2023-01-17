@@ -1,5 +1,6 @@
 import { ipcRenderer, contextBridge } from "electron";
 import VideoDTO from "./dto/video";
+import { MusicRemoverStatus } from "./utils/enum";
 
 declare global {
     interface Window {
@@ -31,7 +32,7 @@ const videoApi = {
 const musicRemoverApi = {
     // Main --> Process
     handleStatusUpdatedEvent: (
-        callback: (event: any, status: string) => void
+        callback: (event: any, status: MusicRemoverStatus) => void
     ) => ipcRenderer.on("music-remover:status:updated", callback),
 };
 
