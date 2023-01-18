@@ -35,7 +35,7 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
     return (
         <>
             {!hidden && (
-                <div className="h-full flex flex-col justify-between items-center">
+                <div className="h-full flex flex-col items-center">
                     <div className="flex my-10 w-1/3">
                         <input
                             className="grow outline-none p-1 border-2 rounded-l border-gray-2 bg-gray-1 placeholder-gray-500"
@@ -54,7 +54,13 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                         </button>
                     </div>
 
-                    {videos.length ? <VideoResult videos={videos} /> : null}
+                    {videos.length ? (
+                        <VideoResult videos={videos} />
+                    ) : (
+                        <div className="text-center items-center">
+                            Enter something in the search bar
+                        </div>
+                    )}
                 </div>
             )}
         </>

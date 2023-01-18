@@ -30,8 +30,8 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
     }
 
     return (
-        <>
-            <div className="flex justify-between items-center">
+        <div className="grow flex flex-col justify-evenly items-center">
+            <div className="flex items-center">
                 <div>
                     <ArrowLeftIcon
                         className={`h-10 m-20 ${
@@ -41,11 +41,11 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
                     />
                 </div>
                 <div className="basis-4/6">
-                    <div className="overflow-hidden overflow-ellipsis">
+                    <div className="h-12 line-clamp-2">
                         Title: {videos[videoIndex].title}
                     </div>
                     <img
-                        className="aspect-video"
+                        className="my-5 aspect-video shadow-xl"
                         src={videos[videoIndex].thumbnailUri}
                         alt="Thumbnail"
                     />
@@ -66,7 +66,7 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
                     />
                 </div>
             </div>
-            <div className="">
+            <div>
                 <button
                     onClick={removeMusic}
                     className={`my-10 p-3 bg-gray-1 hover:bg-gray-2 hover:text-gray-1 rounded ${
@@ -78,6 +78,6 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
                     🔇 Remove background music
                 </button>
             </div>
-        </>
+        </div>
     );
 }

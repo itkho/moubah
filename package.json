@@ -34,6 +34,7 @@
         "@fortawesome/react-fontawesome": "^0.2.0",
         "@grpc/grpc-js": "^1.8.2",
         "@heroicons/react": "^2.0.13",
+        "@tailwindcss/line-clamp": "^0.4.2",
         "@types/yt-search": "^2.3.2",
         "@vitejs/plugin-react": "^1.2.0",
         "detect-port": "^1.5.1",

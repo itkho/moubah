@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileLines, faCode } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 // TODO: move this in a shared folder (there is others too)
 import { MusicRemoverStatus } from "../../main/utils/enum";
+import { useOnLine } from "../context/OnlineContext";
 
 export let updateMusicRemoverStatus: (status: MusicRemoverStatus) => void;
 
@@ -12,6 +13,8 @@ export default function Footer() {
     const [musicRemoverStatus, setMusicRemoverStatus] = useState(
         MusicRemoverStatus.down
     );
+
+    const { onLine } = useOnLine();
 
     updateMusicRemoverStatus = (status) => {
         setMusicRemoverStatus(status);
@@ -27,6 +30,14 @@ export default function Footer() {
                             musicRemoverStatus === MusicRemoverStatus.up
                                 ? "bg-green-700"
                                 : "bg-red-700"
+                        }`}
+                    ></div>
+                </div>
+                <div className="flex items-center grow cursor-default">
+                    Internet connection:
+                    <div
+                        className={`rounded-full h-4 w-4 mx-2 ${
+                            onLine ? "bg-green-700" : "bg-red-700"
                         }`}
                     ></div>
                 </div>

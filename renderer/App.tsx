@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import { ViewProvider } from "./context/ViewContext";
 import { LocalVideoProvider } from "./context/LocalVideoContext";
 import { PlayerProvider } from "./context/PlayerContext";
+import { OnLineProvider } from "./context/OnlineContext";
 
 export default function App() {
     console.log("App mounted!");
@@ -13,17 +14,19 @@ export default function App() {
     return (
         <>
             <div className="w-screen h-screen flex flex-col bg-background text-gray-3">
-                <ViewProvider>
-                    <div className="flex flex-grow">
-                        <NavBar />
-                        <LocalVideoProvider>
-                            <PlayerProvider>
-                                <MainView />
-                            </PlayerProvider>
-                        </LocalVideoProvider>
-                    </div>
+                <OnLineProvider>
+                    <ViewProvider>
+                        <div className="flex flex-grow">
+                            <NavBar />
+                            <LocalVideoProvider>
+                                <PlayerProvider>
+                                    <MainView />
+                                </PlayerProvider>
+                            </LocalVideoProvider>
+                        </div>
+                    </ViewProvider>
                     <Footer />
-                </ViewProvider>
+                </OnLineProvider>
             </div>
         </>
     );
