@@ -1,7 +1,5 @@
 import { spawn } from "child_process";
 import treeKill from "tree-kill";
-// import util from "util";
-// const kill = util.promisify(treeKill);
 
 import initIpcHandlers from "./ipc-handlers";
 import {
@@ -107,7 +105,6 @@ export function tearDown() {
         try {
             // TODO: check why the process isn't kill sometimes (the main process is killed before?)
             mainLogger.info("Killing 'musicRemoverProcess'...");
-            // await kill(musicRemoverProcessId, "SIGTERM");
             treeKill(musicRemoverProcessId, "SIGTERM");
             mainLogger.info("'musicRemoverProcess' killed");
         } catch (error) {

@@ -130,8 +130,7 @@ npm run dist
 ## 🎯 To-do list
 
 -   [ ] 🪲 Show a message when there is no internet connection (instead of a blank screen)
--   [ ] 🪲 Audio result isn't smooth, find why...
--   [ ] 🪲 On mac: quit when the close button is clicked
+-   [x] 🪲 Audio result isn't smooth, find why...
 -   [ ] 🧼 Use Hexagonal architecture
 -   [ ] 🆕 Improve UI/UX
 -   [ ] 🪲 First installation/run is very long -> make a progress bar or something
