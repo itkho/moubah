@@ -108,8 +108,7 @@ cd music-remover
 ### ☄️ Run
 
 ```bash
-npm start
-# or debug it 🪲 with: npm run debug
+npm run dev
 ```
 
 </br>
@@ -117,24 +116,21 @@ npm start
 ### 📦 Create an executable file
 
 ```bash
-npm run make
+npm run dist
 ```
 
 </br>
 
 ## 🛠 Troubleshooting
 
-`no such file or directory ... protobuf/main.proto` on `npm run dev/prod` -> run: `git submodule update --init`
+`no such file or directory ... protobuf/main.proto` on `npm run dev` -> run: `git submodule update --init`
 
 </br>
 
 ## 🎯 To-do list
 
--   [x] 🧼 Use TS instead of JS
--   [x] 🧼 Use React framework
--   [x] 🧼 Use tailwind css
--   [ ] 🧼 Use absolute path (instead of relative ones)
 -   [ ] 🪲 Show a message when there is no internet connection (instead of a blank screen)
+-   [ ] 🪲 Audio result isn't smooth, find why...
 -   [ ] 🪲 On mac: quit when the close button is clicked
 -   [ ] 🧼 Use Hexagonal architecture
 -   [ ] 🆕 Improve UI/UX
@@ -143,7 +139,6 @@ npm run make
 -   [ ] 🆕 Add e2e tests
 -   [ ] 🆕 improve logs (time + separate music-remover logs from moubah.log) and add several level of logs (like logging in Python)
 -   [ ] 🆕 Setup CI/CD
--   [ ] 🪲 Audio result isn't smooth, find why...
 -   [ ] 🆕 Add an uninstaller
 -   [ ] 🆕 Notification system on new release
 -   [ ] 🆕 Preview videos (without sound) on hover
