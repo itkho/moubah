@@ -14,7 +14,7 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
 
     const { setView } = useView();
     const { updateVideo } = usePlayer();
-    const { localVideos, localVideoIds, addLocalVideo } = useLocalVideo();
+    const { localVideos, addLocalVideo } = useLocalVideo();
     const [videoIndex, setVideoIndex] = useState(0);
 
     const currVideo = videos[videoIndex];
@@ -116,16 +116,6 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
                     }
                 >
                     {renderButtonContent(currLocalVideo?.status)}
-                    {/* {switch (currLocalVideo?.status) {
-                        case VideoStatus.done:
-                            "✅ Background music removed"
-                            break;
-                    
-                        default:
-                            "🔇 Remove background music"
-                            break;
-                    }
-                    } */}
                 </button>
             </div>
         </div>

@@ -57,7 +57,13 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                     </div>
 
                     {videos.length ? (
-                        <VideoResult videos={videos} />
+                        <VideoResult
+                            key={videos.reduce(
+                                (acc, curr) => acc + curr.id,
+                                ""
+                            )}
+                            videos={videos}
+                        />
                     ) : (
                         <div className="-z-10 grow flex flex-col justify-center items-center text-gray-1">
                             <div className="absolute inset-0 flex flex-col justify-center items-center">
