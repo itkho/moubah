@@ -12,6 +12,10 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { MusicRemoverStatus } from "../../main/utils/enum";
 import { useOnLine } from "../context/OnlineContext";
 
+const classNameClickable =
+    "flex items-center mx-2 cursor-pointer hover:text-neutral-200";
+const classNameInfo = "flex items-center mx-2 cursor-default";
+
 export let updateMusicRemoverStatus: (status: MusicRemoverStatus) => void;
 
 export default function Footer() {
@@ -28,14 +32,15 @@ export default function Footer() {
     return (
         <>
             <div className="flex bg-neutral-800 text-neutral-400 p-1 text-xs">
-                <div className="flex items-center mx-2 cursor-default">
+                <div className={classNameInfo}>
                     <FontAwesomeIcon
+                        // TODO: use https://www.npmjs.com/package/classnames for this?
                         className={`px-2 ${onLine ? "text-ok" : "text-ko"}`}
                         icon={faWifi}
                     />
                     {onLine ? "Online" : "Offline"}
                 </div>
-                <div className="flex items-center mx-2 cursor-default">
+                <div className={classNameInfo}>
                     <FontAwesomeIcon
                         className={`px-2 ${
                             musicRemoverStatus === MusicRemoverStatus.up
@@ -51,7 +56,7 @@ export default function Footer() {
                 </div>
                 <div className="grow"></div>
                 <a
-                    className="flex items-center mx-2 cursor-pointer"
+                    className={classNameClickable}
                     href="https://github.com/karim-bouchez/moubah"
                     target="_blank"
                 >
@@ -59,14 +64,14 @@ export default function Footer() {
                     Open-source
                 </a>
                 <div
-                    className="flex items-center mx-2 cursor-pointer"
+                    className={classNameClickable}
                     onClick={window.mainApi.openLogsDir}
                 >
                     <FontAwesomeIcon icon={faFileLines} className=" px-2" />
                     Log
                 </div>
                 <div
-                    className="flex items-center mx-2 cursor-pointer"
+                    className={classNameClickable}
                     onClick={window.mainApi.toogleDevTools}
                 >
                     <FontAwesomeIcon icon={faCode} className=" px-2" />
