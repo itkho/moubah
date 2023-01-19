@@ -77,7 +77,7 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
                 <div>
                     <ArrowLeftIcon
                         className={`h-10 m-20 ${
-                            videoIndex === 0 ? "text-gray-1" : ""
+                            videoIndex === 0 ? "text-neutral-400" : ""
                         }`}
                         onClick={prevVideo}
                     />
@@ -101,7 +101,7 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
                     <ArrowRightIcon
                         className={`h-10 m-20 ${
                             videoIndex === videos.length - 1
-                                ? "text-gray-1"
+                                ? "text-neutral-400"
                                 : ""
                         }`}
                         onClick={nextVideo}
@@ -112,7 +112,7 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
                 <button
                     onClick={onClickThumbnail}
                     className={
-                        "my-10 p-3 bg-gray-1 hover:bg-gray-2 hover:text-gray-1 rounded"
+                        "my-10 p-3 bg-neutral-400 hover:bg-neutral-700 hover:text-neutral-400 rounded"
                     }
                 >
                     {renderButtonContent(currLocalVideo?.status)}

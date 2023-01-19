@@ -27,7 +27,7 @@ export default function Footer() {
 
     return (
         <>
-            <div className="flex bg-gray-3 text-gray-1 p-1 text-xs">
+            <div className="flex bg-neutral-800 text-neutral-400 p-1 text-xs">
                 <div className="flex items-center mx-2 cursor-default">
                     <FontAwesomeIcon
                         className={`px-2 ${onLine ? "text-ok" : "text-ko"}`}

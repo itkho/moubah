@@ -1,17 +1,14 @@
+const colors = require("tailwindcss/colors");
+
 module.exports = {
     content: ["./renderer/index.html", "./renderer/**/*.{vue,js,ts,jsx,tsx}"],
     theme: {
         extend: {
             colors: {
-                highlight: "#e63946",
-                background: "#fffcf2",
-                gray: {
-                    1: "#ccc5b9",
-                    2: "#403d39",
-                    3: "#252422",
-                },
-                ok: "#606c38",
-                ko: "#e63946",
+                // Neutral / Green
+                highlight: colors.lime[500],
+                ok: colors.lime[700],
+                ko: colors.red[700],
             },
             keyframes: {
                 bounceCentered: {

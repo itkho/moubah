@@ -13,7 +13,7 @@ export default function App() {
 
     return (
         <>
-            <div className="w-screen h-screen flex flex-col bg-background text-gray-3">
+            <div className="w-screen h-screen flex flex-col bg-neutral-200 text-neutral-800">
                 <OnLineProvider>
                     <ViewProvider>
                         <div className="flex grow">

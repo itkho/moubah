@@ -41,7 +41,7 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                 <div className="z-10 relative h-full flex flex-col items-center">
                     <div className="flex my-10 w-1/3">
                         <input
-                            className="grow outline-none p-1 border-2 rounded-l border-gray-2 bg-gray-1 placeholder-gray-500"
+                            className="grow outline-none p-1 border-2 rounded-l border-neutral-700 bg-neutral-400 placeholder-gray-500"
                             value={query}
                             onChange={onChange}
                             onKeyDown={onKeyDown}
@@ -49,10 +49,10 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                         />
                         <button
                             ref={searchButton}
-                            className="p-1 border-2 rounded-r border-gray-2 bg-gray-2"
+                            className="p-1 border-2 rounded-r border-neutral-700 bg-neutral-700"
                             onClick={search}
                         >
-                            <MagnifyingGlassIcon className="h-4 stroke-current stroke-1 text-background" />
+                            <MagnifyingGlassIcon className="h-4 stroke-current stroke-1 text-neutral-200" />
                         </button>
                     </div>
 
@@ -65,7 +65,7 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                             videos={videos}
                         />
                     ) : (
-                        <div className="-z-10 grow flex flex-col justify-center items-center text-gray-1">
+                        <div className="-z-10 grow flex flex-col justify-center items-center text-neutral-400">
                             <div className="absolute inset-0 flex flex-col justify-center items-center">
                                 <div className="relative">
                                     <ArrowLongUpIcon className="animate-bounce-slow left-1/2 -translate-x-1/2 bottom-20 absolute h-20 stroke-current stroke-[0.01]" />
