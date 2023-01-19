@@ -6,7 +6,7 @@ let mainWindow: BrowserWindow;
 
 export function create() {
     mainWindow = new BrowserWindow({
-        width: 800,
+        width: 1000,
         height: 700,
         webPreferences: {
             webSecurity: isDev ? false : true, // Disabled in deb mode because of vite

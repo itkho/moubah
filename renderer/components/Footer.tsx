@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFileLines, faCode } from "@fortawesome/free-solid-svg-icons";
+import {
+    faFileLines,
+    faCode,
+    faWifi,
+    faVolumeXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 // TODO: move this in a shared folder (there is others too)
 import { MusicRemoverStatus } from "../../main/utils/enum";
@@ -22,25 +27,29 @@ export default function Footer() {
 
     return (
         <>
-            <div className="flex bg-gray-3 text-gray-1 px-4">
-                <div className="flex items-center grow cursor-default">
-                    Music remover status:
-                    <div
-                        className={`rounded-full h-4 w-4 mx-2 ${
+            <div className="flex bg-gray-3 text-gray-1 p-1 text-xs">
+                <div className="flex items-center mx-2 cursor-default">
+                    <FontAwesomeIcon
+                        className={`px-2 ${onLine ? "text-ok" : "text-ko"}`}
+                        icon={faWifi}
+                    />
+                    {onLine ? "Online" : "Offline"}
+                </div>
+                <div className="flex items-center mx-2 cursor-default">
+                    <FontAwesomeIcon
+                        className={`px-2 ${
                             musicRemoverStatus === MusicRemoverStatus.up
-                                ? "bg-green-700"
-                                : "bg-red-700"
+                                ? "text-ok"
+                                : "text-ko"
                         }`}
-                    ></div>
+                        icon={faVolumeXmark}
+                    />
+                    Music remover{" "}
+                    {musicRemoverStatus === MusicRemoverStatus.up
+                        ? "online"
+                        : "offline"}
                 </div>
-                <div className="flex items-center grow cursor-default">
-                    Internet connection:
-                    <div
-                        className={`rounded-full h-4 w-4 mx-2 ${
-                            onLine ? "bg-green-700" : "bg-red-700"
-                        }`}
-                    ></div>
-                </div>
+                <div className="grow"></div>
                 <a
                     className="flex items-center mx-2 cursor-pointer"
                     href="https://github.com/karim-bouchez/moubah"

@@ -123,7 +123,8 @@ npm run dist
 
 ## 🛠 Troubleshooting
 
-`no such file or directory ... protobuf/main.proto` on `npm run dev` -> run: `git submodule update --init`
+-   `no such file or directory ... protobuf/main.proto` on `npm run dev` -> run: `git submodule update --init`
+-   Blank screen with: `electron: Failed to load URL: http://localhost:3000/ with error: ERR_CONNECTION_REFUSED` on `npm run dev` -> refresh (Cmd + R)
 
 </br>
 

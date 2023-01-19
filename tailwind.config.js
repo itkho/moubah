@@ -13,6 +13,21 @@ module.exports = {
                 ok: "#606c38",
                 ko: "#e63946",
             },
+            keyframes: {
+                bounceCentered: {
+                    "0%, 100%": {
+                        transform: "translateY(-25%) translateX(-50%)",
+                        transitionTimingFunction: "cubic-bezier(0.8,0,1,1)",
+                    },
+                    "50%": {
+                        transform: "translateX(-50%)",
+                        transitionTimingFunction: "cubic-bezier(0,0,0.2,1)",
+                    },
+                },
+            },
+            animation: {
+                "bounce-slow": "bounceCentered 2s infinite",
+            },
         },
     },
     variants: {

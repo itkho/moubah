@@ -16,7 +16,7 @@ export default function App() {
             <div className="w-screen h-screen flex flex-col bg-background text-gray-3">
                 <OnLineProvider>
                     <ViewProvider>
-                        <div className="flex flex-grow">
+                        <div className="flex grow">
                             <NavBar />
                             <LocalVideoProvider>
                                 <PlayerProvider>

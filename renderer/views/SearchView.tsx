@@ -4,7 +4,10 @@ import React, {
     useRef,
     useState,
 } from "react";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import {
+    ArrowLongUpIcon,
+    MagnifyingGlassIcon,
+} from "@heroicons/react/24/solid";
 import VideoResult from "../components/VideoResult";
 import VideoDTO from "../../main/dto/video";
 
@@ -35,12 +38,11 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
     return (
         <>
             {!hidden && (
-                <div className="h-full flex flex-col items-center">
+                <div className="z-10 relative h-full flex flex-col items-center">
                     <div className="flex my-10 w-1/3">
                         <input
                             className="grow outline-none p-1 border-2 rounded-l border-gray-2 bg-gray-1 placeholder-gray-500"
                             value={query}
-                            placeholder="Enter a title or an URL"
                             onChange={onChange}
                             onKeyDown={onKeyDown}
                             type="search"
@@ -57,8 +59,16 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                     {videos.length ? (
                         <VideoResult videos={videos} />
                     ) : (
-                        <div className="text-center items-center">
-                            Enter something in the search bar
+                        <div className="-z-10 grow flex flex-col justify-center items-center text-gray-1">
+                            <div className="absolute inset-0 flex flex-col justify-center items-center">
+                                <div className="relative">
+                                    <ArrowLongUpIcon className="animate-bounce-slow left-1/2 -translate-x-1/2 bottom-20 absolute h-20 stroke-current stroke-[0.01]" />
+                                    <div>
+                                        Enter a title or an URL in the search
+                                        bar
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     )}
                 </div>
