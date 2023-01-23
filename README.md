@@ -130,7 +130,6 @@ npm run dist
 
 ## 🎯 To-do list
 
--   [x] 🪲 Show a message when there is no internet connection (instead of a blank screen)
 -   [x] 🪲 Audio result isn't smooth, find why...
 -   [ ] 🧼 Use Hexagonal architecture
 -   [ ] 🆕 Improve UI/UX
