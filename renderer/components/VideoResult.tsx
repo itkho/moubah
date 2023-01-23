@@ -10,7 +10,7 @@ import { View } from "../utils/enums";
 import { usePlayer } from "../context/PlayerContext";
 
 export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
-    console.log("VideoResult mounted!");
+    console.log("VideoResult rendered!");
 
     const { setView } = useView();
     const { updateVideo } = usePlayer();

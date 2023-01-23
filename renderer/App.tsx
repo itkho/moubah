@@ -9,7 +9,7 @@ import { PlayerProvider } from "./context/PlayerContext";
 import { OnLineProvider } from "./context/OnlineContext";
 
 export default function App() {
-    console.log("App mounted!");
+    console.log("App rendered!");
 
     return (
         <>

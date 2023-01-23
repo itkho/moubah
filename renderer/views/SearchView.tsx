@@ -12,7 +12,7 @@ import VideoResult from "../components/VideoResult";
 import VideoDTO from "../../main/dto/video";
 
 export default function SearchView({ hidden }: { hidden: boolean }) {
-    console.log("SearchView mounted!");
+    console.log("SearchView rendered!");
 
     const [videos, setVideos] = useState<VideoDTO[]>([]);
     const [query, setQuery] = useState("");

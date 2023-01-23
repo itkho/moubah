@@ -8,7 +8,8 @@ import { View } from "../utils/enums";
 export let updateLocalVideo: (videoUpdated: VideoDTO) => void;
 
 export default function LibraryView({ hidden }: { hidden: boolean }) {
-    console.log("LibraryView mounted!");
+    window.mainApi.log("debug", "LibraryView rendered!");
+    console.log("LibraryView rendered!");
 
     const { localVideos, setLocalVideos } = useLocalVideo();
     const { setView } = useView();

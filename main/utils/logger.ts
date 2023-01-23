@@ -2,6 +2,7 @@ import path from "path";
 import pino from "pino";
 import pretty from "pino-pretty";
 import { ChildProcess } from "child_process";
+import isDev from "electron-is-dev";
 
 import { LOGS_DIR_PATH } from "./const";
 const MAIN_LOG_PATH = path.join(LOGS_DIR_PATH, "main-process.log");
@@ -63,6 +64,10 @@ export const rendererLogger = pino(
     { level: logLevel },
     pino.multistream(rendererStreams)
 );
+if (isDev)
+    rendererLogger.warn(
+        "On dev mode, some logs can be shown twice because of the React strict mode"
+    );
 
 process.on("uncaughtException", (err) => {
     mainLogger.error(err);

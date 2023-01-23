@@ -6,7 +6,8 @@ import { View } from "../utils/enums";
 import { cleanSrcPath } from "../utils/helpers";
 
 export default function PlayerView({ hidden }: { hidden: boolean }) {
-    console.log("PlayerView mounted!");
+    window.mainApi.log("debug", "PlayerView rendered!");
+    console.log("PlayerView rendered!");
 
     const { video } = usePlayer();
     const { setView } = useView();

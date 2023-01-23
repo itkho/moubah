@@ -13,7 +13,7 @@ const classNameListItem =
 const classNameIcon = "fill-none h-5 stroke-current stroke-2";
 
 export default function NavBar() {
-    console.log("NavBar mounted!");
+    console.log("NavBar rendered!");
     const { view, setView } = useView();
 
     return (
