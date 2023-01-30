@@ -15,8 +15,8 @@
     "productName": "Moubah",
     "scripts": {
         "dev": "cross-env PINO_LOG_LEVEL=debug NODE_ENV=development concurrently \"npm run dev:renderer\" \" npm run dev:main\"",
-        "dev:renderer": "npm run build:renderer && vite",
-        "dev:main": "npm run build:main && electron .",
+        "dev:renderer": "vite",
+        "dev:main": "electron .",
         "build": "npm run build:renderer && npm run build:main",
         "build:renderer": "vite build",
         "build:main": "tsc -p main",
