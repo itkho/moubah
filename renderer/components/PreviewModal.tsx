@@ -50,7 +50,7 @@ export default function PreviewModal({
                             Close
                         </button>
                         <button
-                            className="bg-lime-500 text-neutral-50 active:bg-lime-600 font-semibold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg transition-all duration-150"
+                            className="bg-lime-500 text-neutral-50 active:bg-lime-600 font-semibold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg duration-200"
                             type="button"
                             onClick={() => {}}
                         >

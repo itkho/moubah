@@ -60,21 +60,21 @@ export default function Footer() {
                     href="https://github.com/karim-bouchez/moubah"
                     target="_blank"
                 >
-                    <FontAwesomeIcon icon={faGithub} className=" px-2" />
+                    <FontAwesomeIcon icon={faGithub} className="px-2" />
                     Open-source
                 </a>
                 <div
                     className={classNameClickable}
                     onClick={window.mainApi.openLogsDir}
                 >
-                    <FontAwesomeIcon icon={faFileLines} className=" px-2" />
+                    <FontAwesomeIcon icon={faFileLines} className="px-2" />
                     Log
                 </div>
                 <div
                     className={classNameClickable}
                     onClick={window.mainApi.toogleDevTools}
                 >
-                    <FontAwesomeIcon icon={faCode} className=" px-2" />
+                    <FontAwesomeIcon icon={faCode} className="px-2" />
                     Console
                 </div>
             </div>

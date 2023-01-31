@@ -33,5 +33,8 @@ module.exports = {
             sans: ["Inter", "ui-sans-serif", "system-ui"],
         },
     },
-    plugins: [require("@tailwindcss/line-clamp")],
+    plugins: [
+        require("@tailwindcss/line-clamp"),
+        require("tailwind-scrollbar")({ nocompatible: true }),
+    ],
 };

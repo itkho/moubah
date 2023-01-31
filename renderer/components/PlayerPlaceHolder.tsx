@@ -11,7 +11,7 @@ export default function PlayerPlaceHolder() {
             <span>
                 Select a video in the
                 <button
-                    className="bg-neutral-300 hover:bg-neutral-400 hover:text-neutral-300 rounded p-1 m-1"
+                    className="bg-neutral-300 hover:bg-neutral-400 hover:text-neutral-300 rounded p-1 m-1 duration-200"
                     onClick={() => setView(View.library)}
                 >
                     Library
