@@ -20,14 +20,14 @@ export default function NavBar() {
     const { view, setView } = useView();
 
     return (
-        <div className="basis-56 h-full bg-neutral-800 text-neutral-400">
+        <div className="h-full basis-56 bg-neutral-800 text-neutral-400">
             <ul className="p-4">
                 <li
                     onClick={() => setView(View.search)}
                     className={
                         classNameListItem +
                         (view === View.search
-                            ? " bg-neutral-700 text-neutral-200 pointer-events-none"
+                            ? " pointer-events-none bg-neutral-700 text-neutral-200"
                             : "")
                     }
                 >
@@ -44,7 +44,7 @@ export default function NavBar() {
                     className={
                         classNameListItem +
                         (view === View.library
-                            ? " bg-neutral-700 text-neutral-200 pointer-events-none"
+                            ? " pointer-events-none bg-neutral-700 text-neutral-200"
                             : "")
                     }
                 >
@@ -61,7 +61,7 @@ export default function NavBar() {
                     className={
                         classNameListItem +
                         (view === View.player
-                            ? " bg-neutral-700 text-neutral-200 pointer-events-none"
+                            ? " pointer-events-none bg-neutral-700 text-neutral-200"
                             : "")
                     }
                 >
@@ -78,7 +78,7 @@ export default function NavBar() {
                     className={
                         classNameListItem +
                         (view === View.contact
-                            ? " bg-neutral-700 text-neutral-200 pointer-events-none"
+                            ? " pointer-events-none bg-neutral-700 text-neutral-200"
                             : "")
                     }
                 >

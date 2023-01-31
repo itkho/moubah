@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,8 +7,8 @@
 .draggable {
     -webkit-user-select: none;
     -webkit-app-region: drag;
-  }
+}
 
 .undraggable {
     -webkit-app-region: no-drag;
-  }
+}

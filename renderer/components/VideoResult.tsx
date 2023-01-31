@@ -74,13 +74,13 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
     }
 
     return (
-        <div className="grow flex flex-col justify-evenly items-center">
+        <div className="flex grow flex-col items-center justify-evenly">
             <div className="flex items-center">
                 <div>
                     <ArrowLeftIcon
-                        className={`cursor-pointer h-10 m-20 ${
+                        className={`m-20 h-10 cursor-pointer ${
                             videoIndex === 0
-                                ? "text-neutral-400 cursor-not-allowed"
+                                ? "cursor-not-allowed text-neutral-400"
                                 : ""
                         }`}
                         onClick={prevVideo}
@@ -103,9 +103,9 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
                 </div>
                 <div>
                     <ArrowRightIcon
-                        className={`cursor-pointer h-10 m-20 ${
+                        className={`m-20 h-10 cursor-pointer ${
                             videoIndex === videos.length - 1
-                                ? "text-neutral-400 cursor-not-allowed"
+                                ? "cursor-not-allowed text-neutral-400"
                                 : ""
                         }`}
                         onClick={nextVideo}
@@ -122,7 +122,7 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
                 <button
                     onClick={onClickThumbnail}
                     className={
-                        "p-3 bg-neutral-400 hover:bg-neutral-700 hover:text-neutral-400 rounded"
+                        "rounded bg-neutral-400 p-3 hover:bg-neutral-700 hover:text-neutral-400"
                     }
                 >
                     {renderButtonContent(currLocalVideo?.status)}

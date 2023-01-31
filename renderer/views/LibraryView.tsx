@@ -31,7 +31,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
             {!hidden && (
                 <>
                     {localVideos.length ? (
-                        <div className="h-80 mx-2 my-10 px-8 overflow-auto scrollbar-thin scrollbar-track-rounded scrollbar-thumb-rounded scrollbar-thumb-lime-500 scrollbar-track-neutral-300">
+                        <div className="mx-2 my-10 h-80 overflow-auto px-8 scrollbar-thin scrollbar-track-neutral-300 scrollbar-thumb-lime-500 scrollbar-track-rounded scrollbar-thumb-rounded">
                             {localVideos.map((video) => (
                                 <React.Fragment key={video.id}>
                                     <LocalVideoItem video={video} />

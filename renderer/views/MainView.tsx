@@ -32,7 +32,7 @@ export default function MainView() {
     }
 
     return (
-        <div className="w-full h-full">
+        <div className="h-full w-full">
             <SearchView hidden={seachHidden} />
             <LibraryView hidden={libraryHidden} />
             <PlayerView hidden={playerHidden} />

@@ -27,9 +27,9 @@ export default function LocalVideoItem({ video }: { video: VideoDTO }) {
     }
 
     return (
-        <div className="flex my-4 h-28 items-center justify-between">
+        <div className="my-4 flex h-28 items-center justify-between">
             <div
-                className={`h-full flex ${
+                className={`flex h-full ${
                     video.status === VideoStatus.done
                         ? "cursor-pointer"
                         : "cursor-not-allowed"
@@ -42,7 +42,7 @@ export default function LocalVideoItem({ video }: { video: VideoDTO }) {
                     alt="Thumbnail"
                 />
                 <div className="grow p-2">
-                    <div className="overflow-ellipsis overflow-hidden whitespace-nowrap">
+                    <div className="overflow-hidden overflow-ellipsis whitespace-nowrap">
                         {video.title}
                     </div>
                     <div>

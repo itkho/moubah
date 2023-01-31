@@ -15,17 +15,17 @@ export default function PreviewModal({
 
     return (
         <>
-            <div className="justify-center items-center flex fixed inset-0 z-50">
-                <div className=" bg-neutral-200 rounded-lg shadow-lg flex-col">
+            <div className="fixed inset-0 z-50 flex items-center justify-center">
+                <div className=" flex-col rounded-lg bg-neutral-200 shadow-lg">
                     {/* Header */}
-                    <div className="flex items-start justify-between p-5 border-b border-solid border-slate-300 rounded-t">
+                    <div className="flex items-start justify-between rounded-t border-b border-solid border-slate-300 p-5">
                         <div>
                             <h3 className="font-semibold">{video.title}</h3>
                             <p>{video.author.name}</p>
                             <p>{abbrNum(video.views)} views</p>
                         </div>
                         <button
-                            className="p-1 text-neutral-400 text-2xl"
+                            className="p-1 text-2xl text-neutral-400"
                             onClick={() => setShowModal(false)}
                         >
                             ×
@@ -34,23 +34,23 @@ export default function PreviewModal({
                     {/* Video player */}
                     <div className="flex justify-center">
                         <ReactPlayer
-                            className="m-4 rounded-xl overflow-hidden"
+                            className="m-4 overflow-hidden rounded-xl"
                             controls
                             volume={0}
                             url={video.videoUri}
                         />
                     </div>
                     {/* Footer */}
-                    <div className="flex items-center justify-end p-6 border-t border-solid border-slate-300 rounded-b">
+                    <div className="flex items-center justify-end rounded-b border-t border-solid border-slate-300 p-6">
                         <button
-                            className="text-neutral-400 font-semibold uppercase px-6 py-2 text-sm"
+                            className="px-6 py-2 text-sm font-semibold uppercase text-neutral-400"
                             type="button"
                             onClick={() => setShowModal(false)}
                         >
                             Close
                         </button>
                         <button
-                            className="bg-lime-500 text-neutral-50 active:bg-lime-600 font-semibold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg duration-200"
+                            className="rounded bg-lime-500 px-6 py-3 text-sm font-semibold uppercase text-neutral-50 shadow duration-200 hover:shadow-lg active:bg-lime-600"
                             type="button"
                             onClick={() => {}}
                         >
@@ -59,7 +59,7 @@ export default function PreviewModal({
                     </div>
                 </div>
             </div>
-            <div className="opacity-50 fixed inset-0 z-40 bg-neutral-900"></div>
+            <div className="fixed inset-0 z-40 bg-neutral-900 opacity-50"></div>
         </>
     );
 }

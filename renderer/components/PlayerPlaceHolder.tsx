@@ -7,11 +7,11 @@ export default function PlayerPlaceHolder() {
     const { setView } = useView();
 
     return (
-        <div className="h-full w-full flex flex-col justify-center text-center text-neutral-400">
+        <div className="flex h-full w-full flex-col justify-center text-center text-neutral-400">
             <span>
                 Select a video in the
                 <button
-                    className="bg-neutral-300 hover:bg-neutral-400 hover:text-neutral-300 rounded p-1 m-1 duration-200"
+                    className="m-1 rounded bg-neutral-300 p-1 duration-200 hover:bg-neutral-400 hover:text-neutral-300"
                     onClick={() => setView(View.library)}
                 >
                     Library
