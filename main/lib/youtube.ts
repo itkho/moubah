@@ -3,13 +3,13 @@ import VideoDTO from "../dto/video.js";
 
 export async function search(query: string) {
     const res = await ytSearch(query);
-    const videoResults = res.videos.map(
+    return res.videos.map(
         (video) =>
             new VideoDTO({
+                ...video,
                 id: video.videoId,
                 thumbnailUri: video.thumbnail,
-                ...video,
+                videoUri: video.url,
             })
     );
-    return videoResults;
 }

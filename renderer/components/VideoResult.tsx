@@ -8,14 +8,16 @@ import { VideoStatus } from "../../main/utils/enum";
 import { useView } from "../context/ViewContext";
 import { View } from "../utils/enums";
 import { usePlayer } from "../context/PlayerContext";
+import PreviewModal from "./PreviewModal";
 
 export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
-    console.log("VideoResult rendered!");
+    window.mainApi.log("debug", "VideoResult rendered!");
 
     const { setView } = useView();
     const { updateVideo } = usePlayer();
     const { localVideos, addLocalVideo } = useLocalVideo();
     const [videoIndex, setVideoIndex] = useState(0);
+    const [modelShown, setModelShown] = React.useState(false);
 
     const currVideo = videos[videoIndex];
     let currLocalVideo = localVideos.find(
@@ -71,13 +73,20 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
         }
     }
 
+    function preview() {
+        // todo
+        setModelShown(true);
+    }
+
     return (
         <div className="grow flex flex-col justify-evenly items-center">
             <div className="flex items-center">
                 <div>
                     <ArrowLeftIcon
-                        className={`h-10 m-20 ${
-                            videoIndex === 0 ? "text-neutral-400" : ""
+                        className={`cursor-pointer h-10 m-20 ${
+                            videoIndex === 0
+                                ? "text-neutral-400 cursor-not-allowed"
+                                : ""
                         }`}
                         onClick={prevVideo}
                     />
@@ -99,25 +108,34 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
                 </div>
                 <div>
                     <ArrowRightIcon
-                        className={`h-10 m-20 ${
+                        className={`cursor-pointer h-10 m-20 ${
                             videoIndex === videos.length - 1
-                                ? "text-neutral-400"
+                                ? "text-neutral-400 cursor-not-allowed"
                                 : ""
                         }`}
                         onClick={nextVideo}
                     />
                 </div>
             </div>
-            <div>
+            <div className="my-10 flex flex-col items-center">
+                <button
+                    className="m-1 text-neutral-600 hover:text-neutral-700 hover:underline"
+                    onClick={preview}
+                >
+                    Preview the video
+                </button>
                 <button
                     onClick={onClickThumbnail}
                     className={
-                        "my-10 p-3 bg-neutral-400 hover:bg-neutral-700 hover:text-neutral-400 rounded"
+                        "p-3 bg-neutral-400 hover:bg-neutral-700 hover:text-neutral-400 rounded"
                     }
                 >
                     {renderButtonContent(currLocalVideo?.status)}
                 </button>
             </div>
+            {modelShown && (
+                <PreviewModal setShowModal={setModelShown} video={currVideo} />
+            )}
         </div>
     );
 }

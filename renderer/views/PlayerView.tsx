@@ -1,8 +1,8 @@
 import React from "react";
+import ReactPlayer from "react-player";
+import PlayerPlaceHolder from "../components/PlayerPlaceHolder";
 
 import { usePlayer } from "../context/PlayerContext";
-import { useView } from "../context/ViewContext";
-import { View } from "../utils/enums";
 import { cleanSrcPath } from "../utils/helpers";
 
 export default function PlayerView({ hidden }: { hidden: boolean }) {
@@ -10,7 +10,6 @@ export default function PlayerView({ hidden }: { hidden: boolean }) {
     console.log("PlayerView rendered!");
 
     const { video } = usePlayer();
-    const { setView } = useView();
 
     return (
         <>
@@ -20,22 +19,18 @@ export default function PlayerView({ hidden }: { hidden: boolean }) {
                         <div className="p-10">
                             <div>{video?.title}</div>
                             <div>{video?.author?.name}</div>
-                            <video controls>
-                                <source src={cleanSrcPath(video?.videoUri)} />
-                            </video>
+                            {/* <ReactPlayer
+                                controls
+                                volume={0}
+                                url="https://www.youtube.com/watch?v=XqpFCuPAEPo"
+                            /> */}
+                            <ReactPlayer
+                                controls
+                                url={cleanSrcPath(video?.videoUri)}
+                            />
                         </div>
                     ) : (
-                        <div className="h-full w-full flex flex-col justify-center text-center text-neutral-400">
-                            <span>
-                                Select a video in the
-                                <button
-                                    className="bg-neutral-300 hover:bg-neutral-400 hover:text-neutral-300 rounded p-1 m-1"
-                                    onClick={() => setView(View.library)}
-                                >
-                                    Library
-                                </button>
-                            </span>
-                        </div>
+                        <PlayerPlaceHolder />
                     )}
                 </>
             )}

@@ -4,15 +4,13 @@ import React, {
     useRef,
     useState,
 } from "react";
-import {
-    ArrowLongUpIcon,
-    MagnifyingGlassIcon,
-} from "@heroicons/react/24/solid";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import VideoResult from "../components/VideoResult";
 import VideoDTO from "../../main/dto/video";
+import SearchPlaceHolder from "../components/SearchPlaceHolder";
 
 export default function SearchView({ hidden }: { hidden: boolean }) {
-    console.log("SearchView rendered!");
+    window.mainApi.log("debug", "SearchView rendered!");
 
     const [videos, setVideos] = useState<VideoDTO[]>([]);
     const [query, setQuery] = useState("");
@@ -22,6 +20,8 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
         const videos = (await window.videoApi.getYoutubeResult(query)).map(
             (video) => new VideoDTO(video)
         );
+        window.mainApi.log("debug", `video: ${videos[0]}`);
+        console.log({ videos });
         setVideos(videos);
     }
 
@@ -41,11 +41,12 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                 <div className="z-10 relative h-full flex flex-col items-center">
                     <div className="flex my-10 w-1/3">
                         <input
-                            className="grow outline-none p-1 border-2 rounded-l border-neutral-700 bg-neutral-400 placeholder-gray-500"
+                            className="grow outline-none px-2 py-1 border-2 rounded-l border-neutral-700 bg-neutral-400"
                             value={query}
                             onChange={onChange}
                             onKeyDown={onKeyDown}
-                            type="search"
+                            type="text"
+                            autoFocus
                         />
                         <button
                             ref={searchButton}
@@ -65,17 +66,7 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                             videos={videos}
                         />
                     ) : (
-                        <div className="-z-10 grow flex flex-col justify-center items-center text-neutral-400">
-                            <div className="absolute inset-0 flex flex-col justify-center items-center">
-                                <div className="relative">
-                                    <ArrowLongUpIcon className="animate-bounce-slow left-1/2 -translate-x-1/2 bottom-20 absolute h-20 stroke-current stroke-[0.01]" />
-                                    <div>
-                                        Enter a title or an URL in the search
-                                        bar
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <SearchPlaceHolder />
                     )}
                 </div>
             )}

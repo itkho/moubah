@@ -131,17 +131,19 @@ npm run dist
 ## 🎯 To-do list
 
 -   [x] 🪲 Audio result isn't smooth, find why...
--   [ ] 🧼 Use Hexagonal architecture
 -   [ ] 🆕 Improve UI/UX
+-   [ ] 🆕 Add a loading animation on search for slow internet connections
 -   [ ] 🪲 First installation/run is very long -> make a progress bar or something
--   [ ] 🆕 Support multi-languages (at least french and english)
--   [ ] 🆕 Add e2e tests
--   [ ] 🆕 improve logs (time + separate music-remover logs from moubah.log) and add several level of logs (like logging in Python)
--   [ ] 🆕 Setup CI/CD
 -   [ ] 🆕 Add an uninstaller
 -   [ ] 🆕 Notification system on new release
--   [ ] 🆕 Preview videos (without sound) on hover
--   [ ] 🆕 Be able to see "directly" the video (and don't have to wait until the whole video is processed)
+-   [ ] 🆕 Support multi-languages (at least french and english)
+
+## 📜 (Why not) To-do list
+
+-   [ ] 🆕 Preview videos: be able to see "directly" the video (without any sound) and don't have to wait until the whole video is processed
+-   [ ] 🧼 Use Hexagonal architecture
+-   [ ] 🆕 Add e2e tests
+-   [ ] 🆕 Setup CI/CD
 -   [ ] 🆕 Be able to open Moubah from YouTube (see [here](https://docs.freetubeapp.io/usage/browser-extension/))
 -   [ ] 🆕 Add an ML filter on thumbnail that blur thumbnails with women
 
