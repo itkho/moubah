@@ -73,11 +73,6 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
         }
     }
 
-    function preview() {
-        // todo
-        setModelShown(true);
-    }
-
     return (
         <div className="grow flex flex-col justify-evenly items-center">
             <div className="flex items-center">
@@ -120,7 +115,7 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
             <div className="my-10 flex flex-col items-center">
                 <button
                     className="m-1 text-neutral-600 hover:text-neutral-700 hover:underline"
-                    onClick={preview}
+                    onClick={() => setModelShown(true)}
                 >
                     Preview the video
                 </button>

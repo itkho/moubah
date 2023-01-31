@@ -16,9 +16,9 @@ export default function PreviewModal({
     return (
         <>
             <div className="justify-center items-center flex fixed inset-0 z-50">
-                <div className=" bg-neutral-100 rounded-lg shadow-lg flex-col">
+                <div className=" bg-neutral-200 rounded-lg shadow-lg flex-col">
                     {/* Header */}
-                    <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                    <div className="flex items-start justify-between p-5 border-b border-solid border-slate-300 rounded-t">
                         <div>
                             <h3 className="font-semibold">{video.title}</h3>
                             <p>{video.author.name}</p>
@@ -41,7 +41,7 @@ export default function PreviewModal({
                         />
                     </div>
                     {/* Footer */}
-                    <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                    <div className="flex items-center justify-end p-6 border-t border-solid border-slate-300 rounded-b">
                         <button
                             className="text-neutral-400 font-semibold uppercase px-6 py-2 text-sm"
                             type="button"
