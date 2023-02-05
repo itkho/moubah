@@ -91,7 +91,7 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
                         Title: {currVideo.title}
                     </div>
                     <img
-                        className="my-5 aspect-video shadow-xl"
+                        className="my-5 aspect-video rounded-lg shadow-xl"
                         src={currVideo.thumbnailUri}
                         alt="Thumbnail"
                     />

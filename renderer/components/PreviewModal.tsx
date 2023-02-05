@@ -16,12 +16,12 @@ export default function PreviewModal({
     return (
         <>
             <div className="fixed inset-0 z-50 flex items-center justify-center">
-                <div className=" w-3/4 flex-col rounded-lg bg-neutral-200 shadow-lg">
+                <div className=" w-3/4 flex-col rounded-lg bg-neutral-200 shadow-2xl ring-2 ring-neutral-500">
                     {/* Header */}
                     <div className="flex w-full items-start justify-between rounded-t border-b border-solid border-slate-300 p-5">
                         <div className="overflow-hidden">
                             <h3 className="truncate font-semibold">
-                                {video.title + video.title}
+                                {video.title}
                             </h3>
                             <p>{video.author.name}</p>
                             <p>{abbrNum(video.views)} views</p>
@@ -61,7 +61,7 @@ export default function PreviewModal({
                     </div>
                 </div>
             </div>
-            <div className="fixed inset-0 z-40 bg-neutral-900 opacity-50"></div>
+            <div className="fixed inset-0 z-40 backdrop-blur-sm"></div>
         </>
     );
 }

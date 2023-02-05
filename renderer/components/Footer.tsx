@@ -31,7 +31,7 @@ export default function Footer() {
 
     return (
         <>
-            <div className="flex bg-neutral-800 p-1 text-xs text-neutral-400">
+            <div className="flex bg-neutral-800 p-1 text-xs text-neutral-400 drop-shadow-[0_0px_5px_rgba(0,0,0,0.25)]">
                 <div className={classNameInfo}>
                     <FontAwesomeIcon
                         // TODO: use https://www.npmjs.com/package/classnames for this?

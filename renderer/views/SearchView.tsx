@@ -41,7 +41,7 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                 <div className="relative z-10 flex h-full flex-col items-center">
                     <div className="my-10 flex w-1/3">
                         <input
-                            className="grow rounded-l border-2 border-neutral-700 bg-neutral-400 px-2 py-1 outline-none"
+                            className="grow rounded-l border-2 border-neutral-700 bg-neutral-300 px-2 py-1 outline-none"
                             value={query}
                             onChange={onChange}
                             onKeyDown={onKeyDown}

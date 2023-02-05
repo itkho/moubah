@@ -16,7 +16,7 @@ export default function App() {
             <div className="flex h-screen w-screen flex-col bg-neutral-200 text-neutral-800">
                 <OnLineProvider>
                     <ViewProvider>
-                        <div className="flex grow">
+                        <div className="flex grow overflow-clip">
                             <NavBar />
                             <LocalVideoProvider>
                                 <PlayerProvider>
