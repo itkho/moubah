@@ -1,4 +1,4 @@
-import React, { Dispatch, Fragment, SetStateAction, useState } from "react";
+import React, { Fragment } from "react";
 import { faEllipsis, faPlay, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import VideoDTO from "../../main/dto/video";
@@ -47,15 +47,15 @@ export default function LibraryVideoItem({
 
     return (
         <div className="max-w-30 flex-col rounded-md bg-neutral-300 p-2 hover:shadow-xl">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between pb-2">
                 <input
                     type="checkbox"
-                    className="m-2 h-3 w-3 cursor-pointer appearance-none rounded-sm bg-neutral-200 ring-2 ring-neutral-400 ring-offset-2 ring-offset-neutral-200 checked:bg-lime-500"
+                    className="m-2 h-2 w-2 cursor-pointer appearance-none rounded-sm bg-neutral-200 ring-2 ring-neutral-400 ring-offset-2 ring-offset-neutral-200 checked:bg-lime-500"
                     checked={selected}
                     onChange={handleCheckboxClick}
                 />
-                <Menu as="div" className="relative z-10">
-                    <Menu.Button className="rounded-md px-2 py-1 hover:bg-neutral-400">
+                <Menu as="div" className="relative">
+                    <Menu.Button className="flex rounded-md px-2 py-1 hover:bg-neutral-400">
                         <FontAwesomeIcon icon={faEllipsis} className="h-5" />
                     </Menu.Button>
 
@@ -68,7 +68,7 @@ export default function LibraryVideoItem({
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                     >
-                        <Menu.Items className="absolute right-0 mt-1 w-48 divide-y divide-neutral-200 rounded-md bg-neutral-100 p-1 shadow-lg focus:outline-none">
+                        <Menu.Items className="absolute right-0 z-10 mt-1 w-48 divide-y divide-neutral-200 rounded-md bg-neutral-100 p-1 shadow-lg focus:outline-none">
                             <div className="flex flex-col p-1">
                                 <Menu.Item
                                     disabled={video.status !== VideoStatus.done}

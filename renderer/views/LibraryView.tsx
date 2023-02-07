@@ -1,12 +1,27 @@
 import { faCirclePause } from "@fortawesome/free-regular-svg-icons";
+
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Dialog, Transition } from "@headlessui/react";
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import VideoDTO from "../../main/dto/video";
 import LibraryPlaceHolder from "../components/LibraryPlaceHolder";
 import LibraryVideoItem from "../components/LibraryVideoItem";
 import { useLocalVideo } from "../context/LocalVideoContext";
+import CustomListbox from "../components/Listbox";
+import { VideoStatus } from "../../main/utils/enum";
+
+export enum Sort {
+    recentFirst = "Recent first",
+    recentLast = "Recent last",
+    alphabetically = "Alphabetically",
+}
+
+export enum Filter {
+    all = "All",
+    doneOnly = "Done only",
+    inProgressOnly = "In progress only",
+    notSeenOnly = "(TODO) Not seen only",
+}
 
 export let updateLocalVideo: (videoUpdated: VideoDTO) => void;
 
@@ -21,12 +36,14 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
         selectedVideos,
         toggleSelectAllVideos,
     } = useLocalVideo();
-
     const deleteButton = useRef<HTMLButtonElement>(null);
 
     const [isDeleting, setIsDeleting] = useState(false);
+    const [selectedSort, setSelectedSort] = useState<Sort>(Sort.recentFirst);
+    const [selectedFilter, setSelectedFilter] = useState<Filter>(Filter.all);
 
     const selectedVideoIds = selectedVideos.map((video) => video.id);
+    const filteredVideos = localVideos.filter((video) => isNotFiltered(video));
 
     updateLocalVideo = (videoUpdated) => {
         setLocalVideos(
@@ -79,18 +96,69 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
         }
     }
 
+    function isNotFiltered(video: VideoDTO) {
+        switch (selectedFilter) {
+            case Filter.all:
+                return true;
+            case Filter.doneOnly:
+                return video.status === VideoStatus.done;
+            case Filter.inProgressOnly:
+                return video.status !== VideoStatus.done;
+        }
+    }
+
+    function applySort() {
+        switch (selectedSort) {
+            case Sort.recentFirst:
+                localVideos.sort((a, b) =>
+                    a.metadata!.creationTimestamp <
+                    b.metadata!.creationTimestamp
+                        ? 1
+                        : -1
+                );
+                break;
+            case Sort.recentLast:
+                localVideos.sort((a, b) =>
+                    a.metadata!.creationTimestamp >
+                    b.metadata!.creationTimestamp
+                        ? 1
+                        : -1
+                );
+                break;
+            case Sort.alphabetically:
+                localVideos.sort((a, b) => (a.title > b.title ? 1 : -1));
+                break;
+        }
+    }
+    // TODO: find a better place to call this function
+    // should be call only when localVideos or selectedSort change
+    applySort();
+
     return (
         <>
             {!hidden && (
                 <>
                     {localVideos.length ? (
-                        <div className="flex h-full w-full flex-col p-10 pb-0">
-                            <div className="flex justify-between py-2">
+                        <div className="flex h-full w-full flex-col p-10 pr-5 pb-0">
+                            <div className="flex justify-between py-2 pr-5">
                                 <h1 className="text-4xl">My videos</h1>
-                                <div className="flex gap-10">
-                                    {/* TODO: https://headlessui.com/react/listbox */}
-                                    <div>Filter</div>
-                                    <div>Sort</div>
+                                <div className="flex gap-2">
+                                    <div className="w-48">
+                                        <CustomListbox
+                                            prefixText={"Filter - "}
+                                            enumList={Filter}
+                                            selectedEnum={selectedFilter}
+                                            setSelectedEnum={setSelectedFilter}
+                                        />
+                                    </div>
+                                    <div className="w-52">
+                                        <CustomListbox
+                                            prefixText={"Sorted by - "}
+                                            enumList={Sort}
+                                            selectedEnum={selectedSort}
+                                            setSelectedEnum={setSelectedSort}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                             <div className="flex items-center divide-x-2 divide-neutral-300 py-2">
@@ -113,7 +181,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                 <div className="flex items-center gap-2 px-2">
                                     Actions:
                                     <button
-                                        className="cursor-pointer rounded-md bg-neutral-300 py-1 px-2 disabled:cursor-not-allowed"
+                                        className="cursor-pointer rounded-md bg-neutral-300 py-1 px-2 disabled:cursor-not-allowed hover:bg-neutral-400"
                                         // TODO: finish implement this  (it should pause the downloading/procesing)
                                         disabled={true}
                                         onClick={() => {}}
@@ -126,7 +194,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     </button>
                                     <button
                                         ref={deleteButton}
-                                        className={`cursor-pointer rounded-md bg-neutral-300 py-1 px-2 disabled:cursor-not-allowed ${
+                                        className={`cursor-pointer rounded-md bg-neutral-300 py-1 px-2 disabled:cursor-not-allowed hover:bg-neutral-400 ${
                                             isDeleting && "text-ko"
                                         }`}
                                         disabled={!selectedVideos.length}
@@ -140,8 +208,8 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     </button>
                                 </div>
                             </div>
-                            <div className="grid grow gap-4 overflow-scroll pb-4 pt-2 pr-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                                {localVideos.map((video) => (
+                            <div className="grid grow auto-rows-max gap-4 overflow-scroll pb-4 pt-2 pr-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                                {filteredVideos.map((video) => (
                                     <LibraryVideoItem
                                         key={video.id}
                                         video={video}

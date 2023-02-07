@@ -21,7 +21,6 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
             (video) => new VideoDTO(video)
         );
         window.mainApi.log("debug", `video: ${videos[0]}`);
-        console.log({ videos });
         setVideos(videos);
     }
 

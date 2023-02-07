@@ -4,6 +4,10 @@ export interface Author {
     url: string;
 }
 
+interface Metadata {
+    creationTimestamp: number;
+}
+
 export default class VideoDTO {
     id: string;
     title: string;
@@ -14,6 +18,7 @@ export default class VideoDTO {
     status?: VideoStatus;
     progress?: number;
     videoUri?: string;
+    metadata?: Metadata;
 
     constructor(video: {
         id: string;
@@ -25,6 +30,7 @@ export default class VideoDTO {
         status?: VideoStatus;
         progress?: number;
         videoUri?: string;
+        metadata?: Metadata;
     }) {
         this.id = video.id;
         this.title = video.title;
@@ -35,5 +41,6 @@ export default class VideoDTO {
         this.status = video.status;
         this.progress = video.progress;
         this.videoUri = video.videoUri;
+        this.metadata = video.metadata;
     }
 }

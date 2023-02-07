@@ -44,13 +44,20 @@ export async function getVideosTodo() {
 }
 
 export function save(video: VideoModel) {
-    if (!fs.existsSync(video.dir)) {
-        fs.mkdirSync(video.dir);
-    }
-    mainLogger.debug({ status: video.status, ...video.info });
+    // if (!fs.existsSync(video.dir)) {
+    //     fs.mkdirSync(video.dir);
+    // }
+    const videoInfo = {
+        metadata: {
+            creationTimestamp: Date.now(),
+        },
+        status: video.status,
+        ...video.info,
+    };
+    mainLogger.debug({ videoInfo });
     fs.writeFile(
         path.join(video.infoPath),
-        JSON.stringify({ status: video.status, ...video.info }),
+        JSON.stringify(videoInfo),
         (err) => {
             if (err) throw err;
         }
