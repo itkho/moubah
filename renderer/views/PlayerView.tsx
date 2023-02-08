@@ -48,7 +48,7 @@ export default function PlayerView({ hidden }: { hidden: boolean }) {
                             </div>
                             {/* TODO: https://code.pieces.app/blog/developing-a-react-video-player-with-personalized-controls#:~:text=Watch%20Now-,Handling%20the%20Rewind%20and%20Fast%20Forward%20functionalities,-. */}
                             <div
-                                className="overflow-hidden rounded-lg"
+                                className="overflow-hidden rounded-lg ring-2 ring-neutral-500"
                                 onKeyDown={onKeyDown}
                             >
                                 <ReactPlayer
