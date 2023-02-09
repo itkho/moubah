@@ -16,7 +16,7 @@ export default function PreviewModal({
     return (
         <>
             <div className="fixed inset-0 z-50 flex items-center justify-center">
-                <div className=" bg-background w-3/4 flex-col rounded-lg shadow-2xl ring-2 ring-neutral-500">
+                <div className=" bg-background ring-base-500 w-3/4 flex-col rounded-lg shadow-2xl ring-2">
                     {/* Header */}
                     <div className="flex w-full items-start justify-between rounded-t border-b border-solid border-slate-300 p-5">
                         <div className="overflow-hidden">
@@ -27,7 +27,7 @@ export default function PreviewModal({
                             <p>{abbrNum(video.views)} views</p>
                         </div>
                         <button
-                            className="text-neutral-400 p-5 text-2xl"
+                            className="text-base-400 p-5 text-2xl"
                             onClick={() => setShowModal(false)}
                         >
                             ×
@@ -45,14 +45,14 @@ export default function PreviewModal({
                     {/* Footer */}
                     <div className="flex items-center justify-end rounded-b border-t border-solid border-slate-300 p-6">
                         <button
-                            className="text-neutral-400 px-6 py-2 text-sm font-semibold uppercase"
+                            className="text-base-400 px-6 py-2 text-sm font-semibold uppercase"
                             type="button"
                             onClick={() => setShowModal(false)}
                         >
                             Close
                         </button>
                         <button
-                            className="rounded bg-lime-500 px-6 py-3 text-sm font-semibold uppercase text-neutral-50 shadow duration-200 hover:shadow-lg active:bg-lime-600"
+                            className="text-base-50 rounded bg-lime-500 px-6 py-3 text-sm font-semibold uppercase shadow duration-200 hover:shadow-lg active:bg-lime-600"
                             type="button"
                             onClick={() => {}}
                         >

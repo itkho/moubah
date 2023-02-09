@@ -161,11 +161,11 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="divide-neutral-300 flex items-center divide-x-2 py-2">
+                            <div className="divide-base-300 flex items-center divide-x-2 py-2">
                                 <div className="flex items-center">
                                     <input
                                         type="checkbox"
-                                        className="bg-neutral-100 ring-neutral-400 ring-offset-neutral-100 ml-2 mr-4 h-3 w-3 cursor-pointer appearance-none rounded-sm ring-2 ring-offset-2 checked:bg-lime-500"
+                                        className="bg-background ring-base-400 ring-offset-background ml-2 mr-4 h-3 w-3 cursor-pointer appearance-none rounded-sm ring-2 ring-offset-2 checked:bg-lime-500"
                                         checked={
                                             localVideos.length ===
                                             selectedVideos.length
@@ -173,7 +173,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                         onChange={toggleSelectAllVideos}
                                     />
                                     Select all
-                                    <div className="text-neutral-500 w-28 pl-4">
+                                    <div className="text-base-500 w-28 pl-4">
                                         Selected: {selectedVideos.length}
                                     </div>
                                 </div>
@@ -181,7 +181,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                 <div className="flex items-center gap-2 px-2">
                                     Actions:
                                     <button
-                                        className="bg-neutral-200 hover:bg-neutral-300 cursor-pointer rounded-md py-1 px-2 disabled:cursor-not-allowed"
+                                        className="bg-base-200 hover:bg-base-300 cursor-pointer rounded-md py-1 px-2 disabled:cursor-not-allowed"
                                         // TODO: finish implement this  (it should pause the downloading/procesing)
                                         disabled={true}
                                         onClick={() => {}}
@@ -194,7 +194,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     </button>
                                     <button
                                         ref={deleteButton}
-                                        className={`bg-neutral-200 hover:bg-neutral-300 cursor-pointer rounded-md py-1 px-2 disabled:cursor-not-allowed ${
+                                        className={`bg-base-200 hover:bg-base-300 cursor-pointer rounded-md py-1 px-2 disabled:cursor-not-allowed ${
                                             isDeleting && "text-ko"
                                         }`}
                                         disabled={!selectedVideos.length}
@@ -208,7 +208,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     </button>
                                 </div>
                             </div>
-                            <div className="grid grow auto-rows-max gap-4 overflow-y-scroll pb-4 pt-2 pr-5 pl-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                            <div className="grid grow auto-rows-max gap-6 overflow-y-scroll pb-4 pt-2 pr-5 pl-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                                 {filteredVideos.map((video) => (
                                     <LibraryVideoItem
                                         key={video.id}

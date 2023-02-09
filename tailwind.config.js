@@ -1,5 +1,9 @@
 const colors = require("tailwindcss/colors");
 
+const base = colors.neutral;
+const primary = colors.lime;
+const error = colors.red;
+
 module.exports = {
     darkMode: "class",
     content: ["./renderer/index.html", "./renderer/**/*.{vue,js,ts,jsx,tsx}"],
@@ -7,60 +11,52 @@ module.exports = {
         extend: {
             colors: {
                 // Neutral / Green
-                ok: colors.lime[700],
-                ko: colors.red[700],
+                ok: primary[700],
+                ko: error[700],
                 highlight: {
-                    light: colors.lime[600],
-                    dark: colors.lime[500],
+                    light: primary[600],
+                    dark: primary[500],
                 },
                 background: {
-                    light: colors.neutral[100],
-                    dark: colors.neutral[900],
+                    light: base[100],
+                    dark: base[800],
                 },
-                neutral: {
+                base: {
                     100: {
-                        light: colors.neutral[100],
-                        dark: colors.neutral[900],
+                        light: base[100],
+                        dark: base[800],
                     },
                     200: {
-                        light: colors.neutral[200],
-                        dark: colors.neutral[800],
+                        light: base[200],
+                        dark: base[700],
                     },
                     300: {
-                        hover: {
-                            light: colors.neutral[400],
-                            dark: colors.neutral[600],
-                        },
-                        light: colors.neutral[300],
-                        dark: colors.neutral[700],
+                        light: base[300],
+                        dark: base[600],
                     },
-                    // 350: {
-                    //     light: colors.neutral[350],
-                    //     dark: colors.neutral[650],
-                    // },
                     400: {
-                        light: colors.neutral[400],
-                        dark: colors.neutral[600],
+                        light: base[400],
+                        dark: base[500],
                     },
                     500: {
-                        light: colors.neutral[500],
-                        dark: colors.neutral[500],
+                        light: base[500],
+                        dark: base[400],
                     },
                     600: {
-                        light: colors.neutral[600],
-                        dark: colors.neutral[400],
+                        light: base[600],
+                        dark: base[300],
                     },
                     700: {
-                        light: colors.neutral[700],
-                        dark: colors.neutral[300],
+                        light: base[700],
+                        dark: base[200],
                     },
                     800: {
-                        light: colors.neutral[800],
-                        dark: colors.neutral[200],
+                        light: base[800],
+                        dark: base[100],
                     },
                     900: {
-                        light: colors.neutral[900],
-                        dark: colors.neutral[100],
+                        light: base[900],
+                        dark: base[50],
                     },
                 },
             },

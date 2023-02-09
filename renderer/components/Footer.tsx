@@ -13,7 +13,7 @@ import { MusicRemoverStatus } from "../../main/utils/enum";
 import { useOnLine } from "../context/OnlineContext";
 
 const classNameClickable =
-    "flex items-center mx-2 cursor-pointer hover:text-neutral-600";
+    "flex items-center mx-2 cursor-pointer hover:text-base-600";
 const classNameInfo = "flex items-center mx-2 cursor-default";
 
 export let updateMusicRemoverStatus: (status: MusicRemoverStatus) => void;
@@ -33,7 +33,7 @@ export default function Footer() {
 
     return (
         <>
-            <div className="bg-neutral-200 text-neutral-500 flex p-1 text-xs drop-shadow-[0_0px_5px_rgba(0,0,0,0.25)]">
+            <div className="bg-base-200 text-base-500 border-base-500 flex border-t-[0.5px] p-1  text-xs ">
                 <div className={classNameInfo}>
                     <FontAwesomeIcon
                         // TODO: use https://www.npmjs.com/package/classnames for this?

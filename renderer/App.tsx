@@ -15,24 +15,22 @@ export default function App() {
 
     return (
         <>
-            <div
-                className={`bg-background flex h-screen w-screen flex-col text-neutral-800 ${
-                    darkMode && "dark"
-                }`}
-            >
-                <OnLineProvider>
-                    <ViewProvider>
-                        <div className="flex grow overflow-clip">
-                            <NavBar />
-                            <LocalVideoProvider>
-                                <PlayerProvider>
-                                    <MainView />
-                                </PlayerProvider>
-                            </LocalVideoProvider>
-                        </div>
-                    </ViewProvider>
-                    <Footer />
-                </OnLineProvider>
+            <div className={darkMode ? "dark" : ""}>
+                <div className="bg-background text-base-800 flex h-screen w-screen flex-col">
+                    <OnLineProvider>
+                        <ViewProvider>
+                            <div className="flex grow overflow-clip">
+                                <NavBar />
+                                <LocalVideoProvider>
+                                    <PlayerProvider>
+                                        <MainView />
+                                    </PlayerProvider>
+                                </LocalVideoProvider>
+                            </div>
+                        </ViewProvider>
+                        <Footer />
+                    </OnLineProvider>
+                </div>
             </div>
         </>
     );
