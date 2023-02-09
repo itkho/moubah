@@ -6,9 +6,9 @@ export default function ContactView({ hidden }: { hidden: boolean }) {
     return (
         <>
             {!hidden && (
-                <div className="flex h-full w-full items-center justify-center bg-neutral-200 dark:bg-neutral-700">
+                <div className="bg-background flex h-full w-full items-center justify-center">
                     <a
-                        className="rounded bg-neutral-400 p-4 text-neutral-700 duration-200 hover:bg-neutral-500 hover:text-neutral-300"
+                        className="bg-neutral-200 hover:text-neutral-700 text-neutral-600 hover:bg-neutral-300 rounded p-4 duration-200"
                         href="mailto:moubah.info@gmail.com"
                     >
                         moubah.info@gmail.com

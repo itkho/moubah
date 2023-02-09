@@ -80,16 +80,14 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
                     <ArrowLeftIcon
                         className={`m-20 h-10 cursor-pointer ${
                             videoIndex === 0
-                                ? "cursor-not-allowed text-neutral-400"
+                                ? "text-neutral-400 cursor-not-allowed"
                                 : ""
                         }`}
                         onClick={prevVideo}
                     />
                 </div>
                 <div className="basis-4/6">
-                    <div className="h-12 line-clamp-2">
-                        Title: {currVideo.title}
-                    </div>
+                    <div className="h-12 line-clamp-2">{currVideo.title}</div>
                     <img
                         className="my-5 aspect-video rounded-lg shadow-xl"
                         src={currVideo.thumbnailUri}
@@ -105,7 +103,7 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
                     <ArrowRightIcon
                         className={`m-20 h-10 cursor-pointer ${
                             videoIndex === videos.length - 1
-                                ? "cursor-not-allowed text-neutral-400"
+                                ? "text-neutral-400 cursor-not-allowed"
                                 : ""
                         }`}
                         onClick={nextVideo}
@@ -114,7 +112,7 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
             </div>
             <div className="my-10 flex flex-col items-center">
                 <button
-                    className="m-1 text-neutral-600 hover:text-neutral-700 hover:underline"
+                    className="text-neutral-600 hover:text-neutral-700 m-1 hover:underline"
                     onClick={() => setModelShown(true)}
                 >
                     Preview the video
@@ -122,7 +120,7 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
                 <button
                     onClick={onClickThumbnail}
                     className={
-                        "rounded bg-neutral-400 p-3 hover:bg-neutral-700 hover:text-neutral-400"
+                        "bg-neutral-400 hover:bg-neutral-700 hover:text-neutral-400 rounded p-3"
                     }
                 >
                     {renderButtonContent(currLocalVideo?.status)}

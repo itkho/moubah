@@ -16,7 +16,7 @@ export default function App() {
     return (
         <>
             <div
-                className={`flex h-screen w-screen flex-col bg-neutral-200 text-neutral-800 ${
+                className={`bg-background flex h-screen w-screen flex-col text-neutral-800 ${
                     darkMode && "dark"
                 }`}
             >

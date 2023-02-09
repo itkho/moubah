@@ -7,9 +7,62 @@ module.exports = {
         extend: {
             colors: {
                 // Neutral / Green
-                highlight: colors.lime[500],
                 ok: colors.lime[700],
                 ko: colors.red[700],
+                highlight: {
+                    light: colors.lime[600],
+                    dark: colors.lime[500],
+                },
+                background: {
+                    light: colors.neutral[100],
+                    dark: colors.neutral[900],
+                },
+                neutral: {
+                    100: {
+                        light: colors.neutral[100],
+                        dark: colors.neutral[900],
+                    },
+                    200: {
+                        light: colors.neutral[200],
+                        dark: colors.neutral[800],
+                    },
+                    300: {
+                        hover: {
+                            light: colors.neutral[400],
+                            dark: colors.neutral[600],
+                        },
+                        light: colors.neutral[300],
+                        dark: colors.neutral[700],
+                    },
+                    // 350: {
+                    //     light: colors.neutral[350],
+                    //     dark: colors.neutral[650],
+                    // },
+                    400: {
+                        light: colors.neutral[400],
+                        dark: colors.neutral[600],
+                    },
+                    500: {
+                        light: colors.neutral[500],
+                        dark: colors.neutral[500],
+                    },
+                    600: {
+                        light: colors.neutral[600],
+                        dark: colors.neutral[400],
+                    },
+                    700: {
+                        light: colors.neutral[700],
+                        dark: colors.neutral[300],
+                    },
+                    800: {
+                        light: colors.neutral[800],
+                        dark: colors.neutral[200],
+                    },
+                    900: {
+                        light: colors.neutral[900],
+                        dark: colors.neutral[100],
+                    },
+                },
             },
             keyframes: {
                 bounceCentered: {

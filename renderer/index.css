@@ -4,11 +4,198 @@
 @tailwind utilities;
 
 /* For AppBar */
-.draggable {
+/* .draggable {
     -webkit-user-select: none;
     -webkit-app-region: drag;
 }
 
 .undraggable {
     -webkit-app-region: no-drag;
+} */
+
+@layer base {
+    .bg-highlight {
+        @apply bg-highlight-light dark:bg-highlight-dark;
+    }
+    .text-highlight {
+        @apply text-highlight-light dark:text-highlight-dark;
+    }
+
+    .bg-background {
+        @apply bg-background-light dark:bg-background-dark;
+    }
+    .text-background {
+        @apply text-background-light dark:text-background-dark;
+    }
+
+    .divide-neutral-100 {
+        @apply divide-neutral-100-light dark:divide-neutral-100-dark;
+    }
+    .ring-neutral-100 {
+        @apply ring-neutral-100-light dark:ring-neutral-100-dark;
+    }
+    .ring-offset-neutral-100 {
+        @apply ring-offset-neutral-100-light dark:ring-offset-neutral-100-dark;
+    }
+    .border-neutral-100 {
+        @apply border-neutral-100-light dark:border-neutral-100-dark;
+    }
+    .bg-neutral-100 {
+        @apply bg-neutral-100-light dark:bg-neutral-100-dark;
+    }
+    .text-neutral-100 {
+        @apply text-neutral-100-light dark:text-neutral-100-dark;
+    }
+
+    .divide-neutral-200 {
+        @apply divide-neutral-200-light dark:divide-neutral-200-dark;
+    }
+    .ring-neutral-200 {
+        @apply ring-neutral-200-light dark:ring-neutral-200-dark;
+    }
+    .ring-offset-neutral-200 {
+        @apply ring-offset-neutral-200-light dark:ring-offset-neutral-200-dark;
+    }
+    .border-neutral-200 {
+        @apply border-neutral-200-light dark:border-neutral-200-dark;
+    }
+    .bg-neutral-200 {
+        @apply bg-neutral-200-light dark:bg-neutral-200-dark;
+    }
+    .text-neutral-200 {
+        @apply text-neutral-200-light dark:text-neutral-200-dark;
+    }
+
+    .divide-neutral-300 {
+        @apply divide-neutral-300-light dark:divide-neutral-300-dark;
+    }
+    .ring-neutral-300 {
+        @apply ring-neutral-300-light dark:ring-neutral-300-dark;
+    }
+    .ring-offset-neutral-300 {
+        @apply ring-offset-neutral-300-light dark:ring-offset-neutral-300-dark;
+    }
+    .border-neutral-300 {
+        @apply border-neutral-300-light dark:border-neutral-300-dark;
+    }
+    .bg-neutral-300 {
+        @apply bg-neutral-300-light dark:bg-neutral-300-dark;
+    }
+    .text-neutral-300 {
+        @apply text-neutral-300-light dark:text-neutral-300-dark;
+    }
+
+    .divide-neutral-400 {
+        @apply divide-neutral-400-light dark:divide-neutral-400-dark;
+    }
+    .ring-neutral-400 {
+        @apply ring-neutral-400-light dark:ring-neutral-400-dark;
+    }
+    .ring-offset-neutral-400 {
+        @apply ring-offset-neutral-400-light dark:ring-offset-neutral-400-dark;
+    }
+    .border-neutral-400 {
+        @apply border-neutral-400-light dark:border-neutral-400-dark;
+    }
+    .bg-neutral-400 {
+        @apply bg-neutral-400-light dark:bg-neutral-400-dark;
+    }
+    .text-neutral-400 {
+        @apply text-neutral-400-light dark:text-neutral-400-dark;
+    }
+
+    .divide-neutral-500 {
+        @apply divide-neutral-500-light dark:divide-neutral-500-dark;
+    }
+    .ring-neutral-500 {
+        @apply ring-neutral-500-light dark:ring-neutral-500-dark;
+    }
+    .ring-offset-neutral-500 {
+        @apply ring-offset-neutral-500-light dark:ring-offset-neutral-500-dark;
+    }
+    .border-neutral-500 {
+        @apply border-neutral-500-light dark:border-neutral-500-dark;
+    }
+    .bg-neutral-500 {
+        @apply bg-neutral-500-light dark:bg-neutral-500-dark;
+    }
+    .text-neutral-500 {
+        @apply text-neutral-500-light dark:text-neutral-500-dark;
+    }
+
+    .divide-neutral-600 {
+        @apply divide-neutral-600-light dark:divide-neutral-600-dark;
+    }
+    .ring-neutral-600 {
+        @apply ring-neutral-600-light dark:ring-neutral-600-dark;
+    }
+    .ring-offset-neutral-600 {
+        @apply ring-offset-neutral-600-light dark:ring-offset-neutral-600-dark;
+    }
+    .border-neutral-600 {
+        @apply border-neutral-600-light dark:border-neutral-600-dark;
+    }
+    .bg-neutral-600 {
+        @apply bg-neutral-600-light dark:bg-neutral-600-dark;
+    }
+    .text-neutral-600 {
+        @apply text-neutral-600-light dark:text-neutral-600-dark;
+    }
+
+    .divide-neutral-700 {
+        @apply divide-neutral-700-light dark:divide-neutral-700-dark;
+    }
+    .ring-neutral-700 {
+        @apply ring-neutral-700-light dark:ring-neutral-700-dark;
+    }
+    .ring-offset-neutral-700 {
+        @apply ring-offset-neutral-700-light dark:ring-offset-neutral-700-dark;
+    }
+    .border-neutral-700 {
+        @apply border-neutral-700-light dark:border-neutral-700-dark;
+    }
+    .bg-neutral-700 {
+        @apply bg-neutral-700-light dark:bg-neutral-700-dark;
+    }
+    .text-neutral-700 {
+        @apply text-neutral-700-light dark:text-neutral-700-dark;
+    }
+
+    .divide-neutral-800 {
+        @apply divide-neutral-800-light dark:divide-neutral-800-dark;
+    }
+    .ring-neutral-800 {
+        @apply ring-neutral-800-light dark:ring-neutral-800-dark;
+    }
+    .ring-offset-neutral-800 {
+        @apply ring-offset-neutral-800-light dark:ring-offset-neutral-800-dark;
+    }
+    .border-neutral-800 {
+        @apply border-neutral-800-light dark:border-neutral-800-dark;
+    }
+    .bg-neutral-800 {
+        @apply bg-neutral-800-light dark:bg-neutral-800-dark;
+    }
+    .text-neutral-800 {
+        @apply text-neutral-800-light dark:text-neutral-800-dark;
+    }
+
+    .divide-neutral-900 {
+        @apply divide-neutral-900-light dark:divide-neutral-900-dark;
+    }
+    .ring-neutral-900 {
+        @apply ring-neutral-900-light dark:ring-neutral-900-dark;
+    }
+    .ring-offset-neutral-900 {
+        @apply ring-offset-neutral-900-light dark:ring-offset-neutral-900-dark;
+    }
+    .border-neutral-900 {
+        @apply border-neutral-900-light dark:border-neutral-900-dark;
+    }
+    .bg-neutral-900 {
+        @apply bg-neutral-900-light dark:bg-neutral-900-dark;
+    }
+    .text-neutral-900 {
+        @apply text-neutral-900-light dark:text-neutral-900-dark;
+    }
 }

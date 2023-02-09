@@ -40,7 +40,7 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                 <div className="relative z-10 flex h-full flex-col items-center">
                     <div className="my-10 flex w-1/3">
                         <input
-                            className="grow rounded-l border-2 border-neutral-700 bg-neutral-300 px-2 py-1 outline-none"
+                            className="border-neutral-600 bg-neutral-300 grow rounded-l border-2 px-2 py-1 outline-none"
                             value={query}
                             onChange={onChange}
                             onKeyDown={onKeyDown}
@@ -49,10 +49,10 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                         />
                         <button
                             ref={searchButton}
-                            className="rounded-r border-2 border-neutral-700 bg-neutral-700 p-1"
+                            className="border-neutral-600 bg-neutral-600 rounded-r border-2 p-1"
                             onClick={search}
                         >
-                            <MagnifyingGlassIcon className="h-4 stroke-current stroke-1 text-neutral-200" />
+                            <MagnifyingGlassIcon className="text-neutral-200 h-4 stroke-current stroke-1" />
                         </button>
                     </div>
 
