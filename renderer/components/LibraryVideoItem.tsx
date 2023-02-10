@@ -46,7 +46,7 @@ export default function LibraryVideoItem({
     }
 
     return (
-        <div className="max-w-30 bg-base-100 ring-base-300 flex-col rounded-md py-2 px-4 shadow-sm ring-2 hover:shadow-lg dark:shadow-none">
+        <div className="max-w-30 ring-base-300 flex-col rounded-md bg-base-100-light py-2 px-4 shadow-sm ring-2 hover:shadow-lg dark:bg-base-200-dark dark:shadow-none dark:hover:ring-base-400-dark">
             <div className="flex items-center justify-between pb-2">
                 <input
                     type="checkbox"

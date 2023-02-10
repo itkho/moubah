@@ -7,8 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Switch } from "@headlessui/react";
 import { useDarkMode } from "../context/DarkModeContext";
 
+import iconDark from "../assets/icons/favicon-dark.svg";
+
 const classNameListItem =
-    "flex items-center gap-2 cursor-pointer my-4 p-2 rounded hover:bg-base-300 hover:bg-opacity-50 hover:text-base-700 duration-200";
+    "flex items-center gap-2 cursor-pointer my-2 p-2 rounded-lg hover:bg-base-300 hover:bg-opacity-50 hover:text-base-700 duration-200";
 
 export default function NavBar() {
     console.log("NavBar rendered!");
@@ -30,7 +32,7 @@ export default function NavBar() {
                     >
                         <FontAwesomeIcon
                             icon={faMagnifyingGlass}
-                            className={`px-1 ${
+                            className={`pl-1 pr-3 ${
                                 view === View.search && "text-highlight"
                             }`}
                         />
@@ -46,7 +48,7 @@ export default function NavBar() {
                     >
                         <FontAwesomeIcon
                             icon={faList}
-                            className={`px-1 ${
+                            className={`pl-1 pr-3 ${
                                 view === View.library && "text-highlight"
                             }`}
                         />
@@ -62,7 +64,7 @@ export default function NavBar() {
                     >
                         <FontAwesomeIcon
                             icon={faCirclePlay}
-                            className={`px-1 ${
+                            className={`pl-1 pr-3 ${
                                 view === View.player && "text-highlight"
                             }`}
                         />
@@ -78,7 +80,7 @@ export default function NavBar() {
                     >
                         <FontAwesomeIcon
                             icon={faMessage}
-                            className={`px-1 ${
+                            className={`pl-1 pr-3 ${
                                 view === View.contact && "text-highlight"
                             }`}
                         />
@@ -92,11 +94,19 @@ export default function NavBar() {
                         onChange={setDarkMode}
                         className="bg-base-600 relative mx-2 inline-flex h-6 w-11 items-center rounded-full"
                     >
-                        <span
+                        <svg
+                            height="100"
+                            viewBox="0 0 100 100"
+                            width="100"
+                            xmlns="http://www.w3.org/2000/svg"
                             className={`${
-                                darkMode ? "translate-x-1" : "translate-x-6"
-                            } bg-base-200 inline-block h-4 w-4 transform rounded-full transition`}
-                        />
+                                darkMode
+                                    ? "translate-x-1"
+                                    : "bg-base-200 translate-x-6"
+                            } fill-base-200 inline-block h-4 w-4 transform rounded-full  transition`}
+                        >
+                            <path d="m65.6283 2.49084c-9.8215 13.28556-15.6283 29.71926-15.6283 47.50916s5.8068 34.2236 15.6283 47.5092c-4.9169 1.6165-10.1705 2.4908-15.6283 2.4908-27.6142 0-50-22.3859-50-50s22.3858-50 50-50c5.4578 0 10.7114.874329 15.6283 2.49084z" />
+                        </svg>
                     </Switch>
                     <div className="text-xs font-semibold uppercase">Light</div>
                 </div>

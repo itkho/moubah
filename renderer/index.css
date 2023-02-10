@@ -20,6 +20,9 @@
     .text-highlight {
         @apply text-highlight-light dark:text-highlight-dark;
     }
+    .fill-highlight {
+        @apply dark:text-fill-dark fill-highlight-light;
+    }
 
     .divide-background {
         @apply divide-background-light dark:divide-background-dark;
@@ -38,6 +41,9 @@
     }
     .text-background {
         @apply text-background-light dark:text-background-dark;
+    }
+    .fill-background {
+        @apply dark:text-fill-dark fill-background-light;
     }
 
     .divide-base-100 {
@@ -58,6 +64,9 @@
     .text-base-100 {
         @apply text-base-100-light dark:text-base-100-dark;
     }
+    .fill-base-100 {
+        @apply fill-base-100-light dark:fill-base-100-dark;
+    }
 
     .divide-base-200 {
         @apply divide-base-200-light dark:divide-base-200-dark;
@@ -76,6 +85,9 @@
     }
     .text-base-200 {
         @apply text-base-200-light dark:text-base-200-dark;
+    }
+    .fill-base-200 {
+        @apply fill-base-200-light dark:fill-base-200-dark;
     }
 
     .divide-base-300 {
@@ -96,6 +108,9 @@
     .text-base-300 {
         @apply text-base-300-light dark:text-base-300-dark;
     }
+    .fill-base-300 {
+        @apply fill-base-300-light dark:fill-base-300-dark;
+    }
 
     .divide-base-400 {
         @apply divide-base-400-light dark:divide-base-400-dark;
@@ -114,6 +129,9 @@
     }
     .text-base-400 {
         @apply text-base-400-light dark:text-base-400-dark;
+    }
+    .fill-base-400 {
+        @apply fill-base-400-light dark:fill-base-400-dark;
     }
 
     .divide-base-500 {
@@ -134,6 +152,9 @@
     .text-base-500 {
         @apply text-base-500-light dark:text-base-500-dark;
     }
+    .fill-base-500 {
+        @apply fill-base-500-light dark:fill-base-500-dark;
+    }
 
     .divide-base-600 {
         @apply divide-base-600-light dark:divide-base-600-dark;
@@ -152,6 +173,9 @@
     }
     .text-base-600 {
         @apply text-base-600-light dark:text-base-600-dark;
+    }
+    .fill-base-600 {
+        @apply fill-base-600-light dark:fill-base-600-dark;
     }
 
     .divide-base-700 {
@@ -172,6 +196,9 @@
     .text-base-700 {
         @apply text-base-700-light dark:text-base-700-dark;
     }
+    .fill-base-700 {
+        @apply fill-base-700-light dark:fill-base-700-dark;
+    }
 
     .divide-base-800 {
         @apply divide-base-800-light dark:divide-base-800-dark;
@@ -191,6 +218,9 @@
     .text-base-800 {
         @apply text-base-800-light dark:text-base-800-dark;
     }
+    .fill-base-800 {
+        @apply fill-base-800-light dark:fill-base-800-dark;
+    }
 
     .divide-base-900 {
         @apply divide-base-900-light dark:divide-base-900-dark;
@@ -209,5 +239,8 @@
     }
     .text-base-900 {
         @apply text-base-900-light dark:text-base-900-dark;
+    }
+    .fill-base-900 {
+        @apply fill-base-900-light dark:fill-base-900-dark;
     }
 }

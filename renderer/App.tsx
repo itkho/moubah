@@ -16,7 +16,7 @@ export default function App() {
     return (
         <>
             <div className={darkMode ? "dark" : ""}>
-                <div className="bg-background text-base-800 flex h-screen w-screen flex-col">
+                <div className="bg-background text-base-800 flex h-screen w-screen flex-col text-base ">
                     <OnLineProvider>
                         <ViewProvider>
                             <div className="flex grow overflow-clip">
