@@ -13,10 +13,11 @@ jobs:
         with:
           submodules: recursive
 
-      - name: 🔗 Install Python 3.8.10
+      - name: 🔗 Install Python 3.8 #.10
         uses: actions/setup-python@v4
         with:
-          python-version: "3.8.10"
+          python-version: "3.8"
+          # python-version: "3.8.10"
 
       - name: 🔗 Install Node
         uses: actions/setup-node@v3
