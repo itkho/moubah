@@ -133,7 +133,7 @@ npm run dist
 ## 🎯 To-do list
 
 -   [x] 🪲 Audio result isn't smooth, find why...
--   [ ] 🆕 Improve UI/UX
+-   [x] 🆕 Improve UI/UX
 -   [ ] 🆕 Add a loading animation on search for slow internet connections
 -   [ ] 🪲 First installation/run is very long -> make a progress bar or something
 -   [ ] 🆕 Add an uninstaller
@@ -145,7 +145,6 @@ npm run dist
 -   [ ] 🆕 Preview videos: be able to see "directly" the video (without any sound) and don't have to wait until the whole video is processed
 -   [ ] 🧼 Use Hexagonal architecture
 -   [ ] 🆕 Add e2e tests
--   [ ] 🆕 Setup CI/CD
 -   [ ] 🆕 Be able to open Moubah from YouTube (see [here](https://docs.freetubeapp.io/usage/browser-extension/))
 -   [ ] 🆕 Add an ML filter on thumbnail that blur thumbnails with women
 
