@@ -1,0 +1,69 @@
+name: Package Mac (ARM) app 📦
+
+on:
+  push:
+    branches: [feat/github-actions]
+
+jobs:
+  package:
+    # REMINDER: cd actions-runner && ./run.sh
+    runs-on: [self-hosted, macOS, ARM64]
+    steps:
+      - name: Check out repository and submodules
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: 🔗 Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+
+      - name: 🐍 Get Python infos
+        working-directory: ./music-remover
+        id: python_env
+        run: >
+          echo "PYTHON_PATH=$(which python)" >> $GITHUB_OUTPUT &&
+          echo "PYTHON_VERSION=$(python --version)" >> $GITHUB_OUTPUT
+
+      - name: ☑️ Check Python environment
+        if: ${{ !contains(steps.python_env.outputs.PYTHON_PATH, 'moubah/music-remover/') }}
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.setFailed("Wrong Python environment")
+
+      - name: ☑️ Check Python version
+        if: ${{ !contains(steps.python_env.outputs.PYTHON_VERSION, '3.8.10') }}
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.setFailed("Wrong Python version (expected: v3.8.10)")
+
+      - name: 📦 Create an executable file
+        working-directory: ./music-remover
+        run: >
+          arch -x86_64 pyinstaller app.spec --noconfirm --clean
+
+      - name: ℹ️ Get version from package.json
+        uses: tyankatsu0105/read-package-version-actions@v1
+        id: package-version
+
+      - name: 🔗 Install electron depedencies
+        working-directory: ${{ github.workspace }}
+        run: >
+          npm install
+
+      - name: 📦 Create an executable file for Electron
+        working-directory: ${{ github.workspace }}
+        run: >
+          npm run clean &&
+          npm run dist
+
+      - name: 🏷 Release on GitHub (v${{ steps.package-version.outputs.version }})
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.package-version.outputs.version }}
+          files: |
+            dist/moubah-${{ steps.package-version.outputs.version }}-mac-arm64.dmg

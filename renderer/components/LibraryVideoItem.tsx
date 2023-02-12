@@ -151,7 +151,7 @@ export default function LibraryVideoItem({
                 />
                 <FontAwesomeIcon
                     icon={faPlayCircle}
-                    className="text-base-200 group-hover:text-base-50 absolute top-1/2 left-1/2 h-10 -translate-x-1/2 -translate-y-1/2 duration-200 ease-in group-hover:scale-125 "
+                    className="absolute top-1/2 left-1/2 h-10 -translate-x-1/2 -translate-y-1/2 text-base-100-light opacity-100 duration-200 ease-in group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-xl"
                 />
                 <div className="border-base-100 bg-base-800 text-base-100 absolute bottom-0 right-0 rounded-tl border-t-2 border-l-2 p-1 opacity-70">
                     <div className="divide-base-100 flex divide-x-2 text-sm">

@@ -1,6 +1,9 @@
+import fetch from "electron-fetch";
+import { satisfies } from "compare-versions";
 import { spawn } from "child_process";
 import treeKill from "tree-kill";
 
+import { app, dialog, shell } from "electron";
 import initIpcHandlers from "./ipc-handlers";
 import {
     EXEC_EXTENSION,
@@ -75,7 +78,57 @@ function startMusicRemoverProcess() {
     musicRemoverProcessId = musicRemoverProcess.pid;
 }
 
+async function checkForUpdates() {
+    try {
+        const remotePackageReq = await fetch(
+            "https://raw.githubusercontent.com/karim-bouchez/moubah/main/package.json"
+        );
+        const remotePackageJson = (await remotePackageReq.json()) as {
+            version: string;
+        };
+
+        if (satisfies(app.getVersion(), ">" + remotePackageJson.version)) {
+            mainLogger.info(
+                `Local v${app.getVersion()} > Main v${
+                    remotePackageJson.version
+                }`
+            );
+            return;
+        }
+
+        // WARNING: this will only work start from v1.x.x
+        // > satisfies('0.1.0', '^0.0.1');
+        // false
+        // > satisfies('10.1.0', '^10.0.1');
+        // true
+        if (!satisfies(remotePackageJson.version, "^" + app.getVersion())) {
+            const { response } = await dialog.showMessageBox(getMainWindow(), {
+                type: "info",
+                buttons: ["Yes", "No"],
+                title: "Update available!",
+                message: `An update is available!
+                    Would you like to visit the Moubah website and download it now?
+                    
+                    Current version: ${app.getVersion()}
+                    Updated version: ${remotePackageJson.version}
+                `,
+            });
+
+            // TODO: add a "checkboxLabel" and skip the reminder every time
+            // for this version if the user doesn't want to update
+            if (response === 0) {
+                await shell.openExternal(
+                    "https://github.com/karim-bouchez/moubah"
+                );
+            }
+        }
+    } catch (err) {
+        mainLogger.error(`Update check failed: ${err}`);
+    }
+}
+
 export async function setUp() {
+    checkForUpdates();
     initIpcHandlers();
 
     // Test if the server isn't already up (from a previous session)
