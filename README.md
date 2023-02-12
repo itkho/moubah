@@ -41,6 +41,8 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 
 **Download the app** : 🍏 ~~Apple~~ | 🪟 ~~Windows~~ | 🐧 ~~Linux~~
 
+<!-- For mac: xattr -d com.apple.quarantine /Users/karim/Downloads/moubah-1.0.0.app -->
+
 </br>
 
 ## 📚 Tech Stack

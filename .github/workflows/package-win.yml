@@ -2,7 +2,7 @@ name: Package Windows app 📦
 
 on:
   push:
-    branches: [feat/github-actions]
+    branches: [develop]
 
 jobs:
   package:
