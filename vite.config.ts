@@ -10,7 +10,14 @@ export default ({ command }: ConfigEnv): UserConfig => {
         return {
             root: rendererRoot,
             base: "/",
-            plugins: [react()],
+            plugins: [
+                react({
+                    babel: {
+                        // babel-macro is needed for lingui
+                        plugins: ["macros"],
+                    },
+                }),
+            ],
             resolve: {
                 alias: {
                     "/@": rendererRoot,
@@ -33,7 +40,14 @@ export default ({ command }: ConfigEnv): UserConfig => {
     return {
         root: rendererRoot,
         base: "./",
-        plugins: [react()],
+        plugins: [
+            react({
+                babel: {
+                    // babel-macro is needed for lingui
+                    plugins: ["macros"],
+                },
+            }),
+        ],
         resolve: {
             alias: {
                 "/@": rendererRoot,

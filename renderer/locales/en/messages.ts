@@ -1,0 +1,1 @@
+/*eslint-disable*/export const messages=JSON.parse("{\"Hello Vite + React + LinguiJS!\":\"Hello Vite + React + LinguiJS!\"}");
