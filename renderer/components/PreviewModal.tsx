@@ -1,3 +1,4 @@
+import { Trans } from "@lingui/macro";
 import React, { Dispatch, SetStateAction } from "react";
 import ReactPlayer from "react-player";
 import VideoDTO from "../../main/dto/video";
@@ -49,14 +50,14 @@ export default function PreviewModal({
                             type="button"
                             onClick={() => setShowModal(false)}
                         >
-                            Close
+                            <Trans>Close</Trans>
                         </button>
                         <button
                             className="text-base-50 rounded bg-lime-500 px-6 py-3 text-sm font-semibold uppercase shadow duration-200 hover:shadow-lg active:bg-lime-600"
                             type="button"
                             onClick={() => {}}
                         >
-                            Remove background music
+                            <Trans>Remove background music</Trans>
                         </button>
                     </div>
                 </div>

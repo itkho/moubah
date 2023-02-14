@@ -12,12 +12,13 @@ import { useDarkMode } from "./context/DarkModeContext";
 import { I18nProvider } from "@lingui/react";
 import { i18n } from "@lingui/core";
 
-import { fr, en } from "make-plural/plurals";
+import { fr, en, ar } from "make-plural/plurals";
 import { useLocale } from "./context/LocaleContext";
 import { Locale } from "./utils/enums";
 
 i18n.loadLocaleData("fr", { plurals: fr });
 i18n.loadLocaleData("en", { plurals: en });
+i18n.loadLocaleData("ar", { plurals: ar });
 
 /**
  * Load messages for requested locale and activate it.

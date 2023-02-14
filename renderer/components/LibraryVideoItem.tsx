@@ -17,6 +17,20 @@ import {
     faFolderOpen,
     faPlayCircle,
 } from "@fortawesome/free-regular-svg-icons";
+import { Trans, t } from "@lingui/macro";
+
+function transVideoStatus(videoStatus: VideoStatus) {
+    switch (videoStatus) {
+        case VideoStatus.initial:
+            return t`initial`;
+        case VideoStatus.downloading:
+            return t`downloading`;
+        case VideoStatus.processing:
+            return t`processing`;
+        case VideoStatus.done:
+            return t`done`;
+    }
+}
 
 export default function LibraryVideoItem({
     video,
@@ -90,7 +104,7 @@ export default function LibraryVideoItem({
                                                 icon={faPlay}
                                                 className="text-base-700 w-4 px-2"
                                             />
-                                            Play
+                                            <Trans>Play</Trans>
                                         </button>
                                     )}
                                 </Menu.Item>
@@ -105,7 +119,7 @@ export default function LibraryVideoItem({
                                                 icon={faFolderOpen}
                                                 className="text-base-700 w-4 px-2"
                                             />
-                                            Open in Finder
+                                            <Trans>Open in Finder</Trans>
                                         </button>
                                     )}
                                 </Menu.Item>
@@ -125,7 +139,7 @@ export default function LibraryVideoItem({
                                                 icon={faTrash}
                                                 className="text-base-700 w-4 px-2"
                                             />
-                                            Delete
+                                            <Trans>Delete</Trans>
                                         </button>
                                     )}
                                 </Menu.Item>
@@ -135,7 +149,9 @@ export default function LibraryVideoItem({
                 </Menu>
             </div>
             <div className="truncate text-lg">{video.title}</div>
-            <div className="text-sm">By: {video.author!.name}</div>
+            <div className="text-sm">
+                <Trans>By:</Trans> {video.author!.name}
+            </div>
             <div
                 className={`ring-base-200 group relative my-2 overflow-hidden rounded-2xl ring-1 ${
                     video.status === VideoStatus.done
@@ -184,7 +200,7 @@ export default function LibraryVideoItem({
                     ></div>
                 </div>
                 <div className="text-base-500 w-24 px-2 text-right text-sm capitalize">
-                    {video.status}
+                    {transVideoStatus(video.status!)}
                 </div>
             </div>
         </div>

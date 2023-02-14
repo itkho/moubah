@@ -5,11 +5,13 @@ import React, { Dispatch, Fragment, SetStateAction } from "react";
 export default function CustomListbox<T>({
     prefixText,
     enumList,
+    transEnum,
     selectedEnum,
     setSelectedEnum,
 }: {
     prefixText: string;
     enumList: any;
+    transEnum: any;
     selectedEnum: T;
     setSelectedEnum: Dispatch<SetStateAction<T>>;
 }) {
@@ -18,7 +20,7 @@ export default function CustomListbox<T>({
             <div className="relative mt-1">
                 <Listbox.Button className="bg-base-200 relative w-full rounded-lg py-2 pl-3 text-left text-sm shadow-md">
                     <span className="text-base-500">{prefixText}</span>
-                    <span className="truncate">{`${selectedEnum}`}</span>
+                    <span className="truncate">{transEnum(selectedEnum)}</span>
                     <span className="absolute inset-y-0 right-0 flex items-center pr-2">
                         <ChevronUpDownIcon
                             className="text-base-400 h-5 w-5"
@@ -33,7 +35,7 @@ export default function CustomListbox<T>({
                     leaveTo="opacity-0"
                 >
                     <Listbox.Options className="bg-base-200 absolute z-10 mt-1 w-full overflow-auto rounded-md py-1 text-sm shadow-lg ring-1 ring-black ring-opacity-5">
-                        {Object.entries(enumList).map(([key, value]) => {
+                        {Object.keys(enumList).map((key) => {
                             return (
                                 <Listbox.Option
                                     key={key}
@@ -44,7 +46,7 @@ export default function CustomListbox<T>({
                                                 : "text-base-900"
                                         }`
                                     }
-                                    value={value}
+                                    value={key}
                                 >
                                     {({ selected }) => (
                                         <>
@@ -55,7 +57,7 @@ export default function CustomListbox<T>({
                                                         : "font-normal"
                                                 }`}
                                             >
-                                                {value}
+                                                {transEnum(key)}
                                             </span>
                                             {selected && (
                                                 <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-lime-600">

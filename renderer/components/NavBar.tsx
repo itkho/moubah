@@ -17,6 +17,7 @@ import { useDarkMode } from "../context/DarkModeContext";
 import { useLocale } from "../context/LocaleContext";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/solid";
 import { langFromLocale } from "../utils/helpers";
+import { Trans } from "@lingui/macro";
 
 const classNameListItem =
     "flex items-center gap-2 cursor-pointer my-2 p-2 rounded-lg hover:bg-base-300 hover:bg-opacity-50 hover:text-base-700 duration-200";
@@ -47,7 +48,7 @@ export default function NavBar() {
                                 view === View.search && "text-highlight"
                             }`}
                         />
-                        Search
+                        <Trans>Search</Trans>
                     </li>
                     <li
                         onClick={() => setView(View.library)}
@@ -63,7 +64,7 @@ export default function NavBar() {
                                 view === View.library && "text-highlight"
                             }`}
                         />
-                        Library
+                        <Trans>Library</Trans>
                     </li>
                     <li
                         onClick={() => setView(View.player)}
@@ -79,7 +80,7 @@ export default function NavBar() {
                                 view === View.player && "text-highlight"
                             }`}
                         />
-                        Player
+                        <Trans>Player</Trans>
                     </li>
                     <li
                         onClick={() => setView(View.contact)}
@@ -95,7 +96,7 @@ export default function NavBar() {
                                 view === View.contact && "text-highlight"
                             }`}
                         />
-                        Contact us
+                        <Trans>Contact us</Trans>
                     </li>
                 </ul>
                 {/* Widgets */}
@@ -171,7 +172,7 @@ export default function NavBar() {
                     </div>
                     <div className="flex items-center justify-center py-8">
                         <div className="text-xs font-semibold uppercase">
-                            Dark
+                            <Trans>Dark</Trans>
                         </div>
                         <Switch
                             checked={darkMode}
@@ -193,7 +194,7 @@ export default function NavBar() {
                             </svg>
                         </Switch>
                         <div className="text-xs font-semibold uppercase">
-                            Light
+                            <Trans>Light</Trans>
                         </div>
                     </div>
                 </div>
