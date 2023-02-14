@@ -13,6 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: renderer/App.tsx:49
-msgid "Hello Vite + React + LinguiJS!"
-msgstr "Hello Vite + React + LinguiJS!"
+#: renderer/components/SearchPlaceHolder.tsx:14
+msgid "Enter the title of a video or an URL in the search bar"
+msgstr "Enter the title of a video or an URL in the search bar"

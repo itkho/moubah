@@ -1,1 +1,1 @@
-/*eslint-disable*/export const messages=JSON.parse("{\"Hello Vite + React + LinguiJS!\":\"BONJOUR Vite + React + LinguiJS!\"}");
+/*eslint-disable*/export const messages=JSON.parse("{\"Enter the title of a video or an URL in the search bar\":\"Entrez un titre de vidéo ou une URL dans la barre de recherche\"}");

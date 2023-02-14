@@ -2,7 +2,7 @@ import { faCirclePause } from "@fortawesome/free-regular-svg-icons";
 
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import VideoDTO from "../../main/dto/video";
 import LibraryPlaceHolder from "../components/LibraryPlaceHolder";
 import LibraryVideoItem from "../components/LibraryVideoItem";
@@ -10,13 +10,13 @@ import { useLocalVideo } from "../context/LocalVideoContext";
 import CustomListbox from "../components/Listbox";
 import { VideoStatus } from "../../main/utils/enum";
 
-export enum Sort {
+enum Sort {
     recentFirst = "Recent first",
     recentLast = "Recent last",
     alphabetically = "Alphabetically",
 }
 
-export enum Filter {
+enum Filter {
     all = "All",
     doneOnly = "Done only",
     inProgressOnly = "In progress only",

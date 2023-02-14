@@ -4,3 +4,9 @@ export enum View {
     player = "player",
     contact = "contact",
 }
+
+export enum Locale {
+    fr = "fr",
+    en = "en",
+    ar = "ar",
+}
