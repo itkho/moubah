@@ -3,15 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* For AppBar */
-/* .draggable {
-    -webkit-user-select: none;
-    -webkit-app-region: drag;
+@layer utilities {
+    .clip-path-triangle {
+        clip-path: polygon(0 0, 100% 100%, 0 100%);
+    }
 }
-
-.undraggable {
-    -webkit-app-region: no-drag;
-} */
 
 @layer base {
     .bg-highlight {
