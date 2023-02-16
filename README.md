@@ -54,6 +54,7 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Vite](https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![gRPC](https://img.shields.io/badge/gRPC-244c5a.svg?style=for-the-badge&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/github_actions-2088FF.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 
 </br>
 
