@@ -133,20 +133,16 @@ npm run dist
 ## 🎯 To-do list
 
 -   [x] 🪲 Audio result isn't smooth, find why...
--   [x] 🆕 Improve UI/UX
 -   [ ] 🆕 Add arabic translation
--   [ ] 🆕 Add a loading animation on search for slow internet connections
+-   [ ] 🆕 Add a loading animation on search for slow internet connections (wait for search view redesign)
 -   [ ] 🪲 First installation/run is very long -> make a progress bar or something
--   [ ] 🆕 Add an uninstaller
--   [ ] 🆕 Notification system on new release
--   [ ] 🆕 Support multi-languages (at least french and english)
 
 ## 📜 (Why not) To-do list
 
--   [ ] 🆕 Preview videos: be able to see "directly" the video (without any sound) and don't have to wait until the whole video is processed
+-   [ ] 🆕 Add an ML filter on thumbnail that blur thumbnails with women
 -   [ ] 🧼 Use Hexagonal architecture
+-   [ ] 🆕 Add an uninstaller (only needed on Windows)
 -   [ ] 🆕 Add e2e tests
 -   [ ] 🆕 Be able to open Moubah from YouTube (see [here](https://docs.freetubeapp.io/usage/browser-extension/))
--   [ ] 🆕 Add an ML filter on thumbnail that blur thumbnails with women
 
 > 🪲 Fix bug | 🆕 Add new feature | 🧼 Refactoring code
