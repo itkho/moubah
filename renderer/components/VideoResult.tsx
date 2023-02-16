@@ -9,6 +9,7 @@ import { useView } from "../context/ViewContext";
 import { View } from "../utils/enums";
 import { usePlayer } from "../context/PlayerContext";
 import PreviewModal from "./PreviewModal";
+import { Trans, t } from "@lingui/macro";
 
 export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
     window.mainApi.log("debug", "VideoResult rendered!");
@@ -62,14 +63,14 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
     function renderButtonContent(status?: VideoStatus) {
         switch (status) {
             case VideoStatus.done:
-                return "✅ Background music removed";
+                return "✅ " + t`Background music removed`;
             case VideoStatus.processing:
-                return "⚙️ Removing background music...";
+                return "⚙️ " + t`Removing background music...`;
             case VideoStatus.downloading:
             case VideoStatus.initial:
-                return "📥 Downloading the video...";
+                return "📥 " + t`Downloading the video...`;
             default:
-                return "🔇 Remove background music";
+                return "🔇 " + t`Remove background music`;
         }
     }
 
@@ -115,7 +116,7 @@ export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
                     className="text-base-600 hover:text-base-700 m-1 hover:underline"
                     onClick={() => setModelShown(true)}
                 >
-                    Preview the video
+                    <Trans>Preview the video</Trans>
                 </button>
                 <button
                     onClick={onClickThumbnail}

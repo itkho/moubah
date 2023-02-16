@@ -26,6 +26,7 @@ export const PYTHON_DIR = join(MUSIC_REMOVER_DIR, ".venv", "bin");
 export const FFMPEG_BIN_DIR = dirname(require("ffmpeg-static"));
 export const FFPROBE_BIN_DIR = dirname(require("ffprobe-static").path);
 
+console.log(app.getPath("userData"));
 export const LOGS_DIR_PATH = join(app.getPath("logs"));
 export const STORAGE_DIR_PATH = join(app.getPath("videos"), "Moubah");
 if (!existsSync(STORAGE_DIR_PATH)) {

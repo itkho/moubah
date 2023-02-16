@@ -1,8 +1,9 @@
 import { faCirclePause } from "@fortawesome/free-regular-svg-icons";
+import { Trans, t } from "@lingui/macro";
 
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import VideoDTO from "../../main/dto/video";
 import LibraryPlaceHolder from "../components/LibraryPlaceHolder";
 import LibraryVideoItem from "../components/LibraryVideoItem";
@@ -10,17 +11,41 @@ import { useLocalVideo } from "../context/LocalVideoContext";
 import CustomListbox from "../components/Listbox";
 import { VideoStatus } from "../../main/utils/enum";
 
-export enum Sort {
-    recentFirst = "Recent first",
-    recentLast = "Recent last",
-    alphabetically = "Alphabetically",
+enum Sort {
+    recentFirst = "recentFirst",
+    recentLast = "recentLast",
+    alphabetically = "alphabetically",
 }
 
-export enum Filter {
-    all = "All",
-    doneOnly = "Done only",
-    inProgressOnly = "In progress only",
-    notSeenOnly = "(TODO) Not seen only",
+function transSort(sort: Sort) {
+    switch (sort) {
+        case Sort.recentFirst:
+            return t`Recent first`;
+        case Sort.recentLast:
+            return t`Recent last`;
+        case Sort.alphabetically:
+            return t`Alphabetically`;
+    }
+}
+
+enum Filter {
+    all = "all",
+    doneOnly = "doneOnly",
+    inProgressOnly = "inProgressOnly",
+    notSeenOnly = "notSeenOnly",
+}
+
+function transFilter(filter: Filter) {
+    switch (filter) {
+        case Filter.all:
+            return t`All`;
+        case Filter.doneOnly:
+            return t`Done only`;
+        case Filter.inProgressOnly:
+            return t`In progress only`;
+        case Filter.notSeenOnly:
+            return t`(TODO) Not seen only`;
+    }
 }
 
 export let updateLocalVideo: (videoUpdated: VideoDTO) => void;
@@ -141,20 +166,24 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                     {localVideos.length ? (
                         <div className="flex h-full w-full flex-col p-10 pr-5 pb-0">
                             <div className="flex justify-between py-2 pr-5">
-                                <h1 className="text-4xl">My videos</h1>
+                                <h1 className="text-4xl">
+                                    <Trans>My videos</Trans>
+                                </h1>
                                 <div className="flex gap-2">
                                     <div className="w-48">
                                         <CustomListbox
-                                            prefixText={"Filter - "}
+                                            prefixText={t`Filter` + " - "}
                                             enumList={Filter}
+                                            transEnum={transFilter}
                                             selectedEnum={selectedFilter}
                                             setSelectedEnum={setSelectedFilter}
                                         />
                                     </div>
                                     <div className="w-52">
                                         <CustomListbox
-                                            prefixText={"Sorted by - "}
+                                            prefixText={t`Sorted by` + " - "}
                                             enumList={Sort}
+                                            transEnum={transSort}
                                             selectedEnum={selectedSort}
                                             setSelectedEnum={setSelectedSort}
                                         />
@@ -172,14 +201,17 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                         }
                                         onChange={toggleSelectAllVideos}
                                     />
-                                    Select all
+                                    <Trans>Select all</Trans>
+
                                     <div className="text-base-500 w-28 pl-4">
-                                        Selected: {selectedVideos.length}
+                                        <Trans>Selected:</Trans>{" "}
+                                        {selectedVideos.length}
                                     </div>
                                 </div>
 
                                 <div className="flex items-center gap-2 px-2">
-                                    Actions:
+                                    <Trans>Actions:</Trans>
+
                                     <button
                                         className="bg-base-200 hover:bg-base-300 cursor-pointer rounded-md py-1 px-2 disabled:cursor-not-allowed"
                                         // TODO: finish implement this  (it should pause the downloading/procesing)
@@ -190,7 +222,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                             icon={faCirclePause}
                                             className="pr-2"
                                         />
-                                        Pause
+                                        <Trans>Pause</Trans>
                                     </button>
                                     <button
                                         ref={deleteButton}
@@ -204,7 +236,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                             icon={faTrash}
                                             className="pr-2"
                                         />
-                                        {!isDeleting ? "Delete" : "Sure?"}
+                                        {!isDeleting ? t`Delete` : t`Sure?`}
                                     </button>
                                 </div>
                             </div>

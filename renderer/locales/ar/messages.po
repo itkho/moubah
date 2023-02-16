@@ -1,0 +1,186 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2023-02-14 08:46+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: ar\n"
+
+#: renderer/views/LibraryView.tsx:47
+msgid "(TODO) Not seen only"
+msgstr ""
+
+#: renderer/views/LibraryView.tsx:213
+msgid "Actions:"
+msgstr ""
+
+#: renderer/views/LibraryView.tsx:41
+msgid "All"
+msgstr ""
+
+#: renderer/views/LibraryView.tsx:27
+msgid "Alphabetically"
+msgstr ""
+
+#: renderer/components/VideoResult.tsx:66
+msgid "Background music removed"
+msgstr ""
+
+#: renderer/components/LibraryVideoItem.tsx:153
+msgid "By:"
+msgstr ""
+
+#: renderer/components/PreviewModal.tsx:53
+msgid "Close"
+msgstr ""
+
+#: renderer/components/NavBar.tsx:99
+msgid "Contact us"
+msgstr ""
+
+#: renderer/components/NavBar.tsx:175
+msgid "Dark"
+msgstr ""
+
+#: renderer/components/LibraryVideoItem.tsx:142
+#: renderer/views/LibraryView.tsx:239
+msgid "Delete"
+msgstr ""
+
+#: renderer/views/LibraryView.tsx:43
+msgid "Done only"
+msgstr ""
+
+#: renderer/components/VideoResult.tsx:71
+msgid "Downloading the video..."
+msgstr ""
+
+#: renderer/components/SearchPlaceHolder.tsx:14
+msgid "Enter the title of a video or an URL in the search bar"
+msgstr ""
+
+#: renderer/views/LibraryView.tsx:175
+msgid "Filter"
+msgstr ""
+
+#: renderer/views/LibraryView.tsx:45
+msgid "In progress only"
+msgstr ""
+
+#: renderer/components/NavBar.tsx:67
+#: renderer/components/PlayerPlaceHolder.tsx:19
+msgid "Library"
+msgstr ""
+
+#: renderer/components/NavBar.tsx:197
+msgid "Light"
+msgstr ""
+
+#: renderer/components/Footer.tsx:57
+msgid "Music remover"
+msgstr ""
+
+#: renderer/views/LibraryView.tsx:170
+msgid "My videos"
+msgstr ""
+
+#: renderer/components/LibraryPlaceHolder.tsx:13
+msgid "No video to watch yet..."
+msgstr ""
+
+#: renderer/components/LibraryVideoItem.tsx:122
+msgid "Open in Finder"
+msgstr ""
+
+#: renderer/views/LibraryView.tsx:225
+msgid "Pause"
+msgstr ""
+
+#: renderer/components/LibraryVideoItem.tsx:107
+msgid "Play"
+msgstr ""
+
+#: renderer/components/NavBar.tsx:83
+msgid "Player"
+msgstr ""
+
+#: renderer/components/VideoResult.tsx:119
+msgid "Preview the video"
+msgstr ""
+
+#: renderer/views/LibraryView.tsx:23
+msgid "Recent first"
+msgstr ""
+
+#: renderer/views/LibraryView.tsx:25
+msgid "Recent last"
+msgstr ""
+
+#: renderer/components/PreviewModal.tsx:60
+#: renderer/components/VideoResult.tsx:73
+msgid "Remove background music"
+msgstr ""
+
+#: renderer/components/VideoResult.tsx:68
+msgid "Removing background music..."
+msgstr ""
+
+#: renderer/components/LibraryPlaceHolder.tsx:22
+#: renderer/components/NavBar.tsx:51
+msgid "Search"
+msgstr ""
+
+#: renderer/components/LibraryPlaceHolder.tsx:16
+msgid "Search for a video in the"
+msgstr ""
+
+#: renderer/components/PlayerPlaceHolder.tsx:13
+msgid "Select a video in the"
+msgstr ""
+
+#: renderer/views/LibraryView.tsx:204
+msgid "Select all"
+msgstr ""
+
+#: renderer/views/LibraryView.tsx:207
+msgid "Selected:"
+msgstr ""
+
+#: renderer/views/LibraryView.tsx:184
+msgid "Sorted by"
+msgstr ""
+
+#: renderer/views/LibraryView.tsx:239
+msgid "Sure?"
+msgstr ""
+
+#: renderer/components/LibraryVideoItem.tsx:31
+msgid "done"
+msgstr ""
+
+#: renderer/components/LibraryVideoItem.tsx:27
+msgid "downloading"
+msgstr ""
+
+#: renderer/components/LibraryVideoItem.tsx:25
+msgid "initial"
+msgstr ""
+
+#: renderer/components/Footer.tsx:45
+#: renderer/components/Footer.tsx:60
+msgid "offline"
+msgstr ""
+
+#: renderer/components/Footer.tsx:45
+#: renderer/components/Footer.tsx:59
+msgid "online"
+msgstr ""
+
+#: renderer/components/LibraryVideoItem.tsx:29
+msgid "processing"
+msgstr ""
+
+#: renderer/components/LibraryPlaceHolder.tsx:24
+msgid "section"
+msgstr ""

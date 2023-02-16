@@ -134,6 +134,7 @@ npm run dist
 
 -   [x] 🪲 Audio result isn't smooth, find why...
 -   [x] 🆕 Improve UI/UX
+-   [ ] 🆕 Add arabic translation
 -   [ ] 🆕 Add a loading animation on search for slow internet connections
 -   [ ] 🪲 First installation/run is very long -> make a progress bar or something
 -   [ ] 🆕 Add an uninstaller

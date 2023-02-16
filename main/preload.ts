@@ -43,6 +43,14 @@ const mainApi = {
     log: (level: string, msg: string) =>
         ipcRenderer.invoke("log:create", level, msg),
     isDev: (): Promise<boolean> => ipcRenderer.invoke("isDev"),
+    getUserPrefDarkMode: (): Promise<boolean> =>
+        ipcRenderer.invoke("userPref:get", "darkMode"),
+    setUserPrefDarkMode: (dark: boolean) =>
+        ipcRenderer.invoke("userPref:set", "darkMode", dark),
+    getUserPrefLang: (): Promise<string> =>
+        ipcRenderer.invoke("userPref:get", "lang"),
+    setUserPrefLang: (lang: string) =>
+        ipcRenderer.invoke("userPref:set", "lang", lang),
 };
 
 contextBridge.exposeInMainWorld("videoApi", videoApi);

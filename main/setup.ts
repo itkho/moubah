@@ -2,8 +2,10 @@ import fetch from "electron-fetch";
 import { satisfies } from "compare-versions";
 import { spawn } from "child_process";
 import treeKill from "tree-kill";
+import { t } from "@lingui/macro";
 
 import { app, dialog, shell } from "electron";
+
 import initIpcHandlers from "./ipc-handlers";
 import {
     EXEC_EXTENSION,
@@ -106,7 +108,7 @@ async function checkForUpdates() {
                 type: "info",
                 buttons: ["Yes", "No"],
                 title: "Update available!",
-                message: `An update is available!
+                message: t`An update is available!
                     Would you like to visit the Moubah website and download it now?
                     
                     Current version: ${app.getVersion()}

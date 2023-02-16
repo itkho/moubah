@@ -11,6 +11,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 // TODO: move this in a shared folder (there is others too)
 import { MusicRemoverStatus } from "../../main/utils/enum";
 import { useOnLine } from "../context/OnlineContext";
+import { t, Trans } from "@lingui/macro";
 
 const classNameClickable =
     "flex items-center mx-2 cursor-pointer hover:text-base-600";
@@ -40,7 +41,9 @@ export default function Footer() {
                         className={`px-2 ${onLine ? "text-ok" : "text-ko"}`}
                         icon={faWifi}
                     />
-                    {onLine ? "Online" : "Offline"}
+                    <div className="capitalize">
+                        {onLine ? t`online` : t`offline`}
+                    </div>
                 </div>
                 <div className={classNameInfo}>
                     <FontAwesomeIcon
@@ -51,10 +54,10 @@ export default function Footer() {
                         }`}
                         icon={faVolumeXmark}
                     />
-                    Music remover{" "}
+                    <Trans>Music remover</Trans>{" "}
                     {musicRemoverStatus === MusicRemoverStatus.up
-                        ? "online"
-                        : "offline"}
+                        ? t`online`
+                        : t`offline`}
                 </div>
                 <div className="grow"></div>
                 <a
@@ -70,7 +73,7 @@ export default function Footer() {
                     onClick={window.mainApi.openLogsDir}
                 >
                     <FontAwesomeIcon icon={faFileLines} className="px-2" />
-                    Log
+                    Logs
                 </div>
                 <div
                     className={classNameClickable}

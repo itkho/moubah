@@ -4,13 +4,14 @@ import React, {
     ReactNode,
     SetStateAction,
     useContext,
+    useEffect,
     useState,
 } from "react";
 
 const DarkModeContext = createContext(
     {} as {
         darkMode: boolean;
-        setDarkMode: Dispatch<SetStateAction<boolean>>;
+        changeDarkMode: (dark: boolean) => void;
     }
 );
 
@@ -21,8 +22,20 @@ export function useDarkMode() {
 export function DarkModeProvider(props: { children: ReactNode }) {
     const [darkMode, setDarkMode] = useState(true);
 
+    useEffect(() => {
+        window.mainApi.getUserPrefDarkMode().then((dark) => {
+            console.log({ dark });
+            setDarkMode(dark);
+        });
+    }, []);
+
+    function changeDarkMode(dark: boolean) {
+        window.mainApi.setUserPrefDarkMode(dark);
+        setDarkMode(dark);
+    }
+
     return (
-        <DarkModeContext.Provider value={{ darkMode, setDarkMode }}>
+        <DarkModeContext.Provider value={{ darkMode, changeDarkMode }}>
             {props.children}
         </DarkModeContext.Provider>
     );
