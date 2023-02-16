@@ -1,4 +1,3 @@
-import { US, FR, AR } from "country-flag-icons/react/3x2";
 import { Locale } from "./enums";
 
 const formatter = Intl.NumberFormat("en", { notation: "compact" });

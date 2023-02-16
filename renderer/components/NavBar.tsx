@@ -27,7 +27,7 @@ export default function NavBar() {
 
     const { view, setView } = useView();
     const { darkMode, changeDarkMode } = useDarkMode();
-    const { locale, setLocale } = useLocale();
+    const { locale, changeLocale } = useLocale();
 
     return (
         <div className="bg-base-200 text-base-700 border-base-500 h-full shrink-0 basis-48 border-r-[0.5px]  dark:drop-shadow-none">
@@ -102,7 +102,7 @@ export default function NavBar() {
                 {/* Widgets */}
                 <div className="flex flex-col">
                     <div className="mx-4">
-                        <Listbox value={locale} onChange={setLocale}>
+                        <Listbox value={locale} onChange={changeLocale}>
                             <div className="relative">
                                 <Listbox.Button className="text-base-600 relative flex w-full items-center justify-between text-left text-sm">
                                     <div>

@@ -47,6 +47,10 @@ const mainApi = {
         ipcRenderer.invoke("userPref:get", "darkMode"),
     setUserPrefDarkMode: (dark: boolean) =>
         ipcRenderer.invoke("userPref:set", "darkMode", dark),
+    getUserPrefLang: (): Promise<string> =>
+        ipcRenderer.invoke("userPref:get", "lang"),
+    setUserPrefLang: (lang: string) =>
+        ipcRenderer.invoke("userPref:set", "lang", lang),
 };
 
 contextBridge.exposeInMainWorld("videoApi", videoApi);

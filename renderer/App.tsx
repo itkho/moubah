@@ -29,21 +29,20 @@ async function activateLocale(locale: Locale) {
     i18n.activate(locale);
 }
 
-activateLocale(Locale.fr);
+const defaultLang = navigator.language.split("-")[0];
+console.log({ defaultLang });
+
+activateLocale(defaultLang as Locale);
 
 export default function App() {
     console.log("App rendered!");
     const { darkMode } = useDarkMode();
-    const { locale, setLocale } = useLocale();
+    const { locale } = useLocale();
 
     useEffect(() => {
         // TODO: for now, I didn't managed to move this to LocaleContexte
         activateLocale(locale);
     }, [locale]);
-
-    function changeLanguage() {
-        setLocale(Locale.en);
-    }
 
     return (
         <>

@@ -23,7 +23,6 @@ import { get as getMainWindow } from "./main-window";
 import { mainLogger, logLevel } from "./utils/logger";
 import path from "path";
 import { initQueue } from "./services/library";
-// import { remove } from "./model/user-preference";
 const config = require(CONFIG_PATH);
 
 let musicRemoverProcessId: number | undefined;
@@ -131,7 +130,6 @@ async function checkForUpdates() {
 }
 
 export async function setUp() {
-    // remove("darkMode");
     checkForUpdates();
     initIpcHandlers();
 
