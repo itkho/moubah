@@ -26,7 +26,7 @@ export default function NavBar() {
     console.log("NavBar rendered!");
 
     const { view, setView } = useView();
-    const { darkMode, setDarkMode } = useDarkMode();
+    const { darkMode, changeDarkMode } = useDarkMode();
     const { locale, setLocale } = useLocale();
 
     return (
@@ -189,7 +189,7 @@ export default function NavBar() {
                         </div>
                         <Switch
                             checked={darkMode}
-                            onChange={setDarkMode}
+                            onChange={changeDarkMode}
                             className="bg-base-600 relative mx-2 inline-flex h-6 w-11 items-center rounded-full"
                         >
                             <svg

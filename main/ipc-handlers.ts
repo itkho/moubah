@@ -9,6 +9,10 @@ import { toogleDevTools } from "./main-window";
 import { openLogsInFileExplorer } from "./utils/helpers";
 import { mainLogger, rendererLogger } from "./utils/logger";
 import VideoDTO from "./dto/video";
+import {
+    get as getUserPref,
+    set as setUserPref,
+} from "./model/user-preference";
 
 export default function initIpcHandlers() {
     ipcMain.handle(
@@ -74,5 +78,12 @@ export default function initIpcHandlers() {
 
     ipcMain.handle("isDev", (_event) => {
         return isDev;
+    });
+
+    ipcMain.handle("userPref:get", (_event, key) => {
+        return getUserPref(key);
+    });
+    ipcMain.handle("userPref:set", (_event, key, value) => {
+        return setUserPref(key, value);
     });
 }

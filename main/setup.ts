@@ -2,8 +2,10 @@ import fetch from "electron-fetch";
 import { satisfies } from "compare-versions";
 import { spawn } from "child_process";
 import treeKill from "tree-kill";
+import { t } from "@lingui/macro";
 
 import { app, dialog, shell } from "electron";
+
 import initIpcHandlers from "./ipc-handlers";
 import {
     EXEC_EXTENSION,
@@ -21,6 +23,7 @@ import { get as getMainWindow } from "./main-window";
 import { mainLogger, logLevel } from "./utils/logger";
 import path from "path";
 import { initQueue } from "./services/library";
+// import { remove } from "./model/user-preference";
 const config = require(CONFIG_PATH);
 
 let musicRemoverProcessId: number | undefined;
@@ -106,7 +109,7 @@ async function checkForUpdates() {
                 type: "info",
                 buttons: ["Yes", "No"],
                 title: "Update available!",
-                message: `An update is available!
+                message: t`An update is available!
                     Would you like to visit the Moubah website and download it now?
                     
                     Current version: ${app.getVersion()}
@@ -128,6 +131,7 @@ async function checkForUpdates() {
 }
 
 export async function setUp() {
+    // remove("darkMode");
     checkForUpdates();
     initIpcHandlers();
 

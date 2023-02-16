@@ -48,6 +48,7 @@
         "dotenv": "^16.0.3",
         "electron-fetch": "^1.9.1",
         "electron-is-dev": "^2.0.0",
+        "electron-settings": "^4.0.2",
         "electron-squirrel-startup": "^1.0.0",
         "fastq": "^1.14.0",
         "ffmpeg-static": "^5.1.0",
