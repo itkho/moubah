@@ -11,7 +11,7 @@ import { usePlayer } from "../context/PlayerContext";
 import PreviewModal from "./PreviewModal";
 import { Trans, t } from "@lingui/macro";
 
-export default function VideoResult({ videos }: { videos: VideoDTO[] }) {
+export default function SearchResult({ videos }: { videos: VideoDTO[] }) {
     window.mainApi.log("debug", "VideoResult rendered!");
 
     const { setView } = useView();

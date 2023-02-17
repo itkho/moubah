@@ -5,7 +5,7 @@ import React, {
     useState,
 } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import VideoResult from "../components/VideoResult";
+import SearchResult from "../components/SearchResult";
 import VideoDTO from "../../main/dto/video";
 import SearchPlaceHolder from "../components/SearchPlaceHolder";
 
@@ -57,7 +57,7 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                     </div>
 
                     {videos.length ? (
-                        <VideoResult
+                        <SearchResult
                             key={videos.reduce(
                                 (acc, curr) => acc + curr.id,
                                 ""
