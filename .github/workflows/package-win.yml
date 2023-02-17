@@ -2,7 +2,7 @@ name: Package Windows app 📦
 
 on:
   push:
-    branches: [develop]
+    branches: [main]
 
 jobs:
   package:

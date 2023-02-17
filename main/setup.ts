@@ -2,7 +2,6 @@ import fetch from "electron-fetch";
 import { satisfies } from "compare-versions";
 import { spawn } from "child_process";
 import treeKill from "tree-kill";
-import { t } from "@lingui/macro";
 
 import { app, dialog, shell } from "electron";
 
@@ -23,6 +22,7 @@ import { get as getMainWindow } from "./main-window";
 import { mainLogger, logLevel } from "./utils/logger";
 import path from "path";
 import { initQueue } from "./services/library";
+import { get as getUserPref } from "./model/user-preference";
 const config = require(CONFIG_PATH);
 
 let musicRemoverProcessId: number | undefined;
@@ -98,6 +98,51 @@ async function checkForUpdates() {
             return;
         }
 
+        let yesButton: string;
+        let noButton: string;
+        let title: string;
+        let message: string;
+        const lang = getUserPref("lang") || "en";
+        switch (lang) {
+            case "fr":
+                yesButton = "Oui";
+                noButton = "Non";
+                title = "Mise à jour disponible !";
+                message = `Une mise à jour est disponible !
+
+                    Voulez-vous visiter le site web Moubah et la télécharger maintenant ?
+                    
+                    Version actuelle : ${app.getVersion()}
+                    Dernière version : ${remotePackageJson.version}
+                `;
+                break;
+            case "ar":
+                // TODO translation: check if it's really correct
+                yesButton = "نعم";
+                noButton = "لا";
+                title = "التحديث متاح!";
+                message = `تحديث متاح!
+
+                    هل تود زيارة موقع Moubah وتنزيله الآن؟
+                    
+                    النسخة الحالية: ${app.getVersion()}
+                    النسخة المحدثة: ${remotePackageJson.version}
+                `;
+                break;
+            default:
+                yesButton = "Yes";
+                noButton = "No";
+                title = "Update available!";
+                message = `An update is available!
+
+                    Would you like to visit the Moubah website and download it now?
+                    
+                    Current version: ${app.getVersion()}
+                    Updated version: ${remotePackageJson.version}
+                `;
+                break;
+        }
+
         // WARNING: this will only work start from v1.x.x
         // > satisfies('0.1.0', '^0.0.1');
         // false
@@ -106,14 +151,10 @@ async function checkForUpdates() {
         if (!satisfies(remotePackageJson.version, "^" + app.getVersion())) {
             const { response } = await dialog.showMessageBox(getMainWindow(), {
                 type: "info",
-                buttons: ["Yes", "No"],
-                title: "Update available!",
-                message: t`An update is available!
-                    Would you like to visit the Moubah website and download it now?
-                    
-                    Current version: ${app.getVersion()}
-                    Updated version: ${remotePackageJson.version}
-                `,
+                buttons: [yesButton, noButton],
+                defaultId: 0,
+                title: title,
+                message: message,
             });
 
             // TODO: add a "checkboxLabel" and skip the reminder every time

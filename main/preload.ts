@@ -22,6 +22,8 @@ const videoApi = {
     getById: (videoId: string): Promise<VideoDTO> =>
         ipcRenderer.invoke("video:get", videoId),
     getAll: async (): Promise<VideoDTO[]> => ipcRenderer.invoke("video:getAll"),
+    setPlayed: (videoId: string): Promise<void> =>
+        ipcRenderer.invoke("video:played", videoId),
 
     // Main --> Process
     handleVideoUpdatedEvent: (

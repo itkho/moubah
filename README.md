@@ -133,17 +133,8 @@ npm run dist
 
 ## 🎯 To-do list
 
--   [x] 🪲 Audio result isn't smooth, find why...
--   [ ] 🆕 Add arabic translation
--   [ ] 🆕 Add a loading animation on search for slow internet connections (wait for search view redesign)
--   [ ] 🪲 First installation/run is very long -> make a progress bar or something
+See the [to-do list](todos.md) for more informations on the coming fix/feat
 
-## 📜 (Why not) To-do list
+## 📜 License
 
--   [ ] 🆕 Add an ML filter on thumbnail that blur thumbnails with women
--   [ ] 🧼 Use Hexagonal architecture
--   [ ] 🆕 Add an uninstaller (only needed on Windows)
--   [ ] 🆕 Add e2e tests
--   [ ] 🆕 Be able to open Moubah from YouTube (see [here](https://docs.freetubeapp.io/usage/browser-extension/))
-
-> 🪲 Fix bug | 🆕 Add new feature | 🧼 Refactoring code
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

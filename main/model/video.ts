@@ -5,14 +5,15 @@ import { STORAGE_DIR_PATH } from "../utils/const.js";
 import { VideoStatus } from "../utils/enum.js";
 import AudioModel from "./audio.js";
 import { createPathIfDoesntExists } from "../utils/helpers.js";
-import VideoDTO, { Author } from "../dto/video.js";
+import VideoDTO, { Author, Metadata } from "../dto/video.js";
 
 type Info = {
-    title: string;
-    timestamp: string;
-    views: number;
     author: Author;
+    metadata?: Metadata;
     originalThumbnailUri: string;
+    timestamp: string;
+    title: string;
+    views: number;
 };
 
 export default class VideoModel {
@@ -29,6 +30,7 @@ export default class VideoModel {
                 views: video.views,
                 author: video.author,
                 originalThumbnailUri: video.thumbnailUri,
+                metadata: video.metadata,
             },
             status: video.status || VideoStatus.initial,
         });
@@ -114,6 +116,11 @@ export default class VideoModel {
             case VideoStatus.done:
                 return 100;
         }
+    }
+
+    setPlayed() {
+        if (!this.info.metadata) this.info.metadata = {};
+        this.info.metadata.isNew = false;
     }
 
     stringifyInfo() {

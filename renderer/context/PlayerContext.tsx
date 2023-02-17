@@ -16,6 +16,7 @@ export function PlayerProvider(props: { children: ReactNode }) {
     const [video, setVideo] = useState<VideoDTO>();
 
     function updateVideo(video: VideoDTO) {
+        window.videoApi.setPlayed(video.id);
         setVideo(video);
     }
 

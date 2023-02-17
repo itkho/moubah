@@ -45,7 +45,7 @@ msgstr "Fermer"
 msgid "Contact us"
 msgstr "Support"
 
-#: renderer/components/NavBar.tsx:175
+#: renderer/components/NavBar.tsx:188
 msgid "Dark"
 msgstr "Sombre"
 
@@ -79,7 +79,7 @@ msgstr "En cours seulement"
 msgid "Library"
 msgstr "Vidéothèque"
 
-#: renderer/components/NavBar.tsx:197
+#: renderer/components/NavBar.tsx:210
 msgid "Light"
 msgstr "Clair"
 

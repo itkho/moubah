@@ -4,8 +4,9 @@ export interface Author {
     url: string;
 }
 
-interface Metadata {
-    creationTimestamp: number;
+export interface Metadata {
+    isNew?: boolean;
+    creationTimestamp?: number;
 }
 
 export default class VideoDTO {

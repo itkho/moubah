@@ -1,7 +1,7 @@
 import { ipcMain } from "electron";
 import isDev from "electron-is-dev";
 
-import { getVideoById, getAllVideos, remove } from "./repository/video";
+import { getVideoById, getAllVideos, remove, save } from "./repository/video";
 import { search } from "./lib/youtube";
 import VideoService from "./services/video";
 import { initQueue } from "./services/library";
@@ -46,6 +46,14 @@ export default function initIpcHandlers() {
     ipcMain.handle("video:delete", async (_event, videoId) => {
         const video = await getVideoById(videoId);
         remove(video);
+    });
+
+    ipcMain.handle("video:played", async (_event, videoId) => {
+        console.log({ videoId });
+        const video = await getVideoById(videoId);
+        video.setPlayed();
+        console.log(video.info.metadata?.isNew);
+        save(video);
     });
 
     ipcMain.handle("devTools:toogle", async (_event) => {

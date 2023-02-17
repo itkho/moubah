@@ -44,11 +44,10 @@ export async function getVideosTodo() {
 }
 
 export function save(video: VideoModel) {
-    // if (!fs.existsSync(video.dir)) {
-    //     fs.mkdirSync(video.dir);
-    // }
     const videoInfo = {
+        // Warning: this is overrided by the metadata in video.info (not the best solution IMO...)
         metadata: {
+            isNew: true,
             creationTimestamp: Date.now(),
         },
         status: video.status,

@@ -8,9 +8,9 @@ const LocalVideoContext = createContext(
         addLocalVideo: (video: VideoDTO) => void;
         removeLocalVideo: (video: VideoDTO) => void;
         selectedVideos: VideoDTO[];
-        addToSelectedVideos: (video: VideoDTO) => void;
+        addToSelectedVideos: (videos: VideoDTO[]) => void;
         removeFromSelectedVideos: (video: VideoDTO) => void;
-        toggleSelectAllVideos: () => void;
+        unselectAllVideos: () => void;
     }
 );
 
@@ -29,13 +29,20 @@ export function LocalVideoProvider(props: { children: ReactNode }) {
     function removeLocalVideo(video: VideoDTO) {
         removeFromSelectedVideos(video);
         setLocalVideos((currLocalVideos) =>
-            currLocalVideos.filter((localVideo) => localVideo.id != video.id)
+            currLocalVideos.filter((localVideo) => localVideo.id !== video.id)
         );
     }
 
-    function addToSelectedVideos(video: VideoDTO) {
+    function addToSelectedVideos(videos: VideoDTO[]) {
+        // Remove already existing items
+        console.log({ videos });
+
+        const filteredVideos = videos.filter((video) => {
+            return !selectedVideos.includes(video);
+        });
+        console.log({ filteredVideos });
         setSelectedVideos((currSelectedVideos) => [
-            video,
+            ...filteredVideos,
             ...currSelectedVideos,
         ]);
     }
@@ -43,17 +50,13 @@ export function LocalVideoProvider(props: { children: ReactNode }) {
     function removeFromSelectedVideos(video: VideoDTO) {
         setSelectedVideos((currSelectedVideos) =>
             currSelectedVideos.filter(
-                (selectedVideo) => selectedVideo.id != video.id
+                (selectedVideo) => selectedVideo.id !== video.id
             )
         );
     }
 
-    function toggleSelectAllVideos() {
-        if (localVideos.length === selectedVideos.length) {
-            setSelectedVideos([]);
-        } else {
-            setSelectedVideos(localVideos);
-        }
+    function unselectAllVideos() {
+        setSelectedVideos([]);
     }
 
     return (
@@ -66,7 +69,7 @@ export function LocalVideoProvider(props: { children: ReactNode }) {
                 selectedVideos,
                 addToSelectedVideos,
                 removeFromSelectedVideos,
-                toggleSelectAllVideos,
+                unselectAllVideos,
             }}
         >
             {props.children}

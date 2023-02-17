@@ -55,12 +55,17 @@ export default function LibraryVideoItem({
         if (selected) {
             removeFromSelectedVideos(video);
         } else {
-            addToSelectedVideos(video);
+            addToSelectedVideos([video]);
         }
     }
 
     return (
-        <div className="max-w-30 ring-base-300 flex-col rounded-md bg-base-100-light py-2 px-4 shadow-sm ring-2 hover:shadow-lg dark:bg-base-200-dark dark:shadow-none dark:hover:ring-base-400-dark">
+        <div className="max-w-30 ring-base-300 group/card relative flex-col rounded-md bg-base-100-light py-2 px-4 shadow-sm ring-2 hover:shadow-lg dark:bg-base-200-dark dark:shadow-none dark:hover:ring-base-400-dark">
+            {video.metadata?.isNew && (
+                <div className="bg-highlight absolute -top-2 left-4 -z-10 rounded-lg px-2 pt-1 pb-4 text-xs font-semibold uppercase transition group-hover/card:-translate-y-4">
+                    new
+                </div>
+            )}
             <div className="flex items-center justify-between pb-2">
                 <input
                     type="checkbox"

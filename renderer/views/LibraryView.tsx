@@ -32,7 +32,7 @@ enum Filter {
     all = "all",
     doneOnly = "doneOnly",
     inProgressOnly = "inProgressOnly",
-    notSeenOnly = "notSeenOnly",
+    newOnly = "newOnly",
 }
 
 function transFilter(filter: Filter) {
@@ -43,8 +43,8 @@ function transFilter(filter: Filter) {
             return t`Done only`;
         case Filter.inProgressOnly:
             return t`In progress only`;
-        case Filter.notSeenOnly:
-            return t`(TODO) Not seen only`;
+        case Filter.newOnly:
+            return t`New only`;
     }
 }
 
@@ -59,7 +59,8 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
         removeLocalVideo,
         setLocalVideos,
         selectedVideos,
-        toggleSelectAllVideos,
+        addToSelectedVideos,
+        unselectAllVideos,
     } = useLocalVideo();
     const deleteButton = useRef<HTMLButtonElement>(null);
 
@@ -82,6 +83,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
         window.videoApi.getAll().then((videos) => {
             setLocalVideos(videos);
         });
+        console.log({ localVideos });
     }, [hidden]);
 
     useEffect(() => {
@@ -121,7 +123,15 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
         }
     }
 
-    function isNotFiltered(video: VideoDTO) {
+    function toggleSelectAll() {
+        if (selectedVideos.length === filteredVideos.length) {
+            unselectAllVideos();
+        } else {
+            addToSelectedVideos(filteredVideos);
+        }
+    }
+
+    function isNotFiltered(video: VideoDTO): boolean {
         switch (selectedFilter) {
             case Filter.all:
                 return true;
@@ -129,6 +139,8 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                 return video.status === VideoStatus.done;
             case Filter.inProgressOnly:
                 return video.status !== VideoStatus.done;
+            case Filter.newOnly:
+                return video.metadata?.isNew === true;
         }
     }
 
@@ -136,16 +148,16 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
         switch (selectedSort) {
             case Sort.recentFirst:
                 localVideos.sort((a, b) =>
-                    a.metadata!.creationTimestamp <
-                    b.metadata!.creationTimestamp
+                    a.metadata?.creationTimestamp! <
+                    b.metadata?.creationTimestamp!
                         ? 1
                         : -1
                 );
                 break;
             case Sort.recentLast:
                 localVideos.sort((a, b) =>
-                    a.metadata!.creationTimestamp >
-                    b.metadata!.creationTimestamp
+                    a.metadata?.creationTimestamp! >
+                    b.metadata?.creationTimestamp!
                         ? 1
                         : -1
                 );
@@ -190,16 +202,17 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="divide-base-300 flex items-center divide-x-2 py-2">
+                            <div className="divide-base-300 flex items-center divide-x-2 py-4">
                                 <div className="flex items-center">
                                     <input
                                         type="checkbox"
                                         className="bg-background ring-base-400 ring-offset-background ml-2 mr-4 h-3 w-3 cursor-pointer appearance-none rounded-sm ring-2 ring-offset-2 checked:bg-lime-500"
                                         checked={
-                                            localVideos.length ===
-                                            selectedVideos.length
+                                            selectedVideos.length !== 0 &&
+                                            selectedVideos.length ===
+                                                filteredVideos.length
                                         }
-                                        onChange={toggleSelectAllVideos}
+                                        onChange={toggleSelectAll}
                                     />
                                     <Trans>Select all</Trans>
 
@@ -240,7 +253,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     </button>
                                 </div>
                             </div>
-                            <div className="grid grow auto-rows-max gap-6 overflow-y-scroll pb-4 pt-2 pr-5 pl-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                            <div className="grid grow auto-rows-max gap-6 overflow-y-scroll pb-4 pt-8 pr-5 pl-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                                 {filteredVideos.map((video) => (
                                     <LibraryVideoItem
                                         key={video.id}

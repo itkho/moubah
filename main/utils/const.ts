@@ -14,10 +14,10 @@ switch (platform()) {
     default:
         throw `This OS (${platform()}) isn't supported yet`;
 }
-export const IS_APPLE_SILICON = OS == "mac" && arch() == "arm64";
-export const PATH_SEPARATOR = OS == "win" ? ";" : ":";
-export const DIR_SEPARATOR = OS == "win" ? "\\" : "/";
-export const EXEC_EXTENSION = OS == "win" ? ".exe" : "/";
+export const IS_APPLE_SILICON = OS === "mac" && arch() === "arm64";
+export const PATH_SEPARATOR = OS === "win" ? ";" : ":";
+export const DIR_SEPARATOR = OS === "win" ? "\\" : "/";
+export const EXEC_EXTENSION = OS === "win" ? ".exe" : "/";
 
 export const CONFIG_PATH = join(app.getAppPath(), "config.json");
 export const MUSIC_REMOVER_DIR = join(app.getAppPath(), "music-remover");
