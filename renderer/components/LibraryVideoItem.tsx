@@ -172,7 +172,7 @@ export default function LibraryVideoItem({
                 />
                 <FontAwesomeIcon
                     icon={faPlayCircle}
-                    className="absolute top-1/2 left-1/2 h-10 -translate-x-1/2 -translate-y-1/2 text-base-100-light opacity-100 duration-200 ease-in group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-xl"
+                    className="absolute top-1/2 left-1/2 h-10 -translate-x-1/2 -translate-y-1/2 text-base-100-light opacity-50 duration-200 ease-in group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-xl"
                 />
                 <div className="border-base-100 bg-base-800 text-base-100 absolute bottom-0 right-0 rounded-tl border-t-2 border-l-2 p-1 opacity-70">
                     <div className="divide-base-100 flex divide-x-2 text-sm">
@@ -188,7 +188,7 @@ export default function LibraryVideoItem({
                 </div>
             </div>
             <div className="flex items-center">
-                <div className="bg-base-200 h-2 grow rounded-full">
+                <div className="group/progress h-2 grow rounded-full bg-base-200-light dark:bg-base-600-light">
                     <div
                         className={`h-full rounded-full 
                         ${video.status === VideoStatus.done && "bg-lime-500"}
@@ -204,7 +204,7 @@ export default function LibraryVideoItem({
                         style={{ width: `${video.progress}%` }}
                     ></div>
                 </div>
-                <div className="text-base-500 w-24 px-2 text-right text-sm capitalize">
+                <div className="text-base-500 pl-2 text-right text-sm capitalize">
                     {transVideoStatus(video.status!)}
                 </div>
             </div>

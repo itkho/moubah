@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import { abbrNum } from "../utils/helpers";
@@ -11,31 +11,28 @@ import { usePlayer } from "../context/PlayerContext";
 import PreviewModal from "./PreviewModal";
 import { Trans, t } from "@lingui/macro";
 
-export default function SearchResult({ videos }: { videos: VideoDTO[] }) {
+export default function SearchResult({
+    videos,
+    videoIndex,
+    prevVideo,
+    nextVideo,
+}: {
+    videos: VideoDTO[];
+    videoIndex: number;
+    prevVideo: () => void;
+    nextVideo: () => void;
+}) {
     window.mainApi.log("debug", "VideoResult rendered!");
 
     const { setView } = useView();
     const { updateVideo } = usePlayer();
     const { localVideos, addLocalVideo } = useLocalVideo();
-    const [videoIndex, setVideoIndex] = useState(0);
     const [modelShown, setModelShown] = React.useState(false);
 
     const currVideo = videos[videoIndex];
     let currLocalVideo = localVideos.find(
         (localVideo) => localVideo.id === currVideo.id
     );
-
-    function prevVideo() {
-        if (videoIndex - 1 >= 0) {
-            setVideoIndex((currVideoIndex) => currVideoIndex - 1);
-        }
-    }
-
-    function nextVideo() {
-        if (videoIndex + 1 <= videos.length - 1) {
-            setVideoIndex((currVideoIndex) => currVideoIndex + 1);
-        }
-    }
 
     function onClickThumbnail() {
         switch (currLocalVideo?.status) {
@@ -76,7 +73,7 @@ export default function SearchResult({ videos }: { videos: VideoDTO[] }) {
 
     return (
         <div className="flex grow flex-col items-center justify-evenly">
-            <div className="flex items-center">
+            <div className="flex items-center justify-between">
                 <div>
                     <ArrowLeftIcon
                         className={`m-20 h-10 cursor-pointer ${
@@ -87,10 +84,10 @@ export default function SearchResult({ videos }: { videos: VideoDTO[] }) {
                         onClick={prevVideo}
                     />
                 </div>
-                <div className="basis-4/6">
+                <div className="max-w-xl">
                     <div className="h-12 line-clamp-2">{currVideo.title}</div>
                     <img
-                        className="my-5 aspect-video rounded-lg shadow-xl"
+                        className="my-5 aspect-video rounded-lg shadow-xl ring-2 ring-neutral-400 ring-opacity-30"
                         src={currVideo.thumbnailUri}
                         alt="Thumbnail"
                     />

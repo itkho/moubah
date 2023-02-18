@@ -21,11 +21,15 @@ export default function PreviewModal({
                     {/* Header */}
                     <div className="flex w-full items-start justify-between rounded-t border-b border-solid border-slate-300 p-5">
                         <div className="overflow-hidden">
-                            <h3 className="truncate font-semibold">
+                            <h3 className="truncate text-xl font-semibold">
                                 {video.title}
                             </h3>
-                            <p>{video.author.name}</p>
-                            <p>{abbrNum(video.views)} views</p>
+                            <p className="text-lg font-light">
+                                {video.author.name}
+                            </p>
+                            <p className="font-light">
+                                {abbrNum(video.views)} views
+                            </p>
                         </div>
                         <button
                             className="text-base-400 p-5 text-2xl"

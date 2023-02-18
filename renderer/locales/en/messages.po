@@ -14,10 +14,10 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: renderer/views/LibraryView.tsx:47
-msgid "(TODO) Not seen only"
-msgstr "(TODO) Not seen only"
+#~ msgid "(TODO) Not seen only"
+#~ msgstr "(TODO) Not seen only"
 
-#: renderer/views/LibraryView.tsx:213
+#: renderer/views/LibraryView.tsx:226
 msgid "Actions:"
 msgstr "Actions:"
 
@@ -29,15 +29,15 @@ msgstr "All"
 msgid "Alphabetically"
 msgstr "Alphabetically"
 
-#: renderer/components/VideoResult.tsx:66
+#: renderer/components/SearchResult.tsx:63
 msgid "Background music removed"
 msgstr "Background music removed"
 
-#: renderer/components/LibraryVideoItem.tsx:153
+#: renderer/components/LibraryVideoItem.tsx:158
 msgid "By:"
 msgstr "By:"
 
-#: renderer/components/PreviewModal.tsx:53
+#: renderer/components/PreviewModal.tsx:57
 msgid "Close"
 msgstr "Close"
 
@@ -49,8 +49,8 @@ msgstr "Contact us"
 msgid "Dark"
 msgstr "Dark"
 
-#: renderer/components/LibraryVideoItem.tsx:142
-#: renderer/views/LibraryView.tsx:239
+#: renderer/components/LibraryVideoItem.tsx:147
+#: renderer/views/LibraryView.tsx:252
 msgid "Delete"
 msgstr "Delete"
 
@@ -58,7 +58,7 @@ msgstr "Delete"
 msgid "Done only"
 msgstr "Done only"
 
-#: renderer/components/VideoResult.tsx:71
+#: renderer/components/SearchResult.tsx:68
 msgid "Downloading the video..."
 msgstr "Downloading the video..."
 
@@ -66,7 +66,7 @@ msgstr "Downloading the video..."
 msgid "Enter the title of a video or an URL in the search bar"
 msgstr "Enter the title of a video or an URL in the search bar"
 
-#: renderer/views/LibraryView.tsx:175
+#: renderer/views/LibraryView.tsx:187
 msgid "Filter"
 msgstr "Filter"
 
@@ -87,23 +87,27 @@ msgstr "Light"
 msgid "Music remover"
 msgstr "Music remover"
 
-#: renderer/views/LibraryView.tsx:170
+#: renderer/views/LibraryView.tsx:182
 msgid "My videos"
 msgstr "My videos"
+
+#: renderer/views/LibraryView.tsx:47
+msgid "New only"
+msgstr "New only"
 
 #: renderer/components/LibraryPlaceHolder.tsx:13
 msgid "No video to watch yet..."
 msgstr "No video to watch yet..."
 
-#: renderer/components/LibraryVideoItem.tsx:122
+#: renderer/components/LibraryVideoItem.tsx:127
 msgid "Open in Finder"
 msgstr "Open in Finder"
 
-#: renderer/views/LibraryView.tsx:225
+#: renderer/views/LibraryView.tsx:238
 msgid "Pause"
 msgstr "Pause"
 
-#: renderer/components/LibraryVideoItem.tsx:107
+#: renderer/components/LibraryVideoItem.tsx:112
 msgid "Play"
 msgstr "Play"
 
@@ -111,7 +115,7 @@ msgstr "Play"
 msgid "Player"
 msgstr "Player"
 
-#: renderer/components/VideoResult.tsx:119
+#: renderer/components/SearchResult.tsx:116
 msgid "Preview the video"
 msgstr "Preview the video"
 
@@ -123,12 +127,12 @@ msgstr "Recent first"
 msgid "Recent last"
 msgstr "Recent last"
 
-#: renderer/components/PreviewModal.tsx:60
-#: renderer/components/VideoResult.tsx:73
+#: renderer/components/PreviewModal.tsx:64
+#: renderer/components/SearchResult.tsx:70
 msgid "Remove background music"
 msgstr "Remove background music"
 
-#: renderer/components/VideoResult.tsx:68
+#: renderer/components/SearchResult.tsx:65
 msgid "Removing background music..."
 msgstr "Removing background music..."
 
@@ -145,19 +149,19 @@ msgstr "Search for a video in the"
 msgid "Select a video in the"
 msgstr "Select a video in the"
 
-#: renderer/views/LibraryView.tsx:204
+#: renderer/views/LibraryView.tsx:217
 msgid "Select all"
 msgstr "Select all"
 
-#: renderer/views/LibraryView.tsx:207
+#: renderer/views/LibraryView.tsx:220
 msgid "Selected:"
 msgstr "Selected:"
 
-#: renderer/views/LibraryView.tsx:184
+#: renderer/views/LibraryView.tsx:196
 msgid "Sorted by"
 msgstr "Sorted by"
 
-#: renderer/views/LibraryView.tsx:239
+#: renderer/views/LibraryView.tsx:252
 msgid "Sure?"
 msgstr "Sure?"
 
