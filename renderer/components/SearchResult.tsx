@@ -73,18 +73,17 @@ export default function SearchResult({
 
     return (
         <div className="flex grow flex-col items-center justify-evenly">
-            <div className="flex items-center justify-between">
-                <div>
-                    <ArrowLeftIcon
-                        className={`m-20 h-10 cursor-pointer ${
-                            videoIndex === 0
-                                ? "text-base-400 cursor-not-allowed"
-                                : ""
-                        }`}
-                        onClick={prevVideo}
-                    />
-                </div>
-                <div className="max-w-xl">
+            {/* Carousel */}
+            <div className="flex items-center justify-around">
+                <ArrowLeftIcon
+                    className={`h-10 cursor-pointer ${
+                        videoIndex === 0
+                            ? "text-base-400 cursor-not-allowed"
+                            : ""
+                    }`}
+                    onClick={prevVideo}
+                />
+                <div className="flex max-w-xl flex-col">
                     <div className="h-12 line-clamp-2">{currVideo.title}</div>
                     <img
                         className="my-5 aspect-video rounded-lg shadow-xl ring-2 ring-neutral-400 ring-opacity-30"
@@ -97,17 +96,16 @@ export default function SearchResult({
                     </div>
                     <div>Author: {currVideo.author.name}</div>
                 </div>
-                <div>
-                    <ArrowRightIcon
-                        className={`m-20 h-10 cursor-pointer ${
-                            videoIndex === videos.length - 1
-                                ? "text-base-400 cursor-not-allowed"
-                                : ""
-                        }`}
-                        onClick={nextVideo}
-                    />
-                </div>
+                <ArrowRightIcon
+                    className={`h-10 cursor-pointer ${
+                        videoIndex === videos.length - 1
+                            ? "text-base-400 cursor-not-allowed"
+                            : ""
+                    }`}
+                    onClick={nextVideo}
+                />
             </div>
+            {/* Buttons */}
             <div className="my-10 flex flex-col items-center">
                 <button
                     className="text-base-600 hover:text-base-700 m-1 hover:underline"

@@ -71,7 +71,7 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
     return (
         <>
             {!hidden && (
-                <div className="relative z-10 flex h-full flex-col items-center">
+                <div className="relative z-10 flex h-full w-full flex-col items-center">
                     <div className="my-10 flex w-1/3">
                         <input
                             ref={searchInput}
