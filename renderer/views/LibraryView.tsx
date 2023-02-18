@@ -20,11 +20,11 @@ enum Sort {
 function transSort(sort: Sort) {
     switch (sort) {
         case Sort.recentFirst:
-            return t`Recent first`;
+            return t`newest`;
         case Sort.recentLast:
-            return t`Recent last`;
+            return t`oldest`;
         case Sort.alphabetically:
-            return t`Alphabetically`;
+            return t`name`;
     }
 }
 
@@ -38,13 +38,13 @@ enum Filter {
 function transFilter(filter: Filter) {
     switch (filter) {
         case Filter.all:
-            return t`All`;
+            return t`all`;
         case Filter.doneOnly:
-            return t`Done only`;
+            return t`done`;
         case Filter.inProgressOnly:
-            return t`In progress only`;
+            return t`in progress`;
         case Filter.newOnly:
-            return t`New only`;
+            return t`new`;
     }
 }
 
@@ -182,7 +182,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     <Trans>My videos</Trans>
                                 </h1>
                                 <div className="flex gap-2">
-                                    <div className="w-48">
+                                    <div className="w-40">
                                         <CustomListbox
                                             prefixText={t`Filter` + " - "}
                                             enumList={Filter}
@@ -191,9 +191,9 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                             setSelectedEnum={setSelectedFilter}
                                         />
                                     </div>
-                                    <div className="w-52">
+                                    <div className="w-40">
                                         <CustomListbox
-                                            prefixText={t`Sorted by` + " - "}
+                                            prefixText={t`Sort by` + " - "}
                                             enumList={Sort}
                                             transEnum={transSort}
                                             selectedEnum={selectedSort}
@@ -216,7 +216,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     />
                                     <Trans>Select all</Trans>
 
-                                    <div className="text-base-500 w-28 pl-4">
+                                    <div className="text-base-500 w-32 pl-4">
                                         <Trans>Selected:</Trans>{" "}
                                         {selectedVideos.length}
                                     </div>

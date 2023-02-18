@@ -13,21 +13,9 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: renderer/views/LibraryView.tsx:47
-#~ msgid "(TODO) Not seen only"
-#~ msgstr "(TODO) Not seen only"
-
 #: renderer/views/LibraryView.tsx:226
 msgid "Actions:"
 msgstr "Actions :"
-
-#: renderer/views/LibraryView.tsx:41
-msgid "All"
-msgstr "Tous"
-
-#: renderer/views/LibraryView.tsx:27
-msgid "Alphabetically"
-msgstr "Alphabétique"
 
 #: renderer/components/SearchResult.tsx:63
 msgid "Background music removed"
@@ -54,10 +42,6 @@ msgstr "Sombre"
 msgid "Delete"
 msgstr "Supprimer"
 
-#: renderer/views/LibraryView.tsx:43
-msgid "Done only"
-msgstr "Terminé seulement"
-
 #: renderer/components/SearchResult.tsx:68
 msgid "Downloading the video..."
 msgstr "Téléchargement de la vidéo..."
@@ -69,10 +53,6 @@ msgstr "Entrez un titre de vidéo ou une URL dans la barre de recherche"
 #: renderer/views/LibraryView.tsx:187
 msgid "Filter"
 msgstr "Filtre"
-
-#: renderer/views/LibraryView.tsx:45
-msgid "In progress only"
-msgstr "En cours seulement"
 
 #: renderer/components/NavBar.tsx:67
 #: renderer/components/PlayerPlaceHolder.tsx:19
@@ -90,10 +70,6 @@ msgstr "Music remover"
 #: renderer/views/LibraryView.tsx:182
 msgid "My videos"
 msgstr "Mes vidéos"
-
-#: renderer/views/LibraryView.tsx:47
-msgid "New only"
-msgstr ""
 
 #: renderer/components/LibraryPlaceHolder.tsx:13
 msgid "No video to watch yet..."
@@ -118,14 +94,6 @@ msgstr "Lecteur"
 #: renderer/components/SearchResult.tsx:116
 msgid "Preview the video"
 msgstr "Aperçu de la vidéo"
-
-#: renderer/views/LibraryView.tsx:23
-msgid "Recent first"
-msgstr "Récents en premier"
-
-#: renderer/views/LibraryView.tsx:25
-msgid "Recent last"
-msgstr "Récents en dernier"
 
 #: renderer/components/PreviewModal.tsx:64
 #: renderer/components/SearchResult.tsx:70
@@ -158,14 +126,19 @@ msgid "Selected:"
 msgstr "Sélectionné"
 
 #: renderer/views/LibraryView.tsx:196
-msgid "Sorted by"
+msgid "Sort by"
 msgstr "Trier par"
 
 #: renderer/views/LibraryView.tsx:252
 msgid "Sure?"
 msgstr "Sûr ?"
 
+#: renderer/views/LibraryView.tsx:41
+msgid "all"
+msgstr "tous"
+
 #: renderer/components/LibraryVideoItem.tsx:31
+#: renderer/views/LibraryView.tsx:43
 msgid "done"
 msgstr "terminé"
 
@@ -173,14 +146,34 @@ msgstr "terminé"
 msgid "downloading"
 msgstr "téléchargement"
 
+#: renderer/views/LibraryView.tsx:45
+msgid "in progress"
+msgstr "en cours"
+
 #: renderer/components/LibraryVideoItem.tsx:25
 msgid "initial"
 msgstr "initial"
+
+#: renderer/views/LibraryView.tsx:27
+msgid "name"
+msgstr "nom"
+
+#: renderer/views/LibraryView.tsx:47
+msgid "new"
+msgstr "nouveau"
+
+#: renderer/views/LibraryView.tsx:23
+msgid "newest"
+msgstr "recent"
 
 #: renderer/components/Footer.tsx:45
 #: renderer/components/Footer.tsx:60
 msgid "offline"
 msgstr "hors ligne"
+
+#: renderer/views/LibraryView.tsx:25
+msgid "oldest"
+msgstr "ancien"
 
 #: renderer/components/Footer.tsx:45
 #: renderer/components/Footer.tsx:59

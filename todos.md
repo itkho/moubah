@@ -6,15 +6,13 @@
 
 ## 🔬 Before releasing-it in production
 
--   [x] 🪲 Audio result isn't smooth, find why...
--   [ ] 🆕 Send error message from renderer to main process
--   [ ] 🆕 Add a loading animation on search for slow internet connections (wait for search view redesign)
 -   [ ] 🪲 First installation/run is very long -> make a progress bar or something
 -   [ ] 🆕 Add downloading progress
 -   [ ] 🆕 Store current version in user preferences to be able to show "new user" message / what's new in this version / skip the pop-up for update the app ("pas mtn" / "attendre la prochaine version" / "ok" )
 -   [ ] 🆕 Add toast messages (useful to message user like: vulnerablility found, please update the app)
 -   [ ] 🆕 Add arabic translation
 -   [ ] ✨ Re-design the support view
+-   [ ] ✨ Re-design the search view?
 -   [ ] ✨ Choose a color theme
 -   [ ] ✨ Add a logo
 -   [ ] 🪲 Install / test deeply the app on mac/win
@@ -25,6 +23,9 @@
 
 ## 🔍 Usefull but not essential
 
+-   [ ] 🆕 Add a loading animation on search for slow internet connections
+-   [ ] 🆕 Send error message from renderer to main process
+-   [ ] 🪲 Improve the removal of the music ([exemple](https://youtu.be/EHe0Wu5yM9c))
 -   [ ] ✨ Add a better indicator when the user try to make a search without internet
 -   [ ] ✨ Build custom title bar (like Postman or Obsidian)
 -   [ ] 🆕 Add a search bar in the library view

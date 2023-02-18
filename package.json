@@ -15,6 +15,7 @@
     "productName": "Moubah",
     "scripts": {
         "i18n": "npm run i18n:extract && npm run i18n:compile",
+        "i18n:clean": "lingui extract --clean",
         "i18n:extract": "lingui extract",
         "i18n:compile": "lingui compile --typescript",
         "dev": "cross-env PINO_LOG_LEVEL=debug NODE_ENV=development concurrently \"npm run dev:renderer\" \" npm run dev:main\"",
