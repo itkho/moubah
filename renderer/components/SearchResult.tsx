@@ -72,38 +72,42 @@ export default function SearchResult({
     }
 
     return (
-        <div className="flex grow flex-col items-center justify-evenly">
-            {/* Carousel */}
-            <div className="flex items-center justify-around">
-                <ArrowLeftIcon
-                    className={`h-10 cursor-pointer ${
-                        videoIndex === 0
-                            ? "text-base-400 cursor-not-allowed"
-                            : ""
-                    }`}
-                    onClick={prevVideo}
-                />
-                <div className="flex max-w-xl flex-col">
-                    <div className="h-12 line-clamp-2">{currVideo.title}</div>
-                    <img
-                        className="my-5 aspect-video rounded-lg shadow-xl ring-2 ring-neutral-400 ring-opacity-30"
-                        src={currVideo.thumbnailUri}
-                        alt="Thumbnail"
+        <>
+            <div className="flex w-full shrink  flex-col items-center justify-evenly">
+                {/* Carousel */}
+                <div className="flex w-full shrink items-center justify-evenly">
+                    <ArrowLeftIcon
+                        className={`m-5 h-10 shrink-0 cursor-pointer ${
+                            videoIndex === 0
+                                ? "text-base-400 cursor-not-allowed"
+                                : ""
+                        }`}
+                        onClick={prevVideo}
                     />
-                    <div>
-                        Duration: {currVideo.timestamp} | Views:{" "}
-                        {abbrNum(currVideo.views)}
+                    <div className="flex  shrink flex-col">
+                        <div className="h-12 line-clamp-2">
+                            {currVideo.title}
+                        </div>
+                        <img
+                            className="my-5 aspect-video max-w-lg shrink rounded-lg shadow-xl ring-2 ring-neutral-400 ring-opacity-30"
+                            src={currVideo.thumbnailUri}
+                            alt="Thumbnail"
+                        />
+                        <div>
+                            Duration: {currVideo.timestamp} | Views:{" "}
+                            {abbrNum(currVideo.views)}
+                        </div>
+                        <div>Author: {currVideo.author.name}</div>
                     </div>
-                    <div>Author: {currVideo.author.name}</div>
+                    <ArrowRightIcon
+                        className={`m-5 h-10 shrink-0 cursor-pointer ${
+                            videoIndex === videos.length - 1
+                                ? "text-base-400 cursor-not-allowed"
+                                : ""
+                        }`}
+                        onClick={nextVideo}
+                    />
                 </div>
-                <ArrowRightIcon
-                    className={`h-10 cursor-pointer ${
-                        videoIndex === videos.length - 1
-                            ? "text-base-400 cursor-not-allowed"
-                            : ""
-                    }`}
-                    onClick={nextVideo}
-                />
             </div>
             {/* Buttons */}
             <div className="my-10 flex flex-col items-center">
@@ -125,6 +129,6 @@ export default function SearchResult({
             {modelShown && (
                 <PreviewModal setShowModal={setModelShown} video={currVideo} />
             )}
-        </div>
+        </>
     );
 }
