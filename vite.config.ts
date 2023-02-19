@@ -3,7 +3,9 @@ import { UserConfig, ConfigEnv } from "vite";
 import { join } from "path";
 
 const rendererRoot = join(__dirname, "renderer");
+const outDir = join(rendererRoot, "/out");
 
+// TODO: clean this ⬇️ (a lot of things are not necessary here)
 export default ({ command }: ConfigEnv): UserConfig => {
     // DEV
     if (command === "serve") {
@@ -24,7 +26,7 @@ export default ({ command }: ConfigEnv): UserConfig => {
                 },
             },
             build: {
-                outDir: join(rendererRoot, "/out"),
+                outDir: outDir,
                 emptyOutDir: true,
                 rollupOptions: {},
             },
@@ -54,9 +56,14 @@ export default ({ command }: ConfigEnv): UserConfig => {
             },
         },
         build: {
-            outDir: join(rendererRoot, "/out"),
+            outDir: outDir,
             emptyOutDir: true,
-            rollupOptions: {},
+            rollupOptions: {
+                input: {
+                    index: join(rendererRoot, "index.html"),
+                    splash: join(rendererRoot, "splash", "index.html"),
+                },
+            },
         },
         server: {
             port: process.env.PORT === undefined ? 3000 : +process.env.PORT,

@@ -108,6 +108,9 @@
     "build": {
         "asar": false,
         "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
+        "directories": {
+            "buildResources": "electron-build-resources"
+        },
         "files": [
             "main/out",
             "renderer/out",
