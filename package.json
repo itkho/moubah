@@ -109,7 +109,7 @@
         "asar": false,
         "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
         "directories": {
-            "buildResources": "electron-build-resources"
+            "buildResources": "renderer/assets/icons"
         },
         "files": [
             "main/out",

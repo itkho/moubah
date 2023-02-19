@@ -15,7 +15,6 @@ export function create() {
             contextIsolation: true,
             preload: join(__dirname, "preload.js"),
         },
-        icon: "/Users/karim/perso/projects/moubah/renderer/assets/icons/512x512.png",
         show: false,
     });
 
@@ -28,11 +27,6 @@ export function create() {
         alwaysOnTop: true,
         // backgroundColor: "#312450",
     });
-
-    // const image = nativeImage.createFromPath(
-    //     "/Users/karim/perso/projects/moubah/electron-build-resources/icon.icns"
-    // );
-    // app.dock.setIcon(image);
 
     if (isDev) {
         const port = process.env.PORT || 3000;
