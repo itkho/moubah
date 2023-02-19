@@ -7,8 +7,8 @@ let splashWindow: BrowserWindow;
 
 export function create() {
     mainWindow = new BrowserWindow({
-        width: 1000,
-        height: 700,
+        width: 1100,
+        height: 800,
         webPreferences: {
             webSecurity: isDev ? false : true, // Disabled in deb mode because of vite
             nodeIntegration: false,
@@ -17,6 +17,8 @@ export function create() {
         },
         show: false,
     });
+
+    // TODO: clean this
 
     // create a new `splash`-Window
     splashWindow = new BrowserWindow({

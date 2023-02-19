@@ -73,7 +73,7 @@ export default function SearchResult({
 
     return (
         <>
-            <div className="flex w-full shrink  flex-col items-center justify-evenly">
+            <div className="flex w-full shrink grow flex-col items-center justify-evenly">
                 {/* Carousel */}
                 <div className="flex w-full shrink items-center justify-evenly">
                     <ArrowLeftIcon
@@ -84,12 +84,12 @@ export default function SearchResult({
                         }`}
                         onClick={prevVideo}
                     />
-                    <div className="flex  shrink flex-col">
+                    <div className="flex max-w-lg shrink flex-col">
                         <div className="h-12 line-clamp-2">
                             {currVideo.title}
                         </div>
                         <img
-                            className="my-5 aspect-video max-w-lg shrink rounded-lg shadow-xl ring-2 ring-neutral-400 ring-opacity-30"
+                            className="my-5 aspect-video shrink rounded-lg shadow-xl ring-2 ring-neutral-400 ring-opacity-30"
                             src={currVideo.thumbnailUri}
                             alt="Thumbnail"
                         />
