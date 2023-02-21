@@ -20,7 +20,8 @@ export default function CustomListbox<T>({
             <div className="relative mt-1">
                 <Listbox.Button className="bg-base-200 relative w-full rounded-lg py-2 pl-3 text-left text-sm shadow-md">
                     <span className="text-base-500">{prefixText}</span>
-                    <span className="truncate capitalize">
+                    <span>
+                        {/* tets */}
                         {transEnum(selectedEnum)}
                     </span>
                     <span className="absolute inset-y-0 right-0 flex items-center pr-2">
@@ -53,7 +54,7 @@ export default function CustomListbox<T>({
                                     {({ selected }) => (
                                         <>
                                             <span
-                                                className={`block truncate capitalize ${
+                                                className={`block truncate ${
                                                     selected
                                                         ? "font-medium"
                                                         : "font-normal"

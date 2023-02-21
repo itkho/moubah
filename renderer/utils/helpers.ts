@@ -6,6 +6,10 @@ export function abbrNum(number: number) {
     return formatter.format(number);
 }
 
+export function capitalizeFirstLetter(text: string) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 export function cleanSrcPath(path: string) {
     if (path.startsWith("https://")) return path;
     return "file://" + path;

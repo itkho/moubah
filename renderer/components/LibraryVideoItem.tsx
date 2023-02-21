@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { faEllipsis, faPlay, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import VideoDTO from "../../main/dto/video";
-import { abbrNum, cleanSrcPath } from "../utils/helpers";
+import { abbrNum, capitalizeFirstLetter, cleanSrcPath } from "../utils/helpers";
 import { useLocalVideo } from "../context/LocalVideoContext";
 import { usePlayer } from "../context/PlayerContext";
 import { useView } from "../context/ViewContext";
@@ -20,16 +20,22 @@ import {
 import { Trans, t } from "@lingui/macro";
 
 function transVideoStatus(videoStatus: VideoStatus) {
+    let text: string;
     switch (videoStatus) {
         case VideoStatus.initial:
-            return t`initial`;
+            text = t`initial`;
+            break;
         case VideoStatus.downloading:
-            return t`downloading`;
+            text = t`downloading`;
+            break;
         case VideoStatus.processing:
-            return t`processing`;
+            text = t`processing`;
+            break;
         case VideoStatus.done:
-            return t`done`;
+            text = t`done`;
+            break;
     }
+    return capitalizeFirstLetter(text);
 }
 
 export default function LibraryVideoItem({
@@ -204,7 +210,7 @@ export default function LibraryVideoItem({
                         style={{ width: `${video.progress}%` }}
                     ></div>
                 </div>
-                <div className="text-base-500 pl-2 text-right text-sm capitalize">
+                <div className="text-base-500 pl-2 text-right text-sm normal-case">
                     {transVideoStatus(video.status!)}
                 </div>
             </div>

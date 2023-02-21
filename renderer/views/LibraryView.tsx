@@ -10,6 +10,7 @@ import LibraryVideoItem from "../components/LibraryVideoItem";
 import { useLocalVideo } from "../context/LocalVideoContext";
 import CustomListbox from "../components/Listbox";
 import { VideoStatus } from "../../main/utils/enum";
+import { capitalizeFirstLetter } from "../utils/helpers";
 
 enum Sort {
     recentFirst = "recentFirst",
@@ -18,14 +19,19 @@ enum Sort {
 }
 
 function transSort(sort: Sort) {
+    let text: string;
     switch (sort) {
         case Sort.recentFirst:
-            return t`newest`;
+            text = t`newest`;
+            break;
         case Sort.recentLast:
-            return t`oldest`;
+            text = t`oldest`;
+            break;
         case Sort.alphabetically:
-            return t`name`;
+            text = t`name`;
+            break;
     }
+    return capitalizeFirstLetter(text);
 }
 
 enum Filter {
@@ -36,16 +42,22 @@ enum Filter {
 }
 
 function transFilter(filter: Filter) {
+    let text: string;
     switch (filter) {
         case Filter.all:
-            return t`all`;
+            text = t`all`;
+            break;
         case Filter.doneOnly:
-            return t`done`;
+            text = t`done`;
+            break;
         case Filter.inProgressOnly:
-            return t`in progress`;
+            text = t`in progress`;
+            break;
         case Filter.newOnly:
-            return t`new`;
+            text = t`new`;
+            break;
     }
+    return capitalizeFirstLetter(text);
 }
 
 export let updateLocalVideo: (videoUpdated: VideoDTO) => void;
