@@ -73,34 +73,39 @@ export default function SearchResult({
 
     return (
         <>
-            <div className="flex w-full shrink grow flex-col items-center justify-evenly">
+            <div className="flex h-full w-full flex-col">
                 {/* Carousel */}
-                <div className="flex w-full shrink items-center justify-evenly">
+                <div className="flex grow items-center justify-evenly">
                     <ArrowLeftIcon
-                        className={`m-5 h-10 shrink-0 cursor-pointer ${
+                        className={`m-8 h-10 shrink-0 cursor-pointer ${
                             videoIndex === 0
                                 ? "text-base-400 cursor-not-allowed"
                                 : ""
                         }`}
                         onClick={prevVideo}
                     />
-                    <div className="flex max-w-lg shrink flex-col">
-                        <div className="h-12 line-clamp-2">
-                            {currVideo.title}
+
+                    <div className="flex h-full max-w-lg shrink grow flex-col items-center justify-center">
+                        <div className="flex aspect-square h-full max-w-full flex-col justify-center">
+                            <div className="h-12 line-clamp-2">
+                                {currVideo.title}
+                            </div>
+                            <div
+                                className="my-5 aspect-video w-full rounded-lg bg-contain bg-no-repeat  shadow-xl ring-1 ring-neutral-500 ring-opacity-50"
+                                style={{
+                                    backgroundImage: `url(${currVideo.thumbnailUri})`,
+                                }}
+                            ></div>
+
+                            <div>
+                                Duration: {currVideo.timestamp} | Views:{" "}
+                                {abbrNum(currVideo.views)}
+                            </div>
+                            <div>Author: {currVideo.author.name}</div>
                         </div>
-                        <img
-                            className="my-5 aspect-video shrink rounded-lg shadow-xl ring-2 ring-neutral-400 ring-opacity-30"
-                            src={currVideo.thumbnailUri}
-                            alt="Thumbnail"
-                        />
-                        <div>
-                            Duration: {currVideo.timestamp} | Views:{" "}
-                            {abbrNum(currVideo.views)}
-                        </div>
-                        <div>Author: {currVideo.author.name}</div>
                     </div>
                     <ArrowRightIcon
-                        className={`m-5 h-10 shrink-0 cursor-pointer ${
+                        className={`m-8 h-10 shrink-0 cursor-pointer ${
                             videoIndex === videos.length - 1
                                 ? "text-base-400 cursor-not-allowed"
                                 : ""
@@ -108,27 +113,31 @@ export default function SearchResult({
                         onClick={nextVideo}
                     />
                 </div>
+
+                {/* Buttons */}
+                <div className="my-10 flex shrink-0 grow-0 flex-col items-center">
+                    <button
+                        className="text-base-600 hover:text-base-700 m-1 hover:underline"
+                        onClick={() => setModelShown(true)}
+                    >
+                        <Trans>Preview the video</Trans>
+                    </button>
+                    <button
+                        onClick={onClickThumbnail}
+                        className={
+                            "bg-base-400 hover:bg-base-700 hover:text-base-400 rounded p-3"
+                        }
+                    >
+                        {renderButtonContent(currLocalVideo?.status)}
+                    </button>
+                </div>
+                {modelShown && (
+                    <PreviewModal
+                        setShowModal={setModelShown}
+                        video={currVideo}
+                    />
+                )}
             </div>
-            {/* Buttons */}
-            <div className="my-10 flex flex-col items-center">
-                <button
-                    className="text-base-600 hover:text-base-700 m-1 hover:underline"
-                    onClick={() => setModelShown(true)}
-                >
-                    <Trans>Preview the video</Trans>
-                </button>
-                <button
-                    onClick={onClickThumbnail}
-                    className={
-                        "bg-base-400 hover:bg-base-700 hover:text-base-400 rounded p-3"
-                    }
-                >
-                    {renderButtonContent(currLocalVideo?.status)}
-                </button>
-            </div>
-            {modelShown && (
-                <PreviewModal setShowModal={setModelShown} video={currVideo} />
-            )}
         </>
     );
 }
