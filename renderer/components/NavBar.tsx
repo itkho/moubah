@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import {
     faList,
     faMagnifyingGlass,
@@ -79,22 +79,6 @@ export default function NavBar() {
                             }`}
                         />
                         <Trans>Player</Trans>
-                    </li>
-                    <li
-                        onClick={() => setView(View.contact)}
-                        className={
-                            classNameListItem +
-                            (view === View.contact &&
-                                "text-base-700 bg-base-300 pointer-events-none font-semibold")
-                        }
-                    >
-                        <FontAwesomeIcon
-                            icon={faMessage}
-                            className={`pl-1 pr-3 ${
-                                view === View.contact && "text-highlight"
-                            }`}
-                        />
-                        <Trans>Contact us</Trans>
                     </li>
                 </ul>
                 {/* Widgets */}

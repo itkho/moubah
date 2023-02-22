@@ -1,6 +1,5 @@
 import React from "react";
 import { useView } from "../context/ViewContext";
-import ContactView from "./ContactView";
 import LibraryView from "./LibraryView";
 import PlayerView from "./PlayerView";
 import SearchView from "./SearchView";
@@ -12,7 +11,6 @@ export default function MainView() {
     let seachHidden = true;
     let libraryHidden = true;
     let playerHidden = true;
-    let contactHidden = true;
 
     switch (view) {
         case View.search:
@@ -24,9 +22,6 @@ export default function MainView() {
         case View.player:
             playerHidden = false;
             break;
-        case View.contact:
-            contactHidden = false;
-            break;
     }
 
     return (
@@ -34,7 +29,6 @@ export default function MainView() {
             <SearchView hidden={seachHidden} />
             <LibraryView hidden={libraryHidden} />
             <PlayerView hidden={playerHidden} />
-            <ContactView hidden={contactHidden} />
         </div>
     );
 }
