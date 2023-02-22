@@ -26,7 +26,6 @@ export function create() {
         height: 300,
         show: false,
         frame: false,
-        alwaysOnTop: true,
         // backgroundColor: "#312450",
     });
 

@@ -82,22 +82,20 @@ module.exports = {
                 appear: {
                     "0%": {
                         visibility: "hidden",
-                        opacity: 0,
                     },
                     "99%": {
                         visibility: "hidden",
-                        opacity: 0,
                     },
                     "100%": {
                         visibility: "visible",
-                        opacity: 1,
                     },
                 },
             },
             animation: {
                 "bounce-slow": "bounceCentered 2s infinite",
                 "translate-left": "translateLeft 2s",
-                "delayed-show": "appear 10s",
+                "delayed-show-10": "appear 10s",
+                "delayed-show-2": "appear 2s",
             },
             fontFamily: {
                 "fredoka-one": ['"Fredoka One"', "cursive"],
