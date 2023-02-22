@@ -5,7 +5,7 @@ import { getVideoById, getAllVideos, remove, save } from "./repository/video";
 import { search } from "./lib/youtube";
 import VideoService from "./services/video";
 import { initQueue } from "./services/library";
-import { toogleDevTools } from "./main-window";
+import { toogleDevTools } from "./windows/main-window";
 import { openLogsInFileExplorer } from "./utils/helpers";
 import { mainLogger, rendererLogger } from "./utils/logger";
 import VideoDTO from "./dto/video";

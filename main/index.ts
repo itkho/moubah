@@ -1,11 +1,21 @@
 import { BrowserWindow, app } from "electron";
-import { create as createMainWindow } from "./main-window";
+import { create as createMainWindow } from "./windows/main-window";
+import { create as createSplashWindow } from "./windows/splash-window";
 import { setUp, tearDown } from "./setup";
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on("ready", createMainWindow);
+app.on("ready", () => {
+    const splashWindow = createSplashWindow();
+    const mainWindow = createMainWindow();
+
+    // if main window is ready to show, then destroy the splash window and show up the main window
+    mainWindow.once("ready-to-show", () => {
+        splashWindow.destroy();
+        mainWindow.show();
+    });
+});
 
 app.on("activate", () => {
     // On OS X it's common to re-create a window in the app when the

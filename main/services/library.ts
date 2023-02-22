@@ -5,7 +5,7 @@ import AudioModel from "../model/audio";
 import { getVideoById, getVideosTodo } from "../repository/video";
 import VideoService from "./video";
 import ChunkRequestDTO from "../dto/chunk-request";
-import { get as getMainWindow } from "../main-window";
+import { get as getMainWindow } from "../windows/main-window";
 import { pushToQueue, addWorkerToQueue } from "../lib/queue";
 import { mainLogger } from "../utils/logger";
 import { removeMusic } from "../lib/music-remover";

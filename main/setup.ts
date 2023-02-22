@@ -18,7 +18,7 @@ import {
 } from "./utils/const";
 import { ping as pingMusicRemover, getProcessId } from "./lib/music-remover";
 import { MusicRemoverStatus } from "./utils/enum";
-import { get as getMainWindow } from "./main-window";
+import { get as getMainWindow } from "./windows/main-window";
 import { mainLogger, logLevel } from "./utils/logger";
 import path from "path";
 import { initQueue } from "./services/library";

@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import download from "image-downloader";
 
-import { get as getMainWindow } from "../main-window";
+import { get as getMainWindow } from "../windows/main-window";
 import VideoModel from "../model/video.js";
 import { STORAGE_DIR_PATH } from "../utils/const.js";
 import { mainLogger } from "../utils/logger.js";
