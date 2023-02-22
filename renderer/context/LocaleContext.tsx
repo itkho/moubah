@@ -27,7 +27,6 @@ export function LocaleProvider(props: { children: ReactNode }) {
 
     useEffect(() => {
         window.mainApi.getUserPrefLang().then((lang) => {
-            console.log({ lang });
             if (lang) setLocale(lang as Locale);
         });
     }, []);

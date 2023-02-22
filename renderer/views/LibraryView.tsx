@@ -64,7 +64,6 @@ export let updateLocalVideo: (videoUpdated: VideoDTO) => void;
 
 export default function LibraryView({ hidden }: { hidden: boolean }) {
     window.mainApi.log("debug", "LibraryView rendered!");
-    console.log("LibraryView rendered!");
 
     const {
         localVideos,
@@ -95,7 +94,6 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
         window.videoApi.getAll().then((videos) => {
             setLocalVideos(videos);
         });
-        console.log({ localVideos });
     }, [hidden]);
 
     useEffect(() => {

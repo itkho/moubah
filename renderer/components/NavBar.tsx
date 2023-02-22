@@ -23,8 +23,6 @@ const classNameListItem =
     "flex items-center gap-2 cursor-pointer my-2 p-2 rounded-lg hover:bg-base-300 hover:bg-opacity-50 hover:text-base-700 duration-200";
 
 export default function NavBar() {
-    console.log("NavBar rendered!");
-
     const { view, setView } = useView();
     const { darkMode, changeDarkMode } = useDarkMode();
     const { locale, changeLocale } = useLocale();

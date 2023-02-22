@@ -7,8 +7,6 @@ import SearchView from "./SearchView";
 import { View } from "../utils/enums";
 
 export default function MainView() {
-    console.log("MainView rendered!");
-
     const { view } = useView();
 
     let seachHidden = true;

@@ -1,4 +1,4 @@
-import React, { KeyboardEventHandler, RefObject, useRef } from "react";
+import React, { KeyboardEventHandler, useRef } from "react";
 import ReactPlayer from "react-player";
 import PlayerPlaceHolder from "../components/PlayerPlaceHolder";
 
@@ -7,13 +7,11 @@ import { cleanSrcPath } from "../utils/helpers";
 
 export default function PlayerView({ hidden }: { hidden: boolean }) {
     window.mainApi.log("debug", "PlayerView rendered!");
-    console.log("PlayerView rendered!");
 
     const { video } = usePlayer();
     const player = useRef<ReactPlayer>(null);
 
     const onKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {
-        console.log("onKeyDown");
         let shift = 0;
         switch (event.key) {
             case "ArrowRight":
@@ -25,7 +23,6 @@ export default function PlayerView({ hidden }: { hidden: boolean }) {
             default:
                 return;
         }
-        console.log(shift);
         player.current?.seekTo(
             player.current?.getCurrentTime() + shift,
             "seconds"

@@ -17,7 +17,6 @@ export function get(key: string) {
 export function getDarkMode(): boolean {
     const darkModePref = settings.getSync("darkMode");
     if (typeof darkModePref === "boolean") {
-        console.log({ darkModePref });
         return darkModePref;
     }
     return nativeTheme.shouldUseDarkColors;

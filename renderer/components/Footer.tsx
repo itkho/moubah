@@ -20,8 +20,6 @@ const classNameInfo = "flex items-center mx-2 cursor-default";
 export let updateMusicRemoverStatus: (status: MusicRemoverStatus) => void;
 
 export default function Footer() {
-    console.log("Footer rendered!");
-
     const [musicRemoverStatus, setMusicRemoverStatus] = useState(
         MusicRemoverStatus.down
     );

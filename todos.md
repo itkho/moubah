@@ -6,7 +6,6 @@
 
 ## 🔬 Before releasing-it in production
 
--   [x] 🪲 First installation/run is very long -> make a progress bar or something
 -   [ ] 🆕 Add downloading progress
 -   [ ] 🆕 Store current version in user preferences to be able to show "new user" message / what's new in this version / skip the pop-up for update the app ("pas mtn" / "attendre la prochaine version" / "ok" )
 -   [ ] 🆕 Add toast messages (useful to message user like: vulnerablility found, please update the app)

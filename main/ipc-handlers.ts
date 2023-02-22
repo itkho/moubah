@@ -49,10 +49,8 @@ export default function initIpcHandlers() {
     });
 
     ipcMain.handle("video:played", async (_event, videoId) => {
-        console.log({ videoId });
         const video = await getVideoById(videoId);
         video.setPlayed();
-        console.log(video.info.metadata?.isNew);
         save(video);
     });
 

@@ -24,7 +24,6 @@ export function DarkModeProvider(props: { children: ReactNode }) {
 
     useEffect(() => {
         window.mainApi.getUserPrefDarkMode().then((dark) => {
-            console.log({ dark });
             setDarkMode(dark);
         });
     }, []);

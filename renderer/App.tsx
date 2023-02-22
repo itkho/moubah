@@ -30,12 +30,10 @@ async function activateLocale(locale: Locale) {
 }
 
 const defaultLang = navigator.language.split("-")[0];
-console.log({ defaultLang });
 
 activateLocale(defaultLang as Locale);
 
 export default function App() {
-    console.log("App rendered!");
     const { darkMode } = useDarkMode();
     const { locale } = useLocale();
 
