@@ -71,9 +71,36 @@ module.exports = {
                         transitionTimingFunction: "cubic-bezier(0,0,0.2,1)",
                     },
                 },
+                translateLeft: {
+                    "0%": {
+                        transform: "translateX(10rem)",
+                    },
+                    "100%": {
+                        transform: "translateX(0px)",
+                    },
+                },
+                appear: {
+                    "0%": {
+                        visibility: "hidden",
+                        opacity: 0,
+                    },
+                    "99%": {
+                        visibility: "hidden",
+                        opacity: 0,
+                    },
+                    "100%": {
+                        visibility: "visible",
+                        opacity: 1,
+                    },
+                },
             },
             animation: {
                 "bounce-slow": "bounceCentered 2s infinite",
+                "translate-left": "translateLeft 2s",
+                "delayed-show": "appear 10s",
+            },
+            fontFamily: {
+                "fredoka-one": ['"Fredoka One"', "cursive"],
             },
         },
     },
