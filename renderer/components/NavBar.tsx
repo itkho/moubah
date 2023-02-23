@@ -83,6 +83,7 @@ export default function NavBar() {
                 </ul>
                 {/* Widgets */}
                 <div className="flex flex-col">
+                    {/* Language selector */}
                     <div className="mx-4">
                         <Listbox value={locale} onChange={changeLocale}>
                             <div className="relative">
@@ -165,6 +166,7 @@ export default function NavBar() {
                             </div>
                         </Listbox>
                     </div>
+                    {/* Dark mode */}
                     <div className="flex items-center justify-center py-8">
                         <div className="text-xs font-semibold uppercase">
                             <Trans>Dark</Trans>

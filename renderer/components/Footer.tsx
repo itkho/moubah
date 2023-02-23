@@ -70,7 +70,7 @@ export default function Footer() {
                     </Popover.Button>
 
                     <Popover.Panel className="absolute bottom-full left-1/2 z-40 -translate-x-1/2">
-                        <div className="bg-base-300 ring-base-400 mb-4 flex flex-col rounded-md px-1 ring-1">
+                        <div className="bg-base-200 ring-base-500 mb-4 flex flex-col rounded-md px-1 ring-[0.5px]">
                             <a
                                 className="group my-1 flex items-center gap-2 rounded-md p-2 hover:bg-blue-300 hover:text-neutral-50"
                                 href="mailto:moubah.info@gmail.com"
@@ -79,9 +79,9 @@ export default function Footer() {
                                     icon={faPerson}
                                     className="h-4 text-blue-300 group-hover:text-neutral-50"
                                 />
-                                Homme
+                                <Trans>Men</Trans>
                             </a>
-                            <div className="bg-base-400 h-0.5 w-full "></div>
+                            <div className="bg-base-500 h-[0.25px] w-full opacity-50"></div>
                             <a
                                 className="group my-1 flex items-center gap-2 rounded-md p-2 hover:bg-pink-300 hover:text-neutral-50"
                                 href="mailto:moubah.info@gmail.com"
@@ -90,7 +90,7 @@ export default function Footer() {
                                     icon={faPersonDress}
                                     className="h-4 text-pink-300 group-hover:text-neutral-50"
                                 />
-                                Femme
+                                <Trans>Women</Trans>
                             </a>
                         </div>
                     </Popover.Panel>
