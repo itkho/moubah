@@ -91,7 +91,7 @@ export default function SearchResult({
                                 {currVideo.title}
                             </div>
                             <div
-                                className="my-5 aspect-video w-full rounded-lg bg-contain bg-no-repeat  shadow-xl ring-1 ring-neutral-500 ring-opacity-50"
+                                className="ring-base-500 my-5 aspect-video w-full rounded-lg bg-contain  bg-no-repeat shadow-xl ring-1 ring-opacity-50"
                                 style={{
                                     backgroundImage: `url(${currVideo.thumbnailUri})`,
                                 }}
