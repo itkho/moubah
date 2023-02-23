@@ -40,7 +40,7 @@ export default function Footer() {
                 <div className={classNameInfo}>
                     <FontAwesomeIcon
                         // TODO: use https://www.npmjs.com/package/classnames for this?
-                        className={`px-2 ${onLine ? "text-ok" : "text-ko"}`}
+                        className={`px-2 ${onLine ? "text-ok" : "text-ko-700"}`}
                         icon={faWifi}
                     />
                     <div className="capitalize">
@@ -52,7 +52,7 @@ export default function Footer() {
                         className={`px-2 ${
                             musicRemoverStatus === MusicRemoverStatus.up
                                 ? "text-ok"
-                                : "text-ko"
+                                : "text-ko-700"
                         }`}
                         icon={faVolumeXmark}
                     />

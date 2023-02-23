@@ -73,12 +73,17 @@ export default function LibraryVideoItem({
                 </div>
             )}
             <div className="flex items-center justify-between pb-2">
-                <input
-                    type="checkbox"
-                    className="bg-base-100 ring-base-400 ring-offset-base-100 m-2 h-2 w-2 cursor-pointer appearance-none rounded-sm ring-2 ring-offset-2 checked:bg-lime-500"
-                    checked={selected}
-                    onChange={handleCheckboxClick}
-                />
+                {/* Custom check box */}
+                <div
+                    className="border-base-400 bg-base-100 h-4 w-4 cursor-pointer rounded-md border-2 p-0.5"
+                    onClick={handleCheckboxClick}
+                >
+                    <div
+                        className={`h-full w-full rounded-sm ${
+                            selected && "bg-lime-500"
+                        }`}
+                    ></div>
+                </div>
                 <Menu as="div" className="relative">
                     <Menu.Button className="hover:bg-base-400 flex rounded-md px-2 py-1">
                         <FontAwesomeIcon icon={faEllipsis} className="h-5" />

@@ -12,7 +12,11 @@ module.exports = {
             colors: {
                 // Neutral / Green
                 ok: primary[700],
-                ko: error[700],
+                ko: {
+                    500: error[500],
+                    600: error[600],
+                    700: error[700],
+                },
                 highlight: {
                     light: primary[600],
                     dark: primary[500],

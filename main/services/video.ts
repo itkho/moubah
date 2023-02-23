@@ -63,6 +63,9 @@ export default class VideoService {
                 );
             },
         }).pipe(writerStream);
+        writerStream.on("response", (res) => {
+            console.log({ res });
+        });
         return new Promise((resolve, _reject) => {
             writerStream.on("finish", resolve);
         });

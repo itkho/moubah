@@ -214,16 +214,20 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                             </div>
                             <div className="divide-base-300 flex items-center divide-x-2 py-4">
                                 <div className="flex items-center">
-                                    <input
-                                        type="checkbox"
-                                        className="bg-background ring-base-400 ring-offset-background ml-2 mr-4 h-3 w-3 cursor-pointer appearance-none rounded-sm ring-2 ring-offset-2 checked:bg-lime-500"
-                                        checked={
-                                            selectedVideos.length !== 0 &&
-                                            selectedVideos.length ===
-                                                filteredVideos.length
-                                        }
-                                        onChange={toggleSelectAll}
-                                    />
+                                    {/* Custom check box */}
+                                    <div
+                                        className="border-base-400 bg-background ml-2 mr-4 h-5 w-5 cursor-pointer rounded-md border-2 p-0.5"
+                                        onClick={toggleSelectAll}
+                                    >
+                                        <div
+                                            className={`h-full w-full rounded-sm ${
+                                                selectedVideos.length !== 0 &&
+                                                selectedVideos.length ===
+                                                    filteredVideos.length &&
+                                                "bg-lime-500"
+                                            }`}
+                                        ></div>
+                                    </div>
                                     <Trans>Select all</Trans>
 
                                     <div className="text-base-500 w-32 pl-4">
@@ -249,8 +253,10 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     </button>
                                     <button
                                         ref={deleteButton}
-                                        className={`bg-base-200 hover:bg-base-300 cursor-pointer rounded-md py-1 px-2 disabled:cursor-not-allowed ${
-                                            isDeleting && "text-ko"
+                                        className={`cursor-pointer rounded-md py-1 px-2 disabled:cursor-not-allowed ${
+                                            isDeleting
+                                                ? "bg-ko-500 hover:bg-ko-600"
+                                                : "bg-base-200 hover:bg-base-300"
                                         }`}
                                         disabled={!selectedVideos.length}
                                         onClick={handleDeleteClick}
