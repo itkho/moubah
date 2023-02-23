@@ -30,57 +30,70 @@ export default function NavBar() {
     return (
         <div className="bg-base-200 text-base-700 border-base-500 h-full shrink-0 basis-48 border-r-[0.5px]  dark:drop-shadow-none">
             <div className="flex h-full flex-col justify-between">
-                {/* Items */}
-                <ul className="p-4">
-                    <li
-                        onClick={() => setView(View.search)}
-                        className={
-                            classNameListItem +
-                            (view === View.search &&
-                                "text-base-800 bg-base-300 pointer-events-none font-semibold")
-                        }
-                    >
-                        <FontAwesomeIcon
-                            icon={faMagnifyingGlass}
-                            className={`pl-1 pr-3 ${
-                                view === View.search && "text-highlight"
-                            }`}
+                <div className="flex flex-col">
+                    {/* Logo */}
+                    <div className="mx-2 my-6 flex items-center justify-center gap-2 font-fredoka-one text-2xl font-black text-neutral-200">
+                        <img
+                            src="../assets/icons/icon.png"
+                            alt="Icon"
+                            className="h-12"
                         />
-                        <Trans>Search</Trans>
-                    </li>
-                    <li
-                        onClick={() => setView(View.library)}
-                        className={
-                            classNameListItem +
-                            (view === View.library &&
-                                "text-base-700 bg-base-300 pointer-events-none font-semibold")
-                        }
-                    >
-                        <FontAwesomeIcon
-                            icon={faList}
-                            className={`pl-1 pr-3 ${
-                                view === View.library && "text-highlight"
-                            }`}
-                        />
-                        <Trans>Library</Trans>
-                    </li>
-                    <li
-                        onClick={() => setView(View.player)}
-                        className={
-                            classNameListItem +
-                            (view === View.player &&
-                                "text-base-700 bg-base-300 pointer-events-none font-semibold")
-                        }
-                    >
-                        <FontAwesomeIcon
-                            icon={faCirclePlay}
-                            className={`pl-1 pr-3 ${
-                                view === View.player && "text-highlight"
-                            }`}
-                        />
-                        <Trans>Player</Trans>
-                    </li>
-                </ul>
+                        Moubah
+                    </div>
+                    {/* Separator */}
+                    <div className="bg-base-500 h-[0.5px] w-11/12 self-center opacity-50"></div>
+                    {/* Items */}
+                    <ul className="p-4">
+                        <li
+                            onClick={() => setView(View.search)}
+                            className={
+                                classNameListItem +
+                                (view === View.search &&
+                                    "text-base-800 bg-base-300 pointer-events-none font-semibold")
+                            }
+                        >
+                            <FontAwesomeIcon
+                                icon={faMagnifyingGlass}
+                                className={`pl-1 pr-3 ${
+                                    view === View.search && "text-highlight"
+                                }`}
+                            />
+                            <Trans>Search</Trans>
+                        </li>
+                        <li
+                            onClick={() => setView(View.library)}
+                            className={
+                                classNameListItem +
+                                (view === View.library &&
+                                    "text-base-700 bg-base-300 pointer-events-none font-semibold")
+                            }
+                        >
+                            <FontAwesomeIcon
+                                icon={faList}
+                                className={`pl-1 pr-3 ${
+                                    view === View.library && "text-highlight"
+                                }`}
+                            />
+                            <Trans>Library</Trans>
+                        </li>
+                        <li
+                            onClick={() => setView(View.player)}
+                            className={
+                                classNameListItem +
+                                (view === View.player &&
+                                    "text-base-700 bg-base-300 pointer-events-none font-semibold")
+                            }
+                        >
+                            <FontAwesomeIcon
+                                icon={faCirclePlay}
+                                className={`pl-1 pr-3 ${
+                                    view === View.player && "text-highlight"
+                                }`}
+                            />
+                            <Trans>Player</Trans>
+                        </li>
+                    </ul>
+                </div>
                 {/* Widgets */}
                 <div className="flex flex-col">
                     {/* Language selector */}

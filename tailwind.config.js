@@ -99,6 +99,7 @@ module.exports = {
             },
             fontFamily: {
                 "fredoka-one": ['"Fredoka One"', "cursive"],
+                rubik: ["Rubik", "sans-serif"],
             },
         },
     },

@@ -22,6 +22,7 @@
 
 ## 🔍 Usefull but not essential
 
+-   [ ] 🆕 Add a button to be able to reduce nav bar width
 -   [ ] 🆕 Add a loading animation on search for slow internet connections
 -   [ ] 🆕 Send error message from renderer to main process
 -   [ ] 🪲 Improve the removal of the music ([exemple](https://youtu.be/EHe0Wu5yM9c))

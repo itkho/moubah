@@ -46,7 +46,7 @@ export default function App() {
         <>
             <I18nProvider i18n={i18n}>
                 <div className={darkMode ? "dark" : ""}>
-                    <div className="bg-background text-base-800 -z-40 flex h-screen w-screen flex-col text-base">
+                    <div className="bg-background text-base-800 -z-40 flex h-screen w-screen flex-col font-rubik text-base">
                         <OnLineProvider>
                             <ViewProvider>
                                 <div className="flex grow overflow-clip">
