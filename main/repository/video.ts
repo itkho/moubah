@@ -14,10 +14,11 @@ export async function getVideoById(id: string) {
         throw Error(`Video ${id} not found`);
     }
     const info = jetpack.read(path.join(videoPath, "info.json"), "json");
-    const { status, ...videoInfo } = info;
+    const { status, metadata, ...videoInfo } = info;
     return new VideoModel({
         id: id,
         info: videoInfo,
+        metadata: metadata,
         status: status,
     });
 }
@@ -45,12 +46,8 @@ export async function getVideosTodo() {
 
 export function save(video: VideoModel) {
     const videoInfo = {
-        // Warning: this is overrided by the metadata in video.info (not the best solution IMO...)
-        metadata: {
-            isNew: true,
-            creationTimestamp: Date.now(),
-        },
         status: video.status,
+        metadata: video.metadata,
         ...video.info,
     };
     mainLogger.debug({ videoInfo });

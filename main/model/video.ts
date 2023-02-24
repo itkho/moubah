@@ -9,7 +9,6 @@ import VideoDTO, { Author, Metadata } from "../dto/video.js";
 
 type Info = {
     author: Author;
-    metadata?: Metadata;
     originalThumbnailUri: string;
     timestamp: string;
     title: string;
@@ -19,7 +18,9 @@ type Info = {
 export default class VideoModel {
     id: string;
     info: Info;
+    metadata?: Metadata;
     status: VideoStatus;
+    #downloadingProgress = 0;
 
     public static fromDTO(video: VideoDTO): VideoModel {
         return new VideoModel({
@@ -30,7 +31,11 @@ export default class VideoModel {
                 views: video.views,
                 author: video.author,
                 originalThumbnailUri: video.thumbnailUri,
-                metadata: video.metadata,
+            },
+            metadata: {
+                isNew: true,
+                creationTimestamp: Date.now(),
+                ...video.metadata,
             },
             status: video.status || VideoStatus.initial,
         });
@@ -39,14 +44,17 @@ export default class VideoModel {
     constructor({
         id,
         info,
+        metadata,
         status,
     }: {
         id: string;
         info: Info;
+        metadata?: Metadata;
         status: VideoStatus;
     }) {
         this.id = id;
         this.info = info;
+        this.metadata = metadata;
         this.status = status;
     }
 
@@ -103,7 +111,7 @@ export default class VideoModel {
             case VideoStatus.initial:
                 return 0;
             case VideoStatus.downloading:
-                return 0;
+                return this.#downloadingProgress;
             case VideoStatus.processing:
                 const nbChunksDone = this.audioChunksDone.length;
                 const nbChunksTodo = this.audioChunksTodo.length;
@@ -118,9 +126,13 @@ export default class VideoModel {
         }
     }
 
+    set downloadingProgress(progress: number) {
+        this.#downloadingProgress = progress;
+    }
+
     setPlayed() {
-        if (!this.info.metadata) this.info.metadata = {};
-        this.info.metadata.isNew = false;
+        if (!this.metadata) this.metadata = {};
+        this.metadata.isNew = false;
     }
 
     stringifyInfo() {
@@ -131,6 +143,7 @@ export default class VideoModel {
         return new VideoDTO({
             id: this.id,
             status: this.status,
+            metadata: this.metadata,
             progress: this.progress,
             thumbnailUri:
                 this.status === VideoStatus.initial

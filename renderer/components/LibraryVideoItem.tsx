@@ -47,6 +47,8 @@ export default function LibraryVideoItem({
     selected: boolean;
     removeVideos: (videos: VideoDTO[]) => void;
 }) {
+    console.log({ video });
+
     const { setView } = useView();
     const { addToSelectedVideos, removeFromSelectedVideos } = useLocalVideo();
     const { updateVideo } = usePlayer();
@@ -98,7 +100,7 @@ export default function LibraryVideoItem({
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                     >
-                        <Menu.Items className="divide-base-200 bg-base-100 absolute right-0 z-10 mt-1 w-48 divide-y rounded-md p-1 shadow-lg focus:outline-none">
+                        <Menu.Items className="ring-base-800 divide-base-200 bg-base-100 absolute right-0 z-10 mt-1 w-48 divide-y rounded-md p-1 text-sm shadow-lg ring-[0.5px] focus:outline-none">
                             <div className="flex flex-col p-1">
                                 <Menu.Item
                                     disabled={video.status !== VideoStatus.done}

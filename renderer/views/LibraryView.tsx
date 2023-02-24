@@ -255,7 +255,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                         ref={deleteButton}
                                         className={`cursor-pointer rounded-md py-1 px-2 disabled:cursor-not-allowed ${
                                             isDeleting
-                                                ? "bg-ko-500 hover:bg-ko-600"
+                                                ? "bg-ko-500 text-base-100-light hover:bg-ko-600"
                                                 : "bg-base-200 hover:bg-base-300"
                                         }`}
                                         disabled={!selectedVideos.length}
@@ -269,7 +269,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     </button>
                                 </div>
                             </div>
-                            <div className="grid grow auto-rows-max gap-6 overflow-y-scroll pb-4 pt-8 pr-5 pl-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                            <div className="grid grow auto-rows-max gap-8 overflow-y-scroll pb-4 pt-8 pr-5 pl-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                                 {filteredVideos.map((video) => (
                                     <LibraryVideoItem
                                         key={video.id}

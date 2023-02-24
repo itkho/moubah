@@ -38,8 +38,6 @@ export default class VideoService {
 
     async download() {
         mainLogger.info("Donwloading...");
-        // TODO: add download progress (should be possible according to the doc)
-        // https://www.npmjs.com/package/ytdl-core#:~:text=format%20to%20download.-,Event%3A%20progress,-number%20%2D%20Chunk%20length
         this.setStatus(VideoStatus.downloading);
         await this.#downloadVideo();
         mainLogger.info(
@@ -62,10 +60,15 @@ export default class VideoService {
                     format.hasAudio === false
                 );
             },
-        }).pipe(writerStream);
-        writerStream.on("response", (res) => {
-            console.log({ res });
-        });
+        })
+            .on("progress", (_, totalDownloaded, total) => {
+                const progress = Math.floor((totalDownloaded / total) * 100);
+                if (progress != this.video.progress) {
+                    this.video.downloadingProgress = progress;
+                    save(this.video);
+                }
+            })
+            .pipe(writerStream);
         return new Promise((resolve, _reject) => {
             writerStream.on("finish", resolve);
         });
@@ -80,6 +83,7 @@ export default class VideoService {
                     format.container === "mp4" &&
                     format.hasVideo === false &&
                     format.hasAudio === true
+                    // TODO:
                     // && format.audioQuality === "AUDIO_QUALITY_LOW"
                 );
             },
