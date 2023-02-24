@@ -22,7 +22,11 @@ import { get as getMainWindow } from "./windows/main-window";
 import { mainLogger, logLevel } from "./utils/logger";
 import path from "path";
 import { initQueue } from "./services/library";
-import { get as getUserPref } from "./model/user-preference";
+import {
+    get as getUserPref,
+    set as setUserPref,
+} from "./model/user-preference";
+import { NotImplementedError } from "./utils/errors";
 const config = require(CONFIG_PATH);
 
 let musicRemoverProcessId: number | undefined;
@@ -89,8 +93,9 @@ async function checkForUpdates() {
             version: string;
         };
 
+        // For beta apps
         if (satisfies(app.getVersion(), ">" + remotePackageJson.version)) {
-            mainLogger.info(
+            mainLogger.debug(
                 `Local v${app.getVersion()} > Main v${
                     remotePackageJson.version
                 }`
@@ -98,15 +103,27 @@ async function checkForUpdates() {
             return;
         }
 
+        const skipVersion = getUserPref("skipVersion");
+        if (
+            skipVersion &&
+            (satisfies(remotePackageJson.version, "<=" + skipVersion) ||
+                satisfies(remotePackageJson.version, "^" + skipVersion))
+        ) {
+            mainLogger.debug(`Version v${skipVersion} skipped`);
+            return;
+        }
+
         let yesButton: string;
-        let noButton: string;
+        let laterButton: string;
+        let closeButton: string;
         let title: string;
         let message: string;
         const lang = getUserPref("lang") || "en";
         switch (lang) {
             case "fr":
                 yesButton = "Oui";
-                noButton = "Non";
+                laterButton = "Peut-être la prochaine version";
+                closeButton = "Fermer";
                 title = "Mise à jour disponible !";
                 message = `Une mise à jour est disponible !
 
@@ -117,9 +134,10 @@ async function checkForUpdates() {
                 `;
                 break;
             case "ar":
-                // TODO translation: check if it's really correct
                 yesButton = "نعم";
-                noButton = "لا";
+                laterButton = "ربما الإصدار القادم";
+                closeButton = "حذف";
+                // TODO translation: check if it's really correct
                 title = "التحديث متاح!";
                 message = `تحديث متاح!
 
@@ -131,7 +149,8 @@ async function checkForUpdates() {
                 break;
             default:
                 yesButton = "Yes";
-                noButton = "No";
+                laterButton = "Maybe next version";
+                closeButton = "Close";
                 title = "Update available!";
                 message = `An update is available!
 
@@ -143,15 +162,10 @@ async function checkForUpdates() {
                 break;
         }
 
-        // WARNING: this will only work start from v1.x.x
-        // > satisfies('0.1.0', '^0.0.1');
-        // false
-        // > satisfies('10.1.0', '^10.0.1');
-        // true
         if (!satisfies(remotePackageJson.version, "^" + app.getVersion())) {
             const { response } = await dialog.showMessageBox(getMainWindow(), {
-                type: "info",
-                buttons: [yesButton, noButton],
+                type: "question",
+                buttons: [yesButton, closeButton, laterButton],
                 defaultId: 0,
                 title: title,
                 message: message,
@@ -159,10 +173,20 @@ async function checkForUpdates() {
 
             // TODO: add a "checkboxLabel" and skip the reminder every time
             // for this version if the user doesn't want to update
-            if (response === 0) {
-                await shell.openExternal(
-                    "https://github.com/karim-bouchez/moubah"
-                );
+            switch (response) {
+                case 0:
+                    await shell.openExternal(
+                        "https://github.com/karim-bouchez/moubah"
+                    );
+                    break;
+                case 1:
+                    // Do noting
+                    break;
+                case 2:
+                    setUserPref("skipVersion", remotePackageJson.version);
+                    break;
+                default:
+                    throw new NotImplementedError();
             }
         }
     } catch (err) {

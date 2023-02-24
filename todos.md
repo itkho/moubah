@@ -14,6 +14,7 @@
 -   [ ] ✨ Re-design the search view?
 -   [ ] ✨ Choose a color theme
 -   [ ] ✨ Add a logo
+-   [ ] 🧼 Sort/clean folders
 -   [ ] 🪲 Install / test deeply the app on mac/win
 -   [ ] 🪲 Ask beta tester feedback
 -   [ ] 🆕 Make a website
