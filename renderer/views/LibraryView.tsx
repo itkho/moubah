@@ -253,10 +253,10 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     </button>
                                     <button
                                         ref={deleteButton}
-                                        className={`cursor-pointer rounded-md py-1 px-2 disabled:cursor-not-allowed ${
+                                        className={`ring-base-300 cursor-pointer rounded-md py-1 px-2 ring-1 disabled:cursor-not-allowed ${
                                             isDeleting
                                                 ? "bg-ko-500 text-base-100-light hover:bg-ko-600"
-                                                : "bg-base-200 hover:bg-base-300"
+                                                : "bg-base-200  hover:bg-base-300"
                                         }`}
                                         disabled={!selectedVideos.length}
                                         onClick={handleDeleteClick}

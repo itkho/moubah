@@ -32,7 +32,7 @@ export default function NavBar() {
             <div className="flex h-full flex-col justify-between">
                 <div className="flex flex-col">
                     {/* Logo */}
-                    <div className="mx-2 my-6 flex items-center justify-center gap-2 font-fredoka-one text-2xl font-black text-neutral-200">
+                    <div className=" mx-2 my-6 flex items-center justify-center gap-2 font-fredoka-one text-2xl">
                         <img
                             src="../assets/icons/icon.png"
                             alt="Icon"
