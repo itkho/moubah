@@ -13,185 +13,199 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: renderer/views/LibraryView.tsx:236
+#: renderer/views/LibraryView.tsx:240
 msgid "Actions:"
-msgstr ""
+msgstr "الإجراءات:"
 
 #: renderer/components/SearchResult.tsx:63
 msgid "Background music removed"
-msgstr ""
+msgstr "تمت إزالة موسيقى الخلفية"
 
-#: renderer/components/LibraryVideoItem.tsx:164
+#: renderer/components/LibraryVideoItem.tsx:171
+#: renderer/components/SearchResult.tsx:105
 msgid "By:"
-msgstr ""
+msgstr "بواسطة:"
 
 #: renderer/components/PreviewModal.tsx:57
 msgid "Close"
-msgstr ""
+msgstr "اغلاق"
 
-#: renderer/components/NavBar.tsx:99
-#~ msgid "Contact us"
-#~ msgstr ""
+#: renderer/components/Footer.tsx:118
+msgid "Console"
+msgstr "وحدة التحكم"
 
-#: renderer/components/NavBar.tsx:170
+#: renderer/components/NavBar.tsx:185
 msgid "Dark"
-msgstr ""
+msgstr "داكن"
 
-#: renderer/components/LibraryVideoItem.tsx:153
-#: renderer/views/LibraryView.tsx:262
+#: renderer/components/LibraryVideoItem.tsx:160
+#: renderer/views/LibraryView.tsx:268
 msgid "Delete"
-msgstr ""
+msgstr "حذف"
 
 #: renderer/components/SearchResult.tsx:68
 msgid "Downloading the video..."
-msgstr ""
+msgstr "تحميل الفيديو ..."
 
 #: renderer/components/SearchPlaceHolder.tsx:14
 msgid "Enter the title of a video or an URL in the search bar"
-msgstr ""
+msgstr "أدخل عنوان مقطع فيديو أو عنوان URL في شريط البحث"
 
 #: renderer/views/LibraryView.tsx:197
 msgid "Filter"
-msgstr ""
+msgstr "منقي"
 
-#: renderer/components/NavBar.tsx:65
+#: renderer/components/NavBar.tsx:77
 #: renderer/components/PlayerPlaceHolder.tsx:19
 msgid "Library"
-msgstr ""
+msgstr "مكتبة الفيديو"
 
-#: renderer/components/NavBar.tsx:192
+#: renderer/components/NavBar.tsx:207
 msgid "Light"
-msgstr ""
+msgstr "ضوء"
+
+#: renderer/components/Footer.tsx:111
+msgid "Logs"
+msgstr "السجلات"
 
 #: renderer/components/Footer.tsx:82
 msgid "Men"
-msgstr ""
+msgstr "رجال"
 
 #: renderer/components/Footer.tsx:59
 msgid "Music remover"
-msgstr ""
+msgstr "مزيل الموسيقى"
 
 #: renderer/views/LibraryView.tsx:192
 msgid "My videos"
-msgstr ""
+msgstr "الفيديو الخاصة بي"
 
 #: renderer/components/LibraryPlaceHolder.tsx:13
 msgid "No video to watch yet..."
-msgstr ""
+msgstr "لا يوجد فيديو لمشاهدته بعد ..."
 
-#: renderer/components/LibraryVideoItem.tsx:133
+#: renderer/components/LibraryVideoItem.tsx:140
 msgid "Open in Finder"
-msgstr ""
+msgstr "فتح في Finder"
 
-#: renderer/views/LibraryView.tsx:248
+#: renderer/components/Footer.tsx:104
+msgid "Open-source"
+msgstr "مفتوحة المصدر"
+
+#: renderer/views/LibraryView.tsx:252
 msgid "Pause"
-msgstr ""
+msgstr "وقف"
 
-#: renderer/components/LibraryVideoItem.tsx:118
+#: renderer/components/LibraryVideoItem.tsx:125
 msgid "Play"
-msgstr ""
+msgstr "لعب"
 
-#: renderer/components/NavBar.tsx:81
+#: renderer/components/NavBar.tsx:93
 msgid "Player"
-msgstr ""
+msgstr "مشغل"
 
-#: renderer/components/SearchResult.tsx:123
+#: renderer/components/SearchResult.tsx:125
 msgid "Preview the video"
-msgstr ""
+msgstr "معاينة الفيديو"
 
 #: renderer/components/PreviewModal.tsx:64
 #: renderer/components/SearchResult.tsx:70
 msgid "Remove background music"
-msgstr ""
+msgstr "إزالة موسيقى الخلفية"
 
 #: renderer/components/SearchResult.tsx:65
 msgid "Removing background music..."
-msgstr ""
+msgstr "جارٍ إزالة موسيقى الخلفية ..."
 
 #: renderer/components/LibraryPlaceHolder.tsx:22
-#: renderer/components/NavBar.tsx:49
+#: renderer/components/NavBar.tsx:61
 msgid "Search"
-msgstr ""
+msgstr "بحث"
 
 #: renderer/components/LibraryPlaceHolder.tsx:16
 msgid "Search for a video in the"
-msgstr ""
+msgstr "ابحث عن الفيديو في"
 
 #: renderer/components/PlayerPlaceHolder.tsx:13
 msgid "Select a video in the"
-msgstr ""
+msgstr "اختر فيديو في"
 
-#: renderer/views/LibraryView.tsx:227
+#: renderer/views/LibraryView.tsx:231
 msgid "Select all"
-msgstr ""
+msgstr "اختر الكل"
 
-#: renderer/views/LibraryView.tsx:230
+#: renderer/views/LibraryView.tsx:234
 msgid "Selected:"
-msgstr ""
+msgstr "المختار:"
 
 #: renderer/views/LibraryView.tsx:206
 msgid "Sort by"
-msgstr ""
+msgstr "ترتيب حسب"
 
-#: renderer/views/LibraryView.tsx:262
+#: renderer/components/Footer.tsx:69
+msgid "Support"
+msgstr "مساعدة"
+
+#: renderer/views/LibraryView.tsx:268
 msgid "Sure?"
-msgstr ""
+msgstr "بالتأكيد؟"
 
 #: renderer/components/Footer.tsx:93
 msgid "Women"
-msgstr ""
+msgstr "نساء"
 
 #: renderer/views/LibraryView.tsx:48
 msgid "all"
-msgstr ""
+msgstr "الجميع"
 
 #: renderer/components/LibraryVideoItem.tsx:35
 #: renderer/views/LibraryView.tsx:51
 msgid "done"
-msgstr ""
+msgstr "منتهي"
 
 #: renderer/components/LibraryVideoItem.tsx:29
 msgid "downloading"
-msgstr ""
+msgstr "جارى التحميل"
 
 #: renderer/views/LibraryView.tsx:54
 msgid "in progress"
-msgstr ""
+msgstr "تتقدم"
 
 #: renderer/components/LibraryVideoItem.tsx:26
 msgid "initial"
-msgstr ""
+msgstr "إبتدائي"
 
 #: renderer/views/LibraryView.tsx:31
 msgid "name"
-msgstr ""
+msgstr "اسم"
 
+#: renderer/components/LibraryVideoItem.tsx:74
 #: renderer/views/LibraryView.tsx:57
 msgid "new"
-msgstr ""
+msgstr "جديد"
 
 #: renderer/views/LibraryView.tsx:25
 msgid "newest"
-msgstr ""
+msgstr "أحدث"
 
 #: renderer/components/Footer.tsx:47
 #: renderer/components/Footer.tsx:62
 msgid "offline"
-msgstr ""
+msgstr "غير متصل"
 
 #: renderer/views/LibraryView.tsx:28
 msgid "oldest"
-msgstr ""
+msgstr "أقدم"
 
 #: renderer/components/Footer.tsx:47
 #: renderer/components/Footer.tsx:61
 msgid "online"
-msgstr ""
+msgstr "متصل"
 
 #: renderer/components/LibraryVideoItem.tsx:32
 msgid "processing"
-msgstr ""
+msgstr "علاج"
 
 #: renderer/components/LibraryPlaceHolder.tsx:24
 msgid "section"
-msgstr ""
+msgstr "قسم"

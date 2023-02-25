@@ -66,7 +66,7 @@ export default function Footer() {
                 <Popover className="relative ">
                     <Popover.Button className={classNameClickable}>
                         <FontAwesomeIcon icon={faComment} />
-                        Support
+                        <Trans>Support</Trans>
                     </Popover.Button>
 
                     <Popover.Panel className="absolute bottom-full left-1/2 z-40 -translate-x-1/2">
@@ -101,21 +101,21 @@ export default function Footer() {
                     target="_blank"
                 >
                     <FontAwesomeIcon icon={faGithub} />
-                    Open-source
+                    <Trans>Open-source</Trans>
                 </a>
                 <div
                     className={classNameClickable}
                     onClick={window.mainApi.openLogsDir}
                 >
                     <FontAwesomeIcon icon={faFileLines} />
-                    Logs
+                    <Trans>Logs</Trans>
                 </div>
                 <div
                     className={classNameClickable}
                     onClick={window.mainApi.toogleDevTools}
                 >
                     <FontAwesomeIcon icon={faCode} />
-                    Console
+                    <Trans>Console</Trans>
                 </div>
             </div>
         </>

@@ -101,7 +101,9 @@ export default function SearchResult({
                                 Duration: {currVideo.timestamp} | Views:{" "}
                                 {abbrNum(currVideo.views)}
                             </div>
-                            <div>Author: {currVideo.author.name}</div>
+                            <div>
+                                <Trans>By:</Trans> {currVideo.author.name}
+                            </div>
                         </div>
                     </div>
                     <ArrowRightIcon

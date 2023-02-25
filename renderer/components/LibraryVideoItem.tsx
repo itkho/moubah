@@ -71,7 +71,7 @@ export default function LibraryVideoItem({
         <div className="max-w-30 ring-base-300 group/card relative flex-col rounded-md bg-base-100-light py-2 px-4 shadow-sm ring-2 hover:shadow-lg dark:bg-base-200-dark dark:shadow-none dark:hover:ring-base-400-dark">
             {video.metadata?.isNew && (
                 <div className="bg-highlight absolute -top-2 left-4 -z-10 rounded-lg px-2 pt-1 pb-4 text-xs font-semibold uppercase text-base-100-light transition group-hover/card:-translate-y-4">
-                    new
+                    <Trans>new</Trans>
                 </div>
             )}
             <div className="flex items-center justify-between pb-2">

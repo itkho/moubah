@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: renderer/views/LibraryView.tsx:236
+#: renderer/views/LibraryView.tsx:240
 msgid "Actions:"
 msgstr "Actions :"
 
@@ -21,7 +21,8 @@ msgstr "Actions :"
 msgid "Background music removed"
 msgstr "Musique de fond supprimée"
 
-#: renderer/components/LibraryVideoItem.tsx:164
+#: renderer/components/LibraryVideoItem.tsx:171
+#: renderer/components/SearchResult.tsx:105
 msgid "By:"
 msgstr "Par :"
 
@@ -29,16 +30,16 @@ msgstr "Par :"
 msgid "Close"
 msgstr "Fermer"
 
-#: renderer/components/NavBar.tsx:99
-#~ msgid "Contact us"
-#~ msgstr "Support"
+#: renderer/components/Footer.tsx:118
+msgid "Console"
+msgstr "Console"
 
-#: renderer/components/NavBar.tsx:170
+#: renderer/components/NavBar.tsx:185
 msgid "Dark"
 msgstr "Sombre"
 
-#: renderer/components/LibraryVideoItem.tsx:153
-#: renderer/views/LibraryView.tsx:262
+#: renderer/components/LibraryVideoItem.tsx:160
+#: renderer/views/LibraryView.tsx:268
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -54,14 +55,18 @@ msgstr "Entrez un titre de vidéo ou une URL dans la barre de recherche"
 msgid "Filter"
 msgstr "Filtre"
 
-#: renderer/components/NavBar.tsx:65
+#: renderer/components/NavBar.tsx:77
 #: renderer/components/PlayerPlaceHolder.tsx:19
 msgid "Library"
 msgstr "Vidéothèque"
 
-#: renderer/components/NavBar.tsx:192
+#: renderer/components/NavBar.tsx:207
 msgid "Light"
 msgstr "Clair"
+
+#: renderer/components/Footer.tsx:111
+msgid "Logs"
+msgstr "Logs"
 
 #: renderer/components/Footer.tsx:82
 msgid "Men"
@@ -79,23 +84,27 @@ msgstr "Mes vidéos"
 msgid "No video to watch yet..."
 msgstr "Encore aucune vidéo à regarder..."
 
-#: renderer/components/LibraryVideoItem.tsx:133
+#: renderer/components/LibraryVideoItem.tsx:140
 msgid "Open in Finder"
 msgstr "Ouvrir dans Finder"
 
-#: renderer/views/LibraryView.tsx:248
+#: renderer/components/Footer.tsx:104
+msgid "Open-source"
+msgstr "Open-source"
+
+#: renderer/views/LibraryView.tsx:252
 msgid "Pause"
 msgstr "Pause"
 
-#: renderer/components/LibraryVideoItem.tsx:118
+#: renderer/components/LibraryVideoItem.tsx:125
 msgid "Play"
 msgstr "Lire"
 
-#: renderer/components/NavBar.tsx:81
+#: renderer/components/NavBar.tsx:93
 msgid "Player"
 msgstr "Lecteur"
 
-#: renderer/components/SearchResult.tsx:123
+#: renderer/components/SearchResult.tsx:125
 msgid "Preview the video"
 msgstr "Aperçu de la vidéo"
 
@@ -109,7 +118,7 @@ msgid "Removing background music..."
 msgstr "Suppression de la musique de fond"
 
 #: renderer/components/LibraryPlaceHolder.tsx:22
-#: renderer/components/NavBar.tsx:49
+#: renderer/components/NavBar.tsx:61
 msgid "Search"
 msgstr "Rechercher"
 
@@ -121,11 +130,11 @@ msgstr "Recherche une vidéo dans la section"
 msgid "Select a video in the"
 msgstr "Sélectionnez une vidéo dans la"
 
-#: renderer/views/LibraryView.tsx:227
+#: renderer/views/LibraryView.tsx:231
 msgid "Select all"
 msgstr "Tous sélectionner"
 
-#: renderer/views/LibraryView.tsx:230
+#: renderer/views/LibraryView.tsx:234
 msgid "Selected:"
 msgstr "Sélectionné"
 
@@ -133,7 +142,11 @@ msgstr "Sélectionné"
 msgid "Sort by"
 msgstr "Trier par"
 
-#: renderer/views/LibraryView.tsx:262
+#: renderer/components/Footer.tsx:69
+msgid "Support"
+msgstr "Support"
+
+#: renderer/views/LibraryView.tsx:268
 msgid "Sure?"
 msgstr "Sûr ?"
 
@@ -166,6 +179,7 @@ msgstr "initial"
 msgid "name"
 msgstr "nom"
 
+#: renderer/components/LibraryVideoItem.tsx:74
 #: renderer/views/LibraryView.tsx:57
 msgid "new"
 msgstr "nouveau"
