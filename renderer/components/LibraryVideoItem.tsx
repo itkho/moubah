@@ -187,6 +187,7 @@ export default function LibraryVideoItem({
                     icon={faPlayCircle}
                     className="absolute top-1/2 left-1/2 h-10 -translate-x-1/2 -translate-y-1/2 text-base-100-light opacity-50 duration-200 ease-in group-hover:scale-125 group-hover:opacity-100 group-hover:drop-shadow-xl"
                 />
+                {/* Video corner info */}
                 <div className="border-base-100 bg-base-800 text-base-100 absolute bottom-0 right-0 rounded-tl border-t-2 border-l-2 p-1 opacity-70">
                     <div className="divide-base-100 flex divide-x-2 text-sm">
                         <div className="px-1">
@@ -204,7 +205,7 @@ export default function LibraryVideoItem({
                 <div className="group/progress h-2 grow rounded-full bg-base-200-light dark:bg-base-600-light">
                     <div
                         className={`h-full rounded-full 
-                        ${video.status === VideoStatus.done && "bg-lime-500"}
+                        ${video.status === VideoStatus.done && "bg-highlight"}
                         ${
                             video.status === VideoStatus.processing &&
                             "bg-teal-500"

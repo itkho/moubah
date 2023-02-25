@@ -16,8 +16,27 @@
     .text-highlight {
         @apply text-highlight-light dark:text-highlight-dark;
     }
+    .ring-highlight {
+        @apply ring-highlight-light dark:ring-highlight-dark;
+    }
+    .decoration-highlight {
+        @apply decoration-highlight-light dark:decoration-highlight-dark;
+    }
     .fill-highlight {
         @apply dark:text-fill-dark fill-highlight-light;
+    }
+
+    .bg-highlight-hover {
+        @apply bg-highlight-hover-light dark:bg-highlight-hover-dark;
+    }
+    .text-highlight-hover {
+        @apply text-highlight-hover-light dark:text-highlight-hover-dark;
+    }
+    .ring-highlight-hover {
+        @apply ring-highlight-hover-light dark:ring-highlight-hover-dark;
+    }
+    .fill-highlight-hover {
+        @apply dark:text-fill-dark fill-highlight-hover-light;
     }
 
     .divide-background {

@@ -10,6 +10,8 @@ import { View } from "../utils/enums";
 import { usePlayer } from "../context/PlayerContext";
 import PreviewModal from "./PreviewModal";
 import { Trans, t } from "@lingui/macro";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock, faEye } from "@fortawesome/free-regular-svg-icons";
 
 export default function SearchResult({
     videos,
@@ -33,7 +35,8 @@ export default function SearchResult({
     let currLocalVideo = localVideos.find(
         (localVideo) => localVideo.id === currVideo.id
     );
-
+    console.log(currLocalVideo?.status);
+    0;
     function onClickThumbnail() {
         switch (currLocalVideo?.status) {
             case VideoStatus.done:
@@ -87,21 +90,38 @@ export default function SearchResult({
 
                     <div className="flex h-full max-w-lg shrink grow flex-col items-center justify-center">
                         <div className="flex aspect-square h-full max-w-full flex-col justify-center">
-                            <div className="h-12 line-clamp-2">
+                            <div className="ring-base-500 relative my-3 w-full overflow-hidden rounded-lg shadow-xl ring-1 ring-opacity-50">
+                                <div
+                                    className="aspect-video w-full bg-contain bg-no-repeat"
+                                    style={{
+                                        backgroundImage: `url(${currVideo.thumbnailUri})`,
+                                    }}
+                                ></div>
+                                {/* Video corner info */}
+                                <div className="border-base-100 bg-base-800 text-base-100 absolute bottom-0 right-0 rounded-tl border-t-2 border-l-2 p-1 opacity-70">
+                                    <div className="divide-base-100 flex divide-x-2 text-sm">
+                                        <div className="px-1">
+                                            <FontAwesomeIcon
+                                                icon={faClock}
+                                                className="pr-2"
+                                            />
+                                            {currVideo.timestamp}
+                                        </div>
+                                        <div className="px-1">
+                                            <FontAwesomeIcon
+                                                icon={faEye}
+                                                className="pr-2"
+                                            />
+                                            {abbrNum(currVideo.views!)}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="my-2  text-lg line-clamp-1 hover:text-clip">
                                 {currVideo.title}
                             </div>
-                            <div
-                                className="ring-base-500 my-5 aspect-video w-full rounded-lg bg-contain  bg-no-repeat shadow-xl ring-1 ring-opacity-50"
-                                style={{
-                                    backgroundImage: `url(${currVideo.thumbnailUri})`,
-                                }}
-                            ></div>
 
-                            <div>
-                                Duration: {currVideo.timestamp} | Views:{" "}
-                                {abbrNum(currVideo.views)}
-                            </div>
-                            <div>
+                            <div className="my-2 text-sm">
                                 <Trans>By:</Trans> {currVideo.author.name}
                             </div>
                         </div>
@@ -119,7 +139,7 @@ export default function SearchResult({
                 {/* Buttons */}
                 <div className="my-10 flex shrink-0 grow-0 flex-col items-center">
                     <button
-                        className="text-base-600 hover:text-base-700 m-1 hover:underline"
+                        className="text-base-600 hover:text-base-700 decoration-highlight mb-2 text-sm hover:underline"
                         onClick={() => setModelShown(true)}
                     >
                         <Trans>Preview the video</Trans>
@@ -127,7 +147,15 @@ export default function SearchResult({
                     <button
                         onClick={onClickThumbnail}
                         className={
-                            "bg-base-400 hover:bg-base-700 hover:text-base-400 rounded p-3"
+                            `rounded p-2  ring-1 ` +
+                            (currLocalVideo?.status &&
+                            [
+                                VideoStatus.initial,
+                                VideoStatus.downloading,
+                                VideoStatus.processing,
+                            ].includes(currLocalVideo.status)
+                                ? "bg-base-300 ring-base-400 hover:bg-base-400 text-base-800"
+                                : "bg-highlight ring-highlight-hover hover:bg-highlight-hover text-base-100-light")
                         }
                     >
                         {renderButtonContent(currLocalVideo?.status)}

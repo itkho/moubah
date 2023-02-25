@@ -50,14 +50,14 @@ export default function PreviewModal({
                     {/* Footer */}
                     <div className="flex items-center justify-end rounded-b border-t border-solid border-slate-300 p-6">
                         <button
-                            className="text-base-400 px-6 py-2 text-sm font-semibold uppercase"
+                            className="text-base-500 hover:text-base-600 px-6 py-2 text-sm font-semibold uppercase"
                             type="button"
                             onClick={() => setShowModal(false)}
                         >
                             <Trans>Close</Trans>
                         </button>
                         <button
-                            className="text-base-50 rounded bg-lime-500 px-6 py-3 text-sm font-semibold uppercase shadow duration-200 hover:shadow-lg active:bg-lime-600"
+                            className="text-base-50 rounded bg-lime-500 px-6 py-3 text-sm font-semibold uppercase text-base-100-light shadow duration-200 hover:shadow-lg active:bg-lime-600"
                             type="button"
                             onClick={() => {}}
                         >

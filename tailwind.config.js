@@ -1,7 +1,7 @@
 const colors = require("tailwindcss/colors");
 
 const base = colors.neutral;
-const primary = colors.lime;
+const primary = colors.emerald;
 const error = colors.red;
 
 module.exports = {
@@ -18,8 +18,12 @@ module.exports = {
                     700: error[700],
                 },
                 highlight: {
+                    hover: {
+                        light: primary[500],
+                        dark: primary[500],
+                    },
                     light: primary[600],
-                    dark: primary[500],
+                    dark: primary[600],
                 },
                 background: {
                     light: base[100],
