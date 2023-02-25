@@ -30,6 +30,7 @@ import { NotImplementedError } from "./utils/errors";
 const config = require(CONFIG_PATH);
 
 let musicRemoverProcessId: number | undefined;
+const lang = getUserPref("lang") || "en";
 
 function startMusicRemoverProcess() {
     const musicRemoverOptions = [
@@ -84,7 +85,7 @@ function startMusicRemoverProcess() {
     musicRemoverProcessId = musicRemoverProcess.pid;
 }
 
-async function checkForUpdates() {
+export async function checkForUpdates() {
     try {
         const remotePackageReq = await fetch(
             "https://raw.githubusercontent.com/karim-bouchez/moubah/main/package.json"
@@ -92,6 +93,7 @@ async function checkForUpdates() {
         const remotePackageJson = (await remotePackageReq.json()) as {
             version: string;
         };
+        remotePackageJson.version = "1.0.0";
 
         // For beta apps
         if (satisfies(app.getVersion(), ">" + remotePackageJson.version)) {
@@ -118,7 +120,6 @@ async function checkForUpdates() {
         let closeButton: string;
         let title: string;
         let message: string;
-        const lang = getUserPref("lang") || "en";
         switch (lang) {
             case "fr":
                 yesButton = "Oui";
@@ -175,6 +176,7 @@ async function checkForUpdates() {
             // for this version if the user doesn't want to update
             switch (response) {
                 case 0:
+                    setUserPref("welcomMessageShown", false);
                     await shell.openExternal(
                         "https://github.com/karim-bouchez/moubah"
                     );
@@ -194,8 +196,65 @@ async function checkForUpdates() {
     }
 }
 
+export async function welcomMessage() {
+    const welcomMessageShown = getUserPref("welcomMessageShown");
+    if (welcomMessageShown) return;
+
+    let message: string;
+    switch (lang) {
+        case "fr":
+            message = `
+                السلام عليكم ورحمة الله وبركاته 👋
+
+                Bienvenue sur Moubah, l'application permettant de visionner des vidéos sans musique 🔇
+
+                ✅ Cette application a été conçue pour pouvoir profiter du contenu informatif et éducatif disponible sur internet (exemple : documentaires, actualités, tutoriels, etc.)
+                
+                ❌ Non pas pour les vidéos dont le contenu est futile, voir illicite
+                
+                بارك الله فيكم 🤲
+            `;
+            break;
+        case "ar":
+            message = `
+                السلام عليكم ورحمة الله وبركاته 👋
+
+                مرحبًا بكم في تطبيق Moubah لمشاهدة مقاطع الفيديو بدون موسيقى 🔇
+
+                ✅ تم تصميم هذا التطبيق ليكون قادرًا على الاستمتاع بالمحتوى التثقيفي والتعليمي المتاح على الإنترنت (مثل: الأفلام الوثائقية ، والأخبار ، والبرامج التعليمية ، وما إلى ذلك)
+               
+                ❌ ليس لمقاطع الفيديو التي يكون محتواها تافهًا أو حتى غير مشروع
+
+                بارك الله فيكم 🤲
+            `;
+            break;
+        default:
+            message = `
+                السلام عليكم ورحمة الله وبركاته 👋
+
+                Welcome to Moubah, the app for watching videos without music 🔇
+
+                ✅ This application was designed to be able to enjoy informative and educational content available on the internet (example: documentaries, news, tutorials, etc.)
+                
+                ❌ Not for videos whose content is frivolous or even illicit
+                
+                بارك الله فيكم 🤲
+            `;
+            break;
+    }
+    try {
+        await dialog.showMessageBox(getMainWindow(), {
+            type: "info",
+            // title: "السلام عليكم ورحمة الله وبركاته 👋",
+            message: message,
+        });
+        setUserPref("welcomMessageShown", true);
+    } catch (err) {
+        mainLogger.error(`Welcom message failed: ${err}`);
+    }
+}
+
 export async function setUp() {
-    checkForUpdates();
     initIpcHandlers();
 
     // Test if the server isn't already up (from a previous session)

@@ -1,7 +1,7 @@
 import { BrowserWindow, app } from "electron";
 import { create as createMainWindow } from "./windows/main-window";
 import { create as createSplashWindow } from "./windows/splash-window";
-import { setUp, tearDown } from "./setup";
+import { checkForUpdates, setUp, tearDown, welcomMessage } from "./setup";
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -14,6 +14,8 @@ app.on("ready", () => {
     mainWindow.once("ready-to-show", () => {
         splashWindow.destroy();
         mainWindow.show();
+        checkForUpdates();
+        welcomMessage();
     });
 });
 
