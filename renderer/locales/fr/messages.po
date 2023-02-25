@@ -17,12 +17,12 @@ msgstr ""
 msgid "Actions:"
 msgstr "Actions :"
 
-#: renderer/components/SearchResult.tsx:63
+#: renderer/components/SearchResult.tsx:66
 msgid "Background music removed"
 msgstr "Musique de fond supprimée"
 
-#: renderer/components/LibraryVideoItem.tsx:171
-#: renderer/components/SearchResult.tsx:105
+#: renderer/components/LibraryVideoItem.tsx:174
+#: renderer/components/SearchResult.tsx:125
 msgid "By:"
 msgstr "Par :"
 
@@ -38,12 +38,12 @@ msgstr "Console"
 msgid "Dark"
 msgstr "Sombre"
 
-#: renderer/components/LibraryVideoItem.tsx:160
+#: renderer/components/LibraryVideoItem.tsx:163
 #: renderer/views/LibraryView.tsx:268
 msgid "Delete"
 msgstr "Supprimer"
 
-#: renderer/components/SearchResult.tsx:68
+#: renderer/components/SearchResult.tsx:71
 msgid "Downloading the video..."
 msgstr "Téléchargement de la vidéo..."
 
@@ -84,9 +84,9 @@ msgstr "Mes vidéos"
 msgid "No video to watch yet..."
 msgstr "Encore aucune vidéo à regarder..."
 
-#: renderer/components/LibraryVideoItem.tsx:140
-msgid "Open in Finder"
-msgstr "Ouvrir dans Finder"
+#: renderer/components/LibraryVideoItem.tsx:142
+msgid "Open in"
+msgstr "Ouvrir dans"
 
 #: renderer/components/Footer.tsx:104
 msgid "Open-source"
@@ -96,7 +96,7 @@ msgstr "Open-source"
 msgid "Pause"
 msgstr "Pause"
 
-#: renderer/components/LibraryVideoItem.tsx:125
+#: renderer/components/LibraryVideoItem.tsx:127
 msgid "Play"
 msgstr "Lire"
 
@@ -104,16 +104,16 @@ msgstr "Lire"
 msgid "Player"
 msgstr "Lecteur"
 
-#: renderer/components/SearchResult.tsx:125
+#: renderer/components/SearchResult.tsx:145
 msgid "Preview the video"
 msgstr "Aperçu de la vidéo"
 
 #: renderer/components/PreviewModal.tsx:64
-#: renderer/components/SearchResult.tsx:70
+#: renderer/components/SearchResult.tsx:73
 msgid "Remove background music"
 msgstr "Retirer la musique de fond"
 
-#: renderer/components/SearchResult.tsx:65
+#: renderer/components/SearchResult.tsx:68
 msgid "Removing background music..."
 msgstr "Suppression de la musique de fond"
 
@@ -158,12 +158,12 @@ msgstr "Femme"
 msgid "all"
 msgstr "tous"
 
-#: renderer/components/LibraryVideoItem.tsx:35
+#: renderer/components/LibraryVideoItem.tsx:37
 #: renderer/views/LibraryView.tsx:51
 msgid "done"
 msgstr "terminé"
 
-#: renderer/components/LibraryVideoItem.tsx:29
+#: renderer/components/LibraryVideoItem.tsx:31
 msgid "downloading"
 msgstr "téléchargement"
 
@@ -171,7 +171,7 @@ msgstr "téléchargement"
 msgid "in progress"
 msgstr "en cours"
 
-#: renderer/components/LibraryVideoItem.tsx:26
+#: renderer/components/LibraryVideoItem.tsx:28
 msgid "initial"
 msgstr "initial"
 
@@ -179,7 +179,7 @@ msgstr "initial"
 msgid "name"
 msgstr "nom"
 
-#: renderer/components/LibraryVideoItem.tsx:74
+#: renderer/components/LibraryVideoItem.tsx:76
 #: renderer/views/LibraryView.tsx:57
 msgid "new"
 msgstr "nouveau"
@@ -202,7 +202,7 @@ msgstr "ancien"
 msgid "online"
 msgstr "en ligne"
 
-#: renderer/components/LibraryVideoItem.tsx:32
+#: renderer/components/LibraryVideoItem.tsx:34
 msgid "processing"
 msgstr "traitement"
 

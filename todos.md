@@ -8,8 +8,6 @@
 
 -   [ ] 🆕 Store current version in user preferences to be able to show "new user" message / what's new in this version / skip the pop-up for update the app ("pas mtn" / "attendre la prochaine version" / "ok" )
 -   [ ] 🆕 Add toast messages (useful to message user like: vulnerablility found, please update the app)
--   [x] 🆕 Add arabic translation
--   [ ] 🪲 Finder is only for mac
 -   [ ] 🆕 Be able to pause de downloading/progress
 -   [ ] ✨ Re-design the support view
 -   [ ] ✨ Re-design the search view?

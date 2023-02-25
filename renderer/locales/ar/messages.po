@@ -17,12 +17,12 @@ msgstr ""
 msgid "Actions:"
 msgstr "الإجراءات:"
 
-#: renderer/components/SearchResult.tsx:63
+#: renderer/components/SearchResult.tsx:66
 msgid "Background music removed"
 msgstr "تمت إزالة موسيقى الخلفية"
 
-#: renderer/components/LibraryVideoItem.tsx:171
-#: renderer/components/SearchResult.tsx:105
+#: renderer/components/LibraryVideoItem.tsx:174
+#: renderer/components/SearchResult.tsx:125
 msgid "By:"
 msgstr "بواسطة:"
 
@@ -38,12 +38,12 @@ msgstr "وحدة التحكم"
 msgid "Dark"
 msgstr "داكن"
 
-#: renderer/components/LibraryVideoItem.tsx:160
+#: renderer/components/LibraryVideoItem.tsx:163
 #: renderer/views/LibraryView.tsx:268
 msgid "Delete"
 msgstr "حذف"
 
-#: renderer/components/SearchResult.tsx:68
+#: renderer/components/SearchResult.tsx:71
 msgid "Downloading the video..."
 msgstr "تحميل الفيديو ..."
 
@@ -84,9 +84,9 @@ msgstr "الفيديو الخاصة بي"
 msgid "No video to watch yet..."
 msgstr "لا يوجد فيديو لمشاهدته بعد ..."
 
-#: renderer/components/LibraryVideoItem.tsx:140
-msgid "Open in Finder"
-msgstr "فتح في Finder"
+#: renderer/components/LibraryVideoItem.tsx:142
+msgid "Open in"
+msgstr "فتح في"
 
 #: renderer/components/Footer.tsx:104
 msgid "Open-source"
@@ -96,7 +96,7 @@ msgstr "مفتوحة المصدر"
 msgid "Pause"
 msgstr "وقف"
 
-#: renderer/components/LibraryVideoItem.tsx:125
+#: renderer/components/LibraryVideoItem.tsx:127
 msgid "Play"
 msgstr "لعب"
 
@@ -104,16 +104,16 @@ msgstr "لعب"
 msgid "Player"
 msgstr "مشغل"
 
-#: renderer/components/SearchResult.tsx:125
+#: renderer/components/SearchResult.tsx:145
 msgid "Preview the video"
 msgstr "معاينة الفيديو"
 
 #: renderer/components/PreviewModal.tsx:64
-#: renderer/components/SearchResult.tsx:70
+#: renderer/components/SearchResult.tsx:73
 msgid "Remove background music"
 msgstr "إزالة موسيقى الخلفية"
 
-#: renderer/components/SearchResult.tsx:65
+#: renderer/components/SearchResult.tsx:68
 msgid "Removing background music..."
 msgstr "جارٍ إزالة موسيقى الخلفية ..."
 
@@ -158,12 +158,12 @@ msgstr "نساء"
 msgid "all"
 msgstr "الجميع"
 
-#: renderer/components/LibraryVideoItem.tsx:35
+#: renderer/components/LibraryVideoItem.tsx:37
 #: renderer/views/LibraryView.tsx:51
 msgid "done"
 msgstr "منتهي"
 
-#: renderer/components/LibraryVideoItem.tsx:29
+#: renderer/components/LibraryVideoItem.tsx:31
 msgid "downloading"
 msgstr "جارى التحميل"
 
@@ -171,7 +171,7 @@ msgstr "جارى التحميل"
 msgid "in progress"
 msgstr "تتقدم"
 
-#: renderer/components/LibraryVideoItem.tsx:26
+#: renderer/components/LibraryVideoItem.tsx:28
 msgid "initial"
 msgstr "إبتدائي"
 
@@ -179,7 +179,7 @@ msgstr "إبتدائي"
 msgid "name"
 msgstr "اسم"
 
-#: renderer/components/LibraryVideoItem.tsx:74
+#: renderer/components/LibraryVideoItem.tsx:76
 #: renderer/views/LibraryView.tsx:57
 msgid "new"
 msgstr "جديد"
@@ -202,7 +202,7 @@ msgstr "أقدم"
 msgid "online"
 msgstr "متصل"
 
-#: renderer/components/LibraryVideoItem.tsx:32
+#: renderer/components/LibraryVideoItem.tsx:34
 msgid "processing"
 msgstr "علاج"
 

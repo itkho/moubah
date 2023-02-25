@@ -45,6 +45,7 @@ const mainApi = {
     log: (level: string, msg: string) =>
         ipcRenderer.invoke("log:create", level, msg),
     isDev: (): Promise<boolean> => ipcRenderer.invoke("isDev"),
+    isMac: (): Promise<boolean> => ipcRenderer.invoke("isMac"),
     getUserPrefDarkMode: (): Promise<boolean> =>
         ipcRenderer.invoke("userPref:get", "darkMode"),
     setUserPrefDarkMode: (dark: boolean) =>

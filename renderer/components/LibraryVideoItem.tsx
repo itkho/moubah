@@ -19,6 +19,8 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import { Trans, t } from "@lingui/macro";
 
+const isMac = await window.mainApi.isMac();
+
 function transVideoStatus(videoStatus: VideoStatus) {
     let text: string;
     switch (videoStatus) {
@@ -137,7 +139,8 @@ export default function LibraryVideoItem({
                                                 icon={faFolderOpen}
                                                 className="text-base-700 w-4 px-2"
                                             />
-                                            <Trans>Open in Finder</Trans>
+                                            <Trans>Open in</Trans>
+                                            {isMac ? " Finder" : " Explorer"}
                                         </button>
                                     )}
                                 </Menu.Item>

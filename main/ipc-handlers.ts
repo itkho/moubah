@@ -13,6 +13,7 @@ import {
     get as getUserPref,
     set as setUserPref,
 } from "./model/user-preference";
+import { OS } from "./utils/const";
 
 export default function initIpcHandlers() {
     ipcMain.handle(
@@ -84,6 +85,10 @@ export default function initIpcHandlers() {
 
     ipcMain.handle("isDev", (_event) => {
         return isDev;
+    });
+
+    ipcMain.handle("isMac", (_event) => {
+        return OS === "mac" ? true : false;
     });
 
     ipcMain.handle("userPref:get", (_event, key) => {
