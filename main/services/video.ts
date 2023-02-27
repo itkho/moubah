@@ -10,11 +10,12 @@ import {
     split,
 } from "../lib/ffmpeg";
 import VideoModel from "../model/video";
-import { save } from "../repository/video";
+import { reload, save } from "../repository/video";
 import ChunkRequestDTO from "../dto/chunk-request";
 import { pushToQueue } from "../lib/queue";
 import { mainLogger } from "../utils/logger";
 import VideoDTO from "../dto/video";
+import { eventEmitter } from "../utils/event";
 
 // TODO: inherit from AbstractInstanceService
 // TODO: add child YtVideoService for logic specific to Yt (to facilitate the futur implementation of FileVideoService)
@@ -36,10 +37,31 @@ export default class VideoService {
         return new VideoService(video);
     }
 
+    pause() {
+        this.setIsPending(true);
+        eventEmitter.emit(`pauseDownload:${this.video.id}`);
+    }
+
+    resume() {
+        this.setIsPending(false);
+        switch (this.video.status) {
+            case VideoStatus.downloading:
+                this.download();
+                break;
+            case VideoStatus.processing:
+                this.sendAudioChunksTodo();
+                break;
+        }
+    }
+
     async download() {
-        mainLogger.info("Donwloading...");
+        mainLogger.info("Downloading...");
         this.setStatus(VideoStatus.downloading);
-        await this.#downloadVideo();
+        try {
+            await this.#downloadVideo();
+        } catch (error) {
+            return;
+        }
         mainLogger.info(
             `Video downloaded: ${fs.existsSync(this.video.videoPath)}`
         );
@@ -51,8 +73,7 @@ export default class VideoService {
     }
 
     async #downloadVideo() {
-        const writerStream = fs.createWriteStream(this.video.videoPath);
-        ytdl(this.video.id, {
+        const ytdlReadable = ytdl(this.video.id, {
             filter: (format) => {
                 return (
                     format.container === "mp4" &&
@@ -60,17 +81,28 @@ export default class VideoService {
                     format.hasAudio === false
                 );
             },
-        })
-            .on("progress", (_, totalDownloaded, total) => {
-                const progress = Math.floor((totalDownloaded / total) * 100);
-                if (progress != this.video.progress) {
-                    this.video.downloadingProgress = progress;
-                    save(this.video);
-                }
-            })
-            .pipe(writerStream);
-        return new Promise((resolve, _reject) => {
-            writerStream.on("finish", resolve);
+        });
+        ytdlReadable.on("progress", (_, totalDownloaded, total) => {
+            const progress = Math.floor((totalDownloaded / total) * 100);
+            if (progress === this.video.progress) return;
+            this.video = reload(this.video);
+            if (this.video.metadata.isPending) {
+                ytdlReadable.removeAllListeners();
+                return;
+            }
+            this.video.downloadingProgress = progress;
+            save(this.video);
+        });
+        const writerStream = fs.createWriteStream(this.video.videoPath);
+        ytdlReadable.pipe(writerStream);
+        return new Promise((resolve, reject) => {
+            ytdlReadable.once("finish", resolve);
+            ytdlReadable.once("error", reject);
+            eventEmitter.once(`pauseDownload:${this.video.id}`, () => {
+                ytdlReadable.destroy();
+                this.pauseDownload();
+                reject();
+            });
         });
     }
 
@@ -102,12 +134,12 @@ export default class VideoService {
         mainLogger.info("Processing...");
         this.setStatus(VideoStatus.processing);
         this.video.audioChunksTodo.forEach((audio) => {
-            const chunkRequestDTO = new ChunkRequestDTO(
+            const chunkRequest = new ChunkRequestDTO(
                 audio.path,
                 path.join(this.video.chunksDoneDir, path.basename(audio.path)),
                 true
             );
-            pushToQueue(QueueName.HighPriorityAudioChunks, chunkRequestDTO);
+            pushToQueue(QueueName.LowPriorityAudioChunks, chunkRequest);
         });
     }
 
@@ -155,6 +187,17 @@ export default class VideoService {
         );
     }
 
+    pauseDownload() {
+        if (this.video.status !== VideoStatus.downloading) return;
+        this.removeVideoFile();
+    }
+
+    removeVideoFile() {
+        if (!this.video.videoPath.includes(STORAGE_DIR_PATH))
+            throw "Cannot remove this file (out of access scope)";
+        fs.rmSync(this.video.videoPath);
+    }
+
     removeChunks() {
         if (!this.video.chunksDir.includes(STORAGE_DIR_PATH))
             throw "Cannot remove this folder (out of access scope)";
@@ -166,8 +209,16 @@ export default class VideoService {
         fs.rmSync(this.video.audioPath);
     }
 
+    setIsPending(isPending: boolean) {
+        if (isPending && this.video.status === VideoStatus.downloading) {
+            this.video.downloadingProgress = 0;
+        }
+
+        this.video.metadata.isPending = isPending;
+        save(this.video);
+    }
+
     setStatus(status: VideoStatus) {
-        mainLogger.debug(`setStatus ${status} on ${this.video.id}`);
         this.video.status = status;
         save(this.video);
     }

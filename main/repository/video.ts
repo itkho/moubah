@@ -1,4 +1,3 @@
-import jetpack from "fs-jetpack";
 import fs from "fs";
 import path from "path";
 import download from "image-downloader";
@@ -8,12 +7,21 @@ import VideoModel from "../model/video.js";
 import { STORAGE_DIR_PATH } from "../utils/const.js";
 import { mainLogger } from "../utils/logger.js";
 
-export async function getVideoById(id: string) {
+export function getVideoById(id: string) {
     const videoPath = path.join(STORAGE_DIR_PATH, id);
     if (!fs.existsSync(videoPath)) {
         throw Error(`Video ${id} not found`);
     }
-    const info = jetpack.read(path.join(videoPath, "info.json"), "json");
+
+    let info;
+    try {
+        info = JSON.parse(
+            fs.readFileSync(path.join(videoPath, "info.json")).toString()
+        );
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
     const { status, metadata, ...videoInfo } = info;
     return new VideoModel({
         id: id,
@@ -23,25 +31,31 @@ export async function getVideoById(id: string) {
     });
 }
 
-export async function getAllVideos() {
+export function getAllVideos() {
     const videoIds = fs
         .readdirSync(STORAGE_DIR_PATH, { withFileTypes: true })
         .filter((item) => item.isDirectory())
         .map((item) => item.name);
-    const videos = await Promise.all(
-        videoIds.map(async (videoId) => {
-            return await getVideoById(videoId);
+    const videos = Promise.all(
+        videoIds.map((videoId) => {
+            return getVideoById(videoId);
         })
     );
     return videos;
 }
 
+// TODO: remove the async/await
 export async function getVideosTodo() {
     const videos = await getAllVideos();
-    const videosTodo = videos.filter(
-        (video) => video.audioChunksTodo.length !== 0
-    );
+    const videosTodo = videos.filter((video) => {
+        if (video.metadata.isPending) return false;
+        return video.audioChunksTodo.length !== 0;
+    });
     return videosTodo;
+}
+
+export function reload(video: VideoModel) {
+    return getVideoById(video.id);
 }
 
 export function save(video: VideoModel) {
@@ -50,14 +64,15 @@ export function save(video: VideoModel) {
         metadata: video.metadata,
         ...video.info,
     };
-    mainLogger.debug({ videoInfo });
-    fs.writeFile(
-        path.join(video.infoPath),
-        JSON.stringify(videoInfo),
-        (err) => {
-            if (err) throw err;
-        }
-    );
+    const test = JSON.stringify(videoInfo);
+
+    try {
+        fs.writeFileSync(path.join(video.infoPath), test);
+    } catch (error) {
+        mainLogger.error(error);
+        return;
+    }
+
     if (!fs.existsSync(video.thumbnailPath)) {
         download.image({
             url: video.info.originalThumbnailUri,

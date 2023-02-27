@@ -6,10 +6,10 @@
 
 ## 🔬 Before releasing-it in production
 
--   [ ] 🆕 Store current version in user preferences to be able to show "new user" message / what's new in this version / skip the pop-up for update the app ("pas mtn" / "attendre la prochaine version" / "ok" )
+-   [x] 🆕 Be able to pause de downloading/progress
 -   [ ] 🆕 Add toast messages (useful to message user like: vulnerablility found, please update the app)
--   [ ] 🆕 Be able to pause de downloading/progress
--   [ ] ✨ Re-design the support view
+-   [ ] ✨ Keep same size on "delete all" / "sure?"
+-   [ ] ✨ Increase icon size in nav bar
 -   [ ] ✨ Re-design the search view?
 -   [ ] ✨ Choose a color theme
 -   [ ] ✨ Add a logo

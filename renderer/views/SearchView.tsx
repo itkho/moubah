@@ -24,7 +24,6 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
         const videos = (await window.videoApi.getYoutubeResult(query)).map(
             (video) => new VideoDTO(video)
         );
-        window.mainApi.log("debug", `video: ${videos[0]}`);
         searchInput.current?.blur();
         setVideos(videos);
         setVideoIndex(0);

@@ -18,9 +18,8 @@ type Info = {
 export default class VideoModel {
     id: string;
     info: Info;
-    metadata?: Metadata;
+    metadata: Metadata;
     status: VideoStatus;
-    #downloadingProgress = 0;
 
     public static fromDTO(video: VideoDTO): VideoModel {
         return new VideoModel({
@@ -49,7 +48,7 @@ export default class VideoModel {
     }: {
         id: string;
         info: Info;
-        metadata?: Metadata;
+        metadata: Metadata;
         status: VideoStatus;
     }) {
         this.id = id;
@@ -111,7 +110,7 @@ export default class VideoModel {
             case VideoStatus.initial:
                 return 0;
             case VideoStatus.downloading:
-                return this.#downloadingProgress;
+                return this.metadata.downloadingProgress || 0;
             case VideoStatus.processing:
                 const nbChunksDone = this.audioChunksDone.length;
                 const nbChunksTodo = this.audioChunksTodo.length;
@@ -127,7 +126,7 @@ export default class VideoModel {
     }
 
     set downloadingProgress(progress: number) {
-        this.#downloadingProgress = progress;
+        this.metadata.downloadingProgress = progress;
     }
 
     setPlayed() {

@@ -33,7 +33,14 @@ export async function removeMusicFromChunk(chunkRequest: ChunkRequestDTO) {
         );
         return;
     }
-    chunkRequest.input_path;
+    const video = getVideoById(chunkRequest.videoId);
+
+    if (video.metadata.isPending) {
+        mainLogger.info(
+            `Audio chunk skipped because is pending: ${chunkRequest.input_path}`
+        );
+        return;
+    }
     try {
         mainLogger.info(`Call gRPC ${chunkRequest.input_path}`);
         const response = await removeMusic(chunkRequest);
@@ -49,7 +56,7 @@ export async function removeMusicFromChunk(chunkRequest: ChunkRequestDTO) {
 
 export async function updateVideoInfo(audioChunkDonePath: string) {
     const audio = new AudioModel(audioChunkDonePath);
-    const video = await getVideoById(audio.videoId);
+    const video = getVideoById(audio.videoId);
     const videoService = new VideoService(video);
     if (video.audioChunksTodo.length === 0) {
         await videoService.processChunksDone();

@@ -22,6 +22,7 @@ export function pushToQueue(
     chunkRequestDTO: ChunkRequestDTO
 ) {
     // TODO: manage 2 queue (one for LOW and another for HIGH priority)
+    // EDIT: no need with queue.unshift()
     if (!queue) {
         mainLogger.warn("No worker associated with the queue yet");
         return;

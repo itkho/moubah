@@ -1,4 +1,4 @@
-import { ipcMain } from "electron";
+import { ipcMain, IpcMainInvokeEvent } from "electron";
 import isDev from "electron-is-dev";
 
 import { getVideoById, getAllVideos, remove, save } from "./repository/video";
@@ -18,83 +18,119 @@ import { OS } from "./utils/const";
 export default function initIpcHandlers() {
     ipcMain.handle(
         "youtube:search",
-        async (_event, query): Promise<VideoDTO[]> => {
+        async (_event: IpcMainInvokeEvent, query): Promise<VideoDTO[]> => {
             mainLogger.debug(`Youtube search for: ${query}`);
             const videos = await search(query);
             return videos;
         }
     );
 
-    ipcMain.handle("video:sendToDownload", async (_event, video) => {
-        const videoService = await VideoService.createFromYt(video);
-        await videoService.download();
-    });
+    ipcMain.handle(
+        "video:sendToDownload",
+        async (_event: IpcMainInvokeEvent, video: VideoDTO) => {
+            const videoService = await VideoService.createFromYt(video);
+            await videoService.download();
+        }
+    );
 
-    ipcMain.handle("video:refresh", async (_event) => {
+    ipcMain.handle("video:refresh", async (_event: IpcMainInvokeEvent) => {
         initQueue();
     });
 
-    ipcMain.handle("video:get", async (_event, videoId) => {
-        const video = await getVideoById(videoId);
-        return video.toDTO();
-    });
+    ipcMain.handle(
+        "video:get",
+        async (_event: IpcMainInvokeEvent, videoId: string) => {
+            const video = getVideoById(videoId);
+            return video.toDTO();
+        }
+    );
 
-    ipcMain.handle("video:getAll", async (_event) => {
+    ipcMain.handle("video:getAll", async (_event: IpcMainInvokeEvent) => {
         const videos = await getAllVideos();
         return videos.map((video) => video.toDTO());
     });
 
-    ipcMain.handle("video:delete", async (_event, videoId) => {
-        const video = await getVideoById(videoId);
-        remove(video);
-    });
+    ipcMain.handle(
+        "video:delete",
+        async (_event: IpcMainInvokeEvent, videoId: string) => {
+            const video = getVideoById(videoId);
+            remove(video);
+        }
+    );
 
-    ipcMain.handle("video:played", async (_event, videoId) => {
-        const video = await getVideoById(videoId);
-        video.setPlayed();
-        save(video);
-    });
+    ipcMain.handle(
+        "video:played",
+        async (_event: IpcMainInvokeEvent, videoId: string) => {
+            const video = getVideoById(videoId);
+            video.setPlayed();
+            save(video);
+        }
+    );
 
-    ipcMain.handle("devTools:toogle", async (_event) => {
+    ipcMain.handle(
+        "video:process:pause",
+        async (_event: IpcMainInvokeEvent, videoId: string) => {
+            const video = getVideoById(videoId);
+            const videoService = new VideoService(video);
+            videoService.pause();
+        }
+    );
+
+    ipcMain.handle(
+        "video:process:resume",
+        async (_event: IpcMainInvokeEvent, videoId: string) => {
+            const video = getVideoById(videoId);
+            const videoService = new VideoService(video);
+            videoService.resume();
+        }
+    );
+
+    ipcMain.handle("devTools:toogle", async (_event: IpcMainInvokeEvent) => {
         toogleDevTools();
     });
 
-    ipcMain.handle("openFileExplorer:logs", async (_event) => {
-        openLogsInFileExplorer();
-    });
-
-    ipcMain.handle("log:create", async (_event, level, msg) => {
-        switch (level) {
-            case "debug":
-                rendererLogger.debug(msg);
-                break;
-            case "info":
-                rendererLogger.info(msg);
-                break;
-            case "warn":
-                rendererLogger.warn(msg);
-                break;
-            case "error":
-                rendererLogger.error(msg);
-                break;
-            default:
-                rendererLogger.info(msg);
-                break;
+    ipcMain.handle(
+        "openFileExplorer:logs",
+        async (_event: IpcMainInvokeEvent) => {
+            openLogsInFileExplorer();
         }
-    });
+    );
 
-    ipcMain.handle("isDev", (_event) => {
+    ipcMain.handle(
+        "log:create",
+        async (_event: IpcMainInvokeEvent, level, msg) => {
+            switch (level) {
+                case "debug":
+                    rendererLogger.debug(msg);
+                    break;
+                case "info":
+                    rendererLogger.info(msg);
+                    break;
+                case "warn":
+                    rendererLogger.warn(msg);
+                    break;
+                case "error":
+                    rendererLogger.error(msg);
+                    break;
+                default:
+                    rendererLogger.info(msg);
+                    break;
+            }
+        }
+    );
+
+    ipcMain.handle("isDev", (_event: IpcMainInvokeEvent) => {
         return isDev;
     });
 
-    ipcMain.handle("isMac", (_event) => {
+    ipcMain.handle("isMac", (_event: IpcMainInvokeEvent) => {
         return OS === "mac" ? true : false;
     });
 
-    ipcMain.handle("userPref:get", (_event, key) => {
+    ipcMain.handle("userPref:get", (_event: IpcMainInvokeEvent, key) => {
         return getUserPref(key);
     });
-    ipcMain.handle("userPref:set", (_event, key, value) => {
+    ipcMain.handle("userPref:set", (_event: IpcMainInvokeEvent, key, value) => {
         return setUserPref(key, value);
     });
 }

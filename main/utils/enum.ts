@@ -6,7 +6,7 @@ export enum VideoStatus {
 }
 
 export enum QueueName {
-    HighPriorityAudioChunks = "audio-chunk:high-priority",
+    // HighPriorityAudioChunks = "audio-chunk:high-priority",
     LowPriorityAudioChunks = "audio-chunk:low-priority",
 }
 

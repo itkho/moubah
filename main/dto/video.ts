@@ -5,7 +5,9 @@ export interface Author {
 }
 
 export interface Metadata {
+    downloadingProgress?: number;
     isNew?: boolean;
+    isPending?: boolean;
     creationTimestamp?: number;
 }
 
@@ -19,7 +21,7 @@ export default class VideoDTO {
     status?: VideoStatus;
     progress?: number;
     videoUri?: string;
-    metadata?: Metadata;
+    metadata: Metadata;
 
     constructor(video: {
         id: string;
@@ -42,6 +44,6 @@ export default class VideoDTO {
         this.status = video.status;
         this.progress = video.progress;
         this.videoUri = video.videoUri;
-        this.metadata = video.metadata;
+        this.metadata = video.metadata || {};
     }
 }

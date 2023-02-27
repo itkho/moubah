@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { faEllipsis, faPlay, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsis, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import VideoDTO from "../../main/dto/video";
 import { abbrNum, capitalizeFirstLetter, cleanSrcPath } from "../utils/helpers";
@@ -12,6 +12,10 @@ import { VideoStatus } from "../../main/utils/enum";
 import { Menu, Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+    faCirclePause,
+    faCircleStop,
+    faCirclePlay,
+    faCircleDown,
     faClock,
     faEye,
     faFolderOpen,
@@ -49,8 +53,6 @@ export default function LibraryVideoItem({
     selected: boolean;
     removeVideos: (videos: VideoDTO[]) => void;
 }) {
-    console.log({ video });
-
     const { setView } = useView();
     const { addToSelectedVideos, removeFromSelectedVideos } = useLocalVideo();
     const { updateVideo } = usePlayer();
@@ -61,12 +63,76 @@ export default function LibraryVideoItem({
         setView(View.player);
     }
 
+    function pauseProcessVideo() {
+        if (video.status === VideoStatus.done) return;
+        window.videoApi.pauseProcess(video.id);
+    }
+
+    function resumeProcessVideo() {
+        if (!video.metadata.isPending) return;
+        window.videoApi.resumeProcess(video.id);
+    }
+
     function handleCheckboxClick() {
         if (selected) {
             removeFromSelectedVideos(video);
         } else {
             addToSelectedVideos([video]);
         }
+    }
+
+    function getActionButton(active: boolean) {
+        let action: () => void;
+        let text;
+        let icon = faCirclePlay;
+
+        switch (video.status) {
+            case VideoStatus.initial:
+            case VideoStatus.downloading:
+                if (video.metadata?.isPending) {
+                    text = t`Start downloading`;
+                    icon = faCircleDown;
+                    action = resumeProcessVideo;
+                } else {
+                    text = t`Stop downloading`;
+                    icon = faCircleStop;
+                    action = pauseProcessVideo;
+                }
+                break;
+            case VideoStatus.processing:
+                if (video.metadata?.isPending) {
+                    text = t`Resume processing`;
+                    icon = faCirclePlay;
+                    action = resumeProcessVideo;
+                } else {
+                    text = t`Pause Processing`;
+                    icon = faCirclePause;
+                    action = pauseProcessVideo;
+                }
+                break;
+            case VideoStatus.done:
+                text = t`Play the video`;
+                icon = faCirclePlay;
+                action = playVideo;
+                break;
+        }
+
+        return (
+            <button
+                className={`rounded-md p-1 text-left ${
+                    active && "bg-base-300"
+                }`}
+                onClick={() => {
+                    action();
+                }}
+            >
+                <FontAwesomeIcon
+                    icon={icon}
+                    className="text-base-700 w-4 px-2"
+                />
+                {text}
+            </button>
+        );
     }
 
     return (
@@ -102,31 +168,10 @@ export default function LibraryVideoItem({
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                     >
-                        <Menu.Items className="ring-base-800 divide-base-200 bg-base-100 absolute right-0 z-10 mt-1 w-48 divide-y rounded-md p-1 text-sm shadow-lg ring-[0.5px] focus:outline-none">
+                        <Menu.Items className="ring-base-800 divide-base-200 bg-base-100 absolute right-0 z-10 mt-1 w-52 divide-y rounded-md p-1 text-sm shadow-lg ring-[0.5px] focus:outline-none">
                             <div className="flex flex-col p-1">
-                                <Menu.Item
-                                    disabled={video.status !== VideoStatus.done}
-                                >
-                                    {({ active }) => (
-                                        <button
-                                            className={`rounded-md p-1 text-left ${
-                                                active && "bg-base-300"
-                                            }
-                                            ${
-                                                video.status !==
-                                                    VideoStatus.done &&
-                                                "pointer-events-none opacity-75"
-                                            }
-                                            `}
-                                            onClick={playVideo}
-                                        >
-                                            <FontAwesomeIcon
-                                                icon={faPlay}
-                                                className="text-base-700 w-4 px-2"
-                                            />
-                                            <Trans>Play</Trans>
-                                        </button>
-                                    )}
+                                <Menu.Item>
+                                    {({ active }) => getActionButton(active)}
                                 </Menu.Item>
                                 <Menu.Item>
                                     {({ active }) => (
@@ -150,7 +195,7 @@ export default function LibraryVideoItem({
                                     {({ active }) => (
                                         <button
                                             className={`rounded-md p-1 text-left ${
-                                                active && "bg-base-300"
+                                                active && "bg-ko-500"
                                             }`}
                                             onClick={() =>
                                                 removeVideos([video])
@@ -221,8 +266,10 @@ export default function LibraryVideoItem({
                         style={{ width: `${video.progress}%` }}
                     ></div>
                 </div>
-                <div className="text-base-500 pl-2 text-right text-sm normal-case">
-                    {transVideoStatus(video.status!)}
+                <div className="text-base-500 pl-2 text-right text-sm">
+                    {video.metadata.isPending
+                        ? capitalizeFirstLetter(t`pending`)
+                        : transVideoStatus(video.status!)}
                 </div>
             </div>
         </div>

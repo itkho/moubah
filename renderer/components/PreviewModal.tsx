@@ -12,7 +12,6 @@ export default function PreviewModal({
     video: VideoDTO;
 }) {
     window.mainApi.log("debug", "PreviewModal rendered!");
-    window.mainApi.log("debug", `video: ${video.videoUri!}`);
 
     return (
         <>

@@ -21,7 +21,7 @@ msgstr "Actions :"
 msgid "Background music removed"
 msgstr "Musique de fond supprimée"
 
-#: renderer/components/LibraryVideoItem.tsx:174
+#: renderer/components/LibraryVideoItem.tsx:209
 #: renderer/components/SearchResult.tsx:125
 msgid "By:"
 msgstr "Par :"
@@ -38,7 +38,7 @@ msgstr "Console"
 msgid "Dark"
 msgstr "Sombre"
 
-#: renderer/components/LibraryVideoItem.tsx:163
+#: renderer/components/LibraryVideoItem.tsx:198
 #: renderer/views/LibraryView.tsx:268
 msgid "Delete"
 msgstr "Supprimer"
@@ -84,7 +84,7 @@ msgstr "Mes vidéos"
 msgid "No video to watch yet..."
 msgstr "Encore aucune vidéo à regarder..."
 
-#: renderer/components/LibraryVideoItem.tsx:142
+#: renderer/components/LibraryVideoItem.tsx:177
 msgid "Open in"
 msgstr "Ouvrir dans"
 
@@ -96,7 +96,11 @@ msgstr "Open-source"
 msgid "Pause"
 msgstr "Pause"
 
-#: renderer/components/LibraryVideoItem.tsx:127
+#: renderer/components/LibraryVideoItem.tsx:156
+msgid "Pause {0}"
+msgstr "Pause {0}"
+
+#: renderer/components/LibraryVideoItem.tsx:132
 msgid "Play"
 msgstr "Lire"
 
@@ -158,12 +162,16 @@ msgstr "Femme"
 msgid "all"
 msgstr "tous"
 
-#: renderer/components/LibraryVideoItem.tsx:37
+#: renderer/components/LibraryVideoItem.tsx:38
 #: renderer/views/LibraryView.tsx:51
 msgid "done"
 msgstr "terminé"
 
-#: renderer/components/LibraryVideoItem.tsx:31
+#: renderer/components/LibraryVideoItem.tsx:161
+msgid "download"
+msgstr "téléchargement"
+
+#: renderer/components/LibraryVideoItem.tsx:32
 msgid "downloading"
 msgstr "téléchargement"
 
@@ -171,7 +179,7 @@ msgstr "téléchargement"
 msgid "in progress"
 msgstr "en cours"
 
-#: renderer/components/LibraryVideoItem.tsx:28
+#: renderer/components/LibraryVideoItem.tsx:29
 msgid "initial"
 msgstr "initial"
 
@@ -179,7 +187,7 @@ msgstr "initial"
 msgid "name"
 msgstr "nom"
 
-#: renderer/components/LibraryVideoItem.tsx:76
+#: renderer/components/LibraryVideoItem.tsx:81
 #: renderer/views/LibraryView.tsx:57
 msgid "new"
 msgstr "nouveau"
@@ -202,7 +210,11 @@ msgstr "ancien"
 msgid "online"
 msgstr "en ligne"
 
-#: renderer/components/LibraryVideoItem.tsx:34
+#: renderer/components/LibraryVideoItem.tsx:160
+msgid "process"
+msgstr "traitement"
+
+#: renderer/components/LibraryVideoItem.tsx:35
 msgid "processing"
 msgstr "traitement"
 

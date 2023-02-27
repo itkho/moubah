@@ -35,7 +35,6 @@ export default function SearchResult({
     let currLocalVideo = localVideos.find(
         (localVideo) => localVideo.id === currVideo.id
     );
-    console.log(currLocalVideo?.status);
     0;
     function onClickThumbnail() {
         switch (currLocalVideo?.status) {

@@ -101,7 +101,7 @@ module.exports = {
             },
             animation: {
                 "bounce-slow": "bounceCentered 2s infinite",
-                "translate-left": "translateLeft 1s",
+                "translate-left": "translateLeft 0.5s",
                 "delayed-show-10": "appear 10s",
                 "delayed-show-1": "appear 1s",
             },
