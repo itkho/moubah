@@ -3,8 +3,6 @@ import { ArrowLongUpIcon } from "@heroicons/react/24/solid";
 import { Trans } from "@lingui/macro";
 
 export default function SearchPlaceHolder() {
-    window.mainApi.log("debug", "SearchPlaceHolder rendered!");
-
     return (
         <div className="text-base-400 -z-10 flex grow flex-col items-center justify-center">
             <div className="absolute inset-0 flex flex-col items-center justify-center">

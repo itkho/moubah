@@ -11,8 +11,6 @@ import VideoDTO from "../../main/dto/video";
 import SearchPlaceHolder from "../components/SearchPlaceHolder";
 
 export default function SearchView({ hidden }: { hidden: boolean }) {
-    window.mainApi.log("debug", "SearchView rendered!");
-
     const [videos, setVideos] = useState<VideoDTO[]>([]);
     const [query, setQuery] = useState("");
     const [videoIndex, setVideoIndex] = useState(0);

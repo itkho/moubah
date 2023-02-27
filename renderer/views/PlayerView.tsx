@@ -6,8 +6,6 @@ import { usePlayer } from "../context/PlayerContext";
 import { cleanSrcPath } from "../utils/helpers";
 
 export default function PlayerView({ hidden }: { hidden: boolean }) {
-    window.mainApi.log("debug", "PlayerView rendered!");
-
     const { video } = usePlayer();
     const player = useRef<ReactPlayer>(null);
 

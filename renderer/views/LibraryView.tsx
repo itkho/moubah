@@ -1,7 +1,7 @@
 import { faCirclePause } from "@fortawesome/free-regular-svg-icons";
 import { Trans, t } from "@lingui/macro";
 
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faVolumeXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
 import VideoDTO from "../../main/dto/video";
@@ -63,8 +63,6 @@ function transFilter(filter: Filter) {
 export let updateLocalVideo: (videoUpdated: VideoDTO) => void;
 
 export default function LibraryView({ hidden }: { hidden: boolean }) {
-    window.mainApi.log("debug", "LibraryView rendered!");
-
     const {
         localVideos,
         removeLocalVideo,
@@ -116,12 +114,22 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
             );
         };
     }, [isDeleting]);
+    function handlePauseClick() {
+        selectedVideos.forEach((video) => pauseProcessVideo(video));
+    }
 
-    function removeVideos(videos: VideoDTO[]) {
-        videos.forEach((video) => {
-            removeLocalVideo(video);
-            window.videoApi.delete(video.id);
-        });
+    function pauseProcessVideo(video: VideoDTO) {
+        if (video.status === VideoStatus.done) return;
+        window.videoApi.pauseProcess(video.id);
+    }
+
+    function handleResumeClick() {
+        selectedVideos.forEach((video) => resumeProcessVideo(video));
+    }
+
+    function resumeProcessVideo(video: VideoDTO) {
+        if (!video.metadata.isPending) return;
+        window.videoApi.resumeProcess(video.id);
     }
 
     function handleDeleteClick() {
@@ -131,6 +139,13 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
         } else {
             setIsDeleting(true);
         }
+    }
+
+    function removeVideos(videos: VideoDTO[]) {
+        videos.forEach((video) => {
+            removeLocalVideo(video);
+            window.videoApi.delete(video.id);
+        });
     }
 
     function toggleSelectAll() {
@@ -240,10 +255,9 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     <Trans>Actions:</Trans>
 
                                     <button
-                                        className="bg-base-200 hover:bg-base-300 cursor-pointer rounded-md py-1 px-2 disabled:cursor-not-allowed"
-                                        // TODO: finish implement this  (it should pause the downloading/procesing)
-                                        disabled={true}
-                                        onClick={() => {}}
+                                        className="bg-base-200 hover:bg-base-300 hover:ring-base-400 ring-base-300 cursor-pointer rounded-md py-1 px-2 ring-1 disabled:cursor-not-allowed"
+                                        disabled={!selectedVideos.length}
+                                        onClick={handlePauseClick}
                                     >
                                         <FontAwesomeIcon
                                             icon={faCirclePause}
@@ -252,11 +266,22 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                         <Trans>Pause</Trans>
                                     </button>
                                     <button
+                                        className="bg-base-200 hover:bg-base-300 hover:ring-base-400 ring-base-300 cursor-pointer rounded-md py-1 px-2 ring-1 disabled:cursor-not-allowed"
+                                        disabled={!selectedVideos.length}
+                                        onClick={handleResumeClick}
+                                    >
+                                        <FontAwesomeIcon
+                                            icon={faVolumeXmark}
+                                            className="pr-2"
+                                        />
+                                        <Trans>Resume</Trans>
+                                    </button>
+                                    <button
                                         ref={deleteButton}
                                         className={`cursor-pointer rounded-md py-1 px-2 ring-1 disabled:cursor-not-allowed ${
                                             isDeleting
                                                 ? "bg-ko-500 text-base-100-light ring-ko-600 hover:bg-ko-600"
-                                                : "bg-base-200  hover:bg-base-300 ring-base-300"
+                                                : "bg-base-200  hover:bg-base-300 ring-base-300 hover:ring-base-400"
                                         }`}
                                         disabled={!selectedVideos.length}
                                         onClick={handleDeleteClick}
@@ -278,6 +303,8 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                             video.id
                                         )}
                                         removeVideos={removeVideos}
+                                        pauseProcessVideo={pauseProcessVideo}
+                                        resumeProcessVideo={resumeProcessVideo}
                                     />
                                 ))}
                             </div>

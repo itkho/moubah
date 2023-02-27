@@ -4,7 +4,6 @@ import { useView } from "../context/ViewContext";
 import { View } from "../utils/enums";
 
 export default function PlayerPlaceHolder() {
-    window.mainApi.log("debug", "PlayerPlaceHolder rendered!");
     const { setView } = useView();
 
     return (

@@ -4,7 +4,6 @@ import { useView } from "../context/ViewContext";
 import { View } from "../utils/enums";
 
 export default function LibraryPlaceHolder() {
-    window.mainApi.log("debug", "LibraryPlaceHolder rendered!");
     const { setView } = useView();
 
     return (

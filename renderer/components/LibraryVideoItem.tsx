@@ -1,5 +1,9 @@
 import React, { Fragment } from "react";
-import { faEllipsis, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+    faEllipsis,
+    faTrash,
+    faVolumeXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 import VideoDTO from "../../main/dto/video";
 import { abbrNum, capitalizeFirstLetter, cleanSrcPath } from "../utils/helpers";
@@ -48,10 +52,14 @@ export default function LibraryVideoItem({
     video,
     selected,
     removeVideos,
+    pauseProcessVideo,
+    resumeProcessVideo,
 }: {
     video: VideoDTO;
     selected: boolean;
     removeVideos: (videos: VideoDTO[]) => void;
+    pauseProcessVideo: (video: VideoDTO) => void;
+    resumeProcessVideo: (video: VideoDTO) => void;
 }) {
     const { setView } = useView();
     const { addToSelectedVideos, removeFromSelectedVideos } = useLocalVideo();
@@ -63,16 +71,6 @@ export default function LibraryVideoItem({
         setView(View.player);
     }
 
-    function pauseProcessVideo() {
-        if (video.status === VideoStatus.done) return;
-        window.videoApi.pauseProcess(video.id);
-    }
-
-    function resumeProcessVideo() {
-        if (!video.metadata.isPending) return;
-        window.videoApi.resumeProcess(video.id);
-    }
-
     function handleCheckboxClick() {
         if (selected) {
             removeFromSelectedVideos(video);
@@ -82,7 +80,7 @@ export default function LibraryVideoItem({
     }
 
     function getActionButton(active: boolean) {
-        let action: () => void;
+        let action: (video: VideoDTO) => void;
         let text;
         let icon = faCirclePlay;
 
@@ -90,28 +88,28 @@ export default function LibraryVideoItem({
             case VideoStatus.initial:
             case VideoStatus.downloading:
                 if (video.metadata?.isPending) {
-                    text = t`Start downloading`;
+                    text = t`Download`;
                     icon = faCircleDown;
                     action = resumeProcessVideo;
                 } else {
-                    text = t`Stop downloading`;
+                    text = t`Stop`;
                     icon = faCircleStop;
                     action = pauseProcessVideo;
                 }
                 break;
             case VideoStatus.processing:
                 if (video.metadata?.isPending) {
-                    text = t`Resume processing`;
-                    icon = faCirclePlay;
+                    text = t`Resume`;
+                    icon = faVolumeXmark;
                     action = resumeProcessVideo;
                 } else {
-                    text = t`Pause Processing`;
+                    text = t`Pause`;
                     icon = faCirclePause;
                     action = pauseProcessVideo;
                 }
                 break;
             case VideoStatus.done:
-                text = t`Play the video`;
+                text = t`Play`;
                 icon = faCirclePlay;
                 action = playVideo;
                 break;
@@ -123,7 +121,7 @@ export default function LibraryVideoItem({
                     active && "bg-base-300"
                 }`}
                 onClick={() => {
-                    action();
+                    action(video);
                 }}
             >
                 <FontAwesomeIcon

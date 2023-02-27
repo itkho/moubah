@@ -24,8 +24,6 @@ export default function SearchResult({
     prevVideo: () => void;
     nextVideo: () => void;
 }) {
-    window.mainApi.log("debug", "VideoResult rendered!");
-
     const { setView } = useView();
     const { updateVideo } = usePlayer();
     const { localVideos, addLocalVideo } = useLocalVideo();
