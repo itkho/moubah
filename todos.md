@@ -6,7 +6,6 @@
 
 ## 🔬 Before releasing-it in production
 
--   [x] 🆕 Be able to pause de downloading/progress
 -   [ ] 🆕 Add toast messages (useful to message user like: vulnerablility found, please update the app)
 -   [ ] ✨ Keep same size on "delete all" / "sure?"
 -   [ ] ✨ Increase icon size in nav bar

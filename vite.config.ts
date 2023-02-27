@@ -29,6 +29,7 @@ export default ({ command }: ConfigEnv): UserConfig => {
                 outDir: outDir,
                 emptyOutDir: true,
                 rollupOptions: {},
+                target: "esnext",
             },
             server: {
                 port: process.env.PORT === undefined ? 3000 : +process.env.PORT,
@@ -64,6 +65,7 @@ export default ({ command }: ConfigEnv): UserConfig => {
                     splash: join(rendererRoot, "splash", "index.html"),
                 },
             },
+            target: "esnext",
         },
         server: {
             port: process.env.PORT === undefined ? 3000 : +process.env.PORT,
