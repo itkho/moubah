@@ -36,7 +36,7 @@ export function LocalVideoProvider(props: { children: ReactNode }) {
     function addToSelectedVideos(videos: VideoDTO[]) {
         // Remove already existing items
         const filteredVideos = videos.filter((video) => {
-            return !selectedVideos.includes(video);
+            return !selectedVideos.map((video) => video.id).includes(video.id);
         });
         setSelectedVideos((currSelectedVideos) => [
             ...filteredVideos,

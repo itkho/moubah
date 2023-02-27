@@ -25,6 +25,7 @@
 -   [ ] 🆕 Be able to choose the video quality
 -   [ ] 🆕 Add a loading animation on search for slow internet connections
 -   [ ] 🆕 Send error message from renderer to main process
+-   [ ] 🆕 Add substitles
 -   [ ] 🪲 Be able to re-process the not-done videos on start
 -   [ ] 🪲 Improve the removal of the music ([exemple](https://youtu.be/EHe0Wu5yM9c))
 -   [ ] ✨ Add a better indicator when the user try to make a search without internet
