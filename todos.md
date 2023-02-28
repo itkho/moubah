@@ -7,7 +7,6 @@
 ## 🔬 Before releasing-it in production
 
 -   [ ] 🆕 Add toast messages (useful to message user like: vulnerablility found, please update the app)
--   [ ] ✨ Keep same size on "delete all" / "sure?"
 -   [ ] ✨ Increase icon size in nav bar
 -   [ ] ✨ Re-design the search view?
 -   [ ] ✨ Choose a color theme

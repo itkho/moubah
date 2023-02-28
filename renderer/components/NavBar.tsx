@@ -4,7 +4,7 @@ import {
     faMagnifyingGlass,
     faEarthAmerica,
 } from "@fortawesome/free-solid-svg-icons";
-import { faCirclePlay, faMessage } from "@fortawesome/free-regular-svg-icons";
+import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
 import { useView } from "../context/ViewContext";
 import { View } from "../utils/enums";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -54,7 +54,7 @@ export default function NavBar() {
                         >
                             <FontAwesomeIcon
                                 icon={faMagnifyingGlass}
-                                className={`pl-1 pr-3 ${
+                                className={`h-5 pl-1 pr-3 ${
                                     view === View.search && "text-highlight"
                                 }`}
                             />
@@ -70,7 +70,7 @@ export default function NavBar() {
                         >
                             <FontAwesomeIcon
                                 icon={faList}
-                                className={`pl-1 pr-3 ${
+                                className={`h-5 pl-1 pr-3 ${
                                     view === View.library && "text-highlight"
                                 }`}
                             />
@@ -86,7 +86,7 @@ export default function NavBar() {
                         >
                             <FontAwesomeIcon
                                 icon={faCirclePlay}
-                                className={`pl-1 pr-3 ${
+                                className={`h-5 pl-1 pr-3 ${
                                     view === View.player && "text-highlight"
                                 }`}
                             />

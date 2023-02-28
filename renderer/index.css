@@ -22,6 +22,9 @@
     .decoration-highlight {
         @apply decoration-highlight-light dark:decoration-highlight-dark;
     }
+    .border-highlight {
+        @apply border-highlight-light dark:border-highlight-dark;
+    }
     .fill-highlight {
         @apply dark:text-fill-dark fill-highlight-light;
     }

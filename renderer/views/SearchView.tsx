@@ -69,10 +69,10 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
         <>
             {!hidden && (
                 <div className="relative z-10 flex h-full w-full flex-col items-center">
-                    <div className="my-10 flex w-1/3">
+                    <div className="group my-10 flex w-1/3">
                         <input
                             ref={searchInput}
-                            className="border-base-600 bg-base-300 grow rounded-l border-2 px-2 py-1 outline-none"
+                            className="border-base-600 bg-base-300 group-focus-within:border-highlight grow rounded-l border-2 border-r-0 px-2 py-1 outline-none"
                             value={query}
                             onChange={onChange}
                             onKeyDown={onSearchKeyDown}
@@ -81,10 +81,10 @@ export default function SearchView({ hidden }: { hidden: boolean }) {
                         />
                         <button
                             ref={searchButton}
-                            className="border-base-600 bg-base-600 rounded-r border-2 p-1"
+                            className="group-focus-within:border-highlight border-base-600 bg-base-600 rounded-r border-2 border-l-0 p-1"
                             onClick={search}
                         >
-                            <MagnifyingGlassIcon className="text-base-200 h-4 stroke-current stroke-1" />
+                            <MagnifyingGlassIcon className="text-base-200 h-4 stroke-current stroke-1 px-2" />
                         </button>
                     </div>
 

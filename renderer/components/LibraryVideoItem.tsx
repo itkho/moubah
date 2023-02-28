@@ -153,7 +153,7 @@ export default function LibraryVideoItem({
                     ></div>
                 </div>
                 <Menu as="div" className="relative">
-                    <Menu.Button className="hover:bg-base-400 flex rounded-md px-2 py-1">
+                    <Menu.Button className="hover:bg-base-300 flex rounded-md px-2 py-1">
                         <FontAwesomeIcon icon={faEllipsis} className="h-5" />
                     </Menu.Button>
 
