@@ -45,6 +45,17 @@ function startMusicRemoverProcess() {
     ];
 
     function startFromSource() {
+        console.log(
+            "arch",
+            ["-x86_64", "python", "app.py"].concat(musicRemoverOptions),
+            {
+                cwd: MUSIC_REMOVER_DIR,
+                env: {
+                    PATH: `${PYTHON_DIR}${PATH_SEPARATOR}${process.env.PATH}`,
+                },
+            }
+        );
+
         return spawn(
             "arch",
             ["-x86_64", "python", "app.py"].concat(musicRemoverOptions),
@@ -172,8 +183,6 @@ export async function checkForUpdates() {
                 message: message,
             });
 
-            // TODO: add a "checkboxLabel" and skip the reminder every time
-            // for this version if the user doesn't want to update
             switch (response) {
                 case 0:
                     setUserPref("welcomMessageShown", false);

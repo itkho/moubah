@@ -54,6 +54,7 @@
         "fastq": "^1.14.0",
         "ffmpeg-static": "^5.1.0",
         "ffprobe-static": "^3.1.0",
+        "firebase": "^9.17.1",
         "google-protobuf": "^3.21.2",
         "image-downloader": "^4.3.0",
         "os-locale": "^6.0.2",
@@ -108,7 +109,7 @@
         "asar": false,
         "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
         "directories": {
-            "buildResources": "renderer/assets/icons"
+            "buildResources": "renderer/assets"
         },
         "files": [
             "main/out",

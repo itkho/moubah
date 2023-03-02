@@ -7,9 +7,6 @@
 ## 🔬 Before releasing-it in production
 
 -   [ ] 🆕 Add toast messages (useful to message user like: vulnerablility found, please update the app)
--   [ ] ✨ Increase icon size in nav bar
--   [ ] ✨ Re-design the search view?
--   [ ] ✨ Choose a color theme
 -   [ ] ✨ Add a logo
 -   [ ] 🧼 Sort/clean folders
 -   [ ] 🪲 Install / test deeply the app on mac/win
@@ -20,6 +17,7 @@
 
 ## 🔍 Usefull but not essential
 
+-   [ ] 🆕 Add a badge on the icon (or even a notification) when a video is ready
 -   [ ] 🆕 Add a button to be able to reduce nav bar width
 -   [ ] 🆕 Be able to choose the video quality
 -   [ ] 🆕 Add a loading animation on search for slow internet connections
@@ -27,6 +25,7 @@
 -   [ ] 🆕 Add substitles
 -   [ ] 🪲 Be able to re-process the not-done videos on start
 -   [ ] 🪲 Improve the removal of the music ([exemple](https://youtu.be/EHe0Wu5yM9c))
+-   [ ] ✨ Re-design the search view?
 -   [ ] ✨ Add a better indicator when the user try to make a search without internet
 -   [ ] ✨ Build custom title bar (like Postman or Obsidian)
 -   [ ] 🆕 Add a search bar in the library view
