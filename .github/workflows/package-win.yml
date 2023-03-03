@@ -8,6 +8,11 @@ jobs:
   package:
     runs-on: windows-latest
     steps:
+      - name: Check out repository and submodules
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
       - name: ℹ️ Get version from package.json
         uses: tyankatsu0105/read-package-version-actions@v1
         id: package-version
@@ -18,11 +23,6 @@ jobs:
           tag: v${{ steps.package-version.outputs.version }}
 
       - run: echo ${{ steps.checkTag.outputs.exists }}
-
-      # - name: Check out repository and submodules
-      #   uses: actions/checkout@v3
-      #   with:
-      #     submodules: recursive
 
       # - name: 🔗 Install Python 3.8.10
       #   uses: actions/setup-python@v4
