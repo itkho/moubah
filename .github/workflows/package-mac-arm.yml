@@ -16,6 +16,23 @@ jobs:
         with:
           submodules: recursive
 
+      - name: ℹ️ Get version from package.json
+        uses: tyankatsu0105/read-package-version-actions@v1
+        id: package-version
+
+      - name: ℹ️ Get existing tag with same version
+        uses: mukunku/tag-exists-action@v1.2.0
+        id: checkTag
+        with:
+          tag: v${{ steps.package-version.outputs.version }}
+
+      - name: ☑️ Check tag version
+        if: ${{ steps.checkTag.outputs.exists }}
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.setFailed("Tag ${{ steps.checkTag.outputs.exists }} already exists")
+
       - name: 🔗 Install Node
         uses: actions/setup-node@v3
         with:
@@ -47,10 +64,6 @@ jobs:
         working-directory: ./music-remover
         run: >
           arch -x86_64 pyinstaller app.spec --noconfirm --clean
-
-      - name: ℹ️ Get version from package.json
-        uses: tyankatsu0105/read-package-version-actions@v1
-        id: package-version
 
       - name: 🔗 Install electron depedencies
         working-directory: ${{ github.workspace }}
