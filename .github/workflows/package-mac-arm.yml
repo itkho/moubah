@@ -26,12 +26,12 @@ jobs:
         with:
           tag: v${{ steps.package-version.outputs.version }}
 
-      - name: ✅ Check tag version
-        if: ${{ steps.checkTag.outputs.exists == 'true' }}
-        uses: actions/github-script@v6
-        with:
-          script: |
-            core.setFailed("Tag v${{ steps.package-version.outputs.version }} already exists")
+      # - name: ✅ Check tag version
+      #   if: ${{ steps.checkTag.outputs.exists == 'true' }}
+      #   uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       core.setFailed("Tag v${{ steps.package-version.outputs.version }} already exists")
 
       - name: 🔗 Install Node
         uses: actions/setup-node@v3
@@ -53,12 +53,12 @@ jobs:
           script: |
             core.setFailed("Wrong Python environment")
 
-      # - name: ☑️ Check Python version
-      #   if: ${{ !contains(steps.python_env.outputs.PYTHON_VERSION, '3.8.10') }}
-      #   uses: actions/github-script@v6
-      #   with:
-      #     script: |
-      #       core.setFailed("Wrong Python version (expected: v3.8.10)")
+      - name: ✅ Check Python version
+        if: ${{ !contains(steps.python_env.outputs.PYTHON_VERSION, '3.8.10') }}
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.setFailed("Wrong Python version (expected: v3.8.10)")
 
       - name: 🔗 Install music-remover depedencies
         working-directory: ./music-remover
