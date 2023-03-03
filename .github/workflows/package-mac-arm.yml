@@ -93,7 +93,7 @@ jobs:
         working-directory: ./music-remover
         run: >
           echo $VIRTUAL_ENV &&
-          echo $(pwd))
+          echo $(pwd)
 
       # cp -r $VIRTUAL_ENV .
       # WARNING: useless now because it's not working yet for m1
