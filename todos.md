@@ -6,7 +6,6 @@
 
 ## 🔬 Before releasing-it in production
 
--   [ ] 🆕 Add toast messages (useful to message user like: vulnerablility found, please update the app)
 -   [ ] ✨ Add a logo
 -   [ ] 🧼 Sort/clean folders
 -   [ ] 🪲 Install / test deeply the app on mac/win

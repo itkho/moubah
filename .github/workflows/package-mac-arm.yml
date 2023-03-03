@@ -16,11 +16,11 @@ jobs:
         with:
           submodules: recursive
 
-      - name: ℹ️ Get version from package.json
+      - name: 🏷 Get version from package.json
         uses: tyankatsu0105/read-package-version-actions@v1
         id: package-version
 
-      - name: ℹ️ Get existing tag with same version
+      - name: 🏷 Get existing tag with same version
         uses: mukunku/tag-exists-action@v1.2.0
         id: checkTag
         with:
@@ -59,6 +59,11 @@ jobs:
         with:
           script: |
             core.setFailed("Wrong Python version (expected: v3.8.10)")
+
+      - name: 🔗 Install music-remover depedencies
+        working-directory: ./music-remover
+        run: >
+          python download_3rd_party_deps.py
 
       - name: 📦 Create an executable file
         working-directory: ./music-remover
