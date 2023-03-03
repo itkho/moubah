@@ -27,11 +27,11 @@ jobs:
           tag: v${{ steps.package-version.outputs.version }}
 
       - name: ☑️ Check tag version
-        if: ${{ steps.checkTag.outputs.exists }}
+        if: ${{ steps.checkTag.outputs.exists == "true" }}
         uses: actions/github-script@v6
         with:
           script: |
-            core.setFailed("Tag ${{ steps.checkTag.outputs.exists }} already exists")
+            core.setFailed("Tag v${{ steps.package-version.outputs.version }} already exists")
 
       - name: 🔗 Install Node
         uses: actions/setup-node@v3
