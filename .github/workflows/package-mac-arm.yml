@@ -92,8 +92,15 @@ jobs:
           script: |
             core.setFailed("Wrong Python version (expected: v3.8.10)")
 
+      - name: ✅ Check if venv already exists
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "assets/${{ env.URL }}"
+
       - name: ⤵️ Copy/Paste current venv to runner
         working-directory: ./music-remover
+        if: steps.check_files.outputs.files_exists == 'true'
         run: >
           cp -r $VIRTUAL_ENV .
 
