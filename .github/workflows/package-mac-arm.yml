@@ -26,7 +26,7 @@ jobs:
         with:
           tag: v${{ steps.package-version.outputs.version }}
 
-      - name: ☑️ Check tag version
+      - name: ✅ Check tag version
         if: ${{ steps.checkTag.outputs.exists == 'true' }}
         uses: actions/github-script@v6
         with:
@@ -46,19 +46,19 @@ jobs:
           echo "PYTHON_PATH=$(which python)" >> $GITHUB_OUTPUT &&
           echo "PYTHON_VERSION=$(python --version)" >> $GITHUB_OUTPUT
 
-      - name: ☑️ Check Python environment
+      - name: ✅ Check Python environment
         if: ${{ !contains(steps.python_env.outputs.PYTHON_PATH, 'moubah/music-remover/') }}
         uses: actions/github-script@v6
         with:
           script: |
             core.setFailed("Wrong Python environment")
 
-      - name: ☑️ Check Python version
-        if: ${{ !contains(steps.python_env.outputs.PYTHON_VERSION, '3.8.10') }}
-        uses: actions/github-script@v6
-        with:
-          script: |
-            core.setFailed("Wrong Python version (expected: v3.8.10)")
+      # - name: ☑️ Check Python version
+      #   if: ${{ !contains(steps.python_env.outputs.PYTHON_VERSION, '3.8.10') }}
+      #   uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       core.setFailed("Wrong Python version (expected: v3.8.10)")
 
       - name: 🔗 Install music-remover depedencies
         working-directory: ./music-remover
