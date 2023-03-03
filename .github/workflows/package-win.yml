@@ -2,13 +2,13 @@ name: Package Windows app 📦
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main]
 
 jobs:
   package:
     runs-on: windows-latest
     steps:
-      - name: Check out repository and submodules
+      - name: 📥 Check out repository and submodules
         uses: actions/checkout@v3
         with:
           submodules: recursive
@@ -30,16 +30,16 @@ jobs:
           script: |
             core.setFailed("Tag v${{ steps.package-version.outputs.version }} already exists")
 
-      - name: 🔗 Install Python 3.8.10
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.8.10"
-
       - name: 🔗 Install Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: "npm"
+
+      - name: 🔗 Install Python 3.8.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.8.10"
 
       - name: 🔗 Install third party depedencies
         working-directory: ./music-remover

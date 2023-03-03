@@ -11,7 +11,7 @@ jobs:
     #   and: $ source music-remover/.venv/bin/activate && cd actions-runner && ./run.sh
     runs-on: [self-hosted, macOS, ARM64]
     steps:
-      - name: Check out repository and submodules
+      - name: 📥 Check out repository and submodules
         uses: actions/checkout@v3
         with:
           submodules: recursive
@@ -39,6 +39,19 @@ jobs:
           node-version: 18
           cache: "npm"
 
+      - name: 🔗 Install Python 3.8.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.8.10"
+
+      - name: 🧰 Create virtual environment
+        working-directory: ./music-remover
+        run: >
+          python3.8 -m venv .venv &&
+          source .venv/bin/activate &&
+          python -m ensurepip &&
+          arch -x86_64 python -m pip install --upgrade pip
+
       - name: 🐍 Get Python infos
         working-directory: ./music-remover
         id: python_env
@@ -60,10 +73,21 @@ jobs:
           script: |
             core.setFailed("Wrong Python version (expected: v3.8.10)")
 
-      - name: 🔗 Install music-remover depedencies
+      - name: 🔗 Download music-remover 3rd party depedencies
         working-directory: ./music-remover
         run: >
-          python download_3rd_party_deps.py
+          arch -x86_64 python -m pip install requests &&
+          arch -x86_64 python download_3rd_party_deps.py
+
+      - name: 🛠️ Build Spleeter from wheel
+        working-directory: ./music-remover
+        run: >
+          arch -x86_64 python -m pip install --upgrade spleeter-2.3.0b0-cp38-cp38-macosx_11_0_x86_64.whl
+
+      - name: 🔗 Install music-remover python depedencies
+        working-directory: ./music-remover
+        run: >
+          arch -x86_64 python -m pip install -r requirements.txt
 
       - name: 📦 Create an executable file
         working-directory: ./music-remover

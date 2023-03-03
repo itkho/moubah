@@ -79,6 +79,12 @@ function startMusicRemoverProcess() {
         return;
     }
 
+    musicRemoverProcess.stdout?.on("data", (data) => {
+        mainLogger.debug(`musicRemoverProcess stdout: ${data}`);
+    });
+    musicRemoverProcess.stderr?.on("data", (data) => {
+        mainLogger.debug(`musicRemoverProcess stderr: ${data}`);
+    });
     musicRemoverProcess.on("close", (code) => {
         mainLogger.fatal(`🚨 Music remover process exited with code ${code}`);
     });
