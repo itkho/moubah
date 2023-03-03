@@ -12,6 +12,7 @@ import VideoDTO from "./dto/video";
 import {
     get as getUserPref,
     set as setUserPref,
+    setLastMessageSeenTimestamp,
 } from "./model/user-preference";
 import { OS } from "./utils/const";
 
@@ -133,4 +134,10 @@ export default function initIpcHandlers() {
     ipcMain.handle("userPref:set", (_event: IpcMainInvokeEvent, key, value) => {
         return setUserPref(key, value);
     });
+    ipcMain.handle(
+        "lastMessageSeenTimestamp:set",
+        (_event: IpcMainInvokeEvent, timestamp) => {
+            return setLastMessageSeenTimestamp(timestamp);
+        }
+    );
 }

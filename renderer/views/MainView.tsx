@@ -3,9 +3,32 @@ import { useView } from "../context/ViewContext";
 import LibraryView from "./LibraryView";
 import PlayerView from "./PlayerView";
 import SearchView from "./SearchView";
-import { View } from "../utils/enums";
+import { Locale, View } from "../utils/enums";
+import { ToastContainer, toast, TypeOptions } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useDarkMode } from "../context/DarkModeContext";
+import { useLocale } from "../context/LocaleContext";
+
+const CustomToastWithLink = (text: string, link: string) => (
+    <a href={link} target="_blank" className="">
+        {text}
+    </a>
+);
+export function showToastMessage(
+    timestamp: number,
+    type: TypeOptions,
+    text: string,
+    link: string
+) {
+    toast(CustomToastWithLink(text, link), {
+        onClose: () => window.mainApi.lastMessageSeenTimestamp(timestamp),
+        type: type,
+    });
+}
 
 export default function MainView() {
+    const { darkMode } = useDarkMode();
+    const { locale } = useLocale();
     const { view } = useView();
 
     let seachHidden = true;
@@ -29,6 +52,14 @@ export default function MainView() {
             <SearchView hidden={seachHidden} />
             <LibraryView hidden={libraryHidden} />
             <PlayerView hidden={playerHidden} />
+            <ToastContainer
+                position="bottom-right"
+                autoClose={false}
+                newestOnTop={false}
+                rtl={locale === Locale.ar ? true : false}
+                theme={darkMode ? "dark" : "light"}
+                draggable
+            />
         </div>
     );
 }

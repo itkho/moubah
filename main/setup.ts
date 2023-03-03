@@ -25,12 +25,14 @@ import { initQueue } from "./services/library";
 import {
     get as getUserPref,
     set as setUserPref,
+    setLastMessageSeenTimestamp,
 } from "./model/user-preference";
 import { NotImplementedError } from "./utils/errors";
+import { getNewMessages } from "./lib/firebase";
 const config = require(CONFIG_PATH);
 
 let musicRemoverProcessId: number | undefined;
-const lang = getUserPref("lang") || "en";
+const lang = getUserPref("lang");
 
 function startMusicRemoverProcess() {
     const musicRemoverOptions = [
@@ -45,17 +47,6 @@ function startMusicRemoverProcess() {
     ];
 
     function startFromSource() {
-        console.log(
-            "arch",
-            ["-x86_64", "python", "app.py"].concat(musicRemoverOptions),
-            {
-                cwd: MUSIC_REMOVER_DIR,
-                env: {
-                    PATH: `${PYTHON_DIR}${PATH_SEPARATOR}${process.env.PATH}`,
-                },
-            }
-        );
-
         return spawn(
             "arch",
             ["-x86_64", "python", "app.py"].concat(musicRemoverOptions),
@@ -258,9 +249,30 @@ export async function welcomMessage() {
             message: message,
         });
         setUserPref("welcomMessageShown", true);
+        setLastMessageSeenTimestamp(Date.now());
     } catch (err) {
         mainLogger.error(`Welcom message failed: ${err}`);
     }
+}
+
+export async function sendToastMessageToRenderer() {
+    let messages;
+    try {
+        messages = await getNewMessages();
+    } catch (error) {
+        mainLogger.error(error);
+        return;
+    }
+    messages.forEach((message) => {
+        if (message === undefined) return;
+        getMainWindow().webContents.send(
+            "message:new",
+            message.timestamp,
+            message.type,
+            message.text,
+            message.link
+        );
+    });
 }
 
 export async function setUp() {

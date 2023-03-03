@@ -2,7 +2,7 @@ name: Package Mac (ARM) app 📦
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
 
 jobs:
   package:

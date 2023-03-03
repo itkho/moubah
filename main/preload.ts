@@ -1,6 +1,7 @@
 import { ipcRenderer, contextBridge, IpcRendererEvent } from "electron";
 import VideoDTO from "./dto/video";
 import { MusicRemoverStatus } from "./utils/enum";
+import { TypeOptions } from "react-toastify";
 
 declare global {
     interface Window {
@@ -58,6 +59,19 @@ const mainApi = {
         ipcRenderer.invoke("userPref:get", "lang"),
     setUserPrefLang: (lang: string) =>
         ipcRenderer.invoke("userPref:set", "lang", lang),
+    lastMessageSeenTimestamp: (timestamp: number) =>
+        ipcRenderer.invoke("lastMessageSeenTimestamp:set", timestamp),
+
+    // Main --> Process
+    handleNewToastMessage: (
+        callback: (
+            event: IpcRendererEvent,
+            timestamp: number,
+            type: TypeOptions,
+            text: string,
+            link: string
+        ) => void
+    ) => ipcRenderer.on("message:new", callback),
 };
 
 contextBridge.exposeInMainWorld("videoApi", videoApi);
