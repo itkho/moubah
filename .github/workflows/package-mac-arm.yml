@@ -6,7 +6,9 @@ on:
 
 jobs:
   package:
-    # REMINDER: cd actions-runner && ./run.sh
+    # REMINDER:
+    #   see here: https://github.com/karim-bouchez/moubah/settings/actions/runners
+    #   and: $ source music-remover/.venv/bin/activate && cd actions-runner && ./run.sh
     runs-on: [self-hosted, macOS, ARM64]
     steps:
       - name: Check out repository and submodules

@@ -8,59 +8,66 @@ jobs:
   package:
     runs-on: windows-latest
     steps:
-      - name: Check out repository and submodules
-        uses: actions/checkout@v3
-        with:
-          submodules: recursive
-
-      - name: 🔗 Install Python 3.8.10
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.8.10"
-
-      - name: 🔗 Install Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: "npm"
-
-      - name: 🔗 Install third party depedencies
-        working-directory: ./music-remover
-        run: >
-          python -m pip install requests &&
-          python download_3rd_party_deps.py
-
-      - name: 🔗 Install Spleeter
-        working-directory: ./music-remover
-        run: >
-          python -m pip install spleeter
-
-      - name: 🔗 Install python libs
-        working-directory: ./music-remover
-        run: >
-          python -m pip install -r requirements.txt
-
-      - name: 📦 Create an executable file for music-remover
-        working-directory: ./music-remover
-        run: >
-          pyinstaller app.spec --noconfirm --clean
-
       - name: ℹ️ Get version from package.json
         uses: tyankatsu0105/read-package-version-actions@v1
         id: package-version
 
-      - name: 🔗 Install electron depedencies
-        run: >
-          npm install
-
-      - name: 📦 Create an executable file for Electron app
-        run: >
-          npm run clean &&
-          npm run dist
-
-      - name: 🏷 Release on GitHub (v${{ steps.package-version.outputs.version }})
-        uses: softprops/action-gh-release@v1
+      - uses: mukunku/tag-exists-action@v1.2.0
+        id: checkTag
         with:
-          tag_name: v${{ steps.package-version.outputs.version }}
-          files: |
-            dist/moubah-${{ steps.package-version.outputs.version }}-win-x64.exe
+          tag: v${{ steps.package-version.outputs.version }}
+
+      - run: echo ${{ steps.checkTag.outputs.exists }}
+
+      # - name: Check out repository and submodules
+      #   uses: actions/checkout@v3
+      #   with:
+      #     submodules: recursive
+
+      # - name: 🔗 Install Python 3.8.10
+      #   uses: actions/setup-python@v4
+      #   with:
+      #     python-version: "3.8.10"
+
+      # - name: 🔗 Install Node
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 18
+      #     cache: "npm"
+
+      # - name: 🔗 Install third party depedencies
+      #   working-directory: ./music-remover
+      #   run: >
+      #     python -m pip install requests &&
+      #     python download_3rd_party_deps.py
+
+      # - name: 🔗 Install Spleeter
+      #   working-directory: ./music-remover
+      #   run: >
+      #     python -m pip install spleeter
+
+      # - name: 🔗 Install python libs
+      #   working-directory: ./music-remover
+      #   run: >
+      #     python -m pip install -r requirements.txt
+
+      # - name: 📦 Create an executable file for music-remover
+      #   working-directory: ./music-remover
+      #   run: >
+      #     pyinstaller app.spec --noconfirm --clean
+
+      # - name: 🔗 Install electron depedencies
+      #   run: >
+      #     npm install
+
+      # - name: 📦 Create an executable file for Electron app
+      #   run: >
+      #     npm run clean &&
+      #     npm run dist
+
+      # - name: 🏷 Release on GitHub (v${{ steps.package-version.outputs.version }})
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #     tag_name: v${{ steps.package-version.outputs.version }}
+      #     files: |
+      #       dist/moubah-${{ steps.package-version.outputs.version }}-win-x64.exe
