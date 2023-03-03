@@ -24,6 +24,13 @@ jobs:
 
       - run: echo ${{ steps.checkTag.outputs.exists }}
 
+      - name: ☑️ Check tag version
+        if: ${{ steps.checkTag.outputs.exists }}
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.setFailed("Tag ${{ steps.checkTag.outputs.exists }} already exists")
+
       # - name: 🔗 Install Python 3.8.10
       #   uses: actions/setup-python@v4
       #   with:
