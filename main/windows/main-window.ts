@@ -6,6 +6,7 @@ let mainWindow: BrowserWindow;
 
 export function create() {
     mainWindow = new BrowserWindow({
+        autoHideMenuBar: true,
         width: 1100,
         height: 800,
         webPreferences: {

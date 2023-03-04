@@ -6,6 +6,7 @@ let splashWindow: BrowserWindow;
 
 export function create() {
     splashWindow = new BrowserWindow({
+        autoHideMenuBar: true,
         width: 500,
         height: 300,
         show: false,
