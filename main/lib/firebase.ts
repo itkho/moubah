@@ -11,6 +11,7 @@ import isDev from "electron-is-dev";
 import { getLang, getLastMessageSeenTimestamp } from "../model/user-preference";
 import { mainLogger } from "../utils/logger";
 
+// TODO: add to "config.json"
 // Reminder: this is safe in client code
 const firebaseConfig = {
     apiKey: "AIzaSyAHPaxWMqp77YuyvMXZ3ASrhmGzVlfgV0Y",

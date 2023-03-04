@@ -8,7 +8,8 @@ import { LOGS_DIR_PATH } from "./const";
 const MAIN_LOG_PATH = path.join(LOGS_DIR_PATH, "main-process.log");
 const RENDERER_LOG_PATH = path.join(LOGS_DIR_PATH, "renderer-process.log");
 
-export const logLevel = process.env.PINO_LOG_LEVEL || "info";
+// TODO: change the default value to "info" before releasing to production
+export const logLevel = process.env.PINO_LOG_LEVEL || "debug";
 
 // A logLevel below "info" doesn't work if we don't set the level to the minimum here:
 const logLevelMin = "debug";

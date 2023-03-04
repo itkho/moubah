@@ -1,6 +1,6 @@
 {
     "name": "moubah",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "license": "AGPL-3",
     "main": "main/out/index.js",
     "author": {
@@ -112,11 +112,25 @@
         "directories": {
             "buildResources": "renderer/assets"
         },
-        "files": [
-            "main/out",
-            "renderer/out",
-            "config.json",
-            "music-remover"
-        ]
+        "mac": {
+            "target": "dmg",
+            "icon": "renderer/assets/icon-mac.png",
+            "files": [
+                "main/out",
+                "renderer/out",
+                "config.json",
+                "music-remover"
+            ]
+        },
+        "win": {
+            "target": "nsis",
+            "icon": "renderer/assets/icon-win.png",
+            "files": [
+                "main/out",
+                "renderer/out",
+                "config.json",
+                "music-remover/dist"
+            ]
+        }
     }
 }
