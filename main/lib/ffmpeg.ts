@@ -45,9 +45,10 @@ export function convertAudioToMono(audioPath: string) {
         logSpawn(result, mainLogger, "FFmpeg convertAudioToMono");
 
         result.on("close", (_code) => {
-            // fs.rmSync(audioPath, { force: true });
-            fs.renameSync(audioPath, `${audioPath}.old`);
-            fs.renameSync(tmpAudioPath, audioPath);
+            // Rename file doesn't work if the partition between src/dist is different
+            // fs.renameSync(tmpAudioPath, audioPath);
+            fs.copyFileSync(tmpAudioPath, audioPath);
+            fs.rmSync(tmpAudioPath);
             resolve();
         });
     });
@@ -152,8 +153,10 @@ export function addAudioToVideo(audioPath: string, videoPath: string) {
         logSpawn(result, mainLogger, "FFmpeg addAudioToVideo");
 
         result.on("close", (_code) => {
-            // fs.rmSync(videoPath);
-            fs.renameSync(tmpVideoPath, videoPath);
+            // Rename file doesn't work if the partition between src/dist is different
+            // fs.renameSync(tmpVideoPath, videoPath);
+            fs.copyFileSync(tmpVideoPath, videoPath);
+            fs.rmSync(tmpVideoPath);
             resolve();
         });
     });
