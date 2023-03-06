@@ -7,16 +7,20 @@ import { abbrNum } from "../utils/helpers";
 export default function PreviewModal({
     setShowModal,
     video,
+    primaryButtonText,
+    onClickPrimary,
 }: {
     setShowModal: Dispatch<SetStateAction<boolean>>;
     video: VideoDTO;
+    primaryButtonText: string;
+    onClickPrimary: () => void;
 }) {
     return (
         <>
             <div className="fixed inset-0 z-50 flex items-center justify-center">
                 <div className=" bg-background ring-base-500 w-3/4 flex-col rounded-lg shadow-2xl ring-2">
                     {/* Header */}
-                    <div className="flex w-full items-start justify-between rounded-t border-b border-solid border-slate-300 p-5">
+                    <div className="border-base-300 flex w-full items-start justify-between rounded-t border-b border-solid p-5">
                         <div className="overflow-hidden">
                             <h3 className="truncate text-xl font-semibold">
                                 {video.title}
@@ -45,7 +49,7 @@ export default function PreviewModal({
                         />
                     </div>
                     {/* Footer */}
-                    <div className="flex items-center justify-end rounded-b border-t border-solid border-slate-300 p-6">
+                    <div className="border-base-300 flex items-center justify-end rounded-b border-t border-solid p-6">
                         <button
                             className="text-base-500 hover:text-base-600 px-6 py-2 text-sm font-semibold uppercase"
                             type="button"
@@ -54,11 +58,12 @@ export default function PreviewModal({
                             <Trans>Close</Trans>
                         </button>
                         <button
-                            className="text-base-50 rounded bg-lime-500 px-6 py-3 text-sm font-semibold uppercase text-base-100-light shadow duration-200 hover:shadow-lg active:bg-lime-600"
+                            className="text-base-50 bg-highlight hover:bg-highlight-hover rounded px-6 py-3 text-sm font-semibold uppercase text-base-100-light shadow duration-200 hover:shadow-lg"
                             type="button"
-                            onClick={() => {}}
+                            onClick={onClickPrimary}
                         >
-                            <Trans>Remove background music</Trans>
+                            {primaryButtonText}
+                            {/* <Trans>Remove background music</Trans> */}
                         </button>
                     </div>
                 </div>

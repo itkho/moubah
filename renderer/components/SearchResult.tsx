@@ -33,8 +33,8 @@ export default function SearchResult({
     let currLocalVideo = localVideos.find(
         (localVideo) => localVideo.id === currVideo.id
     );
-    0;
-    function onClickThumbnail() {
+
+    function onClickPrimary() {
         switch (currLocalVideo?.status) {
             case VideoStatus.done:
                 updateVideo(currLocalVideo);
@@ -57,18 +57,34 @@ export default function SearchResult({
         addLocalVideo(video);
     }
 
-    function renderButtonContent(status?: VideoStatus) {
+    function getPrimaryButtonText(
+        status?: VideoStatus,
+        withEmoji: boolean = true
+    ) {
+        let text: string;
+        let emoji: string;
+
         switch (status) {
             case VideoStatus.done:
-                return "✅ " + t`Background music removed`;
+                text = t`Background music removed`;
+                emoji = "✅";
+                break;
             case VideoStatus.processing:
-                return "⚙️ " + t`Removing background music...`;
+                text = t`Removing background music...`;
+                emoji = "⚙️";
+                break;
             case VideoStatus.downloading:
             case VideoStatus.initial:
-                return "📥 " + t`Downloading the video...`;
+                text = t`Downloading the video...`;
+                emoji = "📥";
+                break;
             default:
-                return "🔇 " + t`Remove background music`;
+                text = t`Remove background music`;
+                emoji = "🔇";
+                break;
         }
+        if (withEmoji) text = `${emoji} ${text}`;
+        return text;
     }
 
     return (
@@ -142,7 +158,7 @@ export default function SearchResult({
                         <Trans>Preview the video</Trans>
                     </button>
                     <button
-                        onClick={onClickThumbnail}
+                        onClick={onClickPrimary}
                         className={
                             `rounded p-2  ring-1 ` +
                             (currLocalVideo?.status &&
@@ -155,13 +171,18 @@ export default function SearchResult({
                                 : "bg-highlight ring-highlight-hover hover:bg-highlight-hover text-base-100-light")
                         }
                     >
-                        {renderButtonContent(currLocalVideo?.status)}
+                        {getPrimaryButtonText(currLocalVideo?.status)}
                     </button>
                 </div>
                 {modelShown && (
                     <PreviewModal
                         setShowModal={setModelShown}
                         video={currVideo}
+                        primaryButtonText={getPrimaryButtonText(
+                            currLocalVideo?.status,
+                            false
+                        )}
+                        onClickPrimary={onClickPrimary}
                     />
                 )}
             </div>

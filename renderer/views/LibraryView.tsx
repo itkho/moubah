@@ -173,7 +173,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
         switch (selectedSort) {
             case Sort.recentFirst:
                 localVideos.sort((a, b) =>
-                    a.metadata?.creationTimestamp! <
+                    a.metadata?.creationTimestamp! >
                     b.metadata?.creationTimestamp!
                         ? 1
                         : -1
@@ -181,7 +181,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                 break;
             case Sort.recentLast:
                 localVideos.sort((a, b) =>
-                    a.metadata?.creationTimestamp! >
+                    a.metadata?.creationTimestamp! <
                     b.metadata?.creationTimestamp!
                         ? 1
                         : -1
