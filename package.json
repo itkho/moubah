@@ -1,6 +1,6 @@
 {
     "name": "moubah",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "license": "AGPL-3",
     "main": "main/out/index.js",
     "author": {
@@ -114,7 +114,7 @@
         },
         "mac": {
             "target": "dmg",
-            "icon": "renderer/assets/icon.png",
+            "icon": "renderer/assets/icon-mac.png",
             "files": [
                 "main/out",
                 "renderer/out",
@@ -124,7 +124,7 @@
         },
         "win": {
             "target": "nsis",
-            "icon": "renderer/assets/icon.png",
+            "icon": "renderer/assets/icon-win.png",
             "files": [
                 "main/out",
                 "renderer/out",
