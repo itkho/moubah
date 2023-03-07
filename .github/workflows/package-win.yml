@@ -44,23 +44,23 @@ jobs:
       - name: 🔗 Install third party depedencies
         working-directory: ./music-remover
         run: >
-          python -m pip install requests &&
-          python download_3rd_party_deps.py
+          python.exe -m pip install requests &&
+          python.exe download_3rd_party_deps.py
 
       - name: 🔗 Install Spleeter
         working-directory: ./music-remover
         run: >
-          python -m pip install spleeter
+          python.exe -m pip install spleeter
 
       - name: 🔗 Install python libs
         working-directory: ./music-remover
         run: >
-          python -m pip install -r requirements.txt
+          python.exe -m pip install -r requirements.txt
 
       - name: 📦 Create an executable file for music-remover
         working-directory: ./music-remover
         run: >
-          pyinstaller app.spec --noconfirm --clean
+          pyinstaller.exe app.spec --noconfirm --clean
 
       - name: 🔗 Install electron depedencies
         run: >

@@ -114,7 +114,7 @@
         },
         "mac": {
             "target": "dmg",
-            "icon": "renderer/assets/icon-mac.png",
+            "icon": "renderer/assets/icon.png",
             "files": [
                 "main/out",
                 "renderer/out",
@@ -124,7 +124,7 @@
         },
         "win": {
             "target": "nsis",
-            "icon": "renderer/assets/icon-win.png",
+            "icon": "renderer/assets/icon.png",
             "files": [
                 "main/out",
                 "renderer/out",
