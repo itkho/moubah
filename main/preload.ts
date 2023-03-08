@@ -29,6 +29,8 @@ const videoApi = {
         ipcRenderer.invoke("video:process:pause", videoId),
     resumeProcess: (videoId: string): Promise<void> =>
         ipcRenderer.invoke("video:process:resume", videoId),
+    openDir: (videoId: string): Promise<void> =>
+        ipcRenderer.invoke("openFileExplorer:video", videoId),
 
     // Main --> Process
     handleVideoUpdatedEvent: (

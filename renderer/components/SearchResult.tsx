@@ -103,7 +103,10 @@ export default function SearchResult({
 
                     <div className="flex h-full max-w-lg shrink grow flex-col items-center justify-center">
                         <div className="flex aspect-square h-full max-w-full flex-col justify-center">
-                            <div className="ring-base-500 relative my-3 w-full overflow-hidden rounded-lg shadow-xl ring-1 ring-opacity-50">
+                            <div
+                                className="ring-base-500 relative my-3 w-full cursor-pointer overflow-hidden rounded-lg shadow-xl ring-1 ring-opacity-50"
+                                onClick={() => setModelShown(true)}
+                            >
                                 <div
                                     className="aspect-video w-full bg-contain bg-no-repeat"
                                     style={{

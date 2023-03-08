@@ -1,12 +1,12 @@
 import { ipcMain, IpcMainInvokeEvent } from "electron";
 import isDev from "electron-is-dev";
 
-import { getVideoById, getAllVideos, remove, save } from "./repository/video";
+import { getVideoById, getAllVideos, save } from "./repository/video";
 import { search } from "./lib/youtube";
 import VideoService from "./services/video";
 import { initQueue } from "./services/library";
 import { toogleDevTools } from "./windows/main-window";
-import { openLogsInFileExplorer } from "./utils/helpers";
+import { openFileExplorer, openLogsInFileExplorer } from "./utils/helpers";
 import { mainLogger, rendererLogger } from "./utils/logger";
 import VideoDTO from "./dto/video";
 import {
@@ -55,7 +55,9 @@ export default function initIpcHandlers() {
         "video:delete",
         async (_event: IpcMainInvokeEvent, videoId: string) => {
             const video = getVideoById(videoId);
-            remove(video);
+            console.log({ video });
+
+            // remove(video);
         }
     );
 
@@ -94,6 +96,14 @@ export default function initIpcHandlers() {
         "openFileExplorer:logs",
         async (_event: IpcMainInvokeEvent) => {
             openLogsInFileExplorer();
+        }
+    );
+
+    ipcMain.handle(
+        "openFileExplorer:video",
+        async (_event: IpcMainInvokeEvent, videoId: string) => {
+            const video = getVideoById(videoId);
+            openFileExplorer(video.videoPath);
         }
     );
 

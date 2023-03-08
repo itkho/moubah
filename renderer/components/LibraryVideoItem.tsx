@@ -177,6 +177,11 @@ export default function LibraryVideoItem({
                                             className={`rounded-md p-1 text-left ${
                                                 active && "bg-base-300"
                                             }`}
+                                            onClick={() =>
+                                                window.videoApi.openDir(
+                                                    video.id
+                                                )
+                                            }
                                         >
                                             <FontAwesomeIcon
                                                 icon={faFolderOpen}

@@ -1,6 +1,6 @@
 import { BrowserWindow, app } from "electron";
 import { create as createMainWindow } from "./windows/main-window";
-import { create as createSplashWindow } from "./windows/splash-window";
+// import { create as createSplashWindow } from "./windows/splash-window";
 import {
     checkForUpdates,
     sendToastMessageToRenderer,
@@ -13,12 +13,13 @@ import {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on("ready", () => {
-    const splashWindow = createSplashWindow();
+    // TODO: this was removed temporary because the spash screen doesn't show up correctly
+    // const splashWindow = createSplashWindow();
     const mainWindow = createMainWindow();
 
     // if main window is ready to show, then destroy the splash window and show up the main window
     mainWindow.once("ready-to-show", async () => {
-        splashWindow.destroy();
+        // splashWindow.destroy();
         mainWindow.show();
         await checkForUpdates();
         await welcomMessage();
