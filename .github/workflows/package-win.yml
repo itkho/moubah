@@ -44,6 +44,7 @@ jobs:
       - name: 🔗 Install third party depedencies
         working-directory: ./music-remover
         run: >
+          python.exe -m pip install --upgrade pip &&
           python.exe -m pip install requests &&
           python.exe download_3rd_party_deps.py
 
