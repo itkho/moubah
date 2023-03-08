@@ -22,6 +22,7 @@
 -   [ ] 🆕 Add a loading animation on search for slow internet connections
 -   [ ] 🆕 Send error message from renderer to main process
 -   [ ] 🆕 Add substitles
+-   [ ] 🆕 Be able to play the video even if the processing isn't finished yet
 -   [ ] 🪲 Be able to re-process the not-done videos on start
 -   [ ] 🪲 Improve the removal of the music ([exemple](https://youtu.be/EHe0Wu5yM9c))
 -   [ ] ✨ Re-design the search view?

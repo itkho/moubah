@@ -1,7 +1,7 @@
 import { ipcMain, IpcMainInvokeEvent } from "electron";
 import isDev from "electron-is-dev";
 
-import { getVideoById, getAllVideos, save } from "./repository/video";
+import { getVideoById, getAllVideos, remove, save } from "./repository/video";
 import { search } from "./lib/youtube";
 import VideoService from "./services/video";
 import { initQueue } from "./services/library";
@@ -55,9 +55,7 @@ export default function initIpcHandlers() {
         "video:delete",
         async (_event: IpcMainInvokeEvent, videoId: string) => {
             const video = getVideoById(videoId);
-            console.log({ video });
-
-            // remove(video);
+            remove(video);
         }
     );
 
