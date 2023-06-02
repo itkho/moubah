@@ -6,7 +6,6 @@
 
 ## 🔬 Before releasing-it in production
 
--   [ ] ✨ Add a logo
 -   [ ] 🧼 Sort/clean folders
 -   [ ] 🪲 Install / test deeply the app on mac/win
 -   [ ] 🪲 Ask beta tester feedback
