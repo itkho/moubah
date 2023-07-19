@@ -6,10 +6,11 @@
 
 ## 🔬 Before releasing-it in production
 
--   [ ] ✨ Add a logo
+-   [ ] 🪲 Install / test deeply the app on mac Intel
+-   [ ] 🪲 Videos are moving by themself when selected
+-   [ ] 🪲 Fix crash when video folder is corrupted (see [here](https://discord.com/channels/@me/1109187293849333850/1127305613483974666))
+-   [ ] 🆕 Store video title with the ID on the storage folder
 -   [ ] 🧼 Sort/clean folders
--   [ ] 🪲 Install / test deeply the app on mac/win
--   [ ] 🪲 Ask beta tester feedback
 -   [ ] 🆕 Make a website
 
 </br>
