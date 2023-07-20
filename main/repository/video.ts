@@ -4,19 +4,28 @@ import download from "image-downloader";
 
 import { get as getMainWindow } from "../windows/main-window";
 import VideoModel from "../model/video.js";
-import { STORAGE_DIR_PATH } from "../utils/const.js";
+import { STORAGE_DIR_PATH, VIDEO_DIR_SEPARATOR } from "../utils/const.js";
 import { mainLogger } from "../utils/logger.js";
 
 export function getVideoById(id: string) {
-    const videoPath = path.join(STORAGE_DIR_PATH, id);
-    if (!fs.existsSync(videoPath)) {
+    const videoDirNames = fs.readdirSync(STORAGE_DIR_PATH);
+    
+    let videoDirNameFound
+    for (const videoDirName of videoDirNames) {
+        if (videoDirName.endsWith(id)) {
+            videoDirNameFound = videoDirName
+            break
+        }
+    }
+    
+    if (!videoDirNameFound) {
         throw Error(`Video ${id} not found`);
     }
 
     let info;
     try {
         info = JSON.parse(
-            fs.readFileSync(path.join(videoPath, "info.json")).toString()
+            fs.readFileSync(path.join(STORAGE_DIR_PATH, videoDirNameFound, "info.json")).toString()
         );
     } catch (error) {
         console.error(error);
@@ -32,13 +41,14 @@ export function getVideoById(id: string) {
 }
 
 export function getAllVideos() {
-    const videoIds = fs
+    const videoDirNames = fs
         .readdirSync(STORAGE_DIR_PATH, { withFileTypes: true })
         .filter((item) => item.isDirectory())
-        .map((item) => item.name);
+        .map((item) => item.name.split(VIDEO_DIR_SEPARATOR).pop())
+        .filter((item) => item !== undefined)
     const videos = Promise.all(
-        videoIds.map((videoId) => {
-            return getVideoById(videoId);
+        videoDirNames.map((videoId) => {
+            return getVideoById(videoId!);
         })
     );
     return videos;
@@ -64,10 +74,9 @@ export function save(video: VideoModel) {
         metadata: video.metadata,
         ...video.info,
     };
-    const test = JSON.stringify(videoInfo);
 
     try {
-        fs.writeFileSync(path.join(video.infoPath), test);
+        fs.writeFileSync(path.join(video.infoPath), JSON.stringify(videoInfo));
     } catch (error) {
         mainLogger.error(error);
         return;

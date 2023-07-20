@@ -20,3 +20,11 @@ export function openFileExplorer(path: string) {
 export function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+export function logStackTrace() {
+  try {
+    throw new Error("Logging stack trace.");
+  } catch (error: any) {
+    console.log("Stack trace:", error.stack);
+  }
+}
