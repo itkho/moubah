@@ -3,7 +3,7 @@ import { Trans, t } from "@lingui/macro";
 
 import { faTrash, faVolumeXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import VideoDTO from "../../main/dto/video";
 import LibraryPlaceHolder from "../components/LibraryPlaceHolder";
 import LibraryVideoItem from "../components/LibraryVideoItem";
@@ -63,6 +63,8 @@ function transFilter(filter: Filter) {
 export let updateLocalVideo: (videoUpdated: VideoDTO) => void;
 
 export default function LibraryView({ hidden }: { hidden: boolean }) {
+    window.mainApi.log("debug", "TEST")
+    console.log("RERENDER")
     const {
         localVideos,
         removeLocalVideo,
@@ -78,7 +80,9 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
     const [selectedFilter, setSelectedFilter] = useState<Filter>(Filter.all);
 
     const selectedVideoIds = selectedVideos.map((video) => video.id);
-    const filteredVideos = localVideos.filter((video) => isNotFiltered(video));
+    const filteredVideos = useMemo(() => {
+        return getSortedFilteredVideos(localVideos)
+    }, [localVideos, selectedFilter, selectedSort])
 
     updateLocalVideo = (videoUpdated) => {
         setLocalVideos(
@@ -156,6 +160,14 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
         }
     }
 
+    function getSortedFilteredVideos(videos: VideoDTO[]): VideoDTO[] {
+        return applySort(applyFilter(videos))
+    }
+
+    function applyFilter(videos: VideoDTO[]): VideoDTO[] {
+        return videos.filter((video) => isNotFiltered(video))
+    }
+
     function isNotFiltered(video: VideoDTO): boolean {
         switch (selectedFilter) {
             case Filter.all:
@@ -169,10 +181,11 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
         }
     }
 
-    function applySort() {
+
+    function applySort(videos: VideoDTO[]): VideoDTO[] {
         switch (selectedSort) {
             case Sort.recentFirst:
-                localVideos.sort((a, b) =>
+                videos.sort((a, b) =>
                     a.metadata?.creationTimestamp! >
                         b.metadata?.creationTimestamp!
                         ? -1
@@ -180,7 +193,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                 );
                 break;
             case Sort.recentLast:
-                localVideos.sort((a, b) =>
+                videos.sort((a, b) =>
                     a.metadata?.creationTimestamp! <
                         b.metadata?.creationTimestamp!
                         ? -1
@@ -188,13 +201,11 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                 );
                 break;
             case Sort.alphabetically:
-                localVideos.sort((a, b) => (a.title > b.title ? 1 : -1));
+                videos.sort((a, b) => (a.title > b.title ? 1 : -1));
                 break;
         }
+        return videos
     }
-    // TODO: find a better place to call this function
-    // should be call only when localVideos or selectedSort change
-    applySort();
 
     return (
         <>
@@ -278,8 +289,8 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     <button
                                         ref={deleteButton}
                                         className={`cursor-pointer rounded-md py-1 px-2 ring-1 disabled:cursor-not-allowed ${isDeleting
-                                                ? "bg-ko-500 text-base-100-light ring-ko-600 hover:bg-ko-600"
-                                                : "bg-base-200  hover:bg-base-300 ring-base-300 hover:ring-base-400"
+                                            ? "bg-ko-500 text-base-100-light ring-ko-600 hover:bg-ko-600"
+                                            : "bg-base-200  hover:bg-base-300 ring-base-300 hover:ring-base-400"
                                             }`}
                                         disabled={!selectedVideos.length}
                                         onClick={handleDeleteClick}
