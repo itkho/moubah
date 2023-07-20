@@ -174,17 +174,17 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
             case Sort.recentFirst:
                 localVideos.sort((a, b) =>
                     a.metadata?.creationTimestamp! >
-                    b.metadata?.creationTimestamp!
-                        ? 1
-                        : -1
+                        b.metadata?.creationTimestamp!
+                        ? -1
+                        : 1
                 );
                 break;
             case Sort.recentLast:
                 localVideos.sort((a, b) =>
                     a.metadata?.creationTimestamp! <
-                    b.metadata?.creationTimestamp!
-                        ? 1
-                        : -1
+                        b.metadata?.creationTimestamp!
+                        ? -1
+                        : 1
                 );
                 break;
             case Sort.alphabetically:
@@ -235,12 +235,11 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                         onClick={toggleSelectAll}
                                     >
                                         <div
-                                            className={`h-full w-full rounded-sm ${
-                                                selectedVideos.length !== 0 &&
+                                            className={`h-full w-full rounded-sm ${selectedVideos.length !== 0 &&
                                                 selectedVideos.length ===
-                                                    filteredVideos.length &&
+                                                filteredVideos.length &&
                                                 "bg-lime-500"
-                                            }`}
+                                                }`}
                                         ></div>
                                     </div>
                                     <Trans>Select all</Trans>
@@ -278,11 +277,10 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     </button>
                                     <button
                                         ref={deleteButton}
-                                        className={`cursor-pointer rounded-md py-1 px-2 ring-1 disabled:cursor-not-allowed ${
-                                            isDeleting
+                                        className={`cursor-pointer rounded-md py-1 px-2 ring-1 disabled:cursor-not-allowed ${isDeleting
                                                 ? "bg-ko-500 text-base-100-light ring-ko-600 hover:bg-ko-600"
                                                 : "bg-base-200  hover:bg-base-300 ring-base-300 hover:ring-base-400"
-                                        }`}
+                                            }`}
                                         disabled={!selectedVideos.length}
                                         onClick={handleDeleteClick}
                                     >

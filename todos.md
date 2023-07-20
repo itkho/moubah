@@ -6,10 +6,11 @@
 
 ## 🔬 Before releasing-it in production
 
--   [ ] 🪲 Install / test deeply the app on mac Intel
--   [ ] 🪲 Videos are moving by themself when selected
+-   [x] 🪲 Videos are moving by themself when selected
+-   [ ] 🆕 Add `node-machine-id` and send to firebase to keep track of the usage
 -   [ ] 🪲 Fix crash when video folder is corrupted (see [here](https://discord.com/channels/@me/1109187293849333850/1127305613483974666))
 -   [ ] 🆕 Store video title with the ID on the storage folder
+-   [ ] 🪲 Install / test deeply the app on mac Intel
 -   [ ] 🧼 Sort/clean folders
 -   [ ] 🆕 Make a website
 
