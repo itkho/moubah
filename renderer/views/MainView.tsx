@@ -51,7 +51,7 @@ export default function MainView() {
         <div className="z-40 h-full w-full">
             <SearchView hidden={seachHidden} />
             <LibraryView hidden={libraryHidden} />
-            <PlayerView hidden={playerHidden} />
+            <PlayerView hidden={playerHidden} autoplay={true} />
             <ToastContainer
                 position="bottom-right"
                 autoClose={false}

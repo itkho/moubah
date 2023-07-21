@@ -63,8 +63,6 @@ function transFilter(filter: Filter) {
 export let updateLocalVideo: (videoUpdated: VideoDTO) => void;
 
 export default function LibraryView({ hidden }: { hidden: boolean }) {
-    window.mainApi.log("debug", "TEST")
-    console.log("RERENDER")
     const {
         localVideos,
         removeLocalVideo,

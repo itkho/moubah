@@ -63,11 +63,13 @@ export default function LibraryVideoItem({
 }) {
     const { setView } = useView();
     const { addToSelectedVideos, removeFromSelectedVideos } = useLocalVideo();
-    const { updateVideo } = usePlayer();
+    const { updateVideo, autoplay } = usePlayer();
 
     function playVideo() {
         if (video.status !== VideoStatus.done) return;
         updateVideo(video);
+        autoplay.current = true;
+        console.log(`LibraryVideoItem: ${autoplay.current}`);
         setView(View.player);
     }
 

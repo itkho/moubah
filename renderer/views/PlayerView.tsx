@@ -1,4 +1,4 @@
-import React, { KeyboardEventHandler, useRef } from "react";
+import React, { KeyboardEventHandler, useEffect, useRef } from "react";
 import ReactPlayer from "react-player";
 import PlayerPlaceHolder from "../components/PlayerPlaceHolder";
 
@@ -6,8 +6,13 @@ import { usePlayer } from "../context/PlayerContext";
 import { cleanSrcPath } from "../utils/helpers";
 
 export default function PlayerView({ hidden }: { hidden: boolean }) {
-    const { video } = usePlayer();
+    const { video, autoplay } = usePlayer();
     const player = useRef<ReactPlayer>(null);
+
+    useEffect(() => {
+        autoplay.current = false;
+        console.log(`PlayerView: ${autoplay.current}`);
+    }, [hidden]);
 
     const onKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {
         let shift = 0;
@@ -49,6 +54,7 @@ export default function PlayerView({ hidden }: { hidden: boolean }) {
                                 <ReactPlayer
                                     ref={player}
                                     controls
+                                    playing={autoplay.current}
                                     url={cleanSrcPath(video?.videoUri)}
                                     width="100%"
                                     height="100%"
