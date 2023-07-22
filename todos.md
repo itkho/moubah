@@ -6,7 +6,6 @@
 
 ## 🔬 Before releasing-it in production
 
--   [ ] 🆕 Add `node-machine-id` and send to firebase to keep track of the usage
 -   [ ] 🪲 Fix crash when video folder is corrupted (see [here](https://discord.com/channels/@me/1109187293849333850/1127305613483974666))
 -   [ ] 🪲 Install / test deeply the app on mac Intel
 -   [ ] 🧼 Sort/clean folders
@@ -24,6 +23,7 @@
 -   [ ] 🆕 Send error message from renderer to main process
 -   [ ] 🆕 Add substitles
 -   [ ] 🆕 Be able to play the video even if the processing isn't finished yet
+-   [ ] 🆕 Setup sentry
 -   [ ] 🪲 Be able to re-process the not-done videos on start
 -   [ ] 🪲 Improve the removal of the music ([exemple](https://youtu.be/EHe0Wu5yM9c))
 -   [ ] ✨ Re-design the search view?
