@@ -16,6 +16,8 @@ import { pushToQueue } from "../lib/queue";
 import { mainLogger } from "../utils/logger";
 import VideoDTO from "../dto/video";
 import { eventEmitter } from "../utils/event";
+import { trackEvent } from "@aptabase/electron/main";
+import { getUserId } from "../model/user-preference";
 
 // TODO: inherit from AbstractInstanceService
 // TODO: add child YtVideoService for logic specific to Yt (to facilitate the futur implementation of FileVideoService)
@@ -56,6 +58,8 @@ export default class VideoService {
 
     async download() {
         mainLogger.info("Downloading...");
+        trackEvent("download_video", { user_id: getUserId() });
+
         this.setStatus(VideoStatus.downloading);
         try {
             await this.#downloadVideo();
@@ -167,7 +171,8 @@ export default class VideoService {
                 .join("\n")
         );
         mainLogger.debug(
-            `File ${audioListFile} created: ${fs.existsSync(STORAGE_DIR_PATH) ? "✅" : "❌"
+            `File ${audioListFile} created: ${
+                fs.existsSync(STORAGE_DIR_PATH) ? "✅" : "❌"
             }`
         );
         mainLogger.debug(`File created: ${audioListFile}`);
@@ -176,7 +181,8 @@ export default class VideoService {
             path.join(this.video.dir, "audio_wo_music.wav")
         );
         mainLogger.debug(
-            `Audio file ${audioListFile} created: ${path.join(this.video.dir, "audio_wo_music.wav") ? "✅" : "❌"
+            `Audio file ${audioListFile} created: ${
+                path.join(this.video.dir, "audio_wo_music.wav") ? "✅" : "❌"
             }`
         );
         await addAudioToVideo(

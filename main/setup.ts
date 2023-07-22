@@ -2,6 +2,10 @@ import fetch from "electron-fetch";
 import { satisfies } from "compare-versions";
 import { spawn } from "child_process";
 import treeKill from "tree-kill";
+import {
+    initialize as initializeAptabase,
+    trackEvent,
+} from "@aptabase/electron/main";
 
 import { app, dialog, shell } from "electron";
 
@@ -26,6 +30,7 @@ import {
     get as getUserPref,
     set as setUserPref,
     setLastMessageSeenTimestamp,
+    getUserId,
 } from "./model/user-preference";
 import { NotImplementedError } from "./utils/errors";
 import { getNewMessages } from "./lib/firebase";
@@ -265,6 +270,7 @@ export async function sendToastMessageToRenderer() {
     let messages;
     try {
         messages = await getNewMessages();
+        mainLogger.debug({ messages });
     } catch (error) {
         mainLogger.error(error);
         return;
@@ -283,6 +289,9 @@ export async function sendToastMessageToRenderer() {
 
 export async function setUp() {
     initIpcHandlers();
+
+    await initializeAptabase("A-EU-9813247449");
+    trackEvent("open_app", { user_id: getUserId() });
 
     // Test if the server isn't already up (from a previous session)
     try {

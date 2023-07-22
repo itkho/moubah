@@ -1,3 +1,4 @@
+import { v4 as uuid } from "uuid";
 import settings from "electron-settings";
 import { nativeTheme } from "electron";
 import { osLocale } from "os-locale-s";
@@ -23,6 +24,15 @@ export function getLang(): string {
         return lang;
     }
     return osLocale.sync().split("-")[0];
+}
+
+export function getUserId(): string {
+    let userId = settings.getSync("userId");
+    if (typeof userId !== "string") {
+        userId = uuid();
+        settings.setSync("userId", userId);
+    }
+    return userId;
 }
 
 function getDarkMode(): boolean {
