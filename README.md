@@ -1,9 +1,8 @@
 <h1 align="center">
-    <div>
-      <img style="vertical-align:middle" src="renderer/assets/icon-mac.png" alt="(logo)" width="70" height="70" >
-      <span>Moubah</span>
+    <div style="font-size: 300px">
+      <img style="vertical-align:middle" src="renderer/assets/icon-mac.png" alt="(logo)" width="100" height="100" >
+      <span style="font-size: 300px">Moubah</span>
     </div>
-    🚧 (WIP) 🚧 </br>
 </h1>
 </br>
 
@@ -38,13 +37,12 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 
 </br>
 
-<!-- Convert .mov or .MP4 to .gif.md -->
-<!-- https://gist.github.com/SheldonWangRJT/8d3f44a35c8d1386a396b9b49b43c385 -->
-<!-- TLDR: ffmpeg -i demo.mov -pix_fmt rgb8 -r 10 demo.gif && gifsicle -O3 demo.gif -o demo.gif -->
 
-<p align="center">
-  <img src="demo.gif" alt="Example of Moubah usage" />
-</p>
+<!-- 1: record -->
+<!-- 2: ffmpeg -i demo.mov -q:v 0 demo.mp4 -->
+<!-- 3: drag & drop from Github -->
+https://github.com/itkho/moubah/assets/121198251/e0b6ae86-3973-477b-9452-9c48677f4894
+
 
 **Download the app** : 🍏 ~~Apple~~ | 🪟 ~~Windows~~ | 🐧 ~~Linux~~
 
