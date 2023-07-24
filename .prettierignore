@@ -2,3 +2,5 @@ node_modules
 .venv
 out
 .vscode
+music-remover
+main/proto

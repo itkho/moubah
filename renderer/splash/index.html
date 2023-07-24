@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="script-src 'self' https://www.youtube.com"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Moubah</title>
+        <link href="./index.css" rel="stylesheet" />
+        <!-- Google font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div
+            class="flex h-screen w-screen flex-col items-center justify-center gap-4 bg-neutral-600 font-rubik"
+        >
+            <div class="flex items-center gap-2">
+                <div class="animate-translate-left">
+                    <div
+                        class="absolute right-6 -z-10 h-12 w-[14rem] bg-neutral-600"
+                    ></div>
+                    <img src="../assets/logo.svg" class="z-10 h-12" />
+                </div>
+                <div class="font-fredoka-one text-3xl text-neutral-200">
+                    Moubah
+                </div>
+            </div>
+            <div class="animate-delayed-show-1">
+                <div
+                    class="border-t-opacity-90 h-8 w-8 animate-spin rounded-full border-4 border-neutral-500 border-t-neutral-200"
+                ></div>
+            </div>
+            <div class="relative w-full">
+                <div
+                    class="absolute top-0 left-1/2 -translate-x-1/2 animate-delayed-show-10 text-neutral-200"
+                >
+                    The first installation may take some time...
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

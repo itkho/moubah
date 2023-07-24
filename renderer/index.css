@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .clip-path-triangle {
+        clip-path: polygon(0 0, 100% 100%, 0 100%);
+    }
+}
+
+@layer base {
+    .bg-highlight {
+        @apply bg-highlight-light dark:bg-highlight-dark;
+    }
+    .text-highlight {
+        @apply text-highlight-light dark:text-highlight-dark;
+    }
+    .ring-highlight {
+        @apply ring-highlight-light dark:ring-highlight-dark;
+    }
+    .decoration-highlight {
+        @apply decoration-highlight-light dark:decoration-highlight-dark;
+    }
+    .border-highlight {
+        @apply border-highlight-light dark:border-highlight-dark;
+    }
+    .fill-highlight {
+        @apply dark:text-fill-dark fill-highlight-light;
+    }
+
+    .bg-highlight-hover {
+        @apply bg-highlight-hover-light dark:bg-highlight-hover-dark;
+    }
+    .text-highlight-hover {
+        @apply text-highlight-hover-light dark:text-highlight-hover-dark;
+    }
+    .ring-highlight-hover {
+        @apply ring-highlight-hover-light dark:ring-highlight-hover-dark;
+    }
+    .fill-highlight-hover {
+        @apply dark:text-fill-dark fill-highlight-hover-light;
+    }
+
+    .divide-background {
+        @apply divide-background-light dark:divide-background-dark;
+    }
+    .ring-background {
+        @apply ring-background-light dark:ring-background-dark;
+    }
+    .ring-offset-background {
+        @apply ring-offset-background-light dark:ring-offset-background-dark;
+    }
+    .border-background {
+        @apply border-background-light dark:border-background-dark;
+    }
+    .bg-background {
+        @apply bg-background-light dark:bg-background-dark;
+    }
+    .text-background {
+        @apply text-background-light dark:text-background-dark;
+    }
+    .fill-background {
+        @apply dark:text-fill-dark fill-background-light;
+    }
+
+    .divide-base-100 {
+        @apply divide-base-100-light dark:divide-base-100-dark;
+    }
+    .ring-base-100 {
+        @apply ring-base-100-light dark:ring-base-100-dark;
+    }
+    .ring-offset-base-100 {
+        @apply ring-offset-base-100-light dark:ring-offset-base-100-dark;
+    }
+    .border-base-100 {
+        @apply border-base-100-light dark:border-base-100-dark;
+    }
+    .bg-base-100 {
+        @apply bg-base-100-light dark:bg-base-100-dark;
+    }
+    .text-base-100 {
+        @apply text-base-100-light dark:text-base-100-dark;
+    }
+    .fill-base-100 {
+        @apply fill-base-100-light dark:fill-base-100-dark;
+    }
+
+    .divide-base-200 {
+        @apply divide-base-200-light dark:divide-base-200-dark;
+    }
+    .ring-base-200 {
+        @apply ring-base-200-light dark:ring-base-200-dark;
+    }
+    .ring-offset-base-200 {
+        @apply ring-offset-base-200-light dark:ring-offset-base-200-dark;
+    }
+    .border-base-200 {
+        @apply border-base-200-light dark:border-base-200-dark;
+    }
+    .bg-base-200 {
+        @apply bg-base-200-light dark:bg-base-200-dark;
+    }
+    .text-base-200 {
+        @apply text-base-200-light dark:text-base-200-dark;
+    }
+    .fill-base-200 {
+        @apply fill-base-200-light dark:fill-base-200-dark;
+    }
+
+    .divide-base-300 {
+        @apply divide-base-300-light dark:divide-base-300-dark;
+    }
+    .ring-base-300 {
+        @apply ring-base-300-light dark:ring-base-300-dark;
+    }
+    .ring-offset-base-300 {
+        @apply ring-offset-base-300-light dark:ring-offset-base-300-dark;
+    }
+    .border-base-300 {
+        @apply border-base-300-light dark:border-base-300-dark;
+    }
+    .bg-base-300 {
+        @apply bg-base-300-light dark:bg-base-300-dark;
+    }
+    .text-base-300 {
+        @apply text-base-300-light dark:text-base-300-dark;
+    }
+    .fill-base-300 {
+        @apply fill-base-300-light dark:fill-base-300-dark;
+    }
+
+    .divide-base-400 {
+        @apply divide-base-400-light dark:divide-base-400-dark;
+    }
+    .ring-base-400 {
+        @apply ring-base-400-light dark:ring-base-400-dark;
+    }
+    .ring-offset-base-400 {
+        @apply ring-offset-base-400-light dark:ring-offset-base-400-dark;
+    }
+    .border-base-400 {
+        @apply border-base-400-light dark:border-base-400-dark;
+    }
+    .bg-base-400 {
+        @apply bg-base-400-light dark:bg-base-400-dark;
+    }
+    .text-base-400 {
+        @apply text-base-400-light dark:text-base-400-dark;
+    }
+    .fill-base-400 {
+        @apply fill-base-400-light dark:fill-base-400-dark;
+    }
+
+    .divide-base-500 {
+        @apply divide-base-500-light dark:divide-base-500-dark;
+    }
+    .ring-base-500 {
+        @apply ring-base-500-light dark:ring-base-500-dark;
+    }
+    .ring-offset-base-500 {
+        @apply ring-offset-base-500-light dark:ring-offset-base-500-dark;
+    }
+    .border-base-500 {
+        @apply border-base-500-light dark:border-base-500-dark;
+    }
+    .bg-base-500 {
+        @apply bg-base-500-light dark:bg-base-500-dark;
+    }
+    .text-base-500 {
+        @apply text-base-500-light dark:text-base-500-dark;
+    }
+    .fill-base-500 {
+        @apply fill-base-500-light dark:fill-base-500-dark;
+    }
+
+    .divide-base-600 {
+        @apply divide-base-600-light dark:divide-base-600-dark;
+    }
+    .ring-base-600 {
+        @apply ring-base-600-light dark:ring-base-600-dark;
+    }
+    .ring-offset-base-600 {
+        @apply ring-offset-base-600-light dark:ring-offset-base-600-dark;
+    }
+    .border-base-600 {
+        @apply border-base-600-light dark:border-base-600-dark;
+    }
+    .bg-base-600 {
+        @apply bg-base-600-light dark:bg-base-600-dark;
+    }
+    .text-base-600 {
+        @apply text-base-600-light dark:text-base-600-dark;
+    }
+    .fill-base-600 {
+        @apply fill-base-600-light dark:fill-base-600-dark;
+    }
+
+    .divide-base-700 {
+        @apply divide-base-700-light dark:divide-base-700-dark;
+    }
+    .ring-base-700 {
+        @apply ring-base-700-light dark:ring-base-700-dark;
+    }
+    .ring-offset-base-700 {
+        @apply ring-offset-base-700-light dark:ring-offset-base-700-dark;
+    }
+    .border-base-700 {
+        @apply border-base-700-light dark:border-base-700-dark;
+    }
+    .bg-base-700 {
+        @apply bg-base-700-light dark:bg-base-700-dark;
+    }
+    .text-base-700 {
+        @apply text-base-700-light dark:text-base-700-dark;
+    }
+    .fill-base-700 {
+        @apply fill-base-700-light dark:fill-base-700-dark;
+    }
+
+    .divide-base-800 {
+        @apply divide-base-800-light dark:divide-base-800-dark;
+    }
+    .ring-base-800 {
+        @apply ring-base-800-light dark:ring-base-800-dark;
+    }
+    .ring-offset-base-800 {
+        @apply ring-offset-base-800-light dark:ring-offset-base-800-dark;
+    }
+    .border-base-800 {
+        @apply border-base-800-light dark:border-base-800-dark;
+    }
+    .bg-base-800 {
+        @apply bg-base-800-light dark:bg-base-800-dark;
+    }
+    .text-base-800 {
+        @apply text-base-800-light dark:text-base-800-dark;
+    }
+    .fill-base-800 {
+        @apply fill-base-800-light dark:fill-base-800-dark;
+    }
+
+    .divide-base-900 {
+        @apply divide-base-900-light dark:divide-base-900-dark;
+    }
+    .ring-base-900 {
+        @apply ring-base-900-light dark:ring-base-900-dark;
+    }
+    .ring-offset-base-900 {
+        @apply ring-offset-base-900-light dark:ring-offset-base-900-dark;
+    }
+    .border-base-900 {
+        @apply border-base-900-light dark:border-base-900-dark;
+    }
+    .bg-base-900 {
+        @apply bg-base-900-light dark:bg-base-900-dark;
+    }
+    .text-base-900 {
+        @apply text-base-900-light dark:text-base-900-dark;
+    }
+    .fill-base-900 {
+        @apply fill-base-900-light dark:fill-base-900-dark;
+    }
+}

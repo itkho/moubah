@@ -1,0 +1,229 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2023-02-14 08:46+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: ar\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: renderer/views/LibraryView.tsx:255
+msgid "Actions:"
+msgstr "الإجراءات:"
+
+#: renderer/components/SearchResult.tsx:63
+msgid "Background music removed"
+msgstr "تمت إزالة موسيقى الخلفية"
+
+#: renderer/components/LibraryVideoItem.tsx:217
+#: renderer/components/SearchResult.tsx:122
+msgid "By:"
+msgstr "بواسطة:"
+
+#: renderer/components/PreviewModal.tsx:54
+msgid "Close"
+msgstr "اغلاق"
+
+#: renderer/components/Footer.tsx:118
+msgid "Console"
+msgstr "وحدة التحكم"
+
+#: renderer/components/NavBar.tsx:185
+msgid "Dark"
+msgstr "داكن"
+
+#: renderer/components/LibraryVideoItem.tsx:206
+#: renderer/views/LibraryView.tsx:293
+msgid "Delete"
+msgstr "حذف"
+
+#: renderer/components/LibraryVideoItem.tsx:91
+msgid "Download"
+msgstr "تحميل"
+
+#: renderer/components/SearchResult.tsx:68
+msgid "Downloading the video..."
+msgstr "تحميل الفيديو ..."
+
+#: renderer/components/SearchPlaceHolder.tsx:12
+msgid "Enter the title of a video or an URL in the search bar"
+msgstr "أدخل عنوان مقطع فيديو أو عنوان URL في شريط البحث"
+
+#: renderer/views/LibraryView.tsx:212
+msgid "Filter"
+msgstr "منقي"
+
+#: renderer/components/NavBar.tsx:77
+#: renderer/components/PlayerPlaceHolder.tsx:18
+msgid "Library"
+msgstr "مكتبة الفيديو"
+
+#: renderer/components/NavBar.tsx:207
+msgid "Light"
+msgstr "ضوء"
+
+#: renderer/components/Footer.tsx:111
+msgid "Logs"
+msgstr "السجلات"
+
+#: renderer/components/Footer.tsx:82
+msgid "Men"
+msgstr "رجال"
+
+#: renderer/components/Footer.tsx:59
+msgid "Music remover"
+msgstr "مزيل الموسيقى"
+
+#: renderer/views/LibraryView.tsx:207
+msgid "My videos"
+msgstr "الفيديو الخاصة بي"
+
+#: renderer/components/LibraryPlaceHolder.tsx:12
+msgid "No video to watch yet..."
+msgstr "لا يوجد فيديو لمشاهدته بعد ..."
+
+#: renderer/components/LibraryVideoItem.tsx:185
+msgid "Open in"
+msgstr "فتح في"
+
+#: renderer/components/Footer.tsx:104
+msgid "Open-source"
+msgstr "مفتوحة المصدر"
+
+#: renderer/components/LibraryVideoItem.tsx:106
+#: renderer/views/LibraryView.tsx:266
+msgid "Pause"
+msgstr "وقف"
+
+#: renderer/components/LibraryVideoItem.tsx:112
+msgid "Play"
+msgstr "شغل"
+
+#: renderer/components/NavBar.tsx:93
+msgid "Player"
+msgstr "مشغل"
+
+#: renderer/components/SearchResult.tsx:142
+msgid "Preview the video"
+msgstr "معاينة الفيديو"
+
+#: renderer/components/PreviewModal.tsx:61
+#: renderer/components/SearchResult.tsx:70
+msgid "Remove background music"
+msgstr "إزالة موسيقى الخلفية"
+
+#: renderer/components/SearchResult.tsx:65
+msgid "Removing background music..."
+msgstr "جارٍ إزالة موسيقى الخلفية ..."
+
+#: renderer/components/LibraryVideoItem.tsx:102
+#: renderer/views/LibraryView.tsx:277
+msgid "Resume"
+msgstr "استأنف"
+
+#: renderer/components/LibraryPlaceHolder.tsx:21
+#: renderer/components/NavBar.tsx:61
+msgid "Search"
+msgstr "بحث"
+
+#: renderer/components/LibraryPlaceHolder.tsx:15
+msgid "Search for a video in the"
+msgstr "ابحث عن الفيديو في"
+
+#: renderer/components/PlayerPlaceHolder.tsx:12
+msgid "Select a video in the"
+msgstr "اختر فيديو في"
+
+#: renderer/views/LibraryView.tsx:246
+msgid "Select all"
+msgstr "اختر الكل"
+
+#: renderer/views/LibraryView.tsx:249
+msgid "Selected:"
+msgstr "المختار:"
+
+#: renderer/views/LibraryView.tsx:221
+msgid "Sort by"
+msgstr "ترتيب حسب"
+
+#: renderer/components/LibraryVideoItem.tsx:95
+msgid "Stop"
+msgstr "قف"
+
+#: renderer/components/Footer.tsx:69
+msgid "Support"
+msgstr "مساعدة"
+
+#: renderer/views/LibraryView.tsx:293
+msgid "Sure?"
+msgstr "بالتأكيد؟"
+
+#: renderer/components/Footer.tsx:93
+msgid "Women"
+msgstr "نساء"
+
+#: renderer/views/LibraryView.tsx:48
+msgid "all"
+msgstr "الجميع"
+
+#: renderer/components/LibraryVideoItem.tsx:45
+#: renderer/views/LibraryView.tsx:51
+msgid "done"
+msgstr "منتهي"
+
+#: renderer/components/LibraryVideoItem.tsx:39
+msgid "downloading"
+msgstr "جارى التحميل"
+
+#: renderer/views/LibraryView.tsx:54
+msgid "in progress"
+msgstr "تتقدم"
+
+#: renderer/components/LibraryVideoItem.tsx:36
+msgid "initial"
+msgstr "إبتدائي"
+
+#: renderer/views/LibraryView.tsx:31
+msgid "name"
+msgstr "اسم"
+
+#: renderer/components/LibraryVideoItem.tsx:140
+#: renderer/views/LibraryView.tsx:57
+msgid "new"
+msgstr "جديد"
+
+#: renderer/views/LibraryView.tsx:25
+msgid "newest"
+msgstr "أحدث"
+
+#: renderer/components/Footer.tsx:47
+#: renderer/components/Footer.tsx:62
+msgid "offline"
+msgstr "غير متصل"
+
+#: renderer/views/LibraryView.tsx:28
+msgid "oldest"
+msgstr "أقدم"
+
+#: renderer/components/Footer.tsx:47
+#: renderer/components/Footer.tsx:61
+msgid "online"
+msgstr "متصل"
+
+#: renderer/components/LibraryVideoItem.tsx:269
+msgid "pending"
+msgstr "انتظار"
+
+#: renderer/components/LibraryVideoItem.tsx:42
+msgid "processing"
+msgstr "علاج"
+
+#: renderer/components/LibraryPlaceHolder.tsx:23
+msgid "section"
+msgstr "قسم"

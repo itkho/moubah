@@ -1,0 +1,229 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2023-02-13 07:51+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: renderer/views/LibraryView.tsx:255
+msgid "Actions:"
+msgstr "Actions:"
+
+#: renderer/components/SearchResult.tsx:63
+msgid "Background music removed"
+msgstr "Background music removed"
+
+#: renderer/components/LibraryVideoItem.tsx:217
+#: renderer/components/SearchResult.tsx:122
+msgid "By:"
+msgstr "By:"
+
+#: renderer/components/PreviewModal.tsx:54
+msgid "Close"
+msgstr "Close"
+
+#: renderer/components/Footer.tsx:118
+msgid "Console"
+msgstr "Console"
+
+#: renderer/components/NavBar.tsx:185
+msgid "Dark"
+msgstr "Dark"
+
+#: renderer/components/LibraryVideoItem.tsx:206
+#: renderer/views/LibraryView.tsx:293
+msgid "Delete"
+msgstr "Delete"
+
+#: renderer/components/LibraryVideoItem.tsx:91
+msgid "Download"
+msgstr "Download"
+
+#: renderer/components/SearchResult.tsx:68
+msgid "Downloading the video..."
+msgstr "Downloading the video..."
+
+#: renderer/components/SearchPlaceHolder.tsx:12
+msgid "Enter the title of a video or an URL in the search bar"
+msgstr "Enter the title of a video or an URL in the search bar"
+
+#: renderer/views/LibraryView.tsx:212
+msgid "Filter"
+msgstr "Filter"
+
+#: renderer/components/NavBar.tsx:77
+#: renderer/components/PlayerPlaceHolder.tsx:18
+msgid "Library"
+msgstr "Library"
+
+#: renderer/components/NavBar.tsx:207
+msgid "Light"
+msgstr "Light"
+
+#: renderer/components/Footer.tsx:111
+msgid "Logs"
+msgstr "Logs"
+
+#: renderer/components/Footer.tsx:82
+msgid "Men"
+msgstr "Men"
+
+#: renderer/components/Footer.tsx:59
+msgid "Music remover"
+msgstr "Music remover"
+
+#: renderer/views/LibraryView.tsx:207
+msgid "My videos"
+msgstr "My videos"
+
+#: renderer/components/LibraryPlaceHolder.tsx:12
+msgid "No video to watch yet..."
+msgstr "No video to watch yet..."
+
+#: renderer/components/LibraryVideoItem.tsx:185
+msgid "Open in"
+msgstr "Open in"
+
+#: renderer/components/Footer.tsx:104
+msgid "Open-source"
+msgstr "Open-source"
+
+#: renderer/components/LibraryVideoItem.tsx:106
+#: renderer/views/LibraryView.tsx:266
+msgid "Pause"
+msgstr "Pause"
+
+#: renderer/components/LibraryVideoItem.tsx:112
+msgid "Play"
+msgstr "Play"
+
+#: renderer/components/NavBar.tsx:93
+msgid "Player"
+msgstr "Player"
+
+#: renderer/components/SearchResult.tsx:142
+msgid "Preview the video"
+msgstr "Preview the video"
+
+#: renderer/components/PreviewModal.tsx:61
+#: renderer/components/SearchResult.tsx:70
+msgid "Remove background music"
+msgstr "Remove background music"
+
+#: renderer/components/SearchResult.tsx:65
+msgid "Removing background music..."
+msgstr "Removing background music..."
+
+#: renderer/components/LibraryVideoItem.tsx:102
+#: renderer/views/LibraryView.tsx:277
+msgid "Resume"
+msgstr "Resume"
+
+#: renderer/components/LibraryPlaceHolder.tsx:21
+#: renderer/components/NavBar.tsx:61
+msgid "Search"
+msgstr "Search"
+
+#: renderer/components/LibraryPlaceHolder.tsx:15
+msgid "Search for a video in the"
+msgstr "Search for a video in the"
+
+#: renderer/components/PlayerPlaceHolder.tsx:12
+msgid "Select a video in the"
+msgstr "Select a video in the"
+
+#: renderer/views/LibraryView.tsx:246
+msgid "Select all"
+msgstr "Select all"
+
+#: renderer/views/LibraryView.tsx:249
+msgid "Selected:"
+msgstr "Selected:"
+
+#: renderer/views/LibraryView.tsx:221
+msgid "Sort by"
+msgstr "Sort by"
+
+#: renderer/components/LibraryVideoItem.tsx:95
+msgid "Stop"
+msgstr "Stop"
+
+#: renderer/components/Footer.tsx:69
+msgid "Support"
+msgstr "Support"
+
+#: renderer/views/LibraryView.tsx:293
+msgid "Sure?"
+msgstr "Sure?"
+
+#: renderer/components/Footer.tsx:93
+msgid "Women"
+msgstr "Women"
+
+#: renderer/views/LibraryView.tsx:48
+msgid "all"
+msgstr "all"
+
+#: renderer/components/LibraryVideoItem.tsx:45
+#: renderer/views/LibraryView.tsx:51
+msgid "done"
+msgstr "done"
+
+#: renderer/components/LibraryVideoItem.tsx:39
+msgid "downloading"
+msgstr "downloading"
+
+#: renderer/views/LibraryView.tsx:54
+msgid "in progress"
+msgstr "in progress"
+
+#: renderer/components/LibraryVideoItem.tsx:36
+msgid "initial"
+msgstr "initial"
+
+#: renderer/views/LibraryView.tsx:31
+msgid "name"
+msgstr "name"
+
+#: renderer/components/LibraryVideoItem.tsx:140
+#: renderer/views/LibraryView.tsx:57
+msgid "new"
+msgstr "new"
+
+#: renderer/views/LibraryView.tsx:25
+msgid "newest"
+msgstr "newest"
+
+#: renderer/components/Footer.tsx:47
+#: renderer/components/Footer.tsx:62
+msgid "offline"
+msgstr "offline"
+
+#: renderer/views/LibraryView.tsx:28
+msgid "oldest"
+msgstr "oldest"
+
+#: renderer/components/Footer.tsx:47
+#: renderer/components/Footer.tsx:61
+msgid "online"
+msgstr "online"
+
+#: renderer/components/LibraryVideoItem.tsx:269
+msgid "pending"
+msgstr "pending"
+
+#: renderer/components/LibraryVideoItem.tsx:42
+msgid "processing"
+msgstr "processing"
+
+#: renderer/components/LibraryPlaceHolder.tsx:23
+msgid "section"
+msgstr "section"

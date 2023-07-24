@@ -1,0 +1,131 @@
+name: Package Mac (ARM) app 📦
+
+on:
+  push:
+    branches: [main, develop]
+
+jobs:
+  package:
+    # REMINDER:
+    #   see here: https://github.com/karim-bouchez/moubah/settings/actions/runners
+    #   and: $ source music-remover/.venv/bin/activate && cd actions-runner && bash run.sh
+    runs-on: [self-hosted, macOS, ARM64]
+    permissions:
+      contents: write
+    steps:
+      - name: 📥 Check out repository and submodules
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: 🏷 Get version from package.json
+        uses: tyankatsu0105/read-package-version-actions@v1
+        id: package-version
+
+      #- name: 🏷 Get existing tag with same version
+      #  uses: mukunku/tag-exists-action@v1.2.0
+      #  id: checkTag
+      #  with:
+      #    tag: v${{ steps.package-version.outputs.version }}
+
+      #- name: ✅ Check tag version
+      #  if: ${{ steps.checkTag.outputs.exists == 'true' }}
+      #  uses: actions/github-script@v6
+      #  with:
+      #    script: |
+      #      core.setFailed("Tag v${{ steps.package-version.outputs.version }} already exists")
+
+      - name: 🔗 Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+
+        # WARNING: Actually not available on "arm64" (https://github.com/actions/runner-images/issues/2187)
+        #          The below commented code is not tested yet
+        # - name: 🔗 Install Python 3.8.10
+        #   uses: actions/setup-python@v4
+        #   with:
+        #     python-version: "3.8.10"
+
+        # - name: 🧰 Create virtual environment
+        #   working-directory: ./music-remover
+        #   run: >
+        #     python3.8 -m venv .venv &&
+        #     source .venv/bin/activate &&
+        #     python -m ensurepip &&
+        #     arch -x86_64 python -m pip install --upgrade pip
+
+        # - name: 🔗 Download music-remover 3rd party depedencies
+        #   working-directory: ./music-remover
+        #   run: >
+        #     arch -x86_64 python -m pip install requests &&
+        #     arch -x86_64 python download_3rd_party_deps.py
+
+        # - name: 🛠️ Build Spleeter from wheel
+        #   working-directory: ./music-remover
+        #   run: >
+        #     arch -x86_64 python -m pip install --upgrade spleeter-2.3.0b0-cp38-cp38-macosx_11_0_x86_64.whl
+
+        # - name: 🔗 Install music-remover python depedencies
+        #   working-directory: ./music-remover
+        #   run: >
+        #     arch -x86_64 python -m pip install -r requirements.txt
+
+      - name: 🐍 Get Python infos
+        working-directory: ./music-remover
+        id: python_env
+        run: >
+          echo "VIRTUAL ENV:" $VIRTUAL_ENV &&
+          echo "PYTHON_PATH=$(which python)" >> $GITHUB_OUTPUT &&
+          echo "PYTHON_VERSION=$(python --version)" >> $GITHUB_OUTPUT
+
+      - name: ✅ Check Python environment
+        if: ${{ !contains(steps.python_env.outputs.PYTHON_PATH, 'moubah/music-remover/') }}
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.setFailed("Wrong Python environment")
+
+      - name: ✅ Check Python version
+        if: ${{ !contains(steps.python_env.outputs.PYTHON_VERSION, '3.8.10') }}
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.setFailed("Wrong Python version (expected: v3.8.10)")
+
+      - name: ✅ Check if venv already exists
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "music-remover/.venv/bin/activate"
+
+      - name: ⤵️ Copy/Paste current venv to runner
+        working-directory: ./music-remover
+        if: steps.check_files.outputs.files_exists == 'false'
+        run: >
+          cp -r $VIRTUAL_ENV .
+
+      # WARNING: useless now because it's not working yet for m1
+      # - name: 📦 Create an executable file
+      #   working-directory: ./music-remover
+      #   run: >
+      #     arch -x86_64 pyinstaller app.spec --noconfirm --clean
+
+      - name: 🔗 Install electron depedencies
+        working-directory: ${{ github.workspace }}
+        run: >
+          npm install
+
+      - name: 📦 Create an executable file for Electron
+        working-directory: ${{ github.workspace }}
+        run: >
+          npm run clean &&
+          npm run dist
+
+      - name: 🏷 Release on GitHub (v${{ steps.package-version.outputs.version }})
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.package-version.outputs.version }}
+          files: |
+            dist/moubah-${{ steps.package-version.outputs.version }}-mac-arm64.dmg

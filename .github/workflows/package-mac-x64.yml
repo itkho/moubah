@@ -1,0 +1,82 @@
+name: Package Mac (x64) app 📦
+
+on:
+  push:
+    branches: [main, develop]
+
+jobs:
+  package:
+    runs-on: macos-latest
+    permissions:
+      contents: write
+    steps:
+      - name: 📥 Check out repository and submodules
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: 🏷 Get version from package.json
+        uses: tyankatsu0105/read-package-version-actions@v1
+        id: package-version
+
+      - name: 🏷 Get existing tag with same version
+        uses: mukunku/tag-exists-action@v1.2.0
+        id: checkTag
+        with:
+          tag: v${{ steps.package-version.outputs.version }}
+
+      - name: ✅ Check tag version
+        if: ${{ steps.checkTag.outputs.exists == 'true' }}
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.setFailed("Tag v${{ steps.package-version.outputs.version }} already exists")
+
+      - name: 🔗 Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+
+      - name: 🔗 Install Python 3.8.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.8.10"
+
+      - name: 🔗 Install third party depedencies
+        working-directory: ./music-remover
+        run: >
+          python -m pip install --upgrade pip &&
+          python -m pip install requests &&
+          python download_3rd_party_deps.py
+
+      - name: 🔗 Install Spleeter
+        working-directory: ./music-remover
+        run: >
+          python -m pip install spleeter
+
+      - name: 🔗 Install python libs
+        working-directory: ./music-remover
+        run: >
+          python -m pip install -r requirements.txt
+
+      - name: 📦 Create an executable file for music-remover
+        working-directory: ./music-remover
+        run: >
+          pyinstaller app.spec --noconfirm --clean
+
+      - name: 🔗 Install electron depedencies
+        run: >
+          npm install
+
+      - name: 📦 Create an executable file for Electron app
+        run: >
+          npm run clean &&
+          npm run dist
+
+      - name: 🏷 Release on GitHub (v${{ steps.package-version.outputs.version }})
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.package-version.outputs.version }}
+          files: |
+            dist/moubah-${{ steps.package-version.outputs.version }}-mac-x64.dmg
