@@ -1,10 +1,20 @@
-import React, { createContext, ReactNode, useContext, useState } from "react";
+import React, {
+    createContext,
+    MutableRefObject,
+    ReactNode,
+    useContext,
+    useRef,
+    useState,
+} from "react";
 import VideoDTO from "../../main/dto/video";
 
 const PlayerContext = createContext(
     {} as {
         video?: VideoDTO;
         updateVideo: (video: VideoDTO) => void;
+        // autoplay?: boolean;
+        // setAutoplay: (autoplay: boolean) => void;
+        autoplay: MutableRefObject<boolean>;
     }
 );
 
@@ -14,6 +24,8 @@ export function usePlayer() {
 
 export function PlayerProvider(props: { children: ReactNode }) {
     const [video, setVideo] = useState<VideoDTO>();
+    // const [autoplay, setAutoplay] = useState(false);
+    const autoplay = useRef(false);
 
     function updateVideo(video: VideoDTO) {
         window.videoApi.setPlayed(video.id);
@@ -25,6 +37,9 @@ export function PlayerProvider(props: { children: ReactNode }) {
             value={{
                 video,
                 updateVideo,
+                // autoplay,
+                // setAutoplay,
+                autoplay,
             }}
         >
             {props.children}

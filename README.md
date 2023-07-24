@@ -1,5 +1,8 @@
 <h1 align="center">
-    Moubah</br>
+    <div>
+      <img style="vertical-align:middle" src="renderer/assets/icon-mac.png" alt="(logo)" width="70" height="70" >
+      <span>Moubah</span>
+    </div>
     🚧 (WIP) 🚧 </br>
 </h1>
 </br>
@@ -24,7 +27,7 @@ As for the problem of server-side processing, it's the same as for the web versi
 
 > ... built with Electron ...
 
-A GUI built with a Python framework would have been technically simpler, but I turned to Electron to deepen my knowledge of the front end stack: JS / TS / React / HTML / CSS
+A GUI built with a Python framework would have been technically simpler, but I turned to Electron to deepen my knowledge of the front end stack: JS / TS / React / HTML / CSS and be able to build more complex ui
 
 > ... to play YouTube videos without background music
 

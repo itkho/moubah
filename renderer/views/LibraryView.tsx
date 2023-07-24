@@ -3,7 +3,7 @@ import { Trans, t } from "@lingui/macro";
 
 import { faTrash, faVolumeXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import VideoDTO from "../../main/dto/video";
 import LibraryPlaceHolder from "../components/LibraryPlaceHolder";
 import LibraryVideoItem from "../components/LibraryVideoItem";
@@ -11,6 +11,7 @@ import { useLocalVideo } from "../context/LocalVideoContext";
 import CustomListbox from "../components/Listbox";
 import { VideoStatus } from "../../main/utils/enum";
 import { capitalizeFirstLetter } from "../utils/helpers";
+import LibraryDataCorrupted from "../components/LibraryDataCorrupted";
 
 enum Sort {
     recentFirst = "recentFirst",
@@ -73,12 +74,15 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
     } = useLocalVideo();
     const deleteButton = useRef<HTMLButtonElement>(null);
 
+    const [isDataCorrupted, setIsDataCorrupted] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
     const [selectedSort, setSelectedSort] = useState<Sort>(Sort.recentFirst);
     const [selectedFilter, setSelectedFilter] = useState<Filter>(Filter.all);
 
     const selectedVideoIds = selectedVideos.map((video) => video.id);
-    const filteredVideos = localVideos.filter((video) => isNotFiltered(video));
+    const filteredVideos = useMemo(() => {
+        return getSortedFilteredVideos(localVideos);
+    }, [localVideos, selectedFilter, selectedSort]);
 
     updateLocalVideo = (videoUpdated) => {
         setLocalVideos(
@@ -89,9 +93,12 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
     };
 
     useEffect(() => {
-        window.videoApi.getAll().then((videos) => {
-            setLocalVideos(videos);
-        });
+        window.videoApi
+            .getAll()
+            .then((videos) => {
+                setLocalVideos(videos);
+            })
+            .catch((_) => setIsDataCorrupted(true));
     }, [hidden]);
 
     useEffect(() => {
@@ -114,6 +121,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
             );
         };
     }, [isDeleting]);
+
     function handlePauseClick() {
         selectedVideos.forEach((video) => pauseProcessVideo(video));
     }
@@ -156,6 +164,14 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
         }
     }
 
+    function getSortedFilteredVideos(videos: VideoDTO[]): VideoDTO[] {
+        return applySort(applyFilter(videos));
+    }
+
+    function applyFilter(videos: VideoDTO[]): VideoDTO[] {
+        return videos.filter((video) => isNotFiltered(video));
+    }
+
     function isNotFiltered(video: VideoDTO): boolean {
         switch (selectedFilter) {
             case Filter.all:
@@ -169,32 +185,30 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
         }
     }
 
-    function applySort() {
+    function applySort(videos: VideoDTO[]): VideoDTO[] {
         switch (selectedSort) {
             case Sort.recentFirst:
-                localVideos.sort((a, b) =>
+                videos.sort((a, b) =>
                     a.metadata?.creationTimestamp! >
                     b.metadata?.creationTimestamp!
-                        ? 1
-                        : -1
+                        ? -1
+                        : 1
                 );
                 break;
             case Sort.recentLast:
-                localVideos.sort((a, b) =>
+                videos.sort((a, b) =>
                     a.metadata?.creationTimestamp! <
                     b.metadata?.creationTimestamp!
-                        ? 1
-                        : -1
+                        ? -1
+                        : 1
                 );
                 break;
             case Sort.alphabetically:
-                localVideos.sort((a, b) => (a.title > b.title ? 1 : -1));
+                videos.sort((a, b) => (a.title > b.title ? 1 : -1));
                 break;
         }
+        return videos;
     }
-    // TODO: find a better place to call this function
-    // should be call only when localVideos or selectedSort change
-    applySort();
 
     return (
         <>
@@ -309,6 +323,10 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                 ))}
                             </div>
                         </div>
+                    ) : isDataCorrupted ? (
+                        <LibraryDataCorrupted
+                            setIsDataCorrupted={setIsDataCorrupted}
+                        />
                     ) : (
                         <LibraryPlaceHolder />
                     )}

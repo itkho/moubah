@@ -1,7 +1,13 @@
 import { ipcMain, IpcMainInvokeEvent } from "electron";
 import isDev from "electron-is-dev";
 
-import { getVideoById, getAllVideos, remove, save } from "./repository/video";
+import {
+    getVideoById,
+    getAllVideos,
+    remove,
+    save,
+    removeAll,
+} from "./repository/video";
 import { search } from "./lib/youtube";
 import VideoService from "./services/video";
 import { initQueue } from "./services/library";
@@ -14,7 +20,7 @@ import {
     set as setUserPref,
     setLastMessageSeenTimestamp,
 } from "./model/user-preference";
-import { OS } from "./utils/const";
+import { OS, STORAGE_DIR_PATH } from "./utils/const";
 
 export default function initIpcHandlers() {
     ipcMain.handle(
@@ -59,6 +65,10 @@ export default function initIpcHandlers() {
         }
     );
 
+    ipcMain.handle("video:deleteAll", async (_event: IpcMainInvokeEvent) => {
+        removeAll();
+    });
+
     ipcMain.handle(
         "video:played",
         async (_event: IpcMainInvokeEvent, videoId: string) => {
@@ -99,9 +109,13 @@ export default function initIpcHandlers() {
 
     ipcMain.handle(
         "openFileExplorer:video",
-        async (_event: IpcMainInvokeEvent, videoId: string) => {
-            const video = getVideoById(videoId);
-            openFileExplorer(video.videoPath);
+        async (_event: IpcMainInvokeEvent, videoId?: string) => {
+            if (videoId) {
+                const video = getVideoById(videoId);
+                openFileExplorer(video.videoPath);
+            } else {
+                openFileExplorer(STORAGE_DIR_PATH);
+            }
         }
     );
 

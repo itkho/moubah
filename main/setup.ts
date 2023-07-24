@@ -2,6 +2,10 @@ import fetch from "electron-fetch";
 import { satisfies } from "compare-versions";
 import { spawn } from "child_process";
 import treeKill from "tree-kill";
+import {
+    initialize as initializeAptabase,
+    trackEvent,
+} from "@aptabase/electron/main";
 
 import { app, dialog, shell } from "electron";
 
@@ -26,6 +30,7 @@ import {
     get as getUserPref,
     set as setUserPref,
     setLastMessageSeenTimestamp,
+    getUserId,
 } from "./model/user-preference";
 import { NotImplementedError } from "./utils/errors";
 import { getNewMessages } from "./lib/firebase";
@@ -209,49 +214,45 @@ export async function welcomMessage() {
     let message: string;
     switch (lang) {
         case "fr":
-            message = `
-                السلام عليكم ورحمة الله وبركاته 👋
-
-                Bienvenue sur Moubah, l'application permettant de visionner des vidéos sans musique 🔇
-
-                ✅ Cette application a été conçue pour pouvoir profiter du contenu informatif et éducatif disponible sur internet (exemple : documentaires, actualités, tutoriels, etc.)
-                
-                ❌ Non pas pour les vidéos dont le contenu est futile, voir illicite
-                
-                بارك الله فيكم 🤲
-            `;
+            message =
+                "السلام عليكم ورحمة الله وبركاته 👋" +
+                "\n\n" +
+                "Bienvenue sur Moubah, l'application permettant de visionner des vidéos sans musique 🔇" +
+                "\n\n" +
+                "✅ Cette application a été conçue pour pouvoir profiter du contenu informatif et éducatif disponible sur internet (exemple : documentaires, actualités, tutoriels, etc.)" +
+                "\n\n" +
+                "❌ Non pas pour les vidéos dont le contenu est futile, voir illicite" +
+                "\n\n" +
+                "بارك الله فيكم 🤲";
             break;
         case "ar":
-            message = `
-                السلام عليكم ورحمة الله وبركاته 👋
-
-                مرحبًا بكم في تطبيق Moubah لمشاهدة مقاطع الفيديو بدون موسيقى 🔇
-
-                ✅ تم تصميم هذا التطبيق ليكون قادرًا على الاستمتاع بالمحتوى التثقيفي والتعليمي المتاح على الإنترنت (مثل: الأفلام الوثائقية ، والأخبار ، والبرامج التعليمية ، وما إلى ذلك)
-               
-                ❌ ليس لمقاطع الفيديو التي يكون محتواها تافهًا أو حتى غير مشروع
-
-                بارك الله فيكم 🤲
-            `;
+            message =
+                "السلام عليكم ورحمة الله وبركاته 👋" +
+                "\n\n" +
+                "مرحبًا بكم في تطبيق Moubah لمشاهدة مقاطع الفيديو بدون موسيقى 🔇" +
+                "\n\n" +
+                "✅ تم تصميم هذا التطبيق ليكون قادرًا على الاستمتاع بالمحتوى التثقيفي والتعليمي المتاح على الإنترنت (مثل: الأفلام الوثائقية ، والأخبار ، والبرامج التعليمية ، وما إلى ذلك)" +
+                "\n\n" +
+                "❌ ليس لمقاطع الفيديو التي يكون محتواها تافهًا أو حتى غير مشروع" +
+                "\n\n" +
+                "بارك الله فيكم 🤲";
             break;
         default:
-            message = `
-                السلام عليكم ورحمة الله وبركاته 👋
-
-                Welcome to Moubah, the app for watching videos without music 🔇
-
-                ✅ This application was designed to be able to enjoy informative and educational content available on the internet (example: documentaries, news, tutorials, etc.)
-                
-                ❌ Not for videos whose content is frivolous or even illicit
-                
-                بارك الله فيكم 🤲
-            `;
+            message =
+                "السلام عليكم ورحمة الله وبركاته 👋" +
+                "\n\n" +
+                "🔇 Welcome to Moubah, the app for watching videos without music" +
+                "\n\n" +
+                "✅ This application was designed to be able to enjoy informative and educational content available on the internet (example: documentaries, news, tutorials, etc.)" +
+                "\n\n" +
+                "❌ Not for videos whose content is frivolous or even illicit" +
+                "\n\n" +
+                "بارك الله فيكم 🤲";
             break;
     }
     try {
         await dialog.showMessageBox(getMainWindow(), {
             type: "info",
-            // title: "السلام عليكم ورحمة الله وبركاته 👋",
             message: message,
         });
         setUserPref("welcomMessageShown", true);
@@ -265,6 +266,7 @@ export async function sendToastMessageToRenderer() {
     let messages;
     try {
         messages = await getNewMessages();
+        mainLogger.debug({ messages });
     } catch (error) {
         mainLogger.error(error);
         return;
@@ -283,6 +285,9 @@ export async function sendToastMessageToRenderer() {
 
 export async function setUp() {
     initIpcHandlers();
+
+    await initializeAptabase("A-EU-9813247449");
+    trackEvent("open_app", { user_id: getUserId() });
 
     // Test if the server isn't already up (from a previous session)
     try {

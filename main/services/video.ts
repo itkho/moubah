@@ -16,6 +16,9 @@ import { pushToQueue } from "../lib/queue";
 import { mainLogger } from "../utils/logger";
 import VideoDTO from "../dto/video";
 import { eventEmitter } from "../utils/event";
+import { trackEvent } from "@aptabase/electron/main";
+import { getUserId } from "../model/user-preference";
+import { hash } from "../utils/helpers";
 
 // TODO: inherit from AbstractInstanceService
 // TODO: add child YtVideoService for logic specific to Yt (to facilitate the futur implementation of FileVideoService)
@@ -56,6 +59,11 @@ export default class VideoService {
 
     async download() {
         mainLogger.info("Downloading...");
+        trackEvent("download_video", {
+            user_id: getUserId(),
+            video_id: hash(this.video.id),
+        });
+
         this.setStatus(VideoStatus.downloading);
         try {
             await this.#downloadVideo();

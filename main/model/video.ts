@@ -1,6 +1,7 @@
 import path from "path";
 import fs from "fs";
-import { STORAGE_DIR_PATH } from "../utils/const.js";
+import sanitize from "sanitize-filename";
+import { STORAGE_DIR_PATH, VIDEO_DIR_SEPARATOR } from "../utils/const.js";
 
 import { VideoStatus } from "../utils/enum.js";
 import AudioModel from "./audio.js";
@@ -58,7 +59,7 @@ export default class VideoModel {
     }
 
     get dir() {
-        return createPathIfDoesntExists(path.join(STORAGE_DIR_PATH, this.id));
+        return createPathIfDoesntExists(path.join(STORAGE_DIR_PATH, `${sanitize(this.info.title)}${VIDEO_DIR_SEPARATOR}${this.id}`));
     }
 
     get videoPath() {

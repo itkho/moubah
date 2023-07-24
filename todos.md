@@ -6,10 +6,9 @@
 
 ## 🔬 Before releasing-it in production
 
--   [ ] ✨ Add a logo
+-   [ ] 🪲 Install / test deeply the app on mac Intel
 -   [ ] 🧼 Sort/clean folders
--   [ ] 🪲 Install / test deeply the app on mac/win
--   [ ] 🪲 Ask beta tester feedback
+-   [ ] 🧼 Record a new GIF
 -   [ ] 🆕 Make a website
 
 </br>
@@ -23,6 +22,7 @@
 -   [ ] 🆕 Send error message from renderer to main process
 -   [ ] 🆕 Add substitles
 -   [ ] 🆕 Be able to play the video even if the processing isn't finished yet
+-   [ ] 🆕 Setup sentry
 -   [ ] 🪲 Be able to re-process the not-done videos on start
 -   [ ] 🪲 Improve the removal of the music ([exemple](https://youtu.be/EHe0Wu5yM9c))
 -   [ ] ✨ Re-design the search view?
