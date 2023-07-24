@@ -1,4 +1,4 @@
-name: Package Mac (x86) app 📦
+name: Package Mac (x64) app 📦
 
 on:
   push:
@@ -77,4 +77,4 @@ jobs:
         with:
           tag_name: v${{ steps.package-version.outputs.version }}
           files: |
-            dist/moubah-${{ steps.package-version.outputs.version }}-mac-x86.dmg
+            dist/moubah-${{ steps.package-version.outputs.version }}-mac-x64.dmg
