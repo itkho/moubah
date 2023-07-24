@@ -6,7 +6,6 @@
 
 ## 🔬 Before releasing-it in production
 
--   [ ] 🪲 Fix crash when video folder is corrupted (see [here](https://discord.com/channels/@me/1109187293849333850/1127305613483974666))
 -   [ ] 🪲 Install / test deeply the app on mac Intel
 -   [ ] 🧼 Sort/clean folders
 -   [ ] 🧼 Record a new GIF
