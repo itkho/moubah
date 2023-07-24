@@ -22,19 +22,18 @@ jobs:
         uses: tyankatsu0105/read-package-version-actions@v1
         id: package-version
 
-      - name: 🏷 Get existing tag with same version
-        uses: mukunku/tag-exists-action@v1.2.0
-        id: checkTag
-        with:
-          tag: v${{ steps.package-version.outputs.version }}
-
-      - name: ✅ Check tag version
-        if: ${{ steps.checkTag.outputs.exists == 'true' }}
-        uses: actions/github-script@v6
-        with:
-          script: |
-            core.setFailed("Tag v${{ steps.package-version.outputs.version }} already exists")
-
+      # Commented temporarly
+      # - name: 🏷 Get existing tag with same version
+      #   uses: mukunku/tag-exists-action@v1.2.0
+      #   id: checkTag
+      #   with:
+      #     tag: v${{ steps.package-version.outputs.version }}
+      # - name: ✅ Check tag version
+      #   if: ${{ steps.checkTag.outputs.exists == 'true' }}
+      #   uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       core.setFailed("Tag v${{ steps.package-version.outputs.version }} already exists")
       - name: 🔗 Install Node
         uses: actions/setup-node@v3
         with:
