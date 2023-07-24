@@ -20,6 +20,7 @@ const videoApi = {
     refresh: (): Promise<void> => ipcRenderer.invoke("video:refresh"),
     delete: (videoId: string): Promise<void> =>
         ipcRenderer.invoke("video:delete", videoId),
+    deleteAll: (): Promise<void> => ipcRenderer.invoke("video:deleteAll"),
     getById: (videoId: string): Promise<VideoDTO> =>
         ipcRenderer.invoke("video:get", videoId),
     getAll: async (): Promise<VideoDTO[]> => ipcRenderer.invoke("video:getAll"),
@@ -29,7 +30,7 @@ const videoApi = {
         ipcRenderer.invoke("video:process:pause", videoId),
     resumeProcess: (videoId: string): Promise<void> =>
         ipcRenderer.invoke("video:process:resume", videoId),
-    openDir: (videoId: string): Promise<void> =>
+    openDir: (videoId?: string): Promise<void> =>
         ipcRenderer.invoke("openFileExplorer:video", videoId),
 
     // Main --> Process

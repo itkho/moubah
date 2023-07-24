@@ -11,6 +11,7 @@ import { useLocalVideo } from "../context/LocalVideoContext";
 import CustomListbox from "../components/Listbox";
 import { VideoStatus } from "../../main/utils/enum";
 import { capitalizeFirstLetter } from "../utils/helpers";
+import LibraryDataCorrupted from "../components/LibraryDataCorrupted";
 
 enum Sort {
     recentFirst = "recentFirst",
@@ -73,14 +74,15 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
     } = useLocalVideo();
     const deleteButton = useRef<HTMLButtonElement>(null);
 
+    const [isDataCorrupted, setIsDataCorrupted] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
     const [selectedSort, setSelectedSort] = useState<Sort>(Sort.recentFirst);
     const [selectedFilter, setSelectedFilter] = useState<Filter>(Filter.all);
 
     const selectedVideoIds = selectedVideos.map((video) => video.id);
     const filteredVideos = useMemo(() => {
-        return getSortedFilteredVideos(localVideos)
-    }, [localVideos, selectedFilter, selectedSort])
+        return getSortedFilteredVideos(localVideos);
+    }, [localVideos, selectedFilter, selectedSort]);
 
     updateLocalVideo = (videoUpdated) => {
         setLocalVideos(
@@ -91,9 +93,12 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
     };
 
     useEffect(() => {
-        window.videoApi.getAll().then((videos) => {
-            setLocalVideos(videos);
-        });
+        window.videoApi
+            .getAll()
+            .then((videos) => {
+                setLocalVideos(videos);
+            })
+            .catch((_) => setIsDataCorrupted(true));
     }, [hidden]);
 
     useEffect(() => {
@@ -116,6 +121,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
             );
         };
     }, [isDeleting]);
+
     function handlePauseClick() {
         selectedVideos.forEach((video) => pauseProcessVideo(video));
     }
@@ -159,11 +165,11 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
     }
 
     function getSortedFilteredVideos(videos: VideoDTO[]): VideoDTO[] {
-        return applySort(applyFilter(videos))
+        return applySort(applyFilter(videos));
     }
 
     function applyFilter(videos: VideoDTO[]): VideoDTO[] {
-        return videos.filter((video) => isNotFiltered(video))
+        return videos.filter((video) => isNotFiltered(video));
     }
 
     function isNotFiltered(video: VideoDTO): boolean {
@@ -179,13 +185,12 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
         }
     }
 
-
     function applySort(videos: VideoDTO[]): VideoDTO[] {
         switch (selectedSort) {
             case Sort.recentFirst:
                 videos.sort((a, b) =>
                     a.metadata?.creationTimestamp! >
-                        b.metadata?.creationTimestamp!
+                    b.metadata?.creationTimestamp!
                         ? -1
                         : 1
                 );
@@ -193,7 +198,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
             case Sort.recentLast:
                 videos.sort((a, b) =>
                     a.metadata?.creationTimestamp! <
-                        b.metadata?.creationTimestamp!
+                    b.metadata?.creationTimestamp!
                         ? -1
                         : 1
                 );
@@ -202,7 +207,7 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                 videos.sort((a, b) => (a.title > b.title ? 1 : -1));
                 break;
         }
-        return videos
+        return videos;
     }
 
     return (
@@ -244,11 +249,12 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                         onClick={toggleSelectAll}
                                     >
                                         <div
-                                            className={`h-full w-full rounded-sm ${selectedVideos.length !== 0 &&
+                                            className={`h-full w-full rounded-sm ${
+                                                selectedVideos.length !== 0 &&
                                                 selectedVideos.length ===
-                                                filteredVideos.length &&
+                                                    filteredVideos.length &&
                                                 "bg-lime-500"
-                                                }`}
+                                            }`}
                                         ></div>
                                     </div>
                                     <Trans>Select all</Trans>
@@ -286,10 +292,11 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                     </button>
                                     <button
                                         ref={deleteButton}
-                                        className={`cursor-pointer rounded-md py-1 px-2 ring-1 disabled:cursor-not-allowed ${isDeleting
-                                            ? "bg-ko-500 text-base-100-light ring-ko-600 hover:bg-ko-600"
-                                            : "bg-base-200  hover:bg-base-300 ring-base-300 hover:ring-base-400"
-                                            }`}
+                                        className={`cursor-pointer rounded-md py-1 px-2 ring-1 disabled:cursor-not-allowed ${
+                                            isDeleting
+                                                ? "bg-ko-500 text-base-100-light ring-ko-600 hover:bg-ko-600"
+                                                : "bg-base-200  hover:bg-base-300 ring-base-300 hover:ring-base-400"
+                                        }`}
                                         disabled={!selectedVideos.length}
                                         onClick={handleDeleteClick}
                                     >
@@ -316,6 +323,10 @@ export default function LibraryView({ hidden }: { hidden: boolean }) {
                                 ))}
                             </div>
                         </div>
+                    ) : isDataCorrupted ? (
+                        <LibraryDataCorrupted
+                            setIsDataCorrupted={setIsDataCorrupted}
+                        />
                     ) : (
                         <LibraryPlaceHolder />
                     )}

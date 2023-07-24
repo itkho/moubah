@@ -1,3 +1,4 @@
+import fsExtra from "fs-extra";
 import fs from "fs";
 import path from "path";
 import download from "image-downloader";
@@ -9,15 +10,15 @@ import { mainLogger } from "../utils/logger.js";
 
 export function getVideoById(id: string) {
     const videoDirNames = fs.readdirSync(STORAGE_DIR_PATH);
-    
-    let videoDirNameFound
+
+    let videoDirNameFound;
     for (const videoDirName of videoDirNames) {
         if (videoDirName.endsWith(id)) {
-            videoDirNameFound = videoDirName
-            break
+            videoDirNameFound = videoDirName;
+            break;
         }
     }
-    
+
     if (!videoDirNameFound) {
         throw Error(`Video ${id} not found`);
     }
@@ -25,7 +26,11 @@ export function getVideoById(id: string) {
     let info;
     try {
         info = JSON.parse(
-            fs.readFileSync(path.join(STORAGE_DIR_PATH, videoDirNameFound, "info.json")).toString()
+            fs
+                .readFileSync(
+                    path.join(STORAGE_DIR_PATH, videoDirNameFound, "info.json")
+                )
+                .toString()
         );
     } catch (error) {
         console.error(error);
@@ -45,7 +50,7 @@ export function getAllVideos() {
         .readdirSync(STORAGE_DIR_PATH, { withFileTypes: true })
         .filter((item) => item.isDirectory())
         .map((item) => item.name.split(VIDEO_DIR_SEPARATOR).pop())
-        .filter((item) => item !== undefined)
+        .filter((item) => item !== undefined);
     const videos = Promise.all(
         videoDirNames.map((videoId) => {
             return getVideoById(videoId!);
@@ -95,4 +100,8 @@ export function remove(video: VideoModel) {
     if (!video.dir.includes(STORAGE_DIR_PATH))
         throw "Cannot remove this folder (out of access scope)";
     fs.rmSync(video.dir, { recursive: true, force: true });
+}
+
+export function removeAll() {
+    fsExtra.emptyDirSync(STORAGE_DIR_PATH);
 }

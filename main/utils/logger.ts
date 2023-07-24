@@ -72,12 +72,10 @@ if (isDev)
 
 process.on("uncaughtException", (err) => {
     mainLogger.error(err);
-    process.exit(1);
 });
 
 process.on("unhandledRejection", (err) => {
     mainLogger.error(err);
-    process.exit(1);
 });
 
 export function logSpawn(
