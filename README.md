@@ -38,6 +38,10 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 
 </br>
 
+<!-- Convert .mov or .MP4 to .gif.md -->
+<!-- https://gist.github.com/SheldonWangRJT/8d3f44a35c8d1386a396b9b49b43c385 -->
+<!-- TLDR: ffmpeg -i demo.mov -pix_fmt rgb8 -r 10 demo.gif && gifsicle -O3 demo.gif -o demo.gif -->
+
 <p align="center">
   <img src="demo.gif" alt="Example of Moubah usage" />
 </p>
