@@ -44,7 +44,7 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 https://github.com/itkho/moubah/assets/121198251/e0b6ae86-3973-477b-9452-9c48677f4894
 
 
-**Download the app** : 🍏 ~~Apple~~ | 🪟 ~~Windows~~ | 🐧 ~~Linux~~
+**Download the app** : 🍏 [Apple](https://github.com/itkho/moubah/releases/download/v1.0.0/moubah-1.0.0-mac-x64.dmg) (or for [M1](https://github.com/itkho/moubah/releases/download/v1.0.0/moubah-1.0.0-mac-arm64.dmg)) | 🪟 [Windows](https://github.com/itkho/moubah/releases/download/v1.0.0/moubah-1.0.0-win-x64.exe) | 🐧 ~~Linux~~
 
 <!-- For mac: xattr -d com.apple.quarantine /Users/karim/Downloads/moubah-1.0.0.app -->
 
