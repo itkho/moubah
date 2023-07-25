@@ -106,7 +106,6 @@ export async function checkForUpdates() {
         const remotePackageJson = (await remotePackageReq.json()) as {
             version: string;
         };
-        remotePackageJson.version = "1.0.0";
 
         // For beta apps
         if (satisfies(app.getVersion(), ">" + remotePackageJson.version)) {
@@ -266,7 +265,6 @@ export async function sendToastMessageToRenderer() {
     let messages;
     try {
         messages = await getNewMessages();
-        mainLogger.debug({ messages });
     } catch (error) {
         mainLogger.error(error);
         return;

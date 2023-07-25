@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+// File stored in app.getPath("userData") + settings.json
 import settings from "electron-settings";
 import { nativeTheme } from "electron";
 import { osLocale } from "os-locale-s";
