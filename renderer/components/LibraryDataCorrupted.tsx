@@ -32,7 +32,7 @@ export default function LibraryDataCorrupted({
                 <span> </span>
                 <button
                     className="hover:text-base-500 decoration-highlight hover:underline"
-                    onClick={() => window.videoApi.openDir}
+                    onClick={() => window.videoApi.openDir()}
                 >
                     <Trans>set aside the videos</Trans>
                 </button>
