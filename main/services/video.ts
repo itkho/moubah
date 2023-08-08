@@ -176,16 +176,18 @@ export default class VideoService {
         );
         mainLogger.debug(
             `File ${audioListFile} created: ${
-                fs.existsSync(STORAGE_DIR_PATH) ? "✅" : "❌"
+                fs.existsSync(audioListFile) ? "✅" : "❌"
             }`
         );
-        mainLogger.debug(`File created: ${audioListFile}`);
         await merge(
             audioListFile,
             path.join(this.video.dir, "audio_wo_music.wav")
         );
         mainLogger.debug(
-            `Audio file ${audioListFile} created: ${
+            `Audio file ${path.join(
+                this.video.dir,
+                "audio_wo_music.wav"
+            )} created: ${
                 path.join(this.video.dir, "audio_wo_music.wav") ? "✅" : "❌"
             }`
         );

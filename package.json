@@ -1,6 +1,6 @@
 {
     "name": "moubah",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "license": "AGPL-3",
     "main": "main/out/index.js",
     "author": {
