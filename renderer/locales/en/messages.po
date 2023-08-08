@@ -13,20 +13,24 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: renderer/views/LibraryView.tsx:255
+#: renderer/components/LibraryDataCorrupted.tsx:31
+msgid "(don't forget to"
+msgstr "(don't forget to"
+
+#: renderer/views/LibraryView.tsx:269
 msgid "Actions:"
 msgstr "Actions:"
 
-#: renderer/components/SearchResult.tsx:63
+#: renderer/components/SearchResult.tsx:69
 msgid "Background music removed"
 msgstr "Background music removed"
 
-#: renderer/components/LibraryVideoItem.tsx:217
-#: renderer/components/SearchResult.tsx:122
+#: renderer/components/LibraryVideoItem.tsx:224
+#: renderer/components/SearchResult.tsx:141
 msgid "By:"
 msgstr "By:"
 
-#: renderer/components/PreviewModal.tsx:54
+#: renderer/components/PreviewModal.tsx:58
 msgid "Close"
 msgstr "Close"
 
@@ -34,20 +38,20 @@ msgstr "Close"
 msgid "Console"
 msgstr "Console"
 
-#: renderer/components/NavBar.tsx:185
+#: renderer/components/NavBar.tsx:182
 msgid "Dark"
 msgstr "Dark"
 
-#: renderer/components/LibraryVideoItem.tsx:206
-#: renderer/views/LibraryView.tsx:293
+#: renderer/components/LibraryVideoItem.tsx:213
+#: renderer/views/LibraryView.tsx:307
 msgid "Delete"
 msgstr "Delete"
 
-#: renderer/components/LibraryVideoItem.tsx:91
+#: renderer/components/LibraryVideoItem.tsx:93
 msgid "Download"
 msgstr "Download"
 
-#: renderer/components/SearchResult.tsx:68
+#: renderer/components/SearchResult.tsx:78
 msgid "Downloading the video..."
 msgstr "Downloading the video..."
 
@@ -55,16 +59,16 @@ msgstr "Downloading the video..."
 msgid "Enter the title of a video or an URL in the search bar"
 msgstr "Enter the title of a video or an URL in the search bar"
 
-#: renderer/views/LibraryView.tsx:212
+#: renderer/views/LibraryView.tsx:226
 msgid "Filter"
 msgstr "Filter"
 
-#: renderer/components/NavBar.tsx:77
+#: renderer/components/NavBar.tsx:74
 #: renderer/components/PlayerPlaceHolder.tsx:18
 msgid "Library"
 msgstr "Library"
 
-#: renderer/components/NavBar.tsx:207
+#: renderer/components/NavBar.tsx:204
 msgid "Light"
 msgstr "Light"
 
@@ -80,7 +84,7 @@ msgstr "Men"
 msgid "Music remover"
 msgstr "Music remover"
 
-#: renderer/views/LibraryView.tsx:207
+#: renderer/views/LibraryView.tsx:221
 msgid "My videos"
 msgstr "My videos"
 
@@ -88,7 +92,7 @@ msgstr "My videos"
 msgid "No video to watch yet..."
 msgstr "No video to watch yet..."
 
-#: renderer/components/LibraryVideoItem.tsx:185
+#: renderer/components/LibraryVideoItem.tsx:192
 msgid "Open in"
 msgstr "Open in"
 
@@ -96,39 +100,42 @@ msgstr "Open in"
 msgid "Open-source"
 msgstr "Open-source"
 
-#: renderer/components/LibraryVideoItem.tsx:106
-#: renderer/views/LibraryView.tsx:266
+#: renderer/components/LibraryVideoItem.tsx:108
+#: renderer/views/LibraryView.tsx:280
 msgid "Pause"
 msgstr "Pause"
 
-#: renderer/components/LibraryVideoItem.tsx:112
+#: renderer/components/LibraryVideoItem.tsx:114
 msgid "Play"
 msgstr "Play"
 
-#: renderer/components/NavBar.tsx:93
+#: renderer/components/NavBar.tsx:90
 msgid "Player"
 msgstr "Player"
 
-#: renderer/components/SearchResult.tsx:142
+#: renderer/components/SearchResult.tsx:161
 msgid "Preview the video"
 msgstr "Preview the video"
 
-#: renderer/components/PreviewModal.tsx:61
-#: renderer/components/SearchResult.tsx:70
+#: renderer/components/LibraryDataCorrupted.tsx:26
+msgid "Remove all videos"
+msgstr "Remove all videos"
+
+#: renderer/components/SearchResult.tsx:82
 msgid "Remove background music"
 msgstr "Remove background music"
 
-#: renderer/components/SearchResult.tsx:65
+#: renderer/components/SearchResult.tsx:73
 msgid "Removing background music..."
 msgstr "Removing background music..."
 
-#: renderer/components/LibraryVideoItem.tsx:102
-#: renderer/views/LibraryView.tsx:277
+#: renderer/components/LibraryVideoItem.tsx:104
+#: renderer/views/LibraryView.tsx:291
 msgid "Resume"
 msgstr "Resume"
 
 #: renderer/components/LibraryPlaceHolder.tsx:21
-#: renderer/components/NavBar.tsx:61
+#: renderer/components/NavBar.tsx:58
 msgid "Search"
 msgstr "Search"
 
@@ -140,19 +147,23 @@ msgstr "Search for a video in the"
 msgid "Select a video in the"
 msgstr "Select a video in the"
 
-#: renderer/views/LibraryView.tsx:246
+#: renderer/views/LibraryView.tsx:260
 msgid "Select all"
 msgstr "Select all"
 
-#: renderer/views/LibraryView.tsx:249
+#: renderer/views/LibraryView.tsx:263
 msgid "Selected:"
 msgstr "Selected:"
 
-#: renderer/views/LibraryView.tsx:221
+#: renderer/components/LibraryDataCorrupted.tsx:14
+msgid "Something is wrong with the local videos..."
+msgstr "Something is wrong with the local videos..."
+
+#: renderer/views/LibraryView.tsx:235
 msgid "Sort by"
 msgstr "Sort by"
 
-#: renderer/components/LibraryVideoItem.tsx:95
+#: renderer/components/LibraryVideoItem.tsx:97
 msgid "Stop"
 msgstr "Stop"
 
@@ -160,7 +171,7 @@ msgstr "Stop"
 msgid "Support"
 msgstr "Support"
 
-#: renderer/views/LibraryView.tsx:293
+#: renderer/views/LibraryView.tsx:307
 msgid "Sure?"
 msgstr "Sure?"
 
@@ -168,12 +179,16 @@ msgstr "Sure?"
 msgid "Women"
 msgstr "Women"
 
-#: renderer/views/LibraryView.tsx:48
+#: renderer/components/LibraryDataCorrupted.tsx:17
+msgid "You can"
+msgstr "You can"
+
+#: renderer/views/LibraryView.tsx:49
 msgid "all"
 msgstr "all"
 
 #: renderer/components/LibraryVideoItem.tsx:45
-#: renderer/views/LibraryView.tsx:51
+#: renderer/views/LibraryView.tsx:52
 msgid "done"
 msgstr "done"
 
@@ -181,7 +196,11 @@ msgstr "done"
 msgid "downloading"
 msgstr "downloading"
 
-#: renderer/views/LibraryView.tsx:54
+#: renderer/components/LibraryDataCorrupted.tsx:28
+msgid "in order to fix this"
+msgstr "in order to fix this"
+
+#: renderer/views/LibraryView.tsx:55
 msgid "in progress"
 msgstr "in progress"
 
@@ -189,16 +208,16 @@ msgstr "in progress"
 msgid "initial"
 msgstr "initial"
 
-#: renderer/views/LibraryView.tsx:31
+#: renderer/views/LibraryView.tsx:32
 msgid "name"
 msgstr "name"
 
-#: renderer/components/LibraryVideoItem.tsx:140
-#: renderer/views/LibraryView.tsx:57
+#: renderer/components/LibraryVideoItem.tsx:142
+#: renderer/views/LibraryView.tsx:58
 msgid "new"
 msgstr "new"
 
-#: renderer/views/LibraryView.tsx:25
+#: renderer/views/LibraryView.tsx:26
 msgid "newest"
 msgstr "newest"
 
@@ -207,7 +226,7 @@ msgstr "newest"
 msgid "offline"
 msgstr "offline"
 
-#: renderer/views/LibraryView.tsx:28
+#: renderer/views/LibraryView.tsx:29
 msgid "oldest"
 msgstr "oldest"
 
@@ -216,7 +235,7 @@ msgstr "oldest"
 msgid "online"
 msgstr "online"
 
-#: renderer/components/LibraryVideoItem.tsx:269
+#: renderer/components/LibraryVideoItem.tsx:276
 msgid "pending"
 msgstr "pending"
 
@@ -227,3 +246,11 @@ msgstr "processing"
 #: renderer/components/LibraryPlaceHolder.tsx:23
 msgid "section"
 msgstr "section"
+
+#: renderer/components/LibraryDataCorrupted.tsx:37
+msgid "set aside the videos"
+msgstr "set aside the videos"
+
+#: renderer/components/LibraryDataCorrupted.tsx:40
+msgid "you want to keep)"
+msgstr "you want to keep)"

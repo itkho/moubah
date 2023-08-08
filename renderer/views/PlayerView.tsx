@@ -11,7 +11,6 @@ export default function PlayerView({ hidden }: { hidden: boolean }) {
 
     useEffect(() => {
         autoplay.current = false;
-        console.log(`PlayerView: ${autoplay.current}`);
     }, [hidden]);
 
     const onKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {
