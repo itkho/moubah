@@ -1,3 +1,4 @@
+import sanitize from "sanitize-filename";
 import { shell } from "electron";
 import crypto from "crypto";
 import fs from "fs";
@@ -32,4 +33,8 @@ export function logStackTrace() {
 
 export function hash(data: string) {
     return crypto.createHash("sha1").update(data).digest("base64");
+}
+
+export function sanitizeText(text: string) {
+    return sanitize(text.replace("'", ""));
 }
