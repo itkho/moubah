@@ -40,6 +40,10 @@ const videoApi = {
 };
 
 const musicRemoverApi = {
+    // Process --> Main
+    getStatus: async (): Promise<MusicRemoverStatus> =>
+        ipcRenderer.invoke("music-remover:status:get"),
+
     // Main --> Process
     handleStatusUpdatedEvent: (
         callback: (event: IpcRendererEvent, status: MusicRemoverStatus) => void

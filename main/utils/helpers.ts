@@ -36,5 +36,5 @@ export function hash(data: string) {
 }
 
 export function sanitizeText(text: string) {
-    return sanitize(text.replace("'", ""));
+    return sanitize(text.replace(/['%]/g, ""));
 }
