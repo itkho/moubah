@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -33,6 +33,15 @@ export default function Footer() {
     updateMusicRemoverStatus = (status) => {
         setMusicRemoverStatus(status);
     };
+
+    useEffect(() => {
+        const updateMusicRemoverStatus = async () => {
+            const status = await window.musicRemoverApi.getStatus();
+            setMusicRemoverStatus(status);
+        };
+
+        updateMusicRemoverStatus();
+    }, []);
 
     return (
         <>

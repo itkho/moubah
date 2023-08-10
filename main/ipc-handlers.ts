@@ -21,6 +21,8 @@ import {
     setLastMessageSeenTimestamp,
 } from "./model/user-preference";
 import { OS, STORAGE_DIR_PATH } from "./utils/const";
+import { ping as pingMusicRemover } from "./lib/music-remover";
+import { MusicRemoverStatus } from "./utils/enum";
 
 export default function initIpcHandlers() {
     ipcMain.handle(
@@ -160,6 +162,18 @@ export default function initIpcHandlers() {
         "lastMessageSeenTimestamp:set",
         (_event: IpcMainInvokeEvent, timestamp) => {
             return setLastMessageSeenTimestamp(timestamp);
+        }
+    );
+
+    ipcMain.handle(
+        "music-remover:status:get",
+        async (_event: IpcMainInvokeEvent) => {
+            try {
+                await pingMusicRemover({ recursive: false });
+                return MusicRemoverStatus.up;
+            } catch (error) {
+                return MusicRemoverStatus.down;
+            }
         }
     );
 }

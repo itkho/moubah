@@ -6,21 +6,21 @@
 
 ## 🔬 Before releasing-it in production
 
--   [ ] 🪲 Install / test deeply the app on mac Intel
--   [ ] 🧼 Sort/clean folders
--   [ ] 🧼 Record a new GIF
+-   [ ] ✨ Add the title on the `video.mp4`?
+-   [ ] ✨ Add the version number somewhere?
+-   [ ] 🪲 "pause" then directly "resume" doesn't work from the "Select all" section (tested with 2 videos)
+-   [ ] 🆕 Be able to choose the video quality
 -   [ ] 🆕 Make a website
+-   [ ] 🧼 Sort/clean folders
 
 </br>
 
 ## 🔍 Usefull but not essential
 
 -   [ ] 🆕 Add a badge on the icon (or even a notification) when a video is ready
--   [ ] 🆕 Add a button to be able to reduce nav bar width
--   [ ] 🆕 Be able to choose the video quality
 -   [ ] 🆕 Add a loading animation on search for slow internet connections
 -   [ ] 🆕 Send error message from renderer to main process
--   [ ] 🆕 Add substitles
+-   [ ] 🆕 Add subtitles
 -   [ ] 🆕 Be able to play the video even if the processing isn't finished yet
 -   [ ] 🆕 Setup sentry
 -   [ ] 🪲 Be able to re-process the not-done videos on start
@@ -30,6 +30,7 @@
 -   [ ] ✨ Build custom title bar (like Postman or Obsidian)
 -   [ ] 🆕 Add a search bar in the library view
 -   [ ] ✨ Add [this effect](https://youtu.be/htGfnF1zN4g) on video cards
+-   [ ] 🆕 Add a button to be able to reduce nav bar width
 
 </br>
 
