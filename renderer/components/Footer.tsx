@@ -75,7 +75,7 @@ export default function Footer() {
                 <Popover className="relative ">
                     <Popover.Button className={classNameClickable}>
                         <FontAwesomeIcon icon={faComment} />
-                        <Trans>Support</Trans>
+                        <Trans>Contact Us</Trans>
                     </Popover.Button>
 
                     <Popover.Panel className="absolute bottom-full left-1/2 z-40 -translate-x-1/2">
