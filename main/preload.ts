@@ -1,6 +1,6 @@
 import { ipcRenderer, contextBridge, IpcRendererEvent } from "electron";
 import VideoDTO from "./dto/video";
-import { MusicRemoverStatus } from "./utils/enum";
+import { MusicRemoverStatus, VideoQuality } from "./utils/enum";
 import { TypeOptions } from "react-toastify";
 
 declare global {
@@ -62,6 +62,10 @@ const mainApi = {
         ipcRenderer.invoke("userPref:get", "darkMode"),
     setUserPrefDarkMode: (dark: boolean) =>
         ipcRenderer.invoke("userPref:set", "darkMode", dark),
+    getUserPrefQuality: (): Promise<VideoQuality> =>
+        ipcRenderer.invoke("userPref:get", "quality"),
+    setUserPrefQuality: (quality: VideoQuality) =>
+        ipcRenderer.invoke("userPref:set", "quality", quality),
     getUserPrefLang: (): Promise<string> =>
         ipcRenderer.invoke("userPref:get", "lang"),
     setUserPrefLang: (lang: string) =>

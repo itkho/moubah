@@ -3,6 +3,7 @@ import { v4 as uuid } from "uuid";
 import settings from "electron-settings";
 import { nativeTheme } from "electron";
 import { osLocale } from "os-locale-s";
+import { VideoQuality } from "../utils/enum";
 
 export function set(key: string, value: any) {
     settings.setSync(key, value);
@@ -12,6 +13,8 @@ export function get(key: string) {
     switch (key) {
         case "darkMode":
             return getDarkMode();
+        case "quality":
+            return getQuality();
         case "lang":
             return getLang();
         default:
@@ -42,6 +45,17 @@ function getDarkMode(): boolean {
         return darkModePref;
     }
     return nativeTheme.shouldUseDarkColors;
+}
+
+function getQuality(): VideoQuality {
+    const quality = settings.getSync("quality");
+    if (
+        typeof quality === "string" &&
+        Object.values(VideoQuality).includes(quality as VideoQuality)
+    ) {
+        return quality as VideoQuality;
+    }
+    return VideoQuality.p720;
 }
 
 export function getLastMessageSeenTimestamp() {

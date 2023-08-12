@@ -8,7 +8,7 @@ import {
     save,
     removeAll,
 } from "./repository/video";
-import { search } from "./lib/youtube";
+import { getQualityAvailable, search } from "./lib/youtube";
 import VideoService from "./services/video";
 import { initQueue } from "./services/library";
 import { toogleDevTools } from "./windows/main-window";
@@ -30,6 +30,9 @@ export default function initIpcHandlers() {
         async (_event: IpcMainInvokeEvent, query): Promise<VideoDTO[]> => {
             mainLogger.debug(`Youtube search for: ${query}`);
             const videos = await search(query);
+            const tmp = await getQualityAvailable(videos[0].id);
+            console.log({ tmp });
+
             return videos;
         }
     );

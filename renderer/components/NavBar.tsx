@@ -4,6 +4,7 @@ import {
     faList,
     faMagnifyingGlass,
     faEarthAmerica,
+    faGear,
 } from "@fortawesome/free-solid-svg-icons";
 import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
 import { useView } from "../context/ViewContext";
@@ -88,6 +89,22 @@ export default function NavBar() {
                                 }`}
                             />
                             <Trans>Player</Trans>
+                        </li>
+                        <li
+                            onClick={() => setView(View.settings)}
+                            className={
+                                classNameListItem +
+                                (view === View.settings &&
+                                    "text-base-700 bg-base-300 pointer-events-none font-semibold")
+                            }
+                        >
+                            <FontAwesomeIcon
+                                icon={faGear}
+                                className={`h-5 pl-1 pr-3 ${
+                                    view === View.settings && "text-highlight"
+                                }`}
+                            />
+                            <Trans>Settings</Trans>
                         </li>
                     </ul>
                 </div>
