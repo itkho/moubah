@@ -8,6 +8,7 @@ import { ToastContainer, toast, TypeOptions } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDarkMode } from "../context/DarkModeContext";
 import { useLocale } from "../context/LocaleContext";
+import SettingsView from "./SettingsView";
 
 const CustomToastWithLink = (text: string, link: string) => (
     <a href={link} target="_blank" className="">
@@ -34,6 +35,7 @@ export default function MainView() {
     let seachHidden = true;
     let libraryHidden = true;
     let playerHidden = true;
+    let settingsHidden = true;
 
     switch (view) {
         case View.search:
@@ -45,6 +47,9 @@ export default function MainView() {
         case View.player:
             playerHidden = false;
             break;
+        case View.settings:
+            settingsHidden = false;
+            break;
     }
 
     return (
@@ -52,6 +57,7 @@ export default function MainView() {
             <SearchView hidden={seachHidden} />
             <LibraryView hidden={libraryHidden} />
             <PlayerView hidden={playerHidden} />
+            <SettingsView hidden={settingsHidden} />
             <ToastContainer
                 position="bottom-right"
                 autoClose={false}
