@@ -30,15 +30,23 @@ msgstr "تمت إزالة موسيقى الخلفية"
 msgid "By:"
 msgstr "بواسطة:"
 
+#: renderer/views/SettingsView.tsx:52
+msgid "Choose your default video quality"
+msgstr "اختر جودة الفيديو الافتراضية"
+
 #: renderer/components/PreviewModal.tsx:58
 msgid "Close"
 msgstr "اغلاق"
 
-#: renderer/components/Footer.tsx:118
+#: renderer/components/Footer.tsx:127
 msgid "Console"
 msgstr "وحدة التحكم"
 
-#: renderer/components/NavBar.tsx:182
+#: renderer/components/Footer.tsx:78
+msgid "Contact Us"
+msgstr "اتصل بنا"
+
+#: renderer/components/NavBar.tsx:199
 msgid "Dark"
 msgstr "داكن"
 
@@ -63,24 +71,28 @@ msgstr "أدخل عنوان مقطع فيديو أو عنوان URL في شري�
 msgid "Filter"
 msgstr "منقي"
 
-#: renderer/components/NavBar.tsx:74
+#: renderer/components/NavBar.tsx:75
 #: renderer/components/PlayerPlaceHolder.tsx:18
 msgid "Library"
 msgstr "مكتبة الفيديو"
 
-#: renderer/components/NavBar.tsx:204
+#: renderer/components/NavBar.tsx:221
 msgid "Light"
 msgstr "ضوء"
 
-#: renderer/components/Footer.tsx:111
+#: renderer/components/Footer.tsx:120
 msgid "Logs"
 msgstr "السجلات"
 
-#: renderer/components/Footer.tsx:82
+#: renderer/views/SettingsView.tsx:38
+msgid "Manage your settings and preferences here"
+msgstr "إدارة الإعدادات والتفضيلات الخاصة بك هنا"
+
+#: renderer/components/Footer.tsx:91
 msgid "Men"
 msgstr "رجال"
 
-#: renderer/components/Footer.tsx:59
+#: renderer/components/Footer.tsx:68
 msgid "Music remover"
 msgstr "مزيل الموسيقى"
 
@@ -96,7 +108,7 @@ msgstr "لا يوجد فيديو لمشاهدته بعد ..."
 msgid "Open in"
 msgstr "فتح في"
 
-#: renderer/components/Footer.tsx:104
+#: renderer/components/Footer.tsx:113
 msgid "Open-source"
 msgstr "مفتوحة المصدر"
 
@@ -109,7 +121,7 @@ msgstr "وقف"
 msgid "Play"
 msgstr "شغل"
 
-#: renderer/components/NavBar.tsx:90
+#: renderer/components/NavBar.tsx:91
 msgid "Player"
 msgstr "مشغل"
 
@@ -135,7 +147,7 @@ msgid "Resume"
 msgstr "استأنف"
 
 #: renderer/components/LibraryPlaceHolder.tsx:21
-#: renderer/components/NavBar.tsx:58
+#: renderer/components/NavBar.tsx:59
 msgid "Search"
 msgstr "بحث"
 
@@ -155,6 +167,11 @@ msgstr "اختر الكل"
 msgid "Selected:"
 msgstr "المختار:"
 
+#: renderer/components/NavBar.tsx:107
+#: renderer/views/SettingsView.tsx:35
+msgid "Settings"
+msgstr "إعدادات"
+
 #: renderer/components/LibraryDataCorrupted.tsx:14
 msgid "Something is wrong with the local videos..."
 msgstr "هناك شيء خاطئ في مقاطع الفيديو المحلية ..."
@@ -168,14 +185,18 @@ msgid "Stop"
 msgstr "قف"
 
 #: renderer/components/Footer.tsx:69
-msgid "Support"
-msgstr "مساعدة"
+#~ msgid "Support"
+#~ msgstr "مساعدة"
 
 #: renderer/views/LibraryView.tsx:307
 msgid "Sure?"
 msgstr "بالتأكيد؟"
 
-#: renderer/components/Footer.tsx:93
+#: renderer/views/SettingsView.tsx:49
+msgid "Video quality"
+msgstr "جودة الفيديو"
+
+#: renderer/components/Footer.tsx:102
 msgid "Women"
 msgstr "نساء"
 
@@ -221,8 +242,8 @@ msgstr "جديد"
 msgid "newest"
 msgstr "أحدث"
 
-#: renderer/components/Footer.tsx:47
-#: renderer/components/Footer.tsx:62
+#: renderer/components/Footer.tsx:56
+#: renderer/components/Footer.tsx:71
 msgid "offline"
 msgstr "غير متصل"
 
@@ -230,8 +251,8 @@ msgstr "غير متصل"
 msgid "oldest"
 msgstr "أقدم"
 
-#: renderer/components/Footer.tsx:47
-#: renderer/components/Footer.tsx:61
+#: renderer/components/Footer.tsx:56
+#: renderer/components/Footer.tsx:70
 msgid "online"
 msgstr "متصل"
 

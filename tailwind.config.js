@@ -108,6 +108,7 @@ module.exports = {
             fontFamily: {
                 "fredoka-one": ['"Fredoka One"', "cursive"],
                 rubik: ["Rubik", "sans-serif"],
+                roboto: ["Roboto", "sans-serif"],
             },
         },
     },
@@ -120,6 +121,5 @@ module.exports = {
     plugins: [
         require("@tailwindcss/line-clamp"),
         require("tailwind-scrollbar")({ nocompatible: true }),
-        require("daisyui"),
     ],
 };

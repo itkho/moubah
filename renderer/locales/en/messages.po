@@ -30,15 +30,23 @@ msgstr "Background music removed"
 msgid "By:"
 msgstr "By:"
 
+#: renderer/views/SettingsView.tsx:52
+msgid "Choose your default video quality"
+msgstr "Choose your default video quality"
+
 #: renderer/components/PreviewModal.tsx:58
 msgid "Close"
 msgstr "Close"
 
-#: renderer/components/Footer.tsx:118
+#: renderer/components/Footer.tsx:127
 msgid "Console"
 msgstr "Console"
 
-#: renderer/components/NavBar.tsx:182
+#: renderer/components/Footer.tsx:78
+msgid "Contact Us"
+msgstr "Contact Us"
+
+#: renderer/components/NavBar.tsx:199
 msgid "Dark"
 msgstr "Dark"
 
@@ -63,24 +71,28 @@ msgstr "Enter the title of a video or an URL in the search bar"
 msgid "Filter"
 msgstr "Filter"
 
-#: renderer/components/NavBar.tsx:74
+#: renderer/components/NavBar.tsx:75
 #: renderer/components/PlayerPlaceHolder.tsx:18
 msgid "Library"
 msgstr "Library"
 
-#: renderer/components/NavBar.tsx:204
+#: renderer/components/NavBar.tsx:221
 msgid "Light"
 msgstr "Light"
 
-#: renderer/components/Footer.tsx:111
+#: renderer/components/Footer.tsx:120
 msgid "Logs"
 msgstr "Logs"
 
-#: renderer/components/Footer.tsx:82
+#: renderer/views/SettingsView.tsx:38
+msgid "Manage your settings and preferences here"
+msgstr "Manage your settings and preferences here"
+
+#: renderer/components/Footer.tsx:91
 msgid "Men"
 msgstr "Men"
 
-#: renderer/components/Footer.tsx:59
+#: renderer/components/Footer.tsx:68
 msgid "Music remover"
 msgstr "Music remover"
 
@@ -96,7 +108,7 @@ msgstr "No video to watch yet..."
 msgid "Open in"
 msgstr "Open in"
 
-#: renderer/components/Footer.tsx:104
+#: renderer/components/Footer.tsx:113
 msgid "Open-source"
 msgstr "Open-source"
 
@@ -109,7 +121,7 @@ msgstr "Pause"
 msgid "Play"
 msgstr "Play"
 
-#: renderer/components/NavBar.tsx:90
+#: renderer/components/NavBar.tsx:91
 msgid "Player"
 msgstr "Player"
 
@@ -135,7 +147,7 @@ msgid "Resume"
 msgstr "Resume"
 
 #: renderer/components/LibraryPlaceHolder.tsx:21
-#: renderer/components/NavBar.tsx:58
+#: renderer/components/NavBar.tsx:59
 msgid "Search"
 msgstr "Search"
 
@@ -155,6 +167,11 @@ msgstr "Select all"
 msgid "Selected:"
 msgstr "Selected:"
 
+#: renderer/components/NavBar.tsx:107
+#: renderer/views/SettingsView.tsx:35
+msgid "Settings"
+msgstr "Settings"
+
 #: renderer/components/LibraryDataCorrupted.tsx:14
 msgid "Something is wrong with the local videos..."
 msgstr "Something is wrong with the local videos..."
@@ -167,15 +184,15 @@ msgstr "Sort by"
 msgid "Stop"
 msgstr "Stop"
 
-#: renderer/components/Footer.tsx:69
-msgid "Support"
-msgstr "Support"
-
 #: renderer/views/LibraryView.tsx:307
 msgid "Sure?"
 msgstr "Sure?"
 
-#: renderer/components/Footer.tsx:93
+#: renderer/views/SettingsView.tsx:49
+msgid "Video quality"
+msgstr "Video quality"
+
+#: renderer/components/Footer.tsx:102
 msgid "Women"
 msgstr "Women"
 
@@ -221,8 +238,8 @@ msgstr "new"
 msgid "newest"
 msgstr "newest"
 
-#: renderer/components/Footer.tsx:47
-#: renderer/components/Footer.tsx:62
+#: renderer/components/Footer.tsx:56
+#: renderer/components/Footer.tsx:71
 msgid "offline"
 msgstr "offline"
 
@@ -230,8 +247,8 @@ msgstr "offline"
 msgid "oldest"
 msgstr "oldest"
 
-#: renderer/components/Footer.tsx:47
-#: renderer/components/Footer.tsx:61
+#: renderer/components/Footer.tsx:56
+#: renderer/components/Footer.tsx:70
 msgid "online"
 msgstr "online"
 
