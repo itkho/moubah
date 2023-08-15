@@ -37,12 +37,11 @@ The app is centred around youtube as there is a lot of useful (e.g. tutorials) a
 
 </br>
 
-
 <!-- 1: record -->
 <!-- 2: ffmpeg -i demo.mov -q:v 0 demo.mp4 -->
 <!-- 3: drag & drop from Github -->
-https://github.com/itkho/moubah/assets/121198251/e0b6ae86-3973-477b-9452-9c48677f4894
 
+https://github.com/itkho/moubah/assets/121198251/e0b6ae86-3973-477b-9452-9c48677f4894
 
 **Download the app** : 🍏 [Apple](https://github.com/itkho/moubah/releases/download/v1.0.0/moubah-1.0.0-mac-x64.dmg) (or for [M1](https://github.com/itkho/moubah/releases/download/v1.0.0/moubah-1.0.0-mac-arm64.dmg)) | 🪟 [Windows](https://github.com/itkho/moubah/releases/download/v1.0.0/moubah-1.0.0-win-x64.exe) | 🐧 ~~Linux~~
 
@@ -75,9 +74,9 @@ https://github.com/itkho/moubah/assets/121198251/e0b6ae86-3973-477b-9452-9c48677
 
 | Windows | Mac (Intel) |                                 Mac (Apple silicon)                                  | Linux |
 | :-----: | :---------: | :----------------------------------------------------------------------------------: | :---: |
-|   ✅    |     📆      | ✅ ([Python 3.8.10](https://www.python.org/downloads/release/python-3810/) required) |  ❌   |
+|   ✅    |     ✅      | ✅ ([Python 3.8.10](https://www.python.org/downloads/release/python-3810/) required) |  ❌   |
 
-> ✅ Supported | 📆 Not tested yet | ❌ Not support plannned yet
+> ✅ Supported | ❌ Not support plannned yet
 
 </br>
 

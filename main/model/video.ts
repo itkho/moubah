@@ -2,7 +2,7 @@ import path from "path";
 import fs from "fs";
 import { STORAGE_DIR_PATH, VIDEO_DIR_SEPARATOR } from "../utils/const.js";
 
-import { VideoStatus } from "../utils/enum.js";
+import { VideoQuality, VideoStatus } from "../utils/enum.js";
 import AudioModel from "./audio.js";
 import { createPathIfDoesntExists, sanitizeText } from "../utils/helpers.js";
 import VideoDTO, { Author, Metadata } from "../dto/video.js";
@@ -13,6 +13,7 @@ type Info = {
     timestamp: string;
     title: string;
     views: number;
+    quality: VideoQuality;
 };
 
 export default class VideoModel {
@@ -30,6 +31,7 @@ export default class VideoModel {
                 views: video.views,
                 author: video.author,
                 originalThumbnailUri: video.thumbnailUri,
+                quality: video.quality || VideoQuality.p720,
             },
             metadata: {
                 isNew: true,

@@ -1,0 +1,892 @@
+{
+    "all": [
+        {
+            "type": "channel",
+            "name": "Fireship",
+            "url": "https://youtube.com/@Fireship",
+            "title": "Fireship",
+            "image": "https://yt3.googleusercontent.com/ytc/AOPolaQ2iMmw9cWFFjnwa13nBwtZQbl-AqGYkkiTqNaTLg=s88-c-k-c0x00ffffff-no-rj-mo",
+            "thumbnail": "https://yt3.googleusercontent.com/ytc/AOPolaQ2iMmw9cWFFjnwa13nBwtZQbl-AqGYkkiTqNaTLg=s88-c-k-c0x00ffffff-no-rj-mo",
+            "videoCount": 234,
+            "videoCountLabel": "2.34M subscribers"
+        },
+        {
+            "type": "video",
+            "videoId": "r6tH55syq0o",
+            "url": "https://youtube.com/watch?v=r6tH55syq0o",
+            "title": "How programmers flex on each other",
+            "description": "Top 10 ways developers flex on each other. Learn how to show off your achievements in the world of programming.Zig is general-purpose systems programming language often used as an alternative to C, C++, and Rust. Learn the basics of Zig ...What is a superconductor? LK-99 claims to be the first room-temperature superconductor, and if true, it could revolutionize the ...Stack Overflow just launched a new AI tool called Overflow AI. However, traffic to the website has already declined significantly ...#programming #database #100SecondsOfCode Chat with Me on Discord https://discord.gg/fireship Resources Postgres ...In a surprising move, Twitter has rebranded to X and removed the bird logo. Let's look at recent developments with Twitter and ...Meta just released the world's most powerful open-source LLM...Llama2. Let's see how it stacks open to OpenAI's GPT-4 and ...Learn the basics of the SvelteKit - a metaframework that can fetch data and render Svelte web applications on the server. Find out ...Let's take a look at the Coalition for Content Provenance and Authenticity or C2PA and its mission to curb disinformation.ChatGPT released the Code Interpreter plugin, making it possible for the LLM to run and test its own Python code. Learn how ...",
+            "image": "https://i.ytimg.com/vi/r6tH55syq0o/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/r6tH55syq0o/hq720.jpg",
+            "seconds": 380,
+            "timestamp": "6:20",
+            "duration": {
+                "seconds": 380,
+                "timestamp": "6:20"
+            },
+            "ago": "4 days ago",
+            "views": 776064,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "channel",
+            "name": "Beyond Fireship",
+            "url": "https://youtube.com/@beyondfireship",
+            "title": "Beyond Fireship",
+            "image": "https://yt3.ggpht.com/3MC9XX7rtxeS55uoOQG2nvJ7zaBd17r8Uh0yk_R3KyKjAK_u4RlHhZcTCkx4yym0guGWdefD5Q=s88-c-k-c0x00ffffff-no-rj-mo",
+            "thumbnail": "https://yt3.ggpht.com/3MC9XX7rtxeS55uoOQG2nvJ7zaBd17r8Uh0yk_R3KyKjAK_u4RlHhZcTCkx4yym0guGWdefD5Q=s88-c-k-c0x00ffffff-no-rj-mo",
+            "videoCount": 300,
+            "videoCountLabel": "300K subscribers"
+        },
+        {
+            "type": "video",
+            "videoId": "A4_TFHzqAAg",
+            "url": "https://youtube.com/watch?v=A4_TFHzqAAg",
+            "title": "How to get rich as a solo software developer - The Ultimate Guide",
+            "description": "When you learn how to code, you unlock the ability to build side-businesses that have the potential to make you rich. The 6-step ...",
+            "image": "https://i.ytimg.com/vi/A4_TFHzqAAg/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/A4_TFHzqAAg/hq720.jpg",
+            "seconds": 531,
+            "timestamp": "8:51",
+            "duration": {
+                "seconds": 531,
+                "timestamp": "8:51"
+            },
+            "ago": "2 months ago",
+            "views": 1009396,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "r-GSGH2RxJs",
+            "url": "https://youtube.com/watch?v=r-GSGH2RxJs",
+            "title": "htmx in 100 seconds",
+            "description": "Learn the basics of htmx - an HTML-focused UI library that can handle data fetching and rendering in web applications without ...",
+            "image": "https://i.ytimg.com/vi/r-GSGH2RxJs/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/r-GSGH2RxJs/hq720.jpg",
+            "seconds": 147,
+            "timestamp": "2:27",
+            "duration": {
+                "seconds": 147,
+                "timestamp": "2:27"
+            },
+            "ago": "1 month ago",
+            "views": 785648,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "Xg9ihH15Uto",
+            "url": "https://youtube.com/watch?v=Xg9ihH15Uto",
+            "title": "How to Land a 100K/yr Tech Job - 10 Strategies",
+            "description": "Do you want to land a high-paying tech job writing code? Working for a great company requires more than just programming skills ...",
+            "image": "https://i.ytimg.com/vi/Xg9ihH15Uto/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/Xg9ihH15Uto/hq720.jpg",
+            "seconds": 677,
+            "timestamp": "11:17",
+            "duration": {
+                "seconds": 677,
+                "timestamp": "11:17"
+            },
+            "ago": "1 year ago",
+            "views": 1037254,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "_k-F-MMvQV4",
+            "url": "https://youtube.com/watch?v=_k-F-MMvQV4",
+            "title": "10 Programmer Stereotypes",
+            "description": "#tech #programming #comedy Other Funny, but Useless Videos React for the Haters https://youtu.be/HyWYpM_S-2c Java for ...Wishlist Men of War II on Steam or sign up for the final open beta, available until August 14th, by clicking the link: ...Let's take a look at the top 15 new databases that could disrupt software development in the future. Many new serverless ...Cities: Skylines, Starting with no water. Can you survive? Join this channel to get access to perks: ...This video is mainly for newer-to-Linux users who may be confused by the term \"distro\". Heck, even some long-time Linux users ...Few of the monsters that evolution created have been so successful at hurting us as the variola virus, responsible for smallpox.#learntocode #programming #tech Resources Svelte Kit https://kit.svelte.dev Firebase https://firebase.google.com/ Stack ...Learn 10 essential math concepts for software engineering and technical interviews. Understand how programmers use ...Java 21 will bring major improvements to the world's most popular enterprise programming language. Learn about unnamed ...I am often asked how I create programming tutorials on YouTube for fireship.io. Learn about my video production hardware, ...",
+            "image": "https://i.ytimg.com/vi/_k-F-MMvQV4/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/_k-F-MMvQV4/hq720.jpg",
+            "seconds": 308,
+            "timestamp": "5:08",
+            "duration": {
+                "seconds": 308,
+                "timestamp": "5:08"
+            },
+            "ago": "1 year ago",
+            "views": 2448587,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "3Ay6qZ88boI",
+            "url": "https://youtube.com/watch?v=3Ay6qZ88boI",
+            "title": "PHP will make you poor? StackOverflow 2023 Results",
+            "description": "Let's breakdown the StackOverflow survey results to determine the best and worst programming languages of 2023. Find out ...",
+            "image": "https://i.ytimg.com/vi/3Ay6qZ88boI/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/3Ay6qZ88boI/hq720.jpg",
+            "seconds": 242,
+            "timestamp": "4:02",
+            "duration": {
+                "seconds": 242,
+                "timestamp": "4:02"
+            },
+            "ago": "1 month ago",
+            "views": 567688,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "cXlxMP9PU8I",
+            "url": "https://youtube.com/watch?v=cXlxMP9PU8I",
+            "title": "The shocking decline of Stack Overflow",
+            "description": "Stack Overflow just launched a new AI tool called Overflow AI. However, traffic to the website has already declined significantly ...",
+            "image": "https://i.ytimg.com/vi/cXlxMP9PU8I/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/cXlxMP9PU8I/hq720.jpg",
+            "seconds": 227,
+            "timestamp": "3:47",
+            "duration": {
+                "seconds": 227,
+                "timestamp": "3:47"
+            },
+            "ago": "2 weeks ago",
+            "views": 579978,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "M_wZpSEvOkc",
+            "url": "https://youtube.com/watch?v=M_wZpSEvOkc",
+            "title": "This unicorn startup faked 95% of its users",
+            "description": "Learn how the billion dollar startup IRL faked millions of users to raise money from venture capitalists. This scam is not is an ...",
+            "image": "https://i.ytimg.com/vi/M_wZpSEvOkc/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/M_wZpSEvOkc/hq720.jpg",
+            "seconds": 190,
+            "timestamp": "3:10",
+            "duration": {
+                "seconds": 190,
+                "timestamp": "3:10"
+            },
+            "ago": "1 month ago",
+            "views": 694001,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "-JE8P2TiJEg",
+            "url": "https://youtube.com/watch?v=-JE8P2TiJEg",
+            "title": "PROOF JavaScript is a Multi-Threaded language",
+            "description": "Learn the basics of parallelism and concurrency in JavaScript by experimenting with Node.js Worker Threads and browser Web ...",
+            "image": "https://i.ytimg.com/vi/-JE8P2TiJEg/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/-JE8P2TiJEg/hq720.jpg",
+            "seconds": 501,
+            "timestamp": "8:21",
+            "duration": {
+                "seconds": 501,
+                "timestamp": "8:21"
+            },
+            "ago": "8 days ago",
+            "views": 184738,
+            "author": {
+                "name": "Beyond Fireship",
+                "url": "https://youtube.com/@beyondfireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "QAC3eBYHru0",
+            "url": "https://youtube.com/watch?v=QAC3eBYHru0",
+            "title": "Dependency Injection with Clean Architecture",
+            "description": "Continuing on last week's discussion about Clean Architecture, we'll be looking into how to manage dependencies. Tell your ...",
+            "image": "https://i.ytimg.com/vi/QAC3eBYHru0/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/QAC3eBYHru0/hq720.jpg",
+            "seconds": 4361,
+            "timestamp": "1:12:41",
+            "duration": {
+                "seconds": 4361,
+                "timestamp": "1:12:41"
+            },
+            "ago": "Streamed 2 days ago",
+            "views": 55,
+            "author": {
+                "name": "The Technologist Podcast w/ Coach Denis",
+                "url": "https://youtube.com/@TechnologistPodcast"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "p6Yw0Bx5dbw",
+            "url": "https://youtube.com/watch?v=p6Yw0Bx5dbw",
+            "title": "ChatGPT just leveled up big time...",
+            "description": "ChatGPT released the Code Interpreter plugin, making it possible for the LLM to run and test its own Python code. Learn how ...",
+            "image": "https://i.ytimg.com/vi/p6Yw0Bx5dbw/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/p6Yw0Bx5dbw/hq720.jpg",
+            "seconds": 208,
+            "timestamp": "3:28",
+            "duration": {
+                "seconds": 208,
+                "timestamp": "3:28"
+            },
+            "ago": "1 month ago",
+            "views": 1010912,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "AE3iXR1JFak",
+            "url": "https://youtube.com/watch?v=AE3iXR1JFak",
+            "title": "Twitter rebrands to X in latest 5D chess move",
+            "description": "In a surprising move, Twitter has rebranded to X and removed the bird logo. Let's look at recent developments with Twitter and ...",
+            "image": "https://i.ytimg.com/vi/AE3iXR1JFak/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/AE3iXR1JFak/hq720.jpg",
+            "seconds": 192,
+            "timestamp": "3:12",
+            "duration": {
+                "seconds": 192,
+                "timestamp": "3:12"
+            },
+            "ago": "2 weeks ago",
+            "views": 1026566,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "n2Fluyr3lbc",
+            "url": "https://youtube.com/watch?v=n2Fluyr3lbc",
+            "title": "PostgreSQL in 100 Seconds",
+            "description": "#programming #database #100SecondsOfCode Chat with Me on Discord https://discord.gg/fireship Resources Postgres ...",
+            "image": "https://i.ytimg.com/vi/n2Fluyr3lbc/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/n2Fluyr3lbc/hq720.jpg",
+            "seconds": 157,
+            "timestamp": "2:37",
+            "duration": {
+                "seconds": 157,
+                "timestamp": "2:37"
+            },
+            "ago": "2 weeks ago",
+            "views": 340383,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "DXWwCggFROk",
+            "url": "https://youtube.com/watch?v=DXWwCggFROk",
+            "title": "Is AI really getting dumber? Llama2 vs GPT-4",
+            "description": "Meta just released the world's most powerful open-source LLM...Llama2. Let's see how it stacks open to OpenAI's GPT-4 and ...",
+            "image": "https://i.ytimg.com/vi/DXWwCggFROk/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/DXWwCggFROk/hq720.jpg",
+            "seconds": 197,
+            "timestamp": "3:17",
+            "duration": {
+                "seconds": 197,
+                "timestamp": "3:17"
+            },
+            "ago": "3 weeks ago",
+            "views": 513528,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "XRoSBWYMefY",
+            "url": "https://youtube.com/watch?v=XRoSBWYMefY",
+            "title": "Meet Jeff Delaney: The Mastermind Behind @Fireship",
+            "description": "If you're anything like us, your YouTube recommendations are full of Jeff Delaney's videos - most of you probably know him under ...",
+            "image": "https://i.ytimg.com/vi/XRoSBWYMefY/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/XRoSBWYMefY/hq720.jpg",
+            "seconds": 962,
+            "timestamp": "16:02",
+            "duration": {
+                "seconds": 962,
+                "timestamp": "16:02"
+            },
+            "ago": "1 month ago",
+            "views": 251204,
+            "author": {
+                "name": "Honeypot",
+                "url": "https://youtube.com/@Honeypotio"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "BPadRwJbylY",
+            "url": "https://youtube.com/watch?v=BPadRwJbylY",
+            "title": "\"World-changing\" LK-99 Superconductor explained quickly",
+            "description": "What is a superconductor? LK-99 claims to be the first room-temperature superconductor, and if true, it could revolutionize the ...",
+            "image": "https://i.ytimg.com/vi/BPadRwJbylY/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/BPadRwJbylY/hq720.jpg",
+            "seconds": 202,
+            "timestamp": "3:22",
+            "duration": {
+                "seconds": 202,
+                "timestamp": "3:22"
+            },
+            "ago": "2 weeks ago",
+            "views": 1018803,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "-Bdb2KOb_zI",
+            "url": "https://youtube.com/watch?v=-Bdb2KOb_zI",
+            "title": "The future of \"truth\" on the Internet",
+            "description": "Let's take a look at the Coalition for Content Provenance and Authenticity or C2PA and its mission to curb disinformation.",
+            "image": "https://i.ytimg.com/vi/-Bdb2KOb_zI/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/-Bdb2KOb_zI/hq720.jpg",
+            "seconds": 213,
+            "timestamp": "3:33",
+            "duration": {
+                "seconds": 213,
+                "timestamp": "3:33"
+            },
+            "ago": "3 weeks ago",
+            "views": 707503,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "q1fsBWLpYW4",
+            "url": "https://youtube.com/watch?v=q1fsBWLpYW4",
+            "title": "21 Awesome Web Features you’re not using yet",
+            "description": "A breakdown of the most useful new features for web developers using HTML, CSS, and JavaScript. Learn about native dialog ...",
+            "image": "https://i.ytimg.com/vi/q1fsBWLpYW4/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/q1fsBWLpYW4/hq720.jpg",
+            "seconds": 511,
+            "timestamp": "8:31",
+            "duration": {
+                "seconds": 511,
+                "timestamp": "8:31"
+            },
+            "ago": "2 months ago",
+            "views": 833097,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "1GSq7Je32iw",
+            "url": "https://youtube.com/watch?v=1GSq7Je32iw",
+            "title": "RIP Google Domains… and 5 big tech stories this week",
+            "description": "Google announced it's selling its domain registration platform to Squarespace. In this video, we look at the 5 biggest tech stories ...",
+            "image": "https://i.ytimg.com/vi/1GSq7Je32iw/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/1GSq7Je32iw/hq720.jpg",
+            "seconds": 184,
+            "timestamp": "3:04",
+            "duration": {
+                "seconds": 184,
+                "timestamp": "3:04"
+            },
+            "ago": "1 month ago",
+            "views": 627437,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "Uc6lM1Aig9c",
+            "url": "https://youtube.com/watch?v=Uc6lM1Aig9c",
+            "title": "Apple makes risky bet on VR/AR future",
+            "description": "The Apple Vision Pro VR headset was announced at WWDC yesterday. Let's take a first look its core features and how developers ...",
+            "image": "https://i.ytimg.com/vi/Uc6lM1Aig9c/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/Uc6lM1Aig9c/hq720.jpg",
+            "seconds": 261,
+            "timestamp": "4:21",
+            "duration": {
+                "seconds": 261,
+                "timestamp": "4:21"
+            },
+            "ago": "2 months ago",
+            "views": 662220,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        }
+    ],
+    "videos": [
+        {
+            "type": "video",
+            "videoId": "A4_TFHzqAAg",
+            "url": "https://youtube.com/watch?v=A4_TFHzqAAg",
+            "title": "How to get rich as a solo software developer - The Ultimate Guide",
+            "description": "When you learn how to code, you unlock the ability to build side-businesses that have the potential to make you rich. The 6-step ...",
+            "image": "https://i.ytimg.com/vi/A4_TFHzqAAg/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/A4_TFHzqAAg/hq720.jpg",
+            "seconds": 531,
+            "timestamp": "8:51",
+            "duration": {
+                "seconds": 531,
+                "timestamp": "8:51"
+            },
+            "ago": "2 months ago",
+            "views": 1009396,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "r-GSGH2RxJs",
+            "url": "https://youtube.com/watch?v=r-GSGH2RxJs",
+            "title": "htmx in 100 seconds",
+            "description": "Learn the basics of htmx - an HTML-focused UI library that can handle data fetching and rendering in web applications without ...",
+            "image": "https://i.ytimg.com/vi/r-GSGH2RxJs/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/r-GSGH2RxJs/hq720.jpg",
+            "seconds": 147,
+            "timestamp": "2:27",
+            "duration": {
+                "seconds": 147,
+                "timestamp": "2:27"
+            },
+            "ago": "1 month ago",
+            "views": 785648,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "Xg9ihH15Uto",
+            "url": "https://youtube.com/watch?v=Xg9ihH15Uto",
+            "title": "How to Land a 100K/yr Tech Job - 10 Strategies",
+            "description": "Do you want to land a high-paying tech job writing code? Working for a great company requires more than just programming skills ...",
+            "image": "https://i.ytimg.com/vi/Xg9ihH15Uto/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/Xg9ihH15Uto/hq720.jpg",
+            "seconds": 677,
+            "timestamp": "11:17",
+            "duration": {
+                "seconds": 677,
+                "timestamp": "11:17"
+            },
+            "ago": "1 year ago",
+            "views": 1037254,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "_k-F-MMvQV4",
+            "url": "https://youtube.com/watch?v=_k-F-MMvQV4",
+            "title": "10 Programmer Stereotypes",
+            "description": "#tech #programming #comedy Other Funny, but Useless Videos React for the Haters https://youtu.be/HyWYpM_S-2c Java for ...Wishlist Men of War II on Steam or sign up for the final open beta, available until August 14th, by clicking the link: ...Let's take a look at the top 15 new databases that could disrupt software development in the future. Many new serverless ...Cities: Skylines, Starting with no water. Can you survive? Join this channel to get access to perks: ...This video is mainly for newer-to-Linux users who may be confused by the term \"distro\". Heck, even some long-time Linux users ...Few of the monsters that evolution created have been so successful at hurting us as the variola virus, responsible for smallpox.#learntocode #programming #tech Resources Svelte Kit https://kit.svelte.dev Firebase https://firebase.google.com/ Stack ...Learn 10 essential math concepts for software engineering and technical interviews. Understand how programmers use ...Java 21 will bring major improvements to the world's most popular enterprise programming language. Learn about unnamed ...I am often asked how I create programming tutorials on YouTube for fireship.io. Learn about my video production hardware, ...",
+            "image": "https://i.ytimg.com/vi/_k-F-MMvQV4/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/_k-F-MMvQV4/hq720.jpg",
+            "seconds": 308,
+            "timestamp": "5:08",
+            "duration": {
+                "seconds": 308,
+                "timestamp": "5:08"
+            },
+            "ago": "1 year ago",
+            "views": 2448587,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "3Ay6qZ88boI",
+            "url": "https://youtube.com/watch?v=3Ay6qZ88boI",
+            "title": "PHP will make you poor? StackOverflow 2023 Results",
+            "description": "Let's breakdown the StackOverflow survey results to determine the best and worst programming languages of 2023. Find out ...",
+            "image": "https://i.ytimg.com/vi/3Ay6qZ88boI/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/3Ay6qZ88boI/hq720.jpg",
+            "seconds": 242,
+            "timestamp": "4:02",
+            "duration": {
+                "seconds": 242,
+                "timestamp": "4:02"
+            },
+            "ago": "1 month ago",
+            "views": 567688,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "cXlxMP9PU8I",
+            "url": "https://youtube.com/watch?v=cXlxMP9PU8I",
+            "title": "The shocking decline of Stack Overflow",
+            "description": "Stack Overflow just launched a new AI tool called Overflow AI. However, traffic to the website has already declined significantly ...",
+            "image": "https://i.ytimg.com/vi/cXlxMP9PU8I/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/cXlxMP9PU8I/hq720.jpg",
+            "seconds": 227,
+            "timestamp": "3:47",
+            "duration": {
+                "seconds": 227,
+                "timestamp": "3:47"
+            },
+            "ago": "2 weeks ago",
+            "views": 579978,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "M_wZpSEvOkc",
+            "url": "https://youtube.com/watch?v=M_wZpSEvOkc",
+            "title": "This unicorn startup faked 95% of its users",
+            "description": "Learn how the billion dollar startup IRL faked millions of users to raise money from venture capitalists. This scam is not is an ...",
+            "image": "https://i.ytimg.com/vi/M_wZpSEvOkc/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/M_wZpSEvOkc/hq720.jpg",
+            "seconds": 190,
+            "timestamp": "3:10",
+            "duration": {
+                "seconds": 190,
+                "timestamp": "3:10"
+            },
+            "ago": "1 month ago",
+            "views": 694001,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "-JE8P2TiJEg",
+            "url": "https://youtube.com/watch?v=-JE8P2TiJEg",
+            "title": "PROOF JavaScript is a Multi-Threaded language",
+            "description": "Learn the basics of parallelism and concurrency in JavaScript by experimenting with Node.js Worker Threads and browser Web ...",
+            "image": "https://i.ytimg.com/vi/-JE8P2TiJEg/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/-JE8P2TiJEg/hq720.jpg",
+            "seconds": 501,
+            "timestamp": "8:21",
+            "duration": {
+                "seconds": 501,
+                "timestamp": "8:21"
+            },
+            "ago": "8 days ago",
+            "views": 184738,
+            "author": {
+                "name": "Beyond Fireship",
+                "url": "https://youtube.com/@beyondfireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "QAC3eBYHru0",
+            "url": "https://youtube.com/watch?v=QAC3eBYHru0",
+            "title": "Dependency Injection with Clean Architecture",
+            "description": "Continuing on last week's discussion about Clean Architecture, we'll be looking into how to manage dependencies. Tell your ...",
+            "image": "https://i.ytimg.com/vi/QAC3eBYHru0/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/QAC3eBYHru0/hq720.jpg",
+            "seconds": 4361,
+            "timestamp": "1:12:41",
+            "duration": {
+                "seconds": 4361,
+                "timestamp": "1:12:41"
+            },
+            "ago": "Streamed 2 days ago",
+            "views": 55,
+            "author": {
+                "name": "The Technologist Podcast w/ Coach Denis",
+                "url": "https://youtube.com/@TechnologistPodcast"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "p6Yw0Bx5dbw",
+            "url": "https://youtube.com/watch?v=p6Yw0Bx5dbw",
+            "title": "ChatGPT just leveled up big time...",
+            "description": "ChatGPT released the Code Interpreter plugin, making it possible for the LLM to run and test its own Python code. Learn how ...",
+            "image": "https://i.ytimg.com/vi/p6Yw0Bx5dbw/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/p6Yw0Bx5dbw/hq720.jpg",
+            "seconds": 208,
+            "timestamp": "3:28",
+            "duration": {
+                "seconds": 208,
+                "timestamp": "3:28"
+            },
+            "ago": "1 month ago",
+            "views": 1010912,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "AE3iXR1JFak",
+            "url": "https://youtube.com/watch?v=AE3iXR1JFak",
+            "title": "Twitter rebrands to X in latest 5D chess move",
+            "description": "In a surprising move, Twitter has rebranded to X and removed the bird logo. Let's look at recent developments with Twitter and ...",
+            "image": "https://i.ytimg.com/vi/AE3iXR1JFak/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/AE3iXR1JFak/hq720.jpg",
+            "seconds": 192,
+            "timestamp": "3:12",
+            "duration": {
+                "seconds": 192,
+                "timestamp": "3:12"
+            },
+            "ago": "2 weeks ago",
+            "views": 1026566,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "n2Fluyr3lbc",
+            "url": "https://youtube.com/watch?v=n2Fluyr3lbc",
+            "title": "PostgreSQL in 100 Seconds",
+            "description": "#programming #database #100SecondsOfCode Chat with Me on Discord https://discord.gg/fireship Resources Postgres ...",
+            "image": "https://i.ytimg.com/vi/n2Fluyr3lbc/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/n2Fluyr3lbc/hq720.jpg",
+            "seconds": 157,
+            "timestamp": "2:37",
+            "duration": {
+                "seconds": 157,
+                "timestamp": "2:37"
+            },
+            "ago": "2 weeks ago",
+            "views": 340383,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "DXWwCggFROk",
+            "url": "https://youtube.com/watch?v=DXWwCggFROk",
+            "title": "Is AI really getting dumber? Llama2 vs GPT-4",
+            "description": "Meta just released the world's most powerful open-source LLM...Llama2. Let's see how it stacks open to OpenAI's GPT-4 and ...",
+            "image": "https://i.ytimg.com/vi/DXWwCggFROk/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/DXWwCggFROk/hq720.jpg",
+            "seconds": 197,
+            "timestamp": "3:17",
+            "duration": {
+                "seconds": 197,
+                "timestamp": "3:17"
+            },
+            "ago": "3 weeks ago",
+            "views": 513528,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "XRoSBWYMefY",
+            "url": "https://youtube.com/watch?v=XRoSBWYMefY",
+            "title": "Meet Jeff Delaney: The Mastermind Behind @Fireship",
+            "description": "If you're anything like us, your YouTube recommendations are full of Jeff Delaney's videos - most of you probably know him under ...",
+            "image": "https://i.ytimg.com/vi/XRoSBWYMefY/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/XRoSBWYMefY/hq720.jpg",
+            "seconds": 962,
+            "timestamp": "16:02",
+            "duration": {
+                "seconds": 962,
+                "timestamp": "16:02"
+            },
+            "ago": "1 month ago",
+            "views": 251204,
+            "author": {
+                "name": "Honeypot",
+                "url": "https://youtube.com/@Honeypotio"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "BPadRwJbylY",
+            "url": "https://youtube.com/watch?v=BPadRwJbylY",
+            "title": "\"World-changing\" LK-99 Superconductor explained quickly",
+            "description": "What is a superconductor? LK-99 claims to be the first room-temperature superconductor, and if true, it could revolutionize the ...",
+            "image": "https://i.ytimg.com/vi/BPadRwJbylY/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/BPadRwJbylY/hq720.jpg",
+            "seconds": 202,
+            "timestamp": "3:22",
+            "duration": {
+                "seconds": 202,
+                "timestamp": "3:22"
+            },
+            "ago": "2 weeks ago",
+            "views": 1018803,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "-Bdb2KOb_zI",
+            "url": "https://youtube.com/watch?v=-Bdb2KOb_zI",
+            "title": "The future of \"truth\" on the Internet",
+            "description": "Let's take a look at the Coalition for Content Provenance and Authenticity or C2PA and its mission to curb disinformation.",
+            "image": "https://i.ytimg.com/vi/-Bdb2KOb_zI/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/-Bdb2KOb_zI/hq720.jpg",
+            "seconds": 213,
+            "timestamp": "3:33",
+            "duration": {
+                "seconds": 213,
+                "timestamp": "3:33"
+            },
+            "ago": "3 weeks ago",
+            "views": 707503,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "q1fsBWLpYW4",
+            "url": "https://youtube.com/watch?v=q1fsBWLpYW4",
+            "title": "21 Awesome Web Features you’re not using yet",
+            "description": "A breakdown of the most useful new features for web developers using HTML, CSS, and JavaScript. Learn about native dialog ...",
+            "image": "https://i.ytimg.com/vi/q1fsBWLpYW4/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/q1fsBWLpYW4/hq720.jpg",
+            "seconds": 511,
+            "timestamp": "8:31",
+            "duration": {
+                "seconds": 511,
+                "timestamp": "8:31"
+            },
+            "ago": "2 months ago",
+            "views": 833097,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "1GSq7Je32iw",
+            "url": "https://youtube.com/watch?v=1GSq7Je32iw",
+            "title": "RIP Google Domains… and 5 big tech stories this week",
+            "description": "Google announced it's selling its domain registration platform to Squarespace. In this video, we look at the 5 biggest tech stories ...",
+            "image": "https://i.ytimg.com/vi/1GSq7Je32iw/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/1GSq7Je32iw/hq720.jpg",
+            "seconds": 184,
+            "timestamp": "3:04",
+            "duration": {
+                "seconds": 184,
+                "timestamp": "3:04"
+            },
+            "ago": "1 month ago",
+            "views": 627437,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        },
+        {
+            "type": "video",
+            "videoId": "Uc6lM1Aig9c",
+            "url": "https://youtube.com/watch?v=Uc6lM1Aig9c",
+            "title": "Apple makes risky bet on VR/AR future",
+            "description": "The Apple Vision Pro VR headset was announced at WWDC yesterday. Let's take a first look its core features and how developers ...",
+            "image": "https://i.ytimg.com/vi/Uc6lM1Aig9c/hq720.jpg",
+            "thumbnail": "https://i.ytimg.com/vi/Uc6lM1Aig9c/hq720.jpg",
+            "seconds": 261,
+            "timestamp": "4:21",
+            "duration": {
+                "seconds": 261,
+                "timestamp": "4:21"
+            },
+            "ago": "2 months ago",
+            "views": 662220,
+            "author": {
+                "name": "Fireship",
+                "url": "https://youtube.com/@Fireship"
+            }
+        }
+    ],
+    "live": [],
+    "playlists": [],
+    "lists": [],
+    "accounts": [
+        {
+            "type": "channel",
+            "name": "Fireship",
+            "url": "https://youtube.com/@Fireship",
+            "title": "Fireship",
+            "image": "https://yt3.googleusercontent.com/ytc/AOPolaQ2iMmw9cWFFjnwa13nBwtZQbl-AqGYkkiTqNaTLg=s88-c-k-c0x00ffffff-no-rj-mo",
+            "thumbnail": "https://yt3.googleusercontent.com/ytc/AOPolaQ2iMmw9cWFFjnwa13nBwtZQbl-AqGYkkiTqNaTLg=s88-c-k-c0x00ffffff-no-rj-mo",
+            "videoCount": 234,
+            "videoCountLabel": "2.34M subscribers"
+        },
+        {
+            "type": "channel",
+            "name": "Beyond Fireship",
+            "url": "https://youtube.com/@beyondfireship",
+            "title": "Beyond Fireship",
+            "image": "https://yt3.ggpht.com/3MC9XX7rtxeS55uoOQG2nvJ7zaBd17r8Uh0yk_R3KyKjAK_u4RlHhZcTCkx4yym0guGWdefD5Q=s88-c-k-c0x00ffffff-no-rj-mo",
+            "thumbnail": "https://yt3.ggpht.com/3MC9XX7rtxeS55uoOQG2nvJ7zaBd17r8Uh0yk_R3KyKjAK_u4RlHhZcTCkx4yym0guGWdefD5Q=s88-c-k-c0x00ffffff-no-rj-mo",
+            "videoCount": 300,
+            "videoCountLabel": "300K subscribers"
+        }
+    ],
+    "channels": [
+        {
+            "type": "channel",
+            "name": "Fireship",
+            "url": "https://youtube.com/@Fireship",
+            "title": "Fireship",
+            "image": "https://yt3.googleusercontent.com/ytc/AOPolaQ2iMmw9cWFFjnwa13nBwtZQbl-AqGYkkiTqNaTLg=s88-c-k-c0x00ffffff-no-rj-mo",
+            "thumbnail": "https://yt3.googleusercontent.com/ytc/AOPolaQ2iMmw9cWFFjnwa13nBwtZQbl-AqGYkkiTqNaTLg=s88-c-k-c0x00ffffff-no-rj-mo",
+            "videoCount": 234,
+            "videoCountLabel": "2.34M subscribers"
+        },
+        {
+            "type": "channel",
+            "name": "Beyond Fireship",
+            "url": "https://youtube.com/@beyondfireship",
+            "title": "Beyond Fireship",
+            "image": "https://yt3.ggpht.com/3MC9XX7rtxeS55uoOQG2nvJ7zaBd17r8Uh0yk_R3KyKjAK_u4RlHhZcTCkx4yym0guGWdefD5Q=s88-c-k-c0x00ffffff-no-rj-mo",
+            "thumbnail": "https://yt3.ggpht.com/3MC9XX7rtxeS55uoOQG2nvJ7zaBd17r8Uh0yk_R3KyKjAK_u4RlHhZcTCkx4yym0guGWdefD5Q=s88-c-k-c0x00ffffff-no-rj-mo",
+            "videoCount": 300,
+            "videoCountLabel": "300K subscribers"
+        }
+    ]
+}

@@ -15,6 +15,8 @@ const videoApi = {
     // Process --> Main
     getYoutubeResult: (query: string): Promise<VideoDTO[]> =>
         ipcRenderer.invoke("youtube:search", query),
+    getYoutubeVideoQualityList: (videoId: string): Promise<string[]> =>
+        ipcRenderer.invoke("youtube:video:quality:get", videoId),
     sendToDownload: (video: VideoDTO): Promise<void> =>
         ipcRenderer.invoke("video:sendToDownload", video),
     refresh: (): Promise<void> => ipcRenderer.invoke("video:refresh"),

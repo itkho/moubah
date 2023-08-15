@@ -165,7 +165,7 @@ msgstr "Tous sélectionner"
 
 #: renderer/views/LibraryView.tsx:263
 msgid "Selected:"
-msgstr "Sélectionné"
+msgstr "Sélectionné :"
 
 #: renderer/components/NavBar.tsx:107
 #: renderer/views/SettingsView.tsx:35

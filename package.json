@@ -1,5 +1,6 @@
 {
     "name": "moubah",
+    "//": "💡 Don't forget to update the README links!",
     "version": "1.1.0",
     "license": "AGPL-3",
     "main": "main/out/index.js",
@@ -94,7 +95,6 @@
         "babel-plugin-macros": "^3.1.0",
         "concurrently": "^7.0.0",
         "cross-env": "^7.0.3",
-        "daisyui": "^3.5.1",
         "electron": "^17.1.2",
         "electron-builder": "^24.4.0",
         "eslint": "8.11.0",
