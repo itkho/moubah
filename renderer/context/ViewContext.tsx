@@ -13,8 +13,7 @@ export function useView() {
 }
 
 export function ViewProvider(props: { children: ReactNode }) {
-    const [view, setView] = useState(View.settings);
-    // const [view, setView] = useState(View.search);
+    const [view, setView] = useState(View.search);
 
     return (
         <ViewContext.Provider value={{ view, setView }}>

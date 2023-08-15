@@ -3,6 +3,7 @@ import { shell } from "electron";
 import crypto from "crypto";
 import fs from "fs";
 import { LOGS_DIR_PATH } from "./const";
+import { VideoQuality } from "./enum";
 
 export function createPathIfDoesntExists(path: string) {
     if (!fs.existsSync(path)) {
@@ -37,4 +38,30 @@ export function hash(data: string) {
 
 export function sanitizeText(text: string) {
     return sanitize(text.replace(/['%]/g, ""));
+}
+
+export function sortQuality(
+    qualities: VideoQuality[],
+    asc: boolean = true
+): VideoQuality[] {
+    return qualities
+        .map((q) => parseInt(q.replace("p", "")))
+        .sort((a, b) => (asc ? a - b : b - a))
+        .map((n) => convertStringToEnum(VideoQuality, n + "p"))
+        .filter((quality): quality is VideoQuality => quality !== undefined);
+}
+
+export function resForQuality(quality: VideoQuality): number {
+    return parseInt(quality.replace("p", ""));
+}
+
+export function convertStringToEnum<T extends string>(
+    enumType: Record<string, T>,
+    value: string
+): T | undefined {
+    const enumValues = Object.values(enumType) as string[];
+    if (enumValues.includes(value)) {
+        return value as T;
+    }
+    return undefined;
 }

@@ -19,6 +19,7 @@ import { eventEmitter } from "../utils/event";
 import { trackEvent } from "@aptabase/electron/main";
 import { getUserId } from "../model/user-preference";
 import { hash } from "../utils/helpers";
+import { getClosestQualityAvailable } from "../lib/youtube";
 
 // TODO: inherit from AbstractInstanceService
 // TODO: add child YtVideoService for logic specific to Yt (to facilitate the futur implementation of FileVideoService)
@@ -35,6 +36,12 @@ export default class VideoService {
             mainLogger.error(`Youtube ID ${videoYt.id} doesn't exists!`);
             throw Error(`Youtube ID ${videoYt.id} doesn't exists!`);
         }
+        // Get the closest available quality from the initial wanted one
+        videoYt.quality = await getClosestQualityAvailable(
+            videoYt.id,
+            videoYt.quality
+        );
+
         const video = VideoModel.fromDTO(videoYt);
         save(video);
         return new VideoService(video);
@@ -86,7 +93,8 @@ export default class VideoService {
                 return (
                     format.container === "mp4" &&
                     format.hasVideo === true &&
-                    format.hasAudio === false
+                    format.hasAudio === false &&
+                    format.qualityLabel === this.video.info.quality
                 );
             },
         });

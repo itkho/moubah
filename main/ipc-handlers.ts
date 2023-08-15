@@ -30,10 +30,18 @@ export default function initIpcHandlers() {
         async (_event: IpcMainInvokeEvent, query): Promise<VideoDTO[]> => {
             mainLogger.debug(`Youtube search for: ${query}`);
             const videos = await search(query);
-            const tmp = await getQualityAvailable(videos[0].id);
-            console.log({ tmp });
 
             return videos;
+        }
+    );
+
+    ipcMain.handle(
+        "youtube:video:quality:get",
+        async (
+            _event: IpcMainInvokeEvent,
+            videoId: string
+        ): Promise<string[]> => {
+            return await getQualityAvailable(videoId);
         }
     );
 

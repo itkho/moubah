@@ -37,6 +37,7 @@
 ## 🔭 Maybe in the future
 
 -   [ ] 🆕 Be able to remove music from local file
+-   [ ] 🆕 Add the guided tour with something like [intro.js](https://github.com/usablica/intro.js)
 -   [ ] 🆕 Suggest deleting the video once it has been watched
 -   [ ] 🆕 Optimisations (speed up start)
 -   [ ] 🆕 Add an ML filter on thumbnail that blur thumbnails with women
