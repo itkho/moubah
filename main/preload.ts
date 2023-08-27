@@ -58,6 +58,7 @@ const mainApi = {
     openLogsDir: () => ipcRenderer.invoke("openFileExplorer:logs"),
     log: (level: string, msg: string) =>
         ipcRenderer.invoke("log:create", level, msg),
+    versionNumber: (): Promise<string> => ipcRenderer.invoke("versionNumber"),
     isDev: (): Promise<boolean> => ipcRenderer.invoke("isDev"),
     isMac: (): Promise<boolean> => ipcRenderer.invoke("isMac"),
     getUserPrefDarkMode: (): Promise<boolean> =>

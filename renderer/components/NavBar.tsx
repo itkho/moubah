@@ -21,6 +21,8 @@ import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/solid";
 import { langFromLocale } from "../utils/helpers";
 import { Trans } from "@lingui/macro";
 
+const versionNumber = await window.mainApi.versionNumber();
+
 const classNameListItem =
     "flex items-center gap-2 cursor-pointer my-2 p-2 rounded-lg hover:bg-base-300 hover:bg-opacity-50 hover:text-base-700 duration-200";
 
@@ -34,9 +36,14 @@ export default function NavBar() {
             <div className="flex h-full flex-col justify-between">
                 <div className="flex flex-col">
                     {/* Logo */}
-                    <div className=" mx-2 my-6 flex items-center justify-center gap-2 font-fredoka-one text-2xl">
-                        <img src={icon} className="h-12" />
-                        Moubah
+                    <div className="mx-2 my-6 flex flex-col items-center">
+                        <div className="flex items-center justify-center gap-2 font-fredoka-one text-2xl">
+                            <img src={icon} className="h-12" />
+                            Moubah
+                        </div>
+                        <div className="text-base-500 font-thin">
+                            version {versionNumber}
+                        </div>
                     </div>
                     {/* Separator */}
                     <div className="bg-base-500 h-[0.5px] w-11/12 self-center opacity-50"></div>

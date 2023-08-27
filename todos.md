@@ -7,9 +7,9 @@
 ## 🔬 Before releasing-it in production
 
 -   [ ] 🪲 "pause" then directly "resume" doesn't work from the "Select all" section (tested with 2 videos)
--   [ ] 🆕 Be able to choose the video quality
 -   [ ] ✨ Add the title on the `video.mp4`?
 -   [ ] ✨ Add the version number somewhere?
+-   [ ] ✨ Card-like item on the settings to ask for feedback
 -   [ ] 🆕 Make a website
 -   [ ] 🧼 Sort/clean folders
 

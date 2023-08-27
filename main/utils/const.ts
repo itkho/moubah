@@ -20,6 +20,8 @@ export const DIR_SEPARATOR = OS === "win" ? "\\" : "/";
 export const EXEC_EXTENSION = OS === "win" ? ".exe" : "";
 export const VIDEO_DIR_SEPARATOR = " - ";
 
+export const VERSION_NUMBER = process.env.npm_package_version;
+
 export const CONFIG_PATH = join(app.getAppPath(), "config.json");
 export const MUSIC_REMOVER_DIR = join(app.getAppPath(), "music-remover");
 export const MUSIC_REMOVER_EXE_DIR = join(MUSIC_REMOVER_DIR, "dist");

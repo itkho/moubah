@@ -20,7 +20,7 @@ import {
     set as setUserPref,
     setLastMessageSeenTimestamp,
 } from "./model/user-preference";
-import { OS, STORAGE_DIR_PATH } from "./utils/const";
+import { OS, STORAGE_DIR_PATH, VERSION_NUMBER } from "./utils/const";
 import { ping as pingMusicRemover } from "./lib/music-remover";
 import { MusicRemoverStatus } from "./utils/enum";
 
@@ -154,6 +154,10 @@ export default function initIpcHandlers() {
             }
         }
     );
+
+    ipcMain.handle("versionNumber", (_event: IpcMainInvokeEvent) => {
+        return VERSION_NUMBER;
+    });
 
     ipcMain.handle("isDev", (_event: IpcMainInvokeEvent) => {
         return isDev;
