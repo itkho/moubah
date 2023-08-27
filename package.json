@@ -1,7 +1,7 @@
 {
     "name": "moubah",
     "//": "💡 Don't forget to update the README links!",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "license": "AGPL-3",
     "main": "main/out/index.js",
     "author": {
