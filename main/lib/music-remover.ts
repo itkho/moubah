@@ -51,17 +51,18 @@ export function getProcessId() {
     );
 }
 
-export async function ping({ recursive = true }) {
-    return new Promise<void>(async (resolve, reject) =>
+export function ping({ recursive = true }) {
+    return new Promise<void>((resolve, reject) =>
         client.ping(new Empty(), (err, _) => {
             if (!err) {
                 return resolve();
             } else {
                 mainLogger.info("gRPC: " + err.message);
-                if (!recursive) reject;
-                setTimeout(async () => {
-                    await ping({ recursive: recursive });
-                    resolve();
+                if (!recursive) {
+                    return reject();
+                }
+                setTimeout(() => {
+                    resolve(ping({ recursive: recursive }));
                 }, 2000);
             }
         })
